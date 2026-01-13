@@ -6,6 +6,7 @@
   background-color: var(--bg-primary);
   color: var(--text-white);
   padding: 16px 60px;
+  z-index: 9;
   @include mq(desktop-small, max) {
     padding: 16px 32px;
   }
@@ -92,6 +93,9 @@
     }
     
     
+  }
+  .footer-close {
+    display: none;
   }
   .privacy-box {
     font-size: 18px;
@@ -194,6 +198,9 @@
     display: none;
     height: max-content;
     background: #14100cdd;
+    @include mq(tablet-small, max) {
+      display: none !important;
+    }
     &.on {
       position: absolute;
       bottom: 0;
@@ -209,9 +216,11 @@
       height: 36px;
       top: -36px;
       left: 0;
+      display: block;
       @include textBlind();
     }
   }
+  
 }
 
 @keyframes slideUp {
