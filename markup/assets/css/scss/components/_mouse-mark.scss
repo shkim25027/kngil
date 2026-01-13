@@ -1,0 +1,49 @@
+// =======================================
+// Mouse Mark Component
+// =======================================
+
+.mouse-mark {
+  position: fixed;
+  width: 64px !important;
+  height: 64px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #007243cc;
+  border-radius: 50%;
+  transform: translate(-65%, -65%) !important;
+  pointer-events: none;
+  z-index: 100;
+  transition: opacity 0.2s;
+
+  span {
+    position: relative;
+    letter-spacing: 0.07rem;
+    font-size: 10px;
+    font-weight: 700;
+    color: #fff;
+
+    &::before,
+    &::after {
+      content: "";
+      width: 4px;
+      height: 4px;
+      display: block;
+      position: absolute;
+      left: calc(50% - 2px);
+      border: solid #ffffff;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      animation: arrow 1.5s infinite ease;
+    }
+
+    &::before {
+      bottom: -10px;
+    }
+
+    &::after {
+      bottom: -16px;
+      animation-delay: 0.35s;
+    }
+  }
+}

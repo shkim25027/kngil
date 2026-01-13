@@ -1,0 +1,41 @@
+<!-- popup_wrap -->
+<div class="popup-wrap" id="pop_login" role="dialog" aria-labelledby="login-title" aria-modal="true">
+    <!-- popup_in -->
+    <div class="popup-in member">
+        <button class="btn-close" type="button" aria-label="팝업 닫기">
+            <img src="../assets/images/ico/ico_close.svg" alt="닫기">
+        </button>
+        <!-- popup_container -->
+        <div class="popup-container login">
+            <!-- pop_header -->
+            <div class="pop-header">
+                <h2 class="tit" id="login-title">로그인</h2>
+            </div>
+            <!-- //pop_header -->
+            <!-- pop_body -->
+            <div class="pop-body">
+                <form action="" method="post" novalidate>
+                    <div class="input-box id">
+                        <i class="id" aria-hidden="true"></i>
+                        <input type="text" id="login-id" name="userId" placeholder="아이디" required aria-label="아이디">
+                    </div>
+                    <div class="input-box pw">
+                        <i class="pw" aria-hidden="true"></i>
+                        <input type="password" id="login-password" name="userPassword" placeholder="비밀번호" required aria-label="비밀번호">
+                    </div>
+                    <div class="btn-wrap">
+                        <button class="btn-full" type="submit">로그인</button>
+                    </div>
+                    <div class="btn-wrap">
+                        <div class="go-signup"><a href="javascript:agreement();"><span>회원가입</span><i class="arrow-r" aria-hidden="true"></i></a></div>
+                        <div class="go-find"><a href="javascript:search();"><span>아이디/비밀번호 찾기</span><i class="arrow-r" aria-hidden="true"></i></a></div>
+                    </div> 
+                </form>
+            </div>
+            <!-- //pop_body -->
+        </div>
+        <!-- //popup_container -->
+    </div>
+    <!-- //popup_in -->
+</div>
+<!-- //popup_wrap -->

@@ -1,0 +1,91 @@
+:root {
+  --min-height: 814px;
+  --page-tail-size: 6.4rem;
+
+  /* text */
+  --text-base: #000;
+  --text-primary: #007243;
+  --text-secondary: #003675;
+  --text-tertiary: #8e8e8e;
+  --text-accent: #fb3c00;
+  --text-success: #008000;
+  --text-warning: #ffa500;
+  --text-danger: #ff0000;
+  --text-title:#1d1d1d;
+  --text-sub:#171717;
+  --text-body : #555;
+  --text-white : #fff;
+  --text-disabled : #e4e4e4;
+  --text-placeholder : #8e8e8e;
+  --text-link:#246beb;     
+  
+
+  /* 배경 */
+  --bg-base: #ffffff;
+  --bg-primary: #f8f8f8;
+  --bg-secondary: #f0f0f0;
+  --bg-tertiary: #e5e5e5;
+  --bg-quaternary: #bfbfbf;
+  --bg-quinary: #808080;
+  --bg-senary: #404040;
+  --bg-septenary: #000000;
+
+
+  --bg-opacity-10: #e5e5e5;
+  --bg-opacity-25: #bfbfbf;
+  --bg-opacity-50: #808080;
+  --bg-opacity-75: #404040;
+  --bg-opacity-100: #000;
+
+
+
+  /* border */
+  --border-base:#c6c6c6;
+  --border-gra-tail: linear-gradient(180deg, #209f79 0%, transparent 100%);
+  --border-gra-depth01: linear-gradient(179deg, #196d54 0%, transparent 8%);
+  --border-accent: #eb5f00;
+
+  /* stroke */
+  --text-stroke: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+    1px 1px 0 #000;
+
+  /* SHADOW */
+  --bg-shadow: drop-shadow(0 -8px 15px rgba(0, 0, 0, 0.05));
+  --text-shadow: drop-shadow(0 0 0.5px #000);
+  --btn-shadow: drop-shadow(0 2px 2px #000000aa)
+    drop-shadow(0 -1px 1px #000000aa);
+  --depth01-shadow: 0 -2px 2px 0 rgba(0, 0, 0, 0.25);
+
+  /* mask content */
+  --mask-contents: linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+
+  /* gradient */
+  --gra-tail-bg: linear-gradient(180deg, #0f5a44 0%, #0f3227 86.31%);
+
+  /* 공통적용 - 컬러 */
+  --color-yellow: #ffc600;
+  --color-green: #007243;
+  --color-orange: #ff5c00;
+  --color-han-gr: #0e3c2e;
+  --color-han-br: #27241d;
+  --color-han-bgbr: #f6f4f2;
+  --color-primary: #1b7f63;
+  --color-accent: #fb3c00;
+
+  --gradient-han-gr: linear-gradient(
+    180deg,
+    #08251c 0%,
+    #208769 37%,
+    #08241c 81%,
+    #051612 100%
+  );
+  --gradient-han-yelllow-border: linear-gradient(
+    180deg,
+    #886d35 0%,
+    #423625 9%,
+    #f3dba8 26%,
+    #0e0b06 84%,
+    #574b30 100%
+  );
+}

@@ -1,0 +1,610 @@
+// =======================================
+// Popup Styles
+// =======================================
+@use "../import/_mixin" as *;
+
+// =======================================
+// Variables
+// =======================================
+$popup-overlay-bg: #000000aa;
+$popup-border-color: #0e3c2e;
+$popup-shadow: 20px -20px 50px #000000cc;
+$popup-bg-gradient: linear-gradient(0deg, #ffffff00 0%, #eee7dd 100%), 
+                    linear-gradient(90deg, #d4cbbd 0%, #d4cbbd 100%);
+$popup-bg-image: url(../images/bg_pop.png);
+$popup-close-bg: url('../images/bg_close.png');
+
+// Popup positioning
+$popup-top: 72px;
+$popup-right: 86px;
+
+// Popup sizes
+$popup-member-width: 1140px;
+$popup-member-min-height: 725px;
+$popup-privacy-height: 662px;
+
+// =======================================
+// Mixins
+// =======================================
+@mixin background-image-cover {
+  background-image: $popup-bg-image;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top left;
+}
+
+@mixin icon-background {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+// Common popup container styles
+@mixin popup-container-base {
+  width: 100%;
+  height: 100%;
+  box-shadow: $popup-shadow;
+  border: 4px solid $popup-border-color;
+  border-radius: 5px 0 5px 5px;
+  display: flex;
+  z-index: 100;
+  overflow: hidden;
+  background: $popup-bg-gradient;
+}
+
+// Reset popup container when nested
+@mixin popup-container-reset {
+  position: static;
+  top: auto;
+  right: auto;
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  width: 100%;
+  height: 100%;
+}
+
+// =======================================
+// Popup Wrapper
+// =======================================
+.popup-wrap {
+  display: none;
+  z-index: 1000;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  &::before {
+    content: '';
+    background: $popup-overlay-bg;
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+}
+
+// =======================================
+// Popup Inner Container
+// =======================================
+.popup-in {
+  position: relative;
+
+  .btn-close {
+    position: absolute;
+    top: -42px;
+    right: 0;
+    z-index: 10000;
+    width: 107px;
+    height: 48px;
+    background: transparent;
+    background-image: $popup-close-bg;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    text-align: right;
+    padding-right: 26px;
+    padding-top: 4px;
+    cursor: pointer;
+
+    img {
+      pointer-events: none;
+    }
+  }
+
+  // =======================================
+  // Responsive Styles
+  // =======================================
+  @include mq(tablet-small, max) {
+    .btn-close {
+      background: none;
+      filter: invert(99%) sepia(100%) saturate(2%) hue-rotate(82deg) brightness(106%) contrast(100%);
+      top: 16px;
+      right: 20px;
+      width: 28px;
+      height: 28px;
+      padding: 0;
+
+    }
+  }
+
+  // =======================================
+  // Member Popup (회원가입/로그인)
+  // =======================================
+  &.member {
+    position: absolute;
+    top: $popup-top;
+    right: $popup-right;
+    width: $popup-member-width;
+    height: $popup-member-min-height;
+
+    @include mq(desktop-small, max) {
+      width: 100%;
+      max-width: 100%;
+      height: var(--window-inner-height);
+      max-height: var(--window-inner-height);
+      top: auto;
+      right: auto;
+      overflow-y: auto;
+      
+      .btn-close {
+        background: none;
+        filter: invert(99%) sepia(100%) saturate(2%) hue-rotate(82deg) brightness(106%) contrast(100%);
+        top: 16px;
+        right: 20px;
+        width: 28px;
+        height: 28px;
+        padding: 0;
+  
+      }
+      .popup-container {
+        flex-direction: column;
+      }
+    }
+
+    .pop-header {
+      position: relative;
+      min-width: 420px;
+      display: flex;
+      flex-direction: column;
+      padding: 120px 0 90px 48px;
+      @include background-image-cover;
+      color: #ffffff;
+      gap: 38px;
+
+      @include mq(desktop-small, max) {
+        min-width: auto;
+        padding: 40px 24px;
+        gap: 20px;
+        min-height: 160px;
+        justify-content: center;
+      }
+
+      h2 {
+        font-size: 80px;
+        font-weight: 900;
+
+        @include mq(desktop-small, max) {
+          font-size: 34px;
+          text-align: center;
+        }
+      }
+
+      p {
+        font-size: 20px;
+
+        @include mq(desktop-small, max) {
+          font-size: 16px;
+        }
+      }
+
+      &::after,
+      &::before {
+        position: absolute;
+        top: -40px;
+        right: 0;
+        font-size: 180px;
+        font-weight: 900;
+        color: #fff;
+        white-space: nowrap;
+        letter-spacing: -0.06em;
+        mix-blend-mode: overlay;
+        opacity: 0.5;
+        z-index: 1;
+      }
+
+      &::before {
+        left: 407px;
+      }
+    }
+
+    .pop-body {
+      width: 100%;
+      padding: 80px 24px;
+      flex-direction: column;
+      @include flex(center, flex-start);
+
+      @include mq(desktop-small, max) {
+        padding: 40px 20px;
+      }
+
+      .form-wrap,
+      form {
+        width: 100%;
+        height: 100%;
+        max-width: 480px;
+        gap: 24px;
+        flex-direction: column;
+        @include flex(center, flex-start);
+
+        @include mq(desktop-small, max) {
+          max-width: 100%;
+          gap: 16px;
+        }
+
+        &:has(.terms-wrap) {
+          gap: 32px;
+
+          @include mq(desktop-small, max) {
+            gap: 20px;
+          }
+        }
+      }
+    }
+
+    // Input Fields
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      height: 48px;
+      border-bottom: 1px solid #000;
+    }
+
+    .input-box {
+      width: 100%;
+      @include flex(center, flex-start);
+      gap: 8px;
+
+      i {
+        display: inline-block;
+        width: 32px;
+        aspect-ratio: 1 / 1;
+        margin-left: 16px;
+        @include icon-background;
+
+        &.id {
+          background-image: url(../images/ico/ico_id.svg);
+        }
+
+        &.pw {
+          background-image: url(../images/ico/ico_pw.svg);
+        }
+      }
+    }
+
+    // Link Buttons
+    .go-signup,
+    .go-find {
+      a {
+        color: var(--text-body);
+        font-size: 18px;
+        font-weight: 600;
+        gap: 8px;
+        @include flex(center, center);
+      }
+
+      .arrow-r {
+        width: 16px;
+        height: 16px;
+        background-image: url(../images/ico/ico_arrow_r.svg);
+        @include icon-background;
+      }
+    }
+
+    // Checkbox
+    .check-box {
+      width: 100%;
+      @include flex(center, space-between);
+      gap: 8px;
+
+      label {
+        font-size: 18px;
+        font-weight: 600;
+        color: var(--text-base);
+      }
+
+      input {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        width: 28px;
+        aspect-ratio: 1 / 1;
+        border-radius: 2px;
+        position: relative;
+        cursor: pointer;
+        border-bottom: 0;
+        background-color: #ffffffaa;
+        box-shadow: inset 0px 0px 1px #00000022;
+        padding: 0;
+        display: inline-block;
+
+        &:checked {
+          background-image: url(../images/ico/ico_check.svg);
+          @include icon-background;
+          background-color: var(--color-green);
+          box-shadow: inset 0px 0px 1px #00000022;
+        }
+      }
+    }
+
+    // Terms Box
+    .terms-box {
+      width: 100%;
+      height: 128px;
+      border-radius: 4px;
+      padding: 8px 16px;
+      margin-top: 8px;
+      font-size: 14px;
+      text-align: left;
+      box-sizing: border-box;
+      background-color: #ffffff55;
+      overflow-y: auto;
+    }
+  }
+
+  // =======================================
+  // Privacy Popup
+  // =======================================
+  &.privacy {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    max-width: 800px;
+    height: $popup-privacy-height;
+    max-height: 700px;
+    translate: -50% -50%;
+    @include mq(tablet-small, max) {  
+      width: 100%;
+      height: var(--window-inner-height);
+      max-height: var(--window-inner-height);
+      overflow-y: auto;
+    }
+
+    .pop-contents {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      @include background-image-cover;
+      @include mq(tablet-small, max) {
+        padding: 56px 16px 16px;
+        gap: 16px;
+      }
+    }
+
+    .list_1 > li {
+      margin-bottom: 40px;
+    }
+
+    .list_2 {
+      margin-top: 16px;
+
+      > li {
+        list-style: square;
+        padding-left: 8px;
+        margin-left: 32px;
+        margin-bottom: 16px;
+      }
+    }
+
+    .list_3 {
+      margin-left: 8px;
+      margin-top: 8px;
+
+      > li {
+        list-style-type: "- ";
+        margin-bottom: 4px;
+      }
+    }
+
+    .tab-content {
+      color: #fff;
+      @include mq(tablet-small, max) {
+        font-size: 16px;
+      }
+    }
+
+  }
+}
+
+// =======================================
+// Popup Container Base
+// =======================================
+.popup-container {
+  @include popup-container-base;
+
+
+
+  // =======================================
+  // Login Popup Variant
+  // =======================================
+  &.login {
+    .pop-body {
+      form {
+        justify-content: center;
+      }
+
+      .input-box {
+        gap: 16px;
+        border-bottom: 1px solid #000;
+      }
+
+      input[type="text"],
+      input[type="tel"],
+      input[type="password"] {
+        padding: 0 16px;
+        border-bottom: none;
+      }
+    }
+  }
+
+  &.search{
+      .hidden {
+        display: none;
+      }
+      .radio-wrap {
+        width: 100%;
+        @include flex(center, space-around);
+      }
+  }
+
+  // =======================================
+  // Buttons
+  // =======================================
+  .btn-full {
+    font-size: 24px;
+    font-weight: 700;
+    height: 80px;
+    background: linear-gradient(90deg, #53472e 0%, #3b3123 100%),
+                 linear-gradient(180deg, #886d35 0%, #423625 9%, #f3dba8 26%, #0e0b06 84%, #574b30 100%);
+
+    &:hover {
+      background: linear-gradient(90deg, #8e7339 0%, #a57839 100%),
+                   linear-gradient(90deg, #886d35 0%, #423625 9%, #f3dba8 26%, #0e0b06 84%, #574b30 100%);
+    }
+  }
+
+  .btn-black {
+    min-width: 76px;
+    font-size: 16px;
+    padding: 4px 8px;
+    height: 30px;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    align-self: end;
+    margin-bottom: 4px;
+  }
+
+  // =======================================
+  // Text & Messages
+  // =======================================
+  .point {
+    color: var(--text-accent);
+  }
+
+  .info-msg {
+    font-size: 12px;
+    color: var(--text-accent);
+    margin-bottom: 16px;
+  }
+
+  .tbl-wrap > .info-msg {
+    text-align: right;
+  }
+
+  // =======================================
+  // Table
+  // =======================================
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 20px;
+
+    th {
+      width: 25%;
+      text-align: left;
+      font-size: 18px;
+      font-weight: 600;
+      min-height: 42px;
+      vertical-align: top;
+      padding-top: 12px;
+    }
+  }
+
+  // =======================================
+  // Tabs
+  // =======================================
+  .tab-menu {
+    width: 100%;
+    min-height: 67px;
+    padding: 4px;
+    border-radius: 4px;
+    border-top-right-radius: 0;
+    box-sizing: border-box;
+    background-color: #eee7dd;
+    display: flex;
+    gap: 4px;
+
+    li {
+      position: relative;
+      width: 50%;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      &:not(.on):hover {
+        background-color: #dbcbb4;
+      }
+    }
+
+    .on {
+      background-color: var(--color-primary);
+      color: #fff;
+    }
+  }
+
+  .tab-content {
+    display: none;
+    position: relative;
+    width: 100%;
+    flex-grow: 1;
+    border-radius: 4px;
+    padding: 40px;
+    font-size: 16px;
+    text-align: left;
+    box-sizing: border-box;
+    overflow-y: scroll;
+
+    @include mq(tablet-small, max) {
+      padding: 20px;
+      font-size: 14px;
+    }
+
+    &.show {
+      display: block;
+    }
+  }
+}
+
+// =======================================
+// Popup Header Decorative Text
+// =======================================
+@include mq(desktop-small, min) {
+  .login .pop-header::after {
+    content: "Logi";
+  }
+
+  .login .pop-header::before {
+    content: "n";
+  }
+
+  .join .pop-header::after {
+    content: "Sign u";
+  }
+
+  .join .pop-header::before {
+    content: "p";
+  }
+}

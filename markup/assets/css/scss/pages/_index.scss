@@ -1,0 +1,14 @@
+// =======================================
+// Pages Index
+// =======================================
+// 페이지별 고유 스타일들을 통합 관리
+
+@forward "main";       // 메인 페이지
+@forward "value";      // 밸류 페이지
+@forward "interface";  // 인터페이스 페이지
+@forward "floorplan";  // 도면 관리 페이지
+@forward "primary";    // 주요 기능 페이지
+@forward "forbim";     // For BIM 페이지
+@forward "faq";        // FAQ 페이지
+@forward "buy";        // 구매 페이지
+

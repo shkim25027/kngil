@@ -1,0 +1,104 @@
+// =======================================
+// Button Components
+// =======================================
+
+@use "../import/mixin" as *;
+
+.btn-wrap {
+  width: 100%;
+  @include flex(center, space-between);
+}
+.btn-full {
+  width: 100%;
+  height: 48px;
+  background-color: #0e3c2e;
+  color: #fff;
+  border-radius: 5px;
+  padding: 0 16px;
+}
+.btn-top {
+  position: fixed;
+  bottom: 60px;
+  right: 60px;
+  z-index: 10;
+  width: 60px;
+  height: 60px;
+  background-color: #14100c;
+  cursor: pointer;
+  border-radius: 50%;
+  opacity: 0;
+
+  &::before {
+    content: "";
+    background: #fff;
+    width: 30px;
+    height: 2px;
+    display: block;
+    position: absolute;
+    top: 12px;
+    left: calc(50% - 15px);
+    border-radius: 20px;
+  }
+
+  .arrow {
+    width: 2px;
+    height: 32px;
+    background-color: #fff;
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    border-radius: 20px;
+
+    &::after,
+    &::before {
+      position: absolute;
+      content: "";
+      width: 16px;
+      height: 2px;
+      background-color: #fff;
+      top: 6px;
+      left: 50%;
+    }
+
+    &::after {
+      transform: translateX(calc(-50% + 6px)) rotate(45deg);
+    }
+
+    &::before {
+      transform: translateX(calc(-50% - 6px)) rotate(-45deg);
+    }
+  }
+
+  &:hover {
+    .arrow {
+      bottom: 14px;
+      background-color: var(--color-yellow);
+      transition: 0.2s;
+
+      &::after,
+      &::before {
+        bottom: 8px;
+        background-color: var(--color-yellow);
+        transition: 0.2s;
+      }
+    }
+
+    &::before {
+      background: var(--color-yellow);
+    }
+  }
+
+  &.topbtn-off {
+    transition: opacity 0.3s;
+    opacity: 0;
+  }
+
+  &.topbtn-on {
+    transition: opacity 0.3s;
+    opacity: 1;
+  }
+}
+
+.main .btn-top.topbtn-off {
+  visibility: hidden;
+}

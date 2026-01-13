@@ -1,0 +1,131 @@
+// =======================================
+// Diagram Component
+// =======================================
+
+.diagram-wrap {
+  position: relative;
+
+  .dia-element {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .dia-tit {
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .dia-text {
+      font-size: 18px;
+      font-weight: 500;
+    }
+
+    .line {
+      background-color: #ffffff;
+      position: absolute;
+    }
+  }
+
+  .dia-circles-wrap {
+    position: relative;
+    width: 300px;
+    aspect-ratio: 1/1;
+    z-index: 1;
+
+    &::after {
+      position: absolute;
+      content: "";
+      width: 110%;
+      aspect-ratio: 1/1;
+      border-radius: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px dashed var(--color-accent);
+      opacity: 0.5;
+      z-index: -1;
+    }
+
+    div[class^="circle-"] {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .circle-belt {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid #b6d0c9;
+      background: #f0f7f5;
+    }
+
+    .circle-core {
+      width: 80%;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      background: linear-gradient(0deg, #123328 0%, #296b55 100%);
+      box-shadow: inset 0 0 0 1px #00000022;
+      filter: drop-shadow(-4px 8px 8px #00000033);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-size: 32px;
+      font-weight: 700;
+      text-align: center;
+      color: #ffffff;
+    }
+
+    .circle-dash {
+      border: 1px dashed #b6d0c9;
+      width: 110%;
+      height: 110%;
+      border-radius: 50%;
+    }
+
+    .circle-dots {
+      width: 100%;
+      height: 100%;
+
+      &.move {
+        top: 0;
+        left: 0;
+        opacity: 0.3;
+        animation-duration: 12s;
+        animation-iteration-count: infinite;
+        animation-name: dot-rotate;
+
+        .dot::after {
+          display: none;
+        }
+      }
+
+      .dot {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #3838384d;
+
+        &:nth-child(1) {
+          top: 50%;
+          left: -4px;
+          right: initial;
+          transform: translateY(-50%);
+        }
+
+        &:nth-child(2) {
+          top: 50%;
+          left: initial;
+          right: -4px;
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
+}

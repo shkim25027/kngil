@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    @@include("_include/_head.html")
+  </head>
+  <body>
+    <div class="wrap main">
+      <div class="main-mask">
+        @@include("_include/_header.html")
+        <!-- container -->
+        <div class="container">
+        
+          <section class="main-contents">
+              <div class="bg-video">
+                <a href="./value.html" class="main-link" id="main-video-link">
+                  <video id="video-play" autoplay muted>
+                    <source src="./assets/video/main_1.mp4" type="video/mp4" class="main-video-01">
+                  </video>
+                </a>
+              </div>        
+              <ul class="main-pagination">
+                <li><div class="page-01 page-on" data-page="1"><img src="./assets/images/logo_kngil.svg" alt="KNGAL"></div><span>01</span></li>
+                <li><div class="page-02" data-page="2">제공데이터</div><span>02</span></li>
+                <li><div class="page-03" data-page="3">주요기능</div><span>03</span></li>
+                <li><div class="page-04" data-page="4">데이터분석</div><span>04</span></li>
+                <li><div class="page-05" data-page="5">성과품</div><span>05</span></li>
+              </ul>
+          </section>
+        
+        </div>
+
+        @@include("_include/_footer.html")
+        <!-- // container -->
+
+        <!-- 모든 팝업페이지 경로 -->        
+        @@include("mypage/pop_agreement.html")
+        @@include("mypage/pop_join.html")
+        @@include("mypage/pop_login.html")
+        @@include("mypage/pop_mypage01.html")
+        @@include("mypage/pop_mypage02.html")
+        @@include("mypage/pop_mypage03.html")
+        @@include("mypage/pop_search.html")
+        @@include("popup/pop_privacy.html")
+      </div>
+      <div class="intro-wrap">
+        <div class="intro-mask"></div>
+        <div class="intro-txt">
+          <div class="txt-mask"><span><b>디지털전환시대</b></span></div>
+          <div class="txt-mask"><span><font class="egbim k">EG-BIM_software</font></span></div>
+          <div class="txt-mask"><span><em>도면</em>과 <em>3차원 정보모델</em>을 <em>하나의</em> S/W로</span></div>
+        </div>
+      </div>
+      <!-- 모든 팝업페이지 경로 -->
+    </div>
+    <script src="./assets/js/index.js"></script>
+  </body>
+</html>

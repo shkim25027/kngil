@@ -1,0 +1,422 @@
+@charset "UTF-8";
+
+@forward "import/typography";
+@forward "import/lib-fonts";
+@forward "import/reset-css";
+
+@forward "layouts";
+
+// Components
+@forward "components";
+
+// =======================================
+// Common Styles
+// =======================================
+// 공통 스타일 정의
+// 주의: 좌우 여백 필요시 최소 200px (200px 이하 여백 사용 X - 플로팅과 겹침)
+// "js__"로 시작하는 클래스는 JavaScript 전용입니다.
+
+// =======================================
+// Base Reset & Settings
+// =======================================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  letter-spacing: -0.04em;
+  scroll-behavior: smooth;
+  user-select: auto;
+}
+
+// =======================================
+// Form Elements
+// =======================================
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-transition: background-color 9999s ease-out;
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff00 inset !important;
+}
+
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+// =======================================
+// Scrollbar
+// =======================================
+
+/* 스크롤바 스타일 */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #bbb;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-track {
+  //background-color: #000;
+}
+
+// =======================================
+// Typography
+// =======================================
+
+a {
+  color: inherit;
+}
+
+h2 {
+  font-size: 70px;
+  color: #fff;
+}
+
+.h-3 {
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: -1px;
+}
+
+.h-4 {
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: -1px;
+}
+
+.grand-tit {
+  font-size: 64px;
+  font-weight: 700;
+}
+
+.mid-tit {
+  font-size: 52px;
+  font-weight: 700;
+}
+
+.sub-tit {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--color-accent);
+  display: block;
+}
+
+em {
+  font-weight: 700;
+}
+.sub-text {
+  font-size: 20px;
+  line-height: 30px;
+  display: block;
+}
+
+font.egbim {
+  color: transparent;
+  background-repeat: no-repeat;
+  background-position: bottom 48% right;
+  margin-right: 2px;
+  padding: 0 1%;
+  white-space: nowrap;
+}
+
+.txt-border {
+  filter: drop-shadow(-1px 0 0 #000) drop-shadow(0 -1px 0 #000)
+    drop-shadow(1px 0 0 #000) drop-shadow(0 1px 0 #000);
+}
+
+.page-title {
+  h2 {
+    color: var(--text-white);
+    font-size: 70px;
+    text-shadow: 2px 2px 6px #2c2b2b;
+  }
+  p{
+    font-size: 22px;
+    color: var(--text-white);
+  }
+}
+.tit-box {
+  h3 {
+    font-size: 32px;
+    color: var(--text-title);
+  }
+  p {
+    font-size: 20px;
+  }
+}
+.sec-title {
+  h4 {
+    font-size: 52px;
+    color: var(--text-white);
+    em {
+      color: var(--text-title);
+    }
+  }
+}
+
+.txt-box{
+  h3 {
+    color: var(--text-title);
+    font-size: 42px;
+  }
+  h4 {
+    color: var(--text-title);
+    font-size: 32px;
+  }
+  p {
+    color: var(--text-sub);
+    font-size: 20px;
+  }
+}
+
+// =======================================
+// Lists
+// =======================================
+
+ul {
+  line-height: 160%;
+}
+
+.value ul li {
+  position: relative;
+  text-indent: 16px;
+
+  &::before {
+    position: absolute;
+    content: "";
+    top: 14px;
+    left: 0;
+    width: 5px;
+    height: 4px;
+    background-color: var(--color-accent);
+    transform: skew(-40deg);
+  }
+}
+
+// =======================================
+// Icons
+// =======================================
+
+i {
+  display: block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+i.egbim.k,
+font.egbim.k {
+  background-image: url(../img/egbim_k.svg);
+}
+
+i.egbim.w,
+font.egbim.w {
+  background-image: url(../img/egbim_w.svg);
+}
+
+i.egbim-obj.w {
+  background-image: url(../img/egbim_obj_w.svg);
+  width: 77px;
+  min-height: 12px;
+}
+
+i.egbim-obj.k {
+  background-image: url(../img/egbim_obj_k.svg);
+  width: 77px;
+  min-height: 12px;
+}
+
+/* clearfix */
+.clearfix {
+  /* IE 지원 방식 : *zoom: 1;*/
+  &:before,
+  &:after {
+    content: "";
+    display: block;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+/* hidden */
+.blind {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.d-none {
+  display: none !important;
+}
+
+[class*="gra"] {
+  position: relative;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+  &::after {
+    inset: 0;
+    padding: 1px;
+    mask: var(--mask-contents);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+}
+
+/* 모달 */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  overflow: auto;
+  z-index: 30;
+
+  .modal-content {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f6f1e9;
+    padding: 40px 20px 20px 20px;
+    border: 1px solid #888;
+    width: 470px;
+    min-height: 500px;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .close {
+    color: #000;
+    float: right;
+    font-size: 26px;
+    font-weight: bold;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    display: block;
+    margin-left: auto;
+    width: 26px;
+    height: 26px;
+    background: none;
+    line-height: 1;
+    filter: var(--text-shadow);
+    transition: all 0.1s ease-in-out;
+    &:hover,
+    &:focus {
+      color: #e00400;
+      text-decoration: none;
+      cursor: pointer;
+      text-shadow: var(--text-stroke);
+    }
+  }
+}
+
+/* 배경 dim 스타일 */
+.dim-background {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: var(--window-inner-height);
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1;
+}
+
+/* media query */
+// 3840px 초과: 4K 이상
+@media all and (min-width: 3841px) {
+  html {
+      font-size: 20px;
+  }
+}
+// 3200px 초과 ~ 3840px: 4K 디스플레이
+@media all and (min-width: 3201px) and (max-width: 3840px) {
+  html {
+      font-size: 18px;
+  }
+}
+// 2560px 초과 ~ 3200px: 매우 큰 데스크톱
+@media all and (min-width: 2561px) and (max-width: 3200px) {
+  html {
+      font-size: 16px;
+  }
+}
+
+// 1920px 초과 ~ 2560px: 큰 데스크톱
+@media all and (min-width: 1921px) and (max-width: 2560px) {
+  html {
+      font-size: 14px;
+  }
+}
+
+// 1024px ~ 1920px: 기본 데스크톱
+@media all and (min-width: 1024px) and (max-width: 1920px) {
+    html {
+        font-size: 10px;
+    }
+}
+
+// 1023px 이하: 태블릿
+@media all and (max-width: 1023px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+// 767px 이하
+@media all and (max-width: 767px) {
+    html {
+        font-size: 13px;
+    }
+}
+
+// 639px 이하
+@media all and (max-width: 639px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+// 479px 이하
+@media all and (max-width: 479px) {
+    html {
+        font-size: 10px;
+    }
+}
+
+// 359px 이하
+@media all and (max-width: 359px) {
+    html {
+        font-size: 9px;
+    }
+}
+
+// 319px 이하
+@media all and (max-width: 319px) {
+    html {
+        font-size: 8px;
+    }
+}

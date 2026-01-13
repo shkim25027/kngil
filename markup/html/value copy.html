@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>EG-BIM 소개</title>
+        <link rel="stylesheet" href="css/reset.css"/>
+        <link rel="stylesheet" href="css/font.css"/>
+        <link rel="stylesheet" href="css/style.css"/>
+        
+        <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" type="text/css"/>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script> 
+        <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
+        <script type="text/javascript" src="js/jquery-3.6.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+        
+        <script type="text/javascript" src="js/common.js"></script>
+        <script type="text/javascript" src="js/popup.js"></script>
+        <script type="text/javascript" src="js/value.js"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <!-- HEADER -->
+            <header class="js__header">
+                <h1><a href="index.html"></a></h1>
+                <div class="menu_my">                        
+                    <img src="img/ico_my.svg" alt="">
+                    <ul class="menu_my_list" style="display: none;">
+                        <li class="my_login"><a href="javascript:login();">로그인</a></li>
+                        <li class="my_join"><a href="javascript:agreement();">회원가입</a></li>
+                        <li class="my_join" style="display: none;"><a href="javascript:mypage01();">마이페이지</a></li>                       
+                        <li class="my_login" style="display: none;"><a href="javascript:logout();">로그아웃</a></li>
+                    </ul>
+                </div>
+                <div class="menu_ham"><a href="javascript:sitemap();"><div></div><div></div><div></div></a></div>
+            </header>
+            <!-- //Header -->
+            <!-- floating_menu -->
+            <div class="floating_menu">
+                <ul>
+                    <li class="floating_buy"><a href="buy.html">
+                       <i></i>
+                        <span>구매하기</span>
+                    </a></li>
+                    <li class="floating_faq"><a href="faq.html">
+                        <i></i>
+                        <span>FAQ</span>
+                    </a></li>                        
+                </ul>
+            </div>
+            <!-- //floating_menu -->
+
+            <!-- 모든 팝업페이지 경로 -->            
+            <div class="pop_open" data-include-path="pop/pop_agreement.html"></div>
+            <div class="pop_open" data-include-path="pop/pop_join.html"></div>
+            <div class="pop_open" data-include-path="pop/pop_login.html"></div>
+            <div class="pop_open" data-include-path="pop/pop_mypage01.html"></div>
+            <div class="pop_open" data-include-path="pop/pop_mypage02.html"></div>
+            <div class="pop_open" data-include-path="pop/pop_mypage03.html"></div>
+            <div class="pop_open" data-include-path="pop/pop_search.html"></div>
+            <div class="pop_open" data-include-path="pop/pop_sitemap.html"></div>
+            <div class="pop_open" data-include-path="pop/pop_privacy.html"></div>
+            <!-- 모든 팝업페이지 경로 -->
+            <!-- 컨텐츠 시작 -->
+            <div class="container value">
+                <section class="intro js__dark">
+                    <div class="top">
+                        <h2 data-aos="fade-down" data-aos-duration="1000">EG-BIM 소개</h2>
+                    </div>
+                    <div class="keyword">
+                        <i class="egbim_obj w"></i>
+                        <span>도면편집과 성과품 관리에서부터 3차원 BIM모델 정보 확인까지</span>
+                    </div>
+                    <div class="summarys_wrap">
+                        <div class="diagram_wrap" data-aos="fade-up" data-aos-duration="1000">
+                            <div class="dia_element_wrap">
+                                <div class="dia_element">                                
+                                    <div class="dia_tit">
+                                        <span>대량 성과품 관리</span>
+                                    </div>
+                                    <div class="dia_line"></div>
+                                    <ul class="dia_li">
+                                        <li class="dia_li_tit">꾸러미</li>
+                                        <li>도면찾기/이력관리</li>
+                                        <li>도면정보 일괄 수정</li>
+                                        <li>여러도면 다중출력</li>
+                                    </ul>
+                                </div>
+                                <div class="dia_element">                                
+                                    <div class="dia_tit">
+                                        <span>도면<br>보기/수정</span>
+                                    </div>
+                                    <div class="dia_line"></div>
+                                    <ul class="dia_li">
+                                        <li class="dia_li_tit">그리미</li>
+                                        <li>UX 디자인</li>
+                                        <li>듀얼 모니터</li>
+                                        <li>다양한 편의 기능</li>
+                                    </ul>
+                                </div>
+                                <div class="dia_element">                                
+                                    <div class="dia_tit">
+                                        <span>3D BIM<br>모델 보기</span>
+                                    </div>
+                                    <div class="dia_line"></div>
+                                    <ul class="dia_li">
+                                        <li class="dia_li_tit">3D Viewer</li>
+                                        <li>3D BIM 모델 형상 및<br>속성 정보 보기</li>
+                                        <li>2D 설계도면 - 3D BIM 모델<br>부재 연동</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="dia_appendix">
+                                <div class="app_bg">
+                                    <div class="app_etc">도면정보 연동</div>                                
+                                </div>                                   
+                                <div class="app_bg">                                                               
+                                    <div class="app_etc">BIM모델정보 연동</div>
+                                </div>
+                            </div>
+                            <div class="dia_circles_wrap">
+                                <div class="circle_dash"></div>
+                                <div class="circle_belt"></div>
+                                <div class="circle_core">
+                                    <img src="img/egbim_logo.svg" alt="">
+                                </div>
+                                <div class="circle_dots move">
+                                    <div class="dot"></div>
+                                    <div class="dot"></div>
+                                    <div class="dot"></div>
+                                </div>
+                                <div class="circle_dots">
+                                    <div class="dot"></div>
+                                    <div class="dot"></div>
+                                    <div class="dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="feature_intro">
+                    <span class="grand_tit" data-aos="fade-down" data-aos-duration="1000"><font class="egbim k">eg-bim LogoK</font> 특징</span>
+                    <p data-aos="fade-up" data-aos-duration="1000">EG-BIM은 차별화된 인터페이스와 다양한 기능으로<br>디지털전환시대에 맞는 <b>편리하고 효율적인 작업환경</b>을 제공합니다</p>
+                    <div class="line"></div>
+                    <div class="dot"></div>
+                </section>
+                <section class="features js__ani">
+                    <div class="f_wrap interface">
+                        <div class="card" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
+                            <!-- <div class="front">
+                                <i></i>
+                                <span class="sub_tit">차별화된<br>인터페이스</span>
+                            </div> -->
+                            <div class="back">
+                                <i></i>
+                                <span class="sub_tit">차별화된<br>인터페이스</span>
+                                <p class="sub_text">사용자경험을 바탕으로 수많은 메뉴들을 꼭 필요한 기능으로 단순화하여쉽게 구성하고, 듀얼모니터기능으로 새로운 작업환경을 제공함으로써 사용자 편의성을 강화하였습니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="f_wrap tool">
+                        <div class="card" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+                            <!-- <div class="front">
+                                <i></i>
+                                <span class="sub_tit">다양하고 편리한<br>도면작업 Tool</span>
+                            </div> -->
+                            <div class="back">
+                                <i></i>
+                                <span class="sub_tit">다양하고 편리한<br>도면작업 Tool</span>
+                                <p class="sub_text">명령어에서부터 인쇄까지 도면작업에 필요한 모든 기능을 사용하기 쉽게 제공함으로써 작업성을 향상시켜줍니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="f_wrap floorplan">
+                        <div class="card" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+                            <!-- <div class="front">
+                                <i></i>
+                                <span class="sub_tit">효율적인<br>대량의 도면관리</span>
+                            </div> -->
+                            <div class="back">
+                                <i></i>
+                                <span class="sub_tit">효율적인<br>대량의 도면관리</span>
+                                <p class="sub_text">도면을 하나하나 열지 않고 도면탐색 및 도면정보의 수정, 인쇄등이 가능한 별도의 도면관리Tool을 제공하여 도면찾기,및 일괄작업이 편리합니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="f_wrap bim">
+                        <div class="card" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+                            <!-- <div class="front">
+                                <i></i>
+                                <span class="sub_tit">3차원<br>BIM모델 보기</span>
+                            </div> -->
+                            <div class="back">
+                                <i></i>
+                                <span class="sub_tit">3차원<br>BIM모델 보기</span>
+                                <p class="sub_text">디지털전화시대의 BIM설계 환경에 맞게 도면과 3차원 BIM모델을 동시에 확인할 수 있어 설계정보의 Cross Check가 가능합니다.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lines">
+                        <div class="v1"></div>
+                        <div class="v2"></div>
+                        <div class="v3"></div>
+                        <div class="h"></div>
+                        <div class="d1"></div>
+                        <div class="d2"></div>
+                        <div class="d3"></div>
+                    </div>
+                </section>
+                <div class="system_bg"></div>
+                <section class="system">
+                    <div class="system_tit">
+                        <span>Keywords<br><em>for System</em></span>
+                    </div>
+                    <div class="diagram_wrap" data-aos="fade-up" data-aos-duration="1000">
+                        <div class="dia_element">
+                            <ul class="dia_text">
+                                <li>듀얼모니터기능</li>
+                                <li>블록라이브러리</li>
+                                <li>명령어전체보기</li>
+                                <li>블록관리창</li>
+                                <li>스타일상세보기</li>
+                                <li>인쇄-도곽인식기능</li>
+                                <li>건설CALS</li>
+                            </ul>
+                            <div class="line"></div>
+                        </div>
+                        <div class="dia_element">
+                            <ul class="dia_text">
+                                <li>사용자지정폴더</li>
+                                <li>도면미리보기</li>
+                                <li>도면정보연동</li>
+                                <li>도면정보일괄수정</li>
+                                <li>여러도면 일괄출력</li>
+                            </ul>
+                            <div class="line"></div>
+                        </div>
+                        <div class="dia_element">
+                            <ul class="dia_text">
+                                <li>BIM모델 정보연동</li>
+                                <li>도면-BIM모델 동시보기</li>
+                                <li>BIM모델 상세보기</li>
+                                <li>속성정보</li>
+                            </ul>
+                            <div class="line"></div>
+                        </div>
+                        <div class="dia_element">
+                            <ul class="dia_text">
+                                <li>사용자경험</li>
+                                <li>차별화된 디자인</li>
+                            </ul>
+                            <div class="line"></div>
+                        </div>
+                        <div class="dia_circles_wrap">
+                            <div class="circle_belt"></div>
+                            <div class="circle_core">
+                                <span><b>그리미</b><br>도면작업</span>
+                                <span><b>꾸러미</b><br>도면관리</span>
+                                <span><b>3D Viewer</b><br>BIM모델보기</span>
+                                <span><em>UX디자인</em></span>
+                            </div>
+                            <div class="circle_dots move">
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                            </div>
+                            <div class="circle_dots">
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </section>                
+            </div>
+            <!-- //컨텐츠 시작 -->
+            <!-- FOOTER -->
+        <button class="btn_top js__top" onclick="window.scrollTo(0,0);"><div class="arrow"></div></button>
+        <footer class="footer_off">
+                <div class="footer_close"></div>
+                <div class="footer_wrap">
+                    <div class="comp_info">
+						<img class="logo_baron" src="img/baron_logo.svg" alt="">
+                    	<span class="ceo">대표이사 <em>장종찬</em></span>
+					</div>
+					<div class="comp_copy">
+                    	<span class="btn_privacy"><a href="javascript:privacy('privacy');"><em>개인정보 처리방침</em></a><a href="javascript:privacy('agreement');">이용약관</a></span>
+						<span class="address">[05774] <em>서울특별시 송파구 오금로 554(거여동)</em></span>
+                    	<span class="copyright">© BARON Consultant Co,.Ltd All Rights Reserved.</span>
+					</div>
+                    <div class="comp_contact">
+						<ul class="footer_menu">
+                            <li><a href="value.php">EG-BIM</a></li>
+                            <li><a href="interface.php">인터페이스</a></li>
+                            <li><a href="primary.php">주요기능</a></li>
+                            <li><a href="floorplan.php">도면관리</a></li>
+                            <li><a href="forbim.php">for BIM</a></li>
+						</ul>
+						<div class="footer_sitemap">
+							<!-- <span>TOVA의 <em>다양한 소식</em>을 만나보세요</span> 
+							<div class="tova_sns">
+								<a href="https://cafe.naver.com/imtas" class="tova_cafe"><img src="img/ico_cafe.svg" alt=""></a>
+								 <a href="" class="tova_facebook"><img src="img/ico_facebook.svg" alt=""></a>
+							</div>-->
+							<div class="family_wrap">
+								<div class="family_btn"><span>Family Site</span><i></i></div>
+								<ul class="family_list">
+									<li><a href="http://k-tova.com" target="_blank">TOVA</a></li>
+									<li><a href="" target="_blank">GAIA</a></li>
+									<li><a href="" target="_blank">바론컨설턴트</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+                </div>
+            </footer>
+        <!-- //FOOTER -->
+        </div>
+        <script>
+            AOS.init();
+            
+            const lenis = new Lenis()
+            lenis.on('scroll', (e) => {
+                // console.log(e)
+            })
+            lenis.on('scroll', ScrollTrigger.update)
+            gsap.ticker.add((time)=>{
+                lenis.raf(time * 1000)
+            })
+            gsap.ticker.lagSmoothing(0)
+
+        </script>
+    </body>
+</html>

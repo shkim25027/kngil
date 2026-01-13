@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>For Bim</title>
+        <link rel="stylesheet" href="css/reset.css"/>
+        <link rel="stylesheet" href="css/font.css"/>
+        <link rel="stylesheet" href="css/style.css"/>
+
+        <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" type="text/css"/>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script> 
+        <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
+        <script type="text/javascript" src="js/jquery-3.6.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+
+        <script type="text/javascript" src="js/common.js"></script>
+        <script type="text/javascript" src="js/popup.js"></script>
+        <script type="text/javascript" src="js/forbim.js"></script>
+        <script>
+            function goto(id) {
+                console.log('로그발생');
+                document.getElementById(id).scrollIntoView({behavior: "instant"});
+            }
+        </script>
+    </head>
+    <body>
+        <!-- "js__"로 시작하는 클래스는 only 자바스크립트용입니다. -->
+        <!-- XXXX js__넣어서 css 작성 금지 XXXX -->
+        <div class="wrapper">
+            <!-- HEADER -->
+            <header class="js-header">
+                <h1><a href="index.html"></a></h1>
+                <div class="menu-my">                        
+                    <img src="img/ico_my.svg" alt="">
+                    <ul class="menu-my-list" style="display: none;">
+                        <li class="my-login"><a href="javascript:login();">로그인</a></li>
+                        <li class="my-join"><a href="javascript:agreement();">회원가입</a></li>
+                        <li class="my-join" style="display: none;"><a href="javascript:mypage01();">마이페이지</a></li>                       
+                        <li class="my-login" style="display: none;"><a href="javascript:logout();">로그아웃</a></li>
+                    </ul>
+                </div>
+                <div class="menu-ham"><a href="javascript:sitemap();"><div></div><div></div><div></div></a></div>
+            </header>
+            <!-- //Header -->
+            <!-- floating_menu -->
+            <div class="floating-menu">
+                <ul>
+                    <li class="floating-buy"><a href="buy.html">
+                       <i></i>
+                        <span>구매하기</span>
+                    </a></li>
+                    <li class="floating-faq"><a href="faq.html">
+                        <i></i>
+                        <span>FAQ</span>
+                    </a></li>                        
+                </ul>
+            </div>
+            <!-- //floating_menu -->
+        
+    
+            <!-- 모든 팝업페이지 경로 -->            
+            <div class="pop-open" data-include-path="pop/pop_agreement.html"></div>
+            <div class="pop-open" data-include-path="pop/pop_join.html"></div>
+            <div class="pop-open" data-include-path="pop/pop_login.html"></div>
+            <div class="pop-open" data-include-path="pop/pop_mypage01.html"></div>
+            <div class="pop-open" data-include-path="pop/pop_mypage02.html"></div>
+            <div class="pop-open" data-include-path="pop/pop_mypage03.html"></div>
+            <div class="pop-open" data-include-path="pop/pop_search.html"></div>
+            <div class="pop-open" data-include-path="pop/pop_sitemap.html"></div>
+            <div class="pop-open" data-include-path="pop/pop_privacy.html"></div>
+            <!-- //모든 팝업페이지 경로 -->
+
+            <div class="container forbim">
+                <section class="intro">
+                    <div class="top js-dark">
+                        <h2 data-aos="fade-down" data-aos-duration="1000">for BIM</h2>
+                        <span>디지털전환시대, 도면과 BIM모델을 동시에 본다</span>
+                    </div>
+                    <div class="keyword">
+                        <i class="egbim-obj k"></i>
+                        <span>
+                            더블클릭 한번으로<br>
+                            도면과 함께  3D BIM모델을 볼 수 있습니다                            
+                        </span>
+                        <p>EG-BIM은 도면만으로 확인하기 어려운 많은 설계정보를 <br>
+                        3D Viewer 를 통하여 BIM모델과 함께 쉽게 확인할 수 있는 기능을 제공합니다.</p>
+                    </div>
+                    <div class="visual" data-aos="fade-up" data-aos-duration="1000">
+                        <img src="img/forbim_visaul.png" alt="">
+                    </div>                    
+                </section>
+                
+                <section class="theorys js-dark">
+                    <span class="mid-tit" data-aos="fade-down" data-aos-duration="1000">
+                        " <b class="gr-txt">BIM모델 정보</b>와 <b class="og-txt">도면</b>의 CROSS CHECK "
+                    </span>
+                    <div class="diagram-wrap" data-aos="fade-up" data-aos-duration="1000">
+                        <div class="dia-element">
+                            <ul class="dia-text">
+                                <li>위치정보</li>
+                                <li>형상정보</li>
+                                <li>수량정보</li>
+                            </ul>
+                            <div class="line"></div>
+                        </div>
+                        <div class="dia-circles-wrap">
+                            <div class="circle-bim">
+                                <div class="circle-belt"></div>
+                                <div class="circle-core">
+                                    <span>BIM 모델</span>
+                                    <i></i>
+                                </div>
+                                <div class="circle-dots move">
+                                    <div class="dot"></div>
+                                </div>
+                                <div class="circle-dots">
+                                    <div class="dot"></div>
+                                </div>
+                            </div>
+                            <div class="circle-floorplan">
+                                <div class="circle-belt"></div>
+                                <div class="circle-core">
+                                    <span>도면</span>
+                                    <i></i>
+                                </div>
+                                <div class="circle-dots move">
+                                    <div class="dot"></div>
+                                </div>
+                                <div class="circle-dots">
+                                    <div class="dot"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dia-element">
+                            <ul class="dia-text">
+                                <li>종평면도</li>
+                                <li>일반도</li>
+                                <li>상세도</li>
+                            </ul>
+                            <div class="line"></div>
+                        </div>
+                    </div>                   
+                </section>
+
+                <section class="layout-fix-left process">
+                    <div class="left" data-aos="fade-right" data-aos-duration="1000">
+                        <div class="bg js-fixLeft-bg on"></div>
+                        <div class="bg js-fixLeft-bg"></div>
+                        <span class="mid-tit js-fixLeft-tit on"><font class="num">01. </font>도면과 BIM<br><em>동시보기</em>
+                        </span>                        
+                        <span class="mid-tit js-fixLeft-tit"><font class="num">02. </font><em>BIM모델<br> 상세보기</em></span>
+                    </div>
+                    <div class="right js-fixLeft-secs">
+                        <div>
+                            <span class="sub-tit">
+                                <img src="img/ico_forbim_link.svg" alt="">
+                                도면과 BIM모델의 정보연동
+                            </span>
+                            <div class="sub-text">
+                                <b>도면과 BIM모델간의 정보연동</b>으로 <b>선택부재가 실시간 표시</b>되어 도면과 BIM모델을 동시에 보면서 부재의 위치 및 형상정보 등의 속정정보를 확인 할 수 있습니다. 
+                            </div>
+                            <div class="sub-figs">
+                                <img src="img/forbim_process_01.png">
+                            </div>
+                        </div>
+                        <div>
+                            <span class="sub-tit">
+                                <img src="img/ico_forbim_check.svg" alt="">
+                                BIM모델의 속성정보 및 형상 확인
+                            </span>
+                            <div class="sub-text">
+                                <span>
+                                    3D Viewer의 다양한 시각적인 기능을 통해 <b>모델의 형상과 각 부재의 간섭관계 등을 상세하게 확인</b> 할 수 있습니다.
+                                </span>
+                            </div>
+                            <div class="sub-figs">
+                                <img src="img/forbim_process_02.png">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+          <!-- FOOTER -->
+        <button class="btn-top js-top" onclick="window.scrollTo(0,0);"><div class="arrow"></div></button>
+        <footer class="footer-off">
+                <div class="footer-close"></div>
+                <div class="footer-wrap">
+                    <div class="comp-info">
+						<img class="logo-baron" src="img/baron_logo.svg" alt="">
+                    	<span class="ceo">대표이사 <em>장종찬</em></span>
+					</div>
+					<div class="comp-copy">
+                    	<span class="btn-privacy"><a href="javascript:privacy('privacy');"><em>개인정보 처리방침</em></a><a href="javascript:privacy('agreement');">이용약관</a></span>
+						<span class="address">[05774] <em>서울특별시 송파구 오금로 554(거여동)</em></span>
+                    	<span class="copyright">© BARON Consultant Co,.Ltd All Rights Reserved.</span>
+					</div>
+                    <div class="comp-contact">
+						<ul class="footer-menu">
+                            <li><a href="value.php">EG-BIM</a></li>
+                            <li><a href="interface.php">인터페이스</a></li>
+                            <li><a href="primary.php">주요기능</a></li>
+                            <li><a href="floorplan.php">도면관리</a></li>
+                            <li><a href="forbim.php">for BIM</a></li>
+						</ul>
+						<div class="footer-sitemap">
+							<!-- <span>TOVA의 <em>다양한 소식</em>을 만나보세요</span> 
+							<div class="tova-sns">
+								<a href="https://cafe.naver.com/imtas" class="tova-cafe"><img src="img/ico_cafe.svg" alt=""></a>
+								 <a href="" class="tova-facebook"><img src="img/ico_facebook.svg" alt=""></a>
+							</div>-->
+							<div class="family-wrap">
+								<div class="family-btn"><span>Family Site</span><i></i></div>
+								<ul class="family-list">
+									<li><a href="http://k-tova.com" target="_blank">TOVA</a></li>
+									<li><a href="" target="_blank">GAIA</a></li>
+									<li><a href="" target="_blank">바론컨설턴트</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+                </div>
+            </footer>
+        <!-- //FOOTER -->
+        </div>
+        <script>
+            AOS.init();
+            
+            const lenis = new Lenis()
+            lenis.on('scroll', (e) => {
+                // console.log(e)
+            })
+            lenis.on('scroll', ScrollTrigger.update)
+            gsap.ticker.add((time)=>{
+                lenis.raf(time * 1000)
+            })
+            gsap.ticker.lagSmoothing(0)
+
+        </script>
+        <script>
+            function scroll(id) {
+                elem = document.getElementById(id).scrollIntoView();
+            }
+        </script>
+    </body>
+</html> 

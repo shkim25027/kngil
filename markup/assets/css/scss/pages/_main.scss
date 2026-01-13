@@ -1,0 +1,210 @@
+// =======================================
+// Main Page
+// =======================================
+.main-mask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+    top: -150px;
+    clip-path: inset(50% 50% round 10px 10px 10px 10px);
+    animation: clip_play 2.5s ease 1s 1 forwards;
+    &.skip {
+        animation: none;
+        clip-path: none;
+        width: 100%;
+        top: 0px;
+      }
+  }
+  @keyframes clip_play {
+    0% {
+      clip-path: inset(50% 50% round 10px 10px 10px 10px);
+      top: -150px;
+    } 
+    30% {
+      clip-path: inset(49.5% 45% round 10px 10px 10px 10px);
+      top: -150px;
+    }
+    60% {
+      clip-path: inset(45% 45% round 10px 10px 10px 10px);
+      top: -193px;
+    }
+    100% {
+      clip-path: inset(0% 0% round 0px 0px 0px 0px);
+      top: 0;
+    }
+  }
+
+
+body:has(.wrap.main),
+html:has(.wrap.main) {
+  height: var(--window-inner-height);
+  overflow: hidden;
+}
+
+.main {
+    height: var(--window-inner-height);
+    overflow: hidden;
+    
+    .container {
+        max-width: 100%;
+        height: var(--window-inner-height);
+        overflow: hidden;
+    }
+    &-link {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+  &-pagination {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 17px;
+    text-align: center;
+    position: absolute;
+    bottom: calc((130px / 1080px) * 100%);
+    right: 24px;
+    z-index: 1;
+    text-indent: 0;
+    transition: bottom 0.2s ease;
+
+    &::before {
+      content: " ";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      translate: -50% -50%;
+      display: block;
+      width: calc(100% + 54px);
+      height: calc(100% + 48px);
+      pointer-events: none;
+
+      /* 중앙 0.4, 외곽으로 투명하게 */
+      background: radial-gradient(
+        ellipse at center,
+        rgba(0, 0, 0, 0.1) 0%,
+        rgba(0, 0, 0, 0.2) 50%,
+        rgba(0, 0, 0, 0.2) 95%,
+        rgba(0, 0, 0, 0) 105%
+      );
+      filter: blur(20px);
+      border-radius: 20px;
+      mix-blend-mode: multiply;
+    }
+
+    li {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      gap: 8px;
+
+      div {
+        width: max-content;
+        cursor: pointer;
+        position: relative;
+        text-align: right;
+        &::after {
+          content: "";
+          display: block;
+          height: 2px;
+          background: var(--color-yellow);
+          margin-top: 6px;
+          opacity: 0;
+          position: absolute;
+          left: 0;
+        }
+      }
+
+      img {
+        height: 1em;
+        vertical-align: middle;
+      }
+
+      span {
+        display: block;
+        width: 1.5em;
+        font-size: 20px;
+        color: #ffffff99;
+        font-weight: 300;
+        margin-left: 8px;
+      }
+
+      .page-on::after {
+        opacity: 1;
+      }
+
+      .page-01.page-on::after {
+        animation: page_play 16s linear 1 forwards;
+      }
+
+      .page-02.page-on::after {
+        animation: page_play 11s linear 1 forwards;
+      }
+
+      .page-03.page-on::after {
+        animation: page_play 24s linear 1 forwards;
+      }
+
+      .page-04.page-on::after {
+        animation: page_play 16s linear 1 forwards;
+      }
+
+      .page-05.page-on::after {
+        animation: page_play 13s linear 1 forwards;
+      }
+    }
+
+    &.m {
+      .page-01.page-on::after {
+        animation: page_play 15s linear 1 forwards;
+      }
+
+      .page-02.page-on::after {
+        animation: page_play 07s linear 1 forwards;
+      }
+
+      .page-03.page-on::after {
+        animation: page_play 19s linear 1 forwards;
+      }
+
+      .page-04.page-on::after {
+        animation: page_play 13s linear 1 forwards;
+      }
+
+      .page-05.page-on::after {
+        animation: page_play 10s linear 1 forwards;
+      }
+    }
+  }
+
+
+  .bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: #000;
+    video {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  .btn-top {
+    display: none;
+  }
+}
+
+/* 페이지네이션 재생바 - 영상별로 재생시간 각각 설정해야함 */
+@keyframes page_play {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}

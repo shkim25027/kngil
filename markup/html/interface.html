@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>인터페이스</title>
+        <link rel="stylesheet" href="css/reset.css"/>
+        <link rel="stylesheet" href="css/font.css"/>
+        <link rel="stylesheet" href="css/style.css"/>
+
+        <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" type="text/css"/>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script> 
+        <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
+        <script type="text/javascript" src="js/jquery-3.6.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+        <!-- 듀얼모니터 시퀀스애니메이션 스크립트 -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"></script>
+        <!-- 듀얼모니터 시퀀스애니메이션 스크립트 -->
+        <script type="text/javascript" src="js/common.js"></script>
+        <script type="text/javascript" src="js/popup.js"></script>
+        <script type="text/javascript" src="js/interface.js"></script>
+        <script>
+            function goto(id) {
+                console.log('로그발생');
+                document.getElementById(id).scrollIntoView({behavior: "instant"});
+            }
+        </script>
+    </head>
+    <body>
+        <!-- "js__"로 시작하는 클래스는 only 자바스크립트용입니다. -->
+        <!-- XXXX js__넣어서 css 작성 금지 XXXX -->
+        <div class="wrapper">
+            <header class="js__header">
+                <h1><a href="index.html"></a></h1>
+                <div class="menu_my">                        
+                    <img src="img/ico_my.svg" alt="">
+                    <ul class="menu_my_list" style="display: none;">
+                        <li class="my_login"><a href="javascript:login();">로그인</a></li>
+                        <li class="my_join"><a href="javascript:agreement();">회원가입</a></li>
+                        <li class="my_join" style="display: none;"><a href="javascript:mypage01();">마이페이지</a></li>                       
+                        <li class="my_login" style="display: none;"><a href="javascript:logout();">로그아웃</a></li>
+                    </ul>
+                </div>
+                <div class="menu_ham"><a href="javascript:sitemap();"><div></div><div></div><div></div></a></div>
+            </header>
+            <!-- //Header -->
+            <!-- floating_menu -->
+            <div class="floating_menu">
+                <ul>
+                    <li class="floating_buy"><a href="buy.html">
+                       <i></i>
+                        <span>구매하기</span>
+                    </a></li>
+                    <li class="floating_faq"><a href="faq.html">
+                        <i></i>
+                        <span>FAQ</span>
+                    </a></li>                        
+                </ul>
+            </div>
+            <!-- //floating_menu -->
+             
+            <!-- 모든 팝업페이지 경로 -->            
+            <div class="pop_open" data-include-path="pop/pop_agreement.html"></div>
+            <div class="pop_open" data-include-path="pop/pop_join.html"></div>
+            <div class="pop_open" data-include-path="pop/pop_login.html"></div>
+            <div class="pop_open" data-include-path="pop/pop_mypage01.html"></div>
+            <div class="pop_open" data-include-path="pop/pop_mypage02.html"></div>
+            <div class="pop_open" data-include-path="pop/pop_mypage03.html"></div>
+            <div class="pop_open" data-include-path="pop/pop_search.html"></div>
+            <div class="pop_open" data-include-path="pop/pop_sitemap.html"></div>
+            <div class="pop_open" data-include-path="pop/pop_privacy.html"></div>
+            <!-- //모든 팝업페이지 경로 -->
+
+            
+            <div class="container interface">
+                <section class="intro">
+                    <div class="top js__dark">
+                        <h2 data-aos="fade-down" data-aos-duration="1000">인터페이스</h2>
+                        <span>사용자 경험을 바탕으로 한 UX 디자인 적용</span>
+                    </div>
+                </section>
+                <section class="route">
+                    <div class="fix">
+                        <div class="keyword">
+                            <i class="egbim_obj k"></i>
+                            <span>Easy & Simple</span>
+                            <p>기존의 복잡한 작업환경에서 벗어나 <b>쉽고 단순한 인터페이스</b>를 제공합니다.</p>
+                        </div>
+                        <div class="content">
+                            <ul class="subs">
+                                <li class="on">
+                                    <span class="sub_tit">Interface</span>
+                                    <span class="mid_tit">쉽고 단순한<br><b>인터페이스</b></span>
+                                    <span class="sub_text">
+                                        사용자의 편의성을 최우선으로 고려하여, 기존의 복잡하고 혼란스러운 인터페이스 대신 <b>간결하고 직관적인 메뉴 구성</b>을 통해 누구나 쉽게 사용 할 수 있는 사용자 친화적인 환경을 제공합니다.
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="sub_tit">Grouping</span>
+                                    <span class="mid_tit"><b>기능별로 그룹화</b>하여<br>차별화된 디자인</span>
+                                    <span class="sub_text">
+                                        복잡한 인터페이스를 간소화하고, <b>기능별로 메뉴를 체계적으로 그룹화</b> 하여 사용자가 필요한 기능을 쉽게 찾을 수 있도록 구성했습니다.
+                                    </span>
+                                </li>
+                                <li>
+                                    <span class="sub_tit">Imaging</span>
+                                    <span class="mid_tit">정보전달 방식의<br><b>이미지화</b></span>
+                                    <span class="sub_text">
+                                        객체의 속성 정보를 사용자기 쉽게 이해할 수 있도로 <b>이미지와 함께 시각적으로 표현</b>하여 정보전달의 명확성를 높였습니다
+                                        <ul>
+                                            <li>객체 종류에 따른 차별화된 속성정보 창 제공</li>
+                                            <li>객체의 기본정보, 형상정보, 위치정보 구분하여 제공</li>
+                                            <li>많은 정보의 가독성 및 가시성 증대로 작업성 향상</li>
+                                        </ul>
+                                    </span>
+                                </li>
+                            </ul>
+                            <ul class="imgs">
+                                <li class="on"><img src="img/interface_img_01.svg" alt=""></li>
+                                <li><img src="img/interface_img_02.svg" alt=""></li>
+                                <li><img src="img/interface_img_03.svg" alt=""></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="sec1"></div>
+                    <div id="sec2"></div>
+                    <div id="sec3"></div>                    
+                </section>
+                
+                <section class="dual" id="dualm">
+                   <div class="content">
+                        <div class="fix">
+                            <div class="sub_tit">
+                                듀얼모니터 작업공간 <br>
+                                <b>두개의 모니터 사용으로 새로운 작업공간</b>을 경험 할 수 있습니다.
+                            </div>
+                            
+                            <div id="imagesequence" class="pin" style="text-align: center;">                            
+                                <img id="myimg" src="img/com_img/comp_1.png" >
+                            </div>
+                            <div class="detail">
+                                <div class="sub_tit">
+                                    <b>작업공간의 분리</b> 및 <b>연동기능</b>으로<br>
+                                    편리하게 동시작업
+                                </div>
+                                <div class="subs">
+                                    <div class="element">
+                                        <div class="exam">
+                                            <div class="exam_01">
+                                                <span>모델공간</span>
+                                                <img src="img/dual_img01_01.png" alt="">
+                                            </div>
+                                            <div class="exam_02">
+                                                <span>레이아웃(배치)공간</span>
+                                                <img src="img/dual_img01_02.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="sub_text">
+                                            <span>
+                                                레이아웃(배치)공간을 분리하고 연동기능 적용으로<br>
+                                                모델공간과 레이아웃공간의 <b>번거로운 이동 없이 두 공간 동시 작업</b>
+                                            </span>
+                                        </div>
+                                    </div>   
+                                    <div class="element">
+                                        <div class="exam">
+                                            <div class="exam_01">
+                                                <span>작업도면</span>
+                                                <img src="img/dual_img02_01.png" alt="">
+                                            </div>
+                                            <div class="exam_02">
+                                                <span>참고도면</span>
+                                                <img src="img/dual_img02_02.png" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="sub_text">
+                                            <span>
+                                                도면 작업시 참고해야할 도면의 작업공간을 따로 분리 하여<br>
+                                                <b>참고도면이 변경될 걱정없이</b> 읽기전용 모드에서 작업
+                                            </span>
+                                        </div>
+                                    </div>                                  
+                                </div>
+                            </div>
+                        </div>
+                        
+                   </div>
+                </section>
+            </div>
+           <!-- FOOTER -->
+        <button class="btn_top js__top" onclick="window.scrollTo(0,0);"><div class="arrow"></div></button>
+        <footer class="footer_off">
+                <div class="footer_close"></div>
+                <div class="footer_wrap">
+                    <div class="comp_info">
+						<img class="logo_baron" src="img/baron_logo.svg" alt="">
+                    	<span class="ceo">대표이사 <em>장종찬</em></span>
+					</div>
+					<div class="comp_copy">
+                    	<span class="btn_privacy"><a href="javascript:privacy('privacy');"><em>개인정보 처리방침</em></a><a href="javascript:privacy('agreement');">이용약관</a></span>
+						<span class="address">[05774] <em>서울특별시 송파구 오금로 554(거여동)</em></span>
+                    	<span class="copyright">© BARON Consultant Co,.Ltd All Rights Reserved.</span>
+					</div>
+                    <div class="comp_contact">
+						<ul class="footer_menu">
+                            <li><a href="value.php">EG-BIM</a></li>
+                            <li><a href="interface.php">인터페이스</a></li>
+                            <li><a href="primary.php">주요기능</a></li>
+                            <li><a href="floorplan.php">도면관리</a></li>
+                            <li><a href="forbim.php">for BIM</a></li>
+						</ul>
+						<div class="footer_sitemap">
+							<!-- <span>TOVA의 <em>다양한 소식</em>을 만나보세요</span> 
+							<div class="tova_sns">
+								<a href="https://cafe.naver.com/imtas" class="tova_cafe"><img src="img/ico_cafe.svg" alt=""></a>
+								 <a href="" class="tova_facebook"><img src="img/ico_facebook.svg" alt=""></a>
+							</div>-->
+							<div class="family_wrap">
+								<div class="family_btn"><span>Family Site</span><i></i></div>
+								<ul class="family_list">
+									<li><a href="http://k-tova.com" target="_blank">TOVA</a></li>
+									<li><a href="" target="_blank">GAIA</a></li>
+									<li><a href="" target="_blank">바론컨설턴트</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+                </div>
+            </footer>
+        <!-- //FOOTER -->
+        </div>
+        <script>
+            AOS.init();
+            
+            const lenis = new Lenis()
+            lenis.on('scroll', (e) => {
+                // console.log(e)
+            })
+            lenis.on('scroll', ScrollTrigger.update)
+            gsap.ticker.add((time)=>{
+                lenis.raf(time * 1000)
+            })
+            gsap.ticker.lagSmoothing(0)
+
+        </script>
+        <script>
+            function scroll(id) {
+                elem = document.getElementById(id).scrollIntoView();
+            }
+        </script>
+    </body>
+</html>

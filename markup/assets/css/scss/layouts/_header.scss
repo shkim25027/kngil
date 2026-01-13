@@ -1,0 +1,214 @@
+// =======================================
+// Header Component
+// =======================================
+
+@charset "UTF-8";
+
+@use "../import/_mixin" as *;
+
+// html.is-locked,
+html {
+  scroll-behavior: smooth;
+  &.is-locked {
+    body {
+      height: calc(var(--window-inner-height) - 1px);
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+  }
+  body {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  padding: 0 48px;
+  background: linear-gradient(180deg, #00000033, transparent);
+  transition: all 0.3s ease;  
+  z-index: 99;
+  @include flex(center, space-between);
+  @include mq(desktop-small, max) {
+    height: 48px;
+    padding: 0 8px 0 16px;
+  }
+  &-right {
+    gap: 20px;
+    @include flex();
+  }
+  h1 {
+    z-index: 1;
+    a {
+      display: block;
+      width: 90px;
+      height: 22px;
+      background: url(../images/logo_kngil.svg) center no-repeat;
+      background-size: contain;
+      @include textBlind();
+    }
+  }
+
+  .menu-box,
+  .menu-user,
+  .menu-all,
+  .menu-admin {
+    position: relative;
+  }
+  .menu-box {
+    padding: 10px 0;
+  }
+  .menu-list {
+    display: none;
+    background: #fff;
+    border-radius: 4px;
+    box-sizing: border-box;
+    border: 1px solid #131313;
+    position: absolute;
+    left: calc(25% - 60px);
+    top: 50px;
+    padding: 4px;
+    &.show {
+      display: flex;
+      animation: menuListShow 0.3s ease forwards;
+    }
+
+    &::before {
+      content: "";
+      background: url(../img/tri_img.svg) no-repeat;
+      background-size: cover;
+      width: 12px;
+      height: 10px;
+      position: absolute;
+      top: -9px;
+      left: calc(50% - 6px);
+    }
+
+    li {
+      width: 68px;
+      height: 32px;
+      text-align: center;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+
+      &:hover {
+        background: var(--color-yellow);
+      }
+
+      a {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      &.menu-item-hidden {
+        display: none;
+      }
+    }
+  }
+
+  .menu-all {
+    cursor: pointer;
+    display: block;
+    width: 32px;
+    height: 32px;
+    position: relative;
+    z-index: 1;
+    &.open {
+      span {
+        &:nth-child(1) {
+          transform: translateY(8px) rotate(-45deg);
+        }
+        &:nth-child(2) {
+          opacity: 0;
+        }
+        &:nth-child(3) {
+          transform: translateY(-8px) rotate(45deg);
+        }
+      }
+    }
+    span {
+      width: 24px;
+      height: 2px;
+      position: absolute;
+      left: 4px;
+      background-color: #fff;
+      transition: all 0.2s linear;
+
+      &:nth-child(1) {
+        top: 7px;
+      }
+
+      &:nth-child(2) {
+        top: 15px;
+      }
+
+      &:nth-child(3) {
+        bottom: 7px;
+      }
+    }
+  }
+}
+
+.sitemap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #111;
+  overflow: hidden;
+  gap: 16px;
+  padding: 20px;
+  pointer-events: none;
+  animation: enableHover 0.8s forwards;
+  animation-delay: 0.3s;
+  display: none;
+  &.open {
+    @include flex(center, center);
+  }
+
+  li {
+    position: relative; 
+    width: calc(100% / 5);
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    background-size: cover;
+    background-position: center;     
+    cursor: pointer; 
+    transition: all 0.5s;
+    z-index: 1;  
+    overflow: hidden; 
+    @include flex();
+    &:hover {
+      width: 60%;
+    }
+    a {
+      width: 100%;
+      height: 100%;
+      padding: 16px;
+      @include flex(center, flex-start);
+    }
+    span {
+      font-size: 32px;
+      font-weight: 900;
+      color: #fff;
+    }
+  }
+
+}
+
+
+
+@keyframes enableHover {
+  to {
+    pointer-events: auto;
+  }
+}

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>주요기능</title>
+        <link rel="stylesheet" href="css/reset.css"/>
+        <link rel="stylesheet" href="css/font.css"/>
+        <link rel="stylesheet" href="css/style.css"/>
+
+        <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" type="text/css"/>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script> 
+        <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
+        <script type="text/javascript" src="js/jquery-3.6.1.min.js"></script>
+        <script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+
+        <script type="text/javascript" src="js/common.js"></script>
+        <script type="text/javascript" src="js/popup.js"></script>
+        <script type="text/javascript" src="js/primary.js"></script>
+        <script>
+            function goto(id) {
+                console.log('로그발생');
+                document.getElementById(id).scrollIntoView({behavior: "instant"});
+            }
+        </script>
+    </head>
+    <body>
+        <!-- "js__"로 시작하는 클래스는 only 자바스크립트용입니다. -->
+        <!-- XXXX js__넣어서 css 작성 금지 XXXX -->
+        <div class="wrapper">
+            <!-- HEADER -->
+            <header class="js__header">
+                <h1><a href="index.html"></a></h1>
+                <div class="menu_my">                        
+                    <img src="img/ico_my.svg" alt="">
+                    <ul class="menu_my_list" style="display: none;">
+                        <li class="my_login"><a href="javascript:login();">로그인</a></li>
+                        <li class="my_join"><a href="javascript:agreement();">회원가입</a></li>
+                        <li class="my_join" style="display: none;"><a href="javascript:mypage01();">마이페이지</a></li>                       
+                        <li class="my_login" style="display: none;"><a href="javascript:logout();">로그아웃</a></li>
+                    </ul>
+                </div>
+                <div class="menu_ham"><a href="javascript:sitemap();"><div></div><div></div><div></div></a></div>
+            </header>
+            <!-- //Header -->
+            <!-- floating_menu -->
+            <div class="floating_menu">
+                <ul>
+                    <li class="floating_buy"><a href="buy.html">
+                    <i></i>
+                        <span>구매하기</span>
+                    </a></li>
+                    <li class="floating_faq"><a href="faq.html">
+                        <i></i>
+                        <span>FAQ</span>
+                    </a></li>                        
+                </ul>
+            </div>
+            <!-- //floating_menu -->
+    
+            <!-- 모든 팝업페이지 경로 -->            
+            <div class="pop_open" data-include-path="pop/pop_agreement.html"></div>
+            <div class="pop_open" data-include-path="pop/pop_join.html"></div>
+            <div class="pop_open" data-include-path="pop/pop_login.html"></div>
+            <div class="pop_open" data-include-path="pop/pop_mypage01.html"></div>
+            <div class="pop_open" data-include-path="pop/pop_mypage02.html"></div>
+            <div class="pop_open" data-include-path="pop/pop_mypage03.html"></div>
+            <div class="pop_open" data-include-path="pop/pop_search.html"></div>
+            <div class="pop_open" data-include-path="pop/pop_sitemap.html"></div>
+            <div class="pop_open" data-include-path="pop/pop_privacy.html"></div>
+            <!-- //모든 팝업페이지 경로 -->
+
+            <div class="container primary">
+                <section class="intro">
+                    <div class="top js__dark">
+                        <h2 data-aos="fade-down" data-aos-duration="1000">주요기능</h2>
+                        <span>쉽고 편리하게 작업 할 수 있는 다양한 기능 탑재</span>
+                    </div>
+                    <div class="keyword">
+                        <i class="egbim_obj k"></i>
+                        <span>수많은 명령어들을 기능별로 그룹화하여<br>
+                            페이지별로 한눈에 볼수 있게 제공</span>
+                        <p>EG-BIM에는 1000여개가 넘는 수많은 기능과 명령어가 있습니다. <br>
+                           사용자가 찾기 쉽고 사용하기 쉽게 기능별 페이지를 구성하여 제공합니다.</p>
+                    </div>
+                    <div class="condition">
+                        <div class="diagram_wrap" data-aos="fade-up" data-aos-duration="1000">
+                            <div class="dia_element_top">
+                                <div class="dia_element dia_element01">
+                                    <i></i>
+                                    <span class="dia_tit">디스플레이/ 보조기능<br><em>My Setting</em></span>                                
+                                </div> 
+                                <div class="dia_element dia_element02">
+                                    <i></i>
+                                    <span class="dia_tit">Draw/Edit +분야별 특화명령어<br><em>명령어그룹</em></span>                                
+                                </div>
+                                <div class="dia_element dia_element03">
+                                    <i></i>
+                                    <span class="dia_tit"><em>for Civil</em><br>특화명령어</span>                                
+                                </div>               
+                            </div>
+                            <div class="quantum_wrap">
+                                <div class="quantum">
+                                    <div class="dia_circles_wrap">
+                                        <div class="circle_core">                                            
+                                            <span>명령어<br>전체보기</span>                                            
+                                        </div>
+                                        <div class="circle_dots">
+                                            <div class="dot"></div>
+                                            <div class="dot"></div>
+                                            <div class="dot"></div>
+                                        </div>
+                                    </div>                 
+                                    <img class="atom_all" src="img/atom_obj.svg" width='100%'>                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="route">
+                    <div class="fix">                        
+                        <ul class="subs">
+                            <li>
+                                <span class="sub_tit">작업환경을 내스타일에 맞게 설정</span>
+                                <span class="mid_tit">My Setting</span>
+                                <span class="sub_text">
+                                    작업공간의 색상 및 마우스 기능 설정등 기본적인 Setting 항목과 그리드 및 스냅 등 <br>
+                                    작업 중 수시로 변경해야하는 ON/OFF 항목으로 페이지를 구분하여 제공합니다
+                                </span>
+                            </li>
+                            <li>
+                                <span class="sub_tit">Draw/Edit 명령어와 3rd Party 명령어가 기본으로 제공되는</span>
+                                <span class="mid_tit"><em>명령어그룹</em></span>
+                                <span class="sub_text">
+                                    수많은 명령어들을 도형,편집 등 기능별로 그룹화하여 제공 <br>
+                                    별도 설치하여 사용하였던 분야별 특화명령어를 기본으로 제공
+                                </span>
+                            </li>
+                            <li>
+                                <span class="sub_tit">도로 및 구조의 특정 설계도면 작업을 위한</span>
+                                <span class="mid_tit"><em>for Civil</em></span>
+                                <span class="sub_text">
+                                    설계도면 중  도로분야의 도로 선형 및 횡단 작업을 위한 명령어와<br>
+                                    구조분야의 철근배근 및 철근상세도, 집계표 작업을 위한 명령어 제공
+                                </span>
+                            </li>
+                        </ul>
+                        <div class="content">
+                            <ul class="tabs">
+                                <li class="tabs_li "><a onclick="window.goto('sec1')">
+                                    <b>My Setting</b>
+                                    <ul>
+                                        <li>디스플레이/마우스</li>
+                                        <li>보조기능</li>
+                                    </ul>
+                                </a></li>
+                                <li class="tabs_li"><a onclick="window.goto('sec2')">
+                                    <b>Command</b>
+                                    <ul>
+                                        <li>도형</li>
+                                        <li>수정</li>
+                                        <li>편집</li>
+                                        <li>문자</li>
+                                        <li>치수/연산</li>
+                                        <li>블록</li>
+                                        <li>레이어</li>
+                                        <li>뷰</li>
+                                        <li>선택/조회</li>
+                                    </ul>                                    
+                                </a></li>
+                                <li class="tabs_li"><a onclick="window.goto('sec3')">
+                                    <b>for Civil</b>
+                                    <ul>
+                                        <li>선형/횡단</li>
+                                        <li>구조/배근</li>
+                                    </ul>
+                                </a></li>
+                            </ul>
+
+                            <ul class="imgs">
+                                <li><a onclick="window.goto('sec1')"><img src="img/primary_route_01.png" alt=""></a></li>
+                                <li><a onclick="window.goto('sec2')"><img src="img/primary_route_02.png" alt=""></a></li>
+                                <li><a onclick="window.goto('sec3')"><img src="img/primary_route_03.png" alt=""></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="sec1"></div>
+                    <div id="sec2"></div>
+                    <div id="sec3"></div>
+                </section>
+
+                <section class="layout_fix_left process">
+                    <div class="left" data-aos="fade-right" data-aos-duration="1000">
+                        <div class="bg js__fixLeft_bg on"></div>
+                        <div class="bg js__fixLeft_bg"></div>
+                        <div class="bg js__fixLeft_bg"></div>
+                        <span class="mid_tit js__fixLeft_tit on"><font class="num">01. </font><em>스타일 상세보기창</em></span>                        
+                        <span class="mid_tit js__fixLeft_tit"><font class="num">02. </font><em>블록창</em></span>
+                        <span class="mid_tit js__fixLeft_tit"><font class="num">03. </font><em>인쇄창</em></span>
+                    </div>
+                    <div class="right js__fixLeft_secs">
+                        <div class="style">
+                            <span class="sub_tit">                                
+                                선, 문자, 치수의  상세 스타일의 생성 및 수정
+                            </span>
+                            <div class="sub_text">
+                                사용하고 있는 스타일의 목록을 보여주며 상세한 미리보기창과 설정가능한 모든 옵션사항을 보여줍니다. <br>새로운 스타일을 생성하거나 수정할 수 있는 기능을 제공합니다.
+                            </div>
+                            <div class="sub_figs">
+                                <div class="imgs">                                    
+                                    <img src="img/style_img_01.png" alt="">                                    
+                                </div>
+                                <div class="text">
+                                    <b>선 스타일</b>
+                                    <ul>
+                                        <li>선꼴,블록,문자등을 조합하여 원하는 선스타일을 제작</li>
+                                        <li>미리보기창에서 선간격, 블록 및 문자간격 등 설정</li>
+                                        <li>건설CALS의 표준 선꼴을 제공</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sub_figs">
+                                <div class="imgs">                                    
+                                    <img src="img/style_img_02.png" alt="">                                    
+                                </div>
+                                <div class="text">
+                                    <b>문자 스타일</b>
+                                    <ul>
+                                        <li>사용가능한 글꼴을 그룹화하여 제공</li>
+                                        <li>미리보기창에서 크기,기울기 등 형상에 대한 옵션 설정</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="sub_figs">
+                                <div class="imgs">                                    
+                                    <img src="img/style_img_03.png" alt="">                                    
+                                </div>
+                                <div class="text">
+                                    <b>치수 스타일</b>
+                                    <ul>
+                                        <li>치수선 형상 및 값에 대한 상세 옵션을 기능별로 구분</li>
+                                        <li>이미지와 함께 표현 하여 이해도를 높임</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="block">
+                            <span class="sub_tit">                                
+                                효율적인 작업을 위해 블록 라이브러리와 통합 블록창을 제공
+                            </span>
+                            <div class="sub_text">
+                                <span>
+                                    다양한 종류의 블록을 라이브러리 형태로 쉽게 찾을수 있게 제공하며,<br>
+                                    블록의 생성과 함께 속성정보 확인 및 수정 등  관리 할수 있는 통합블록창을  제공합니다.
+                                </span>
+                            </div>
+                            <div class="sub_figs">
+                                <div class="imgs">                                    
+                                    <img src="img/block_img_01.png" alt="">                                    
+                                </div>
+                                <div class="text">
+                                    <b>블록라이브러리와 연결</b>
+                                    <ul>
+                                        <li>일반블록, 속성블록, 외부블록(참조)을 하나의 관리창 안에서 확인 및 수정기능 제공</li>
+                                        <li>블록라이브러리와 연계하여 원하는 블록을 쉽게 찾아 추가</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="print_area">
+                            <span class="sub_tit">                                
+                                도곽인식기능으로  도면마다 영역지정 없이  한번에 편리하게 인쇄                       
+                            </span>
+                            <div class="sub_text">
+                                도곽영역을 자동으로 인식하여 한 파일안에 여러장의 도면도, 긴도면도 문제 없이쉽게 출력 할 수 있습니다
+                            </div>
+                            <div class="sub_figs">
+                                <div class="imgs">                                    
+                                    <img src="img/printarea_img_01.png" alt="">                                    
+                                </div>
+                                <div class="text">
+                                    <b>인쇄영역 자동지정 및 도관영역 및  스케일 자동인식</b>
+                                    <ul>
+                                        <li>인쇄영역을 일일이 지정하거나 용지길이를 조정할 필요없이 자동으로 인쇄영역을 잡아주는 기능</li>
+                                        <li>도곽인식기능으로 여러장의 도면도, 길이가 긴 도면도 관계없이 한번에 출력 가능</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+           <!-- FOOTER -->
+        <button class="btn_top js__top" onclick="window.scrollTo(0,0);"><div class="arrow"></div></button>
+        <footer class="footer_off">
+                <div class="footer_close"></div>
+                <div class="footer_wrap">
+                    <div class="comp_info">
+						<img class="logo_baron" src="img/baron_logo.svg" alt="">
+                    	<span class="ceo">대표이사 <em>장종찬</em></span>
+					</div>
+					<div class="comp_copy">
+                    	<span class="btn_privacy"><a href="javascript:privacy('privacy');"><em>개인정보 처리방침</em></a><a href="javascript:privacy('agreement');">이용약관</a></span>
+						<span class="address">[05774] <em>서울특별시 송파구 오금로 554(거여동)</em></span>
+                    	<span class="copyright">© BARON Consultant Co,.Ltd All Rights Reserved.</span>
+					</div>
+                    <div class="comp_contact">
+						<ul class="footer_menu">
+                            <li><a href="value.php">EG-BIM</a></li>
+                            <li><a href="interface.php">인터페이스</a></li>
+                            <li><a href="primary.php">주요기능</a></li>
+                            <li><a href="floorplan.php">도면관리</a></li>
+                            <li><a href="forbim.php">for BIM</a></li>
+						</ul>
+						<div class="footer_sitemap">
+							<!-- <span>TOVA의 <em>다양한 소식</em>을 만나보세요</span> 
+							<div class="tova_sns">
+								<a href="https://cafe.naver.com/imtas" class="tova_cafe"><img src="img/ico_cafe.svg" alt=""></a>
+								 <a href="" class="tova_facebook"><img src="img/ico_facebook.svg" alt=""></a>
+							</div>-->
+							<div class="family_wrap">
+								<div class="family_btn"><span>Family Site</span><i></i></div>
+								<ul class="family_list">
+									<li><a href="http://k-tova.com" target="_blank">TOVA</a></li>
+									<li><a href="" target="_blank">GAIA</a></li>
+									<li><a href="" target="_blank">바론컨설턴트</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+                </div>
+            </footer>
+        <!-- //FOOTER -->
+        </div>
+        <script>
+            AOS.init();
+            
+            const lenis = new Lenis()
+            lenis.on('scroll', (e) => {
+                // console.log(e)
+            })
+            lenis.on('scroll', ScrollTrigger.update)
+            gsap.ticker.add((time)=>{
+                lenis.raf(time * 1000)
+            })
+            gsap.ticker.lagSmoothing(0)
+
+        </script>
+        <script>
+            function scroll(id) {
+                elem = document.getElementById(id).scrollIntoView();
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- 체크 마크 -->
+  <polyline points="20,50 40,70 80,30" 
+            fill="none" 
+            stroke="#ffffff" 
+            stroke-width="8" 
+            stroke-linecap="round" 
+            stroke-linejoin="round"/>
+</svg>

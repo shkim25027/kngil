@@ -1,0 +1,253 @@
+// =======================================
+// Buy Page
+// =======================================
+.buy {
+  .intro .top {
+    background-image: url(../img/buy_intro_bg.png);
+  }
+
+  .contents-wrap {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 160px;
+    grid-template-columns: 1.6fr 1fr;
+    padding: 0 170px;
+    gap: 100px;
+    position: relative;
+
+    &::after {
+      content: "";
+      background: #F8F7F5;
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 410px;
+      bottom: -160px;
+      left: 0;
+      z-index: -10;
+    }
+
+    .video-area {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      position: relative;
+      align-items: stretch;
+      gap: 24px;
+    }
+
+    video {
+      z-index: 1;
+      object-fit: cover;
+      width: 75%;
+    }
+
+    .mid-tit {
+      display: block;
+      font-size: 42px;
+      position: relative;
+      font-weight: 400;
+      line-height: 120%;
+      color: #000000d9;
+
+      b {
+        color: #000000;
+      }
+    }
+
+    .sub-text {
+      margin-bottom: 12px;
+    }
+
+    a {
+      width: 100%;
+      height: 64px;
+      background-color: var(--color-han-br);
+      border-radius: 4px;
+      font-size: 22px;
+      font-weight: 700;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      color: #fff;
+
+      i {
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+    }
+
+    .ask-area {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 0;
+
+      .ask-l {
+        width: 40%;
+      }
+
+      .ask-r {
+        width: 60%;
+      }
+
+      .ask-btn {
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+
+        a {
+          width: 20%;
+          height: 100px;
+          background: linear-gradient(0deg, #27241d 0%, #8d8269 100%);
+          box-shadow: 2px 2px 0px #27241D33 inset;
+          display: flex;
+          flex-direction: column;
+          gap: 0px;
+          font-weight: 500;
+          font-size: 20px;
+
+          &.btn-ask {
+            width: 60%;
+            color: #fff;
+            flex-direction: row;
+            gap: 16px;
+            background: linear-gradient(180deg, #208769 0%, #051612 100%), linear-gradient(180deg, #006346 0%, #07251d 9%, #95fedf 44%, #09201a 84%, #0d4834 100%);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+            border: 2px solid transparent;
+            box-shadow: none;
+            font-size: 28px;
+
+            i {
+              background-image: url(../img/ico_buy_ask.svg);
+              width: 32px;
+              height: 32px;
+            }
+          }
+
+          &.btn-brochure i {
+            background-image: url(../img/ico_buy_brochure.svg);
+            width: 20px;
+            height: 20px;
+          }
+
+          &.btn-manual i {
+            background-image: url(../img/ico_buy_manual.svg);
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+
+      .mid-tit {
+        &::after {
+          position: absolute;
+          content: "Purchase";
+          top: -60px;
+          left: 0px;
+          color: #000;
+          opacity: 0.03;
+          font-size: 120px;
+          font-weight: 900;
+          letter-spacing: -0.05em;
+        }
+      }
+
+      .sub-text {
+        grid-column: span 2;
+        font-size: 18px;
+        position: relative;
+        padding-left: 28px;
+
+        &::after {
+          position: absolute;
+          content: "";
+          top: 6px;
+          left: 0;
+          width: 20px;
+          height: 20px;
+          background-image: url(../img/ico_buy_alarm.svg);
+          background-position: center;
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+
+    .contact-area {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      background: #ffffff;
+      border-radius: 4px;
+      box-shadow: 10px 10px 20px #00000033;
+      padding: 0 32px;
+
+      .mid-tit {
+        font-weight: 700;
+        color: #007243;
+        margin-bottom: 4px;
+        font-size: 28px;
+      }
+
+      .sub-text {
+        width: 100%;
+
+        em {
+          font-weight: 500;
+          color: #1D1D1D80;
+          font-size: 18px;
+        }
+
+        &::after {
+          content: "";
+          width: 100%;
+          height: 1px;
+          border-bottom: 1px dashed #99999980;
+          display: block;
+          margin: 20px 0;
+        }
+      }
+
+      ul {
+        font-size: 24px;
+        line-height: 32px;
+        font-weight: 700;
+
+        li {
+          display: flex;
+          align-items: center;
+          gap: 16px;
+          margin-bottom: 20px;
+          font-size: 20px;
+
+          &:last-child {
+            margin-bottom: 0px;
+          }
+
+          &.tel i {
+            background-image: url(../img/ico_buy_tel.svg);
+            width: 32px;
+            height: 32px;
+          }
+
+          &.mail i {
+            background-image: url(../img/ico_buy_mail.svg);
+            width: 32px;
+            height: 32px;
+          }
+        }
+      }
+    }
+  }
+}

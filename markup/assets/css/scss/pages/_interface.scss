@@ -1,0 +1,278 @@
+// =======================================
+// Interface Page
+// =======================================
+.interface {
+  .sub-text {
+    text-align: justify;
+    line-height: 1.4em;
+  }
+
+  .intro .top {
+    background-image: url(../img/interface_intro_bg.png);
+  }
+
+  .route {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    .fix {
+      position: sticky;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 50px 120px;
+      background: url(../img/interface_route_bg.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: 0 bottom;
+      height: 100vh;
+    }
+
+    .keyword {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      text-align: center;
+      height: 170px;
+      margin-top: 45px;
+
+      span {
+        font-weight: 700;
+        font-size: 32px;
+      }
+
+      p {
+        font-size: 20px;
+      }
+    }
+
+    div {
+      width: 100%;
+      height: 100vh;
+      font-size: 30px;
+    }
+
+    #sec1 {
+      height: 50vh;
+    }
+
+    #sec2 {
+      height: 100vh;
+    }
+
+    #sec3 {
+      height: 200vh;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 90px;
+      gap: 62px;
+    }
+
+    .subs {
+      width: 40%;
+      height: 100%;
+      padding-top: 52px;
+
+      li {
+        display: none;
+        position: relative;
+
+        &.on {
+          display: block;
+          animation: scrollUp 0.5s ease-in;
+        }
+
+        .sub-tit {
+          font-size: 120px;
+          font-weight: 900;
+          color: #000000;
+          position: absolute;
+          right: -60px;
+          top: -56px;
+          text-align: right;
+          letter-spacing: -8px;
+          opacity: 0.05;
+          white-space: nowrap;
+        }
+
+        .mid-tit {
+          font-size: 52px;
+
+          b {
+            color: var(--color-green);
+          }
+        }
+
+        .sub-text {
+          margin-top: 32px;
+          line-height: 32px;
+
+          ul {
+            margin-top: 24px;
+
+            li {
+              display: block;
+              font-size: 20px;
+              text-indent: 16px;
+
+              &::before {
+                position: absolute;
+                content: "";
+                top: 14px;
+                left: 0;
+                width: 5px;
+                height: 4px;
+                background-color: var(--color-green);
+                transform: skew(-40deg);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .imgs {
+      width: 60%;
+      height: inherit;
+      display: flex;
+      position: relative;
+      background: url(../img/interface_route_screen.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      li {
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        display: none;
+        text-align: right;
+
+        img {
+          width: 100%;
+        }
+
+        &.on {
+          width: 100%;
+          opacity: 1;
+          display: block;
+          animation: scrollUp 0.5s ease-in;
+        }
+
+        &:nth-child(1) img {
+          position: absolute;
+          top: -3%;
+          right: 2%;
+          width: 98%;
+        }
+
+        &:nth-child(2) img {
+          position: absolute;
+          top: 2%;
+          right: 0;
+          width: 112%;
+        }
+
+        &:nth-child(3) img {
+          position: absolute;
+          top: 2%;
+          right: -11%;
+          width: 105%;
+        }
+      }
+    }
+  }
+
+  .dual {
+    .content {
+      width: 100%;
+    }
+
+    .fix {
+      position: sticky;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 160px 200px;
+      background: url(../img/interface_dual_bg.png);
+      background-size: 100%;
+      background-position: 0 top;
+      background-repeat: no-repeat;
+
+      #myimg {
+        width: 100%;
+        margin-top: 42px;
+        border-radius: 16px;
+      }
+    }
+
+    .sub-tit {
+      text-align: center;
+
+      b {
+        color: var(--color-green);
+      }
+    }
+
+    .detail {
+      margin-top: 200px;
+      width: 100%;
+
+      .sub-tit {
+        margin-bottom: 60px;
+      }
+
+      .subs {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .element {
+        width: 100%;
+        padding: 28px 40px;
+        background: var(--color-han-bgbr);
+        border-radius: 12px;
+      }
+
+      .exam {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        gap: 12px;
+
+        span {
+          font-size: 20px;
+          color: var(--color-green);
+          font-weight: 500;
+          margin-bottom: 8px;
+          display: block;
+        }
+      }
+
+      .sub-text {
+        text-align: center;
+        margin-top: 24px;
+        font-size: 18px;
+        opacity: 0.85;
+      }
+    }
+  }
+}
