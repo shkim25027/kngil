@@ -1,244 +1,148 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="imagetoolbar" content="no">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>FAQ - 답변등록</title>
-        <!-- 그누보드 작성 -->
-        <link rel="stylesheet" href="theme/basic/css/default.css?ver=2303229">
-        <link rel="stylesheet" href="js/font-awesome/css/font-awesome.min.css?ver=2303229">
-        <link rel="stylesheet" href="theme/basic/skin/connect/basic/style.css?ver=2303229">
-        <link rel="stylesheet" href="theme/basic/skin/popular/basic/style.css?ver=2303229">
-        <link rel="stylesheet" href="theme/basic/skin/qa/basic/style.css?ver=2303229">
-        <link rel="stylesheet" href="theme/basic/skin/outlogin/basic/style.css?ver=2303229">
-        <link rel="stylesheet" href="theme/basic/skin/latest/notice/style.css?ver=2303229">
-        <link rel="stylesheet" href="theme/basic/skin/visit/basic/style.css?ver=2303229">
-        <link rel="stylesheet" href="js/owlcarousel/owl.carousel.min.css?ver=2303229">
-        <!--[if lte IE 8]>
-        <script src="http://localhost/tova/js/html5.js"></script>
-        <![endif]-->
-        <script>
-        // 자바스크립트에서 사용하는 전역변수 선언
-        var g5_url       = "http://localhost/tova";
-        var g5_bbs_url   = "http://localhost/tova/bbs";
-        var g5_is_member = "1";
-        var g5_is_admin  = "super";
-        var g5_is_mobile = "";
-        var g5_bo_table  = "";
-        var g5_sca       = "";
-        var g5_editor    = "";
-        var g5_cookie_domain = "";
-        var g5_theme_shop_url = "http://localhost/tova/theme/basic/shop";
-        var g5_shop_url = "http://localhost/tova/shop";
-        </script>
-        <script src="js/jquery-1.12.4.min.js?ver=2304171"></script>
-        <script src="js/jquery-migrate-1.4.1.min.js?ver=2304171"></script>
-        <script src="js/jquery.menu.js?ver=2304171"></script>
-        <script src="js/common.js?ver=2304171"></script>
-        <script src="js/wrest.js?ver=2304171"></script>
-        <script src="js/placeholders.min.js?ver=2304171"></script>
-        <script src="js/owlcarousel/owl.carousel.min.js?ver=2304171"></script>
-        <script src="js/jquery.bxslider.js?ver=2304171"></script>
-        <!-- //그누보드 작성 -->
+  <head>
+    @@include("_include/_head.html")
+  </head>
+  <body>
+    <div class="wrap">
+      @@include("_include/_header.html")
+      <!-- container -->
+      <div class="container faq">
+        <section class="sub-header">
+          <div class="page-title">
+            <h2 data-aos="fade-down" data-aos-duration="1000">FAQ</h2>
+            <span>KNGIL 관련 문의하기</span>
+          </div>
+          <ul class="sub-tab">
+            <li><a href="faq.html">자주하는 질문</a></li>
+            <li class="on"><a href="Q&A_list.html">1:1 문의하기</a></li>
+          </ul>
+        </section>
 
-        <!-- 디자인팀 작성 -->
-        <link rel="stylesheet" href="css/reset.css"/>
-        <link rel="stylesheet" href="css/font.css"/>
-        <link rel="stylesheet" href="css/style.css"/>
-
-        <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" type="text/css"/>
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script> 
-        <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
-        <script type="text/javascript" src="js/jquery-3.6.1.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
-    
-        <!-- <script type="text/javascript" src="js/common.js"></script> -->
-        <script type="text/javascript" src="js/popup.js"></script>
-        <!-- //디자인팀 작성 -->
-    </head>
-    <body>
-        <div class="wrapper">
-            <!-- HEADER -->
-            <header class="js__header">
-                <h1><a href="index.html"></a></h1>
-                <div class="menu_my">                        
-                    <img src="img/ico_my.svg" alt="">
-                    <ul class="menu_my_list" style="display: none;">
-                        <li class="my_login"><a href="javascript:login();">로그인</a></li>
-                        <li class="my_join"><a href="javascript:agreement();">회원가입</a></li>
-                        <li class="my_join" style="display: none;"><a href="javascript:mypage01();">마이페이지</a></li>
-                        <li class="my_login" style="display: none;"><a href="javascript:logout();">로그아웃</a></li>
+        <span class="sub-tit">1:1 문의하기</span>
+        
+        <!-- 그누보드 Q&A 영역 -->
+        <div id="hd_login_msg">최고관리자 최고관리자님 로그인 중 <a href="http://localhost/tova/bbs/logout.php">로그아웃</a></div>
+        <hr>
+        <!-- 콘텐츠 시작 { -->
+        <div id="wrapper">
+          <div id="container_wr">
+            <div id="container">
+              <h2 id="container_title"><span title="1:1문의">1:1문의</span></h2>
+              <script src="js/viewimageresize.js"></script>
+              
+              <!-- 게시물 읽기 시작 { -->
+              <article id="bo_v">
+                <header>
+                  <h2 id="bo_v_title">
+                    <span class="bo_v_cate">회원</span>123
+                  </h2>
+                </header>
+                
+                <section id="bo_v_info">
+                  <h2>페이지 정보</h2>
+                  <span class="sound-only">작성자</span><strong>송대일</strong>
+                  <span class="sound-only">작성일</span><strong class="bo_date"><i class="fa fa-clock-o" aria-hidden="true"></i> 2024-07-25 15:30:09</strong>
+                  <span class="sound-only">이메일</span><strong><i class="fa fa-envelope-o" aria-hidden="true"></i> sdi9429@naver.com</strong>
+                  
+                  <!-- 게시물 상단 버튼 시작 { -->
+                  <div id="bo_v_top">
+                    <ul class="bo_v_com">
+                      <li><a href="http://localhost/tova/bbs/qalist.php" class="btn_b01 btn" title="목록"><i class="fa fa-list" aria-hidden="true"></i><span class="sound-only">목록</span></a></li>
+                      <li><a href="http://localhost/tova/bbs/qawrite.php" class="btn_b01 btn" title="글쓰기"><i class="fa fa-pencil" aria-hidden="true"></i><span class="sound-only">글쓰기</span></a></li>
+                      <li>
+                        <button type="button" class="btn_more_opt btn_b01 btn" title="게시판 읽기 옵션"><i class="fa fa-ellipsis-v" aria-hidden="true"></i><span class="sound-only">게시판 읽기 옵션</span></button>
+                        <ul class="more_opt">
+                          <li><a href="http://localhost/tova/bbs/qawrite.php?w=u&amp;qa_id=1" class="btn_b01 btn" title="수정">수정<i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></li>
+                          <li><a href="http://localhost/tova/bbs/qadelete.php?qa_id=1&amp;token=710960a72f023c1a1ade3f180c223e5c" class="btn_b01 btn" onclick="del(this.href); return false;" title="삭제">삭제<i class="fa fa-trash-o" aria-hidden="true"></i></a></li>
+                        </ul>
+                      </li>
                     </ul>
-                </div>
-                <div class="menu_ham"><a href="javascript:sitemap();"><div></div><div></div><div></div></a></div>
-            </header>
-            <!-- //Header -->
-           <!-- floating_menu -->
-            <div class="floating_menu">
-                <ul>
-                    <li class="floating_buy"><a href="buy.html">
-                       <i></i>
-                        <span>구매하기</span>
-                    </a></li>
-                    <li class="floating_faq"><a href="faq.html">
-                        <i></i>
-                        <span>FAQ</span>
-                    </a></li>                        
-                </ul>
-            </div>
-            <!-- //floating_menu -->         
-    
-            <!-- 모든 팝업페이지 경로 -->            
-            <div class="pop_open" data-include-path="pop/pop_agreement.html"></div>
-            <div class="pop_open" data-include-path="pop/pop_join.html"></div>
-            <div class="pop_open" data-include-path="pop/pop_login.html"></div>
-            <div class="pop_open" data-include-path="pop/pop_mypage01.html"></div>
-            <div class="pop_open" data-include-path="pop/pop_mypage02.html"></div>
-            <div class="pop_open" data-include-path="pop/pop_mypage03.html"></div>
-            <div class="pop_open" data-include-path="pop/pop_search.html"></div>
-            <div class="pop_open" data-include-path="pop/pop_sitemap.html"></div>
-            <div class="pop_open" data-include-path="pop/pop_privacy.html"></div>
-            <!-- 모든 팝업페이지 경로 -->
-            <div class="container faq">
-                <section class="intro">
-                    <div class="top js__dark">
-                        <h2 class="js__reveal rTB">FAQ</h2>
-                        <span>EG-BIM 관련 문의하기</span>
-                    </div>
-                    <ul class="sub_tab">
-                        <li><a href="faq.html">자주하는 질문</a></li>
-                        <li class="on"><a href="Q&A_list.html">1:1 문의하기</a></li>
-                    </ul>
+                    <script>
+                      // 게시판 리스트 옵션
+                      $(".btn_more_opt").on("click", function() {
+                        $(".more_opt").toggle();
+                      })
+                    </script>
+                  </div>
+                  <!-- } 게시물 상단 버튼 끝 -->
+                </section>
+                
+                <section id="bo_v_atc">
+                  <h2 id="bo_v_atc_title">본문</h2>
+                  <!-- 본문 내용 시작 { -->
+                  <div id="bo_v_con"><p>123</p></div>
+                  <!-- } 본문 내용 끝 -->
                 </section>
 
-                <span class="sub_tit">1:1 문의하기</span>
-                <!-- 그누보드 시작 --- FAQ : 답변등록 -->
-                <div id="hd_login_msg">최고관리자 최고관리자님 로그인 중 <a href="http://localhost/tova/bbs/logout.php">로그아웃</a></div>
-                <hr>
-                <!-- 콘텐츠 시작 { -->
-                <div id="wrapper">
-                    <div id="container_wr">
-                        <div id="container">
-                            <h2 id="container_title"><span title="1:1문의">1:1문의</span></h2>
-                            <script src="js/viewimageresize.js"></script>
+                <ul class="bo_v_nb">
+                  <li><a href="http://localhost/tova/bbs/qaview.php?qa_id=2" class="btn_b01 btn"><i class="fa fa-chevron-left" aria-hidden="true"></i> 이전글</a></li>
+                </ul>
+
+                <section id="bo_v_ans_form">
+                  <h2>답변등록</h2>
+                  <form name="fanswer" method="post" action="./qawrite_update.php" onsubmit="return fwrite_submit(this);" enctype="multipart/form-data" autocomplete="off">
+                    <input type="hidden" name="qa_id" value="1">
+                    <input type="hidden" name="w" value="a">
+                    <input type="hidden" name="sca" value="">
+                    <input type="hidden" name="stx" value="">
+                    <input type="hidden" name="page" value="">
+                    <input type="hidden" name="token" value="710960a72f023c1a1ade3f180c223e5c">
+                    <input type="hidden" name="qa_html" value="1">
+                    <div class="form_01">
+                      <ul>
+                        <li>
+                          <label for="qa_subject" class="sound-only">제목</label>
+                          <input type="text" name="qa_subject" value="" id="qa_subject" required="" class="frm_input required full_input" size="50" maxlength="255" placeholder="제목">
+                        </li>
+                        <li class="qa_content_wrap smarteditor2">
+                          <label for="qa_content" class="sound-only">내용<strong>필수</strong></label>
+                          <span class="wr_content">
+                            <span class="sound-only">웹에디터 시작</span>
+                            <script>document.write("<div class='cke_sc'><button type='button' class='btn_cke_sc'>단축키 일람</button></div>");</script>
+                            <div class="cke_sc"><button type="button" class="btn_cke_sc">단축키 일람</button></div>
+                            <script src="http://localhost/tova/plugin/editor/smarteditor2/js/service/HuskyEZCreator.js"></script>
+                            <script>var g5_editor_url = "http://localhost/tova/plugin/editor/smarteditor2", oEditors = [], ed_nonce = "zhfLNQrDoq|1721892791|18d44cbc071fedfe66f3b8773777286a1857fece";</script>
+                            <script src="http://localhost/tova/plugin/editor/smarteditor2/config.js"></script>
+                            <script>
+                              $(function(){
+                                $(".btn_cke_sc").click(function(){
+                                  if ($(this).next("div.cke_sc_def").length) {
+                                    $(this).next("div.cke_sc_def").remove();
+                                    $(this).text("단축키 일람");
+                                  } else {
+                                    $(this).after("<div class='cke_sc_def' />").next("div.cke_sc_def").load("http://localhost/tova/plugin/editor/smarteditor2/shortcut.html");
+                                    $(this).text("단축키 일람 닫기");
+                                  }
+                                });
+                                $(document).on("click", ".btn_cke_sc_close", function(){
+                                  $(this).parent("div.cke_sc_def").remove();
+                                });
+                              });
+                            </script>
+                            <textarea id="qa_content" name="qa_content" class="smarteditor2" maxlength="65536" style="width: 100%; height: 300px; display: none;"></textarea><iframe frameborder="0" scrolling="no" src="http://localhost/tova/plugin/editor/smarteditor2/SmartEditor2Skin.html" style="width: 100%; height: 349px;"></iframe>
+                            <span class="sound-only">웹 에디터 끝</span>
+                          </span>
+                        </li>
+                        <li class="bo_w_flie">
+                          <div class="file_wr">
+                            <label for="bf_file_1" class="lb_icon"><i class="fa fa-download" aria-hidden="true"></i><span class="sound-only"> 파일 #1</span></label>
+                            <input type="file" name="bf_file[1]" id="bf_file_1" title="파일첨부 1 :  용량  이하만 업로드 가능" class="frm_file">
+                          </div>
+                        </li>
+                        <li class="bo_w_flie">
+                          <div class="file_wr">
+                            <label for="bf_file_2" class="lb_icon"><i class="fa fa-download" aria-hidden="true"></i><span class="sound-only"> 파일 #2</span></label>
+                            <input type="file" name="bf_file[2]" id="bf_file_2" title="파일첨부 2 :  용량  이하만 업로드 가능" class="frm_file">
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
                     
-                            <!-- 게시물 읽기 시작 { -->
-                            <article id="bo_v">
-                                <header>
-                                    <h2 id="bo_v_title">
-                                        <span class="bo_v_cate">회원</span>123
-                                    </h2>
-                                </header>
-                            
-                                <section id="bo_v_info">
-                                    <h2>페이지 정보</h2>
-                                    <span class="sound_only">작성자</span><strong>송대일</strong>
-                                    <span class="sound_only">작성일</span><strong class="bo_date"><i class="fa fa-clock-o" aria-hidden="true"></i> 2024-07-25 15:30:09</strong>
-                                    <span class="sound_only">이메일</span><strong><i class="fa fa-envelope-o" aria-hidden="true"></i> sdi9429@naver.com</strong>
-                                                                    
-                                    <!-- 게시물 상단 버튼 시작 { -->
-                                    <div id="bo_v_top">
-                                        <ul class="bo_v_com">
-                                            <li><a href="http://localhost/tova/bbs/qalist.php" class="btn_b01 btn" title="목록"><i class="fa fa-list" aria-hidden="true"></i><span class="sound_only">목록</span></a></li>
-                                            <li><a href="http://localhost/tova/bbs/qawrite.php" class="btn_b01 btn" title="글쓰기"><i class="fa fa-pencil" aria-hidden="true"></i><span class="sound_only">글쓰기</span></a></li>
-                                            <li>
-                                                <button type="button" class="btn_more_opt btn_b01 btn" title="게시판 읽기 옵션"><i class="fa fa-ellipsis-v" aria-hidden="true"></i><span class="sound_only">게시판 읽기 옵션</span></button>
-                                                <ul class="more_opt">
-                                                    <li><a href="http://localhost/tova/bbs/qawrite.php?w=u&amp;qa_id=1" class="btn_b01 btn" title="수정">수정<i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></li>
-                                                    <li><a href="http://localhost/tova/bbs/qadelete.php?qa_id=1&amp;token=710960a72f023c1a1ade3f180c223e5c" class="btn_b01 btn" onclick="del(this.href); return false;" title="삭제">삭제<i class="fa fa-trash-o" aria-hidden="true"></i></a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                        <script>
-                                            // 게시판 리스트 옵션
-                                            $(".btn_more_opt").on("click", function() {
-                                                $(".more_opt").toggle();
-                                            })
-                                        </script>
-                                    </div>
-                                    <!-- } 게시물 상단 버튼 끝 -->
-                                </section>
-                            
-                                <section id="bo_v_atc">
-                                    <h2 id="bo_v_atc_title">본문</h2>
-                                    <!-- 본문 내용 시작 { -->
-                                    <div id="bo_v_con"><p>123</p></div>
-                                    <!-- } 본문 내용 끝 -->
-                                </section>
-
-                                <ul class="bo_v_nb">
-                                    <li><a href="http://localhost/tova/bbs/qaview.php?qa_id=2" class="btn_b01 btn"><i class="fa fa-chevron-left" aria-hidden="true"></i> 이전글</a></li>
-                                </ul>
-
-                                <section id="bo_v_ans_form">
-                                    <h2>답변등록</h2>
-                                    <form name="fanswer" method="post" action="./qawrite_update.php" onsubmit="return fwrite_submit(this);" enctype="multipart/form-data" autocomplete="off">
-                                        <input type="hidden" name="qa_id" value="1">
-                                        <input type="hidden" name="w" value="a">
-                                        <input type="hidden" name="sca" value="">
-                                        <input type="hidden" name="stx" value="">
-                                        <input type="hidden" name="page" value="">
-                                        <input type="hidden" name="token" value="710960a72f023c1a1ade3f180c223e5c">
-                                        <input type="hidden" name="qa_html" value="1">
-                                        <div class="form_01">
-                                            <ul>
-                                                <li>
-                                                    <label for="qa_subject" class="sound_only">제목</label>
-                                                    <input type="text" name="qa_subject" value="" id="qa_subject" required="" class="frm_input required full_input" size="50" maxlength="255" placeholder="제목">
-                                                </li>
-                                                <li class="qa_content_wrap smarteditor2">
-                                                    <label for="qa_content" class="sound_only">내용<strong>필수</strong></label>
-                                                    <span class="wr_content">
-                                                        <span class="sound_only">웹에디터 시작</span>
-                                                        <script>document.write("<div class='cke_sc'><button type='button' class='btn_cke_sc'>단축키 일람</button></div>");</script>
-                                                        <div class="cke_sc"><button type="button" class="btn_cke_sc">단축키 일람</button></div>
-                                                        <script src="http://localhost/tova/plugin/editor/smarteditor2/js/service/HuskyEZCreator.js"></script>
-                                                        <script>var g5_editor_url = "http://localhost/tova/plugin/editor/smarteditor2", oEditors = [], ed_nonce = "zhfLNQrDoq|1721892791|18d44cbc071fedfe66f3b8773777286a1857fece";</script>
-                                                        <script src="http://localhost/tova/plugin/editor/smarteditor2/config.js"></script>
-                                                        <script>
-                                                                $(function(){
-                                                                    $(".btn_cke_sc").click(function(){
-                                                                        if ($(this).next("div.cke_sc_def").length) {
-                                                                            $(this).next("div.cke_sc_def").remove();
-                                                                            $(this).text("단축키 일람");
-                                                                        } else {
-                                                                            $(this).after("<div class='cke_sc_def' />").next("div.cke_sc_def").load("http://localhost/tova/plugin/editor/smarteditor2/shortcut.html");
-                                                                            $(this).text("단축키 일람 닫기");
-                                                                        }
-                                                                    });
-                                                                    $(document).on("click", ".btn_cke_sc_close", function(){
-                                                                        $(this).parent("div.cke_sc_def").remove();
-                                                                    });
-                                                                });
-                                                        </script>
-                                                        <textarea id="qa_content" name="qa_content" class="smarteditor2" maxlength="65536" style="width: 100%; height: 300px; display: none;"></textarea><iframe frameborder="0" scrolling="no" src="http://localhost/tova/plugin/editor/smarteditor2/SmartEditor2Skin.html" style="width: 100%; height: 349px;"></iframe>
-                                                        <span class="sound_only">웹 에디터 끝</span>
-                                                    </span>
-                                                </li>
-                                                <li class="bo_w_flie">
-                                                    <div class="file_wr">
-                                                        <label for="bf_file_1" class="lb_icon"><i class="fa fa-download" aria-hidden="true"></i><span class="sound_only"> 파일 #1</span></label>
-                                                        <input type="file" name="bf_file[1]" id="bf_file_1" title="파일첨부 1 :  용량  이하만 업로드 가능" class="frm_file">
-                                                    </div>
-                                                </li>
-                                                <li class="bo_w_flie">
-                                                    <div class="file_wr">
-                                                        <label for="bf_file_2" class="lb_icon"><i class="fa fa-download" aria-hidden="true"></i><span class="sound_only"> 파일 #2</span></label>
-                                                        <input type="file" name="bf_file[2]" id="bf_file_2" title="파일첨부 2 :  용량  이하만 업로드 가능" class="frm_file">
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    
-                                        <div class="btn_confirm">
-                                            <button type="submit" id="btn_submit" accesskey="s" class="btn_submit">답변등록</button>
-                                        </div>
-                                    </form>
+                    <div class="btn_confirm">
+                      <button type="submit" id="btn_submit" accesskey="s" class="btn_submit">답변등록</button>
+                    </div>
+                  </form>
                                     <script>
                                         function html_auto_br(obj) {
                                             if (obj.checked) {
@@ -312,91 +216,61 @@
                                     
                                             return true;
                                         }
-                                    </script>
-                                </section>
-                            </article>
-                            <!-- } 게시판 읽기 끝 -->
+                  </script>
+                </section>
+              </article>
+              <!-- } 게시판 읽기 끝 -->
 
-                            <script>
-                                $(function() {
-                                    $("a.view_image").click(function() {
-                                        window.open(this.href, "large_image", "location=yes,links=no,toolbar=no,top=10,left=10,width=10,height=10,resizable=yes,scrollbars=no,status=no");
-                                        return false;
-                                    });
-                                
-                                    // 이미지 리사이즈
-                                    $("#bo_v_atc").viewimageresize();
-                                });
-                            </script>
-                        </div>
-                    </div>
-                </div>
-                <!-- } 콘텐츠 끝 -->
-                <hr>
-                <script>
+              <script>
                 $(function() {
-                    // 폰트 리사이즈 쿠키있으면 실행
-                    font_resize("container", get_cookie("ck_font_resize_rmv_class"), get_cookie("ck_font_resize_add_class"));
+                  $("a.view_image").click(function() {
+                    window.open(this.href, "large_image", "location=yes,links=no,toolbar=no,top=10,left=10,width=10,height=10,resizable=yes,scrollbars=no,status=no");
+                    return false;
+                  });
+                  
+                  // 이미지 리사이즈
+                  $("#bo_v_atc").viewimageresize();
                 });
-                </script>      
-                <!-- <div style='float:left; text-align:center;'>RUN TIME : 0.028378963470459<br></div> -->
-                <!-- //그누보드 끝 --- FAQ : 답변등록 -->
+              </script>
             </div>
-            <!-- FOOTER -->
-        <button class="btn_top js__top" onclick="window.scrollTo(0,0);"><div class="arrow"></div></button>
-        <footer class="footer_off">
-                <div class="footer_close"></div>
-                <div class="footer_wrap">
-                    <div class="comp_info">
-						<img class="logo_baron" src="img/baron_logo.svg" alt="">
-                    	<span class="ceo">대표이사 <em>장종찬</em></span>
-					</div>
-					<div class="comp_copy">
-                    	<span class="btn_privacy"><a href="javascript:privacy('privacy');"><em>개인정보 처리방침</em></a><a href="javascript:privacy('agreement');">이용약관</a></span>
-						<span class="address">[05774] <em>서울특별시 송파구 오금로 554(거여동)</em></span>
-                    	<span class="copyright">© BARON Consultant Co,.Ltd All Rights Reserved.</span>
-					</div>
-                    <div class="comp_contact">
-						<ul class="footer_menu">
-                            <li><a href="value.php">EG-BIM</a></li>
-                            <li><a href="interface.php">인터페이스</a></li>
-                            <li><a href="primary.php">주요기능</a></li>
-                            <li><a href="floorplan.php">도면관리</a></li>
-                            <li><a href="forbim.php">for BIM</a></li>
-						</ul>
-						<div class="footer_sitemap">
-							<!-- <span>TOVA의 <em>다양한 소식</em>을 만나보세요</span> 
-							<div class="tova_sns">
-								<a href="https://cafe.naver.com/imtas" class="tova_cafe"><img src="img/ico_cafe.svg" alt=""></a>
-								 <a href="" class="tova_facebook"><img src="img/ico_facebook.svg" alt=""></a>
-							</div>-->
-							<div class="family_wrap">
-								<div class="family_btn"><span>Family Site</span><i></i></div>
-								<ul class="family_list">
-									<li><a href="http://k-tova.com" target="_blank">TOVA</a></li>
-									<li><a href="" target="_blank">GAIA</a></li>
-									<li><a href="" target="_blank">바론컨설턴트</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-                </div>
-            </footer>
-        <!-- //FOOTER -->
+          </div>
         </div>
+        <!-- } 콘텐츠 끝 -->
+        <hr>
         <script>
-            AOS.init();
-
-            const lenis = new Lenis()
-            lenis.on('scroll', (e) => {
-                // console.log(e)
-            })
-            lenis.on('scroll', ScrollTrigger.update)
-            gsap.ticker.add((time)=>{
-                lenis.raf(time * 1000)
-            })
-            gsap.ticker.lagSmoothing(0)
-
+          $(function() {
+            // 폰트 리사이즈 쿠키있으면 실행
+            font_resize("container", get_cookie("ck_font_resize_rmv_class"), get_cookie("ck_font_resize_add_class"));
+          });
         </script>
-    </body>
+        <!-- //그누보드 Q&A 영역 -->
+      </div>
+      <!-- // container -->
+      @@include("_include/_footer.html")
+      
+      <!-- 모든 팝업페이지 경로 -->
+      @@include("mypage/pop_agreement.html")
+      @@include("mypage/pop_join.html")
+      @@include("mypage/pop_login.html")
+      @@include("mypage/pop_mypage01.html")
+      @@include("mypage/pop_mypage02.html")
+      @@include("mypage/pop_mypage03.html")
+      @@include("mypage/pop_search.html")
+      @@include("popup/pop_privacy.html")
+      <!-- // 모든 팝업페이지 경로 -->
+    </div>
+    <script>
+      AOS.init();
+      
+      const lenis = new Lenis()
+      lenis.on('scroll', (e) => {
+        // console.log(e)
+      })
+      lenis.on('scroll', ScrollTrigger.update)
+      gsap.ticker.add((time)=>{
+        lenis.raf(time * 1000)
+      })
+      gsap.ticker.lagSmoothing(0)
+    </script>
+  </body>
 </html>

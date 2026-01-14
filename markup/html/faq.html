@@ -1,289 +1,229 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="imagetoolbar" content="no">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>FAQ - 자주하는 질문</title>
-        <!-- 그누보드 작성 -->
-        <link rel="stylesheet" href="theme/basic/css/default.css?ver=2303229">
-        <link rel="stylesheet" href="js/font-awesome/css/font-awesome.min.css?ver=2303229">
-        <link rel="stylesheet" href="theme/basic/skin/connect/basic/style.css?ver=2303229">
-        <link rel="stylesheet" href="theme/basic/skin/popular/basic/style.css?ver=2303229">
-        <link rel="stylesheet" href="theme/basic/skin/faq/basic/style.css?ver=2303229">
-        <link rel="stylesheet" href="theme/basic/skin/outlogin/basic/style.css?ver=2303229">
-        <link rel="stylesheet" href="theme/basic/skin/latest/notice/style.css?ver=2303229">
-        <link rel="stylesheet" href="theme/basic/skin/visit/basic/style.css?ver=2303229">
-        <link rel="stylesheet" href="js/owlcarousel/owl.carousel.min.css?ver=2303229">
-        <!--[if lte IE 8]>
-        <script src="http://localhost/tova/js/html5.js"></script>
-        <![endif]-->
-        <script>
-        // 자바스크립트에서 사용하는 전역변수 선언
-        var g5_url       = "http://localhost/tova";
-        var g5_bbs_url   = "http://localhost/tova/bbs";
-        var g5_is_member = "1";
-        var g5_is_admin  = "super";
-        var g5_is_mobile = "";
-        var g5_bo_table  = "";
-        var g5_sca       = "";
-        var g5_editor    = "";
-        var g5_cookie_domain = "";
-        var g5_theme_shop_url = "http://localhost/tova/theme/basic/shop";
-        var g5_shop_url = "http://localhost/tova/shop";
-        </script>
-        <script src="js/jquery-1.12.4.min.js?ver=2304171"></script>
-        <script src="js/jquery-migrate-1.4.1.min.js?ver=2304171"></script>
-        <script src="js/jquery.menu.js?ver=2304171"></script>
-        <script src="js/common.js?ver=2304171"></script>
-        <script src="js/wrest.js?ver=2304171"></script>
-        <script src="js/placeholders.min.js?ver=2304171"></script>
-        <script src="js/owlcarousel/owl.carousel.min.js?ver=2304171"></script>
-        <script src="js/jquery.bxslider.js?ver=2304171"></script>
-        <!-- //그누보드 작성 -->
+  <head>
+    @@include("_include/_head.html")
+  </head>
+  <body>
+    <div class="wrap">
+      @@include("_include/_header.html")
+      <!-- container -->
+      <div class="container faq">
+        <section class="sub-header">
+          <div class="page-title">
+            <h2 data-aos="fade-down" data-aos-duration="1000">FAQ</h2>
+            <span>KNGIL 관련 문의하기</span>
+          </div>
+          <ul class="sub-tab">
+            <li class="on"><a href="faq.html">자주하는 질문</a></li>
+            <li><a href="Q&A_list.html">1:1 문의하기</a></li>
+          </ul>
+        </section>
 
-        <!-- 디자인팀 작성 -->
-        <link rel="stylesheet" href="css/reset.css"/>
-        <link rel="stylesheet" href="css/font.css"/>
-        <link rel="stylesheet" href="css/style.css"/>
+        <section class="sub-content">
+          <h3 class="sub-tit">자주하는 질문</h3>
+          
+            <form name="faq_search_form" method="get">
+              <fieldset id="faq_sch" class="search-box">
+                <legend>FAQ 검색</legend>
+                <input type="hidden" name="fm_id" value="1">
+                <label for="stx" class="sound-only">검색어<strong> 필수</strong></label>
+                <input type="text" name="stx" value="" required="" id="stx" class="frm_input" size="15" maxlength="15">
+                <button type="submit" value="검색" class="btn-submit">
+                  <i class="fa fa-search" aria-hidden="true"></i> 검색
+                </button>
+              </fieldset>
+            </form>
+    
+          <ol class="faq-list">
+            <li class="faq-item">
+              <h3 class="faq-question">
+                <span class="tit_bg">Q</span>
+                <a href="#none" class="faq-link">탈퇴는 어떻게 하나요?</a>
+                <span class="faq-icon">
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                </span>
+              </h3>
+              <div class="faq-answer">
+                <div class="con_inner">
+                  <p>회원 탈퇴는 마이페이지에서 가능합니다. 로그인 후 마이페이지 > 회원정보 수정에서 탈퇴 버튼을 클릭하시면 됩니다.</p>
+                </div>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3 class="faq-question">
+                <span class="tit_bg">Q</span>
+                <a href="#none" class="faq-link">아이디 등록은 어떻게 하나요?</a>
+                <span class="faq-icon">
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                </span>
+              </h3>
+              <div class="faq-answer">
+                <div class="con_inner">
+                  <p>회원가입 페이지에서 이메일 또는 휴대폰 번호로 가입하실 수 있습니다. 필수 정보를 입력하신 후 인증 절차를 완료하시면 됩니다.</p>
+                </div>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3 class="faq-question">
+                <span class="tit_bg">Q</span>
+                <a href="#none" class="faq-link">비밀번호를 잊어버렸어요</a>
+                <span class="faq-icon">
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                </span>
+              </h3>
+              <div class="faq-answer">
+                <div class="con_inner">
+                  <p>로그인 페이지에서 '비밀번호 찾기'를 클릭하신 후, 가입 시 등록하신 이메일 또는 휴대폰 번호로 인증하시면 새 비밀번호를 설정하실 수 있습니다.</p>
+                </div>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3 class="faq-question">
+                <span class="tit_bg">Q</span>
+                <a href="#none" class="faq-link">문의사항은 어디로 보내야 하나요?</a>
+                <span class="faq-icon">
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                </span>
+              </h3>
+              <div class="faq-answer">
+                <div class="con_inner">
+                  <p>1:1 문의하기 메뉴를 통해 문의사항을 등록하실 수 있습니다. 답변은 등록하신 이메일로 발송됩니다.</p>
+                </div>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3 class="faq-question">
+                <span class="tit_bg">Q</span>
+                <a href="#none" class="faq-link">회원정보를 변경하고 싶어요</a>
+                <span class="faq-icon">
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                </span>
+              </h3>
+              <div class="faq-answer">
+                <div class="con_inner">
+                  <p>마이페이지 > 회원정보 수정에서 개인정보를 변경하실 수 있습니다. 일부 정보는 보안을 위해 추가 인증이 필요할 수 있습니다.</p>
+                </div>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3 class="faq-question">
+                <span class="tit_bg">Q</span>
+                <a href="#none" class="faq-link">서비스 이용 중 오류가 발생했어요</a>
+                <span class="faq-icon">
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                </span>
+              </h3>
+              <div class="faq-answer">
+                <div class="con_inner">
+                  <p>서비스 이용 중 오류가 발생하신 경우, 1:1 문의하기를 통해 오류 내용과 스크린샷을 함께 보내주시면 빠르게 해결해드리겠습니다.</p>
+                </div>
+              </div>
+            </li>
+            <li class="faq-item">
+              <h3 class="faq-question">
+                <span class="tit_bg">Q</span>
+                <a href="#none" class="faq-link">개인정보 보호 정책은 어디서 확인하나요?</a>
+                <span class="faq-icon">
+                  <i class="fa fa-plus" aria-hidden="true"></i>
+                </span>
+              </h3>
+              <div class="faq-answer">
+                <div class="con_inner">
+                  <p>하단 푸터의 '개인정보처리방침' 링크를 통해 확인하실 수 있습니다. 회원가입 시에도 동의 절차를 통해 확인하실 수 있습니다.</p>
+                </div>
+              </div>
+            </li>
+          </ol>
 
-        <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" type="text/css"/>
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script> 
-        <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
-        <script type="text/javascript" src="js/jquery-3.6.1.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
+        </section>    
+      </div>
+      <!-- // container -->
+      @@include("_include/_footer.html")
+      
+      <!-- 모든 팝업페이지 경로 -->
+      @@include("mypage/pop_agreement.html")
+      @@include("mypage/pop_join.html")
+      @@include("mypage/pop_login.html")
+      @@include("mypage/pop_mypage01.html")
+      @@include("mypage/pop_mypage02.html")
+      @@include("mypage/pop_mypage03.html")
+      @@include("mypage/pop_search.html")
+      @@include("popup/pop_privacy.html")
+      <!-- // 모든 팝업페이지 경로 -->
+    </div>
+    <script>
+      AOS.init();
+      
+      const lenis = new Lenis()
+      lenis.on('scroll', (e) => {
+        // console.log(e)
+      })
+      lenis.on('scroll', ScrollTrigger.update)
+      gsap.ticker.add((time)=>{
+        lenis.raf(time * 1000)
+      })
+      gsap.ticker.lagSmoothing(0)
+
+      // FAQ 아코디언 기능
+      document.addEventListener('DOMContentLoaded', function() {
+        const faqItems = document.querySelectorAll('.faq-item');
         
-        <!-- <script type="text/javascript" src="js/common.js"></script> -->
-        <script type="text/javascript" src="js/popup.js"></script>
-        <!-- //디자인팀 작성 -->
-    </head>
-    <body>
-        <div class="wrapper">
-            <!-- HEADER -->
-            <header class="js__header">
-                <h1><a href="index.html"></a></h1>
-                <div class="menu_my">                        
-                    <img src="img/ico_my.svg" alt="">
-                    <ul class="menu_my_list" style="display: none;">
-                        <li class="my_login"><a href="javascript:login();">로그인</a></li>
-                        <li class="my_join"><a href="javascript:agreement();">회원가입</a></li>
-                        <li class="my_join" style="display: none;"><a href="javascript:mypage01();">마이페이지</a></li>                       
-                        <li class="my_login" style="display: none;"><a href="javascript:logout();">로그아웃</a></li>
-                    </ul>
-                </div>
-                <div class="menu_ham"><a href="javascript:sitemap();"><div></div><div></div><div></div></a></div>
-            </header>
-            <!-- //Header -->
-           <!-- floating_menu -->
-           <div class="floating_menu">
-            <ul>
-                <li class="floating_buy"><a href="buy.html">
-                   <i></i>
-                    <span>구매하기</span>
-                </a></li>
-                <li class="floating_faq"><a href="faq.html">
-                    <i></i>
-                    <span>FAQ</span>
-                </a></li>                        
-            </ul>
-        </div>
-        <!-- //floating_menu -->
-
-            <!-- 모든 팝업페이지 경로 -->        
-            <div class="pop_open" data-include-path="pop/pop_agreement.html"></div>
-            <div class="pop_open" data-include-path="pop/pop_join.html"></div>
-            <div class="pop_open" data-include-path="pop/pop_login.html"></div>
-            <div class="pop_open" data-include-path="pop/pop_mypage01.html"></div>
-            <div class="pop_open" data-include-path="pop/pop_mypage02.html"></div>
-            <div class="pop_open" data-include-path="pop/pop_mypage03.html"></div>
-            <div class="pop_open" data-include-path="pop/pop_search.html"></div>
-            <div class="pop_open" data-include-path="pop/pop_sitemap.html"></div>
-            <div class="pop_open" data-include-path="pop/pop_privacy.html"></div>
-            <!-- 모든 팝업페이지 경로 -->
-
-            <div class="container faq">
-                <section class="intro">
-                    <div class="top js__dark">
-                        <h2 data-aos="fade-down" data-aos-duration="1000">FAQ</h2>
-                        <span>EG-BIM 관련 문의하기</span>
-                    </div>
-                    <ul class="sub_tab">
-                        <li class="on"><a href="faq.html">자주하는 질문</a></li>
-                        <li><a href="Q&A_list.html">1:1 문의하기</a></li>
-                    </ul>
-                </section>
-
-                <span class="sub_tit">자주하는 질문</span>
-                <!-- 그누보드 시작 --- FAQ : 자주묻는 질문 -->
-                <div id="hd_login_msg">최고관리자 최고관리자님 로그인 중 <a href="http://localhost/tova/bbs/logout.php">로그아웃</a></div>
-                <!-- 콘텐츠 시작 { -->
-                <div id="wrapper">
-                    <div id="container_wr">       
-                        <div id="container">
-                            <h2 id="container_title"><span title="전체">전체</span></h2>
-                            <!-- FAQ 시작 { -->
-                            <div id="faq_hhtml"></div>
-                            <fieldset id="faq_sch">
-                                <legend>FAQ 검색</legend>
-                                <form name="faq_search_form" method="get">
-                                    <span class="sch_tit">FAQ 검색</span>
-                                    <input type="hidden" name="fm_id" value="1">
-                                    <label for="stx" class="sound_only">검색어<strong class="sound_only"> 필수</strong></label>
-                                    <input type="text" name="stx" value="" required="" id="stx" class="frm_input" size="15" maxlength="15">
-                                    <button type="submit" value="검색" class="btn_submit"><i class="fa fa-search" aria-hidden="true"></i> 검색</button>
-                                </form>
-                            </fieldset>
-                            <nav id="bo_cate">
-                                <h2>자주하시는질문 분류</h2>
-                                <ul id="bo_cate_ul">
-                                    <li><a href="http://localhost/tova/bbs/faq.php?fm_id=1" id="bo_cate_on"><span class="sound_only">열린 분류 </span>전체</a></li>
-                                    <li><a href="http://localhost/tova/bbs/faq.php?fm_id=2">자주하시는 질문</a></li>
-                                    <li><a href="http://localhost/tova/bbs/faq.php?fm_id=3">다운로드 관련</a></li>
-                                    <li><a href="http://localhost/tova/bbs/faq.php?fm_id=4">계정</a></li>
-                                </ul>
-                            </nav>
-                            <div id="faq_wrap" class="faq_1">
-                                <section id="faq_con">
-                                    <h2>전체 목록</h2>
-                                    <ol>
-                                        <li>
-                                            <h3 class="faq_li_open">
-                                                <span class="tit_bg">Q</span>
-                                                <a href="#none" onclick="return faq_open(this);">탈퇴는 어떻게 하나요?</a>
-                                                <button class="tit_btn" onclick="return faq_open(this);">
-                                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                                    <span class="sound_only">열기</span>
-                                                </button>
-                                            </h3>
-                                            <div class="con_inner" style="display: block;">
-                                                <p>111</p>
-                                                <button type="button" class="closer_btn"><i class="fa fa-minus" aria-hidden="true"></i><span class="sound_only">닫기</span></button>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <h3>
-                                                <span class="tit_bg">Q</span><a href="#none" onclick="return faq_open(this);"><p>아이디 등록</p></a>
-                                                <button class="tit_btn" onclick="return faq_open(this);"><i class="fa fa-plus" aria-hidden="true"></i><span class="sound_only">열기</span></button>
-                                            </h3>
-                                            <div class="con_inner">
-                                                <p>123</p><button type="button" class="closer_btn"><i class="fa fa-minus" aria-hidden="true"></i><span class="sound_only">닫기</span></button>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <h3>
-                                                <span class="tit_bg">Q</span><a href="#none" onclick="return faq_open(this);"><p>아이디 등록</p></a>
-                                                <button class="tit_btn" onclick="return faq_open(this);"><i class="fa fa-plus" aria-hidden="true"></i><span class="sound_only">열기</span></button>
-                                            </h3>
-                                            <div class="con_inner">
-                                                <p>123</p><button type="button" class="closer_btn"><i class="fa fa-minus" aria-hidden="true"></i><span class="sound_only">닫기</span></button>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <h3>
-                                                <span class="tit_bg">Q</span><a href="#none" onclick="return faq_open(this);"><p>아이디 등록</p></a>
-                                                <button class="tit_btn" onclick="return faq_open(this);"><i class="fa fa-plus" aria-hidden="true"></i><span class="sound_only">열기</span></button>
-                                            </h3>
-                                            <div class="con_inner">
-                                                <p>123</p><button type="button" class="closer_btn"><i class="fa fa-minus" aria-hidden="true"></i><span class="sound_only">닫기</span></button>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <h3>
-                                                <span class="tit_bg">Q</span><a href="#none" onclick="return faq_open(this);"><p>아이디 등록</p></a>
-                                                <button class="tit_btn" onclick="return faq_open(this);"><i class="fa fa-plus" aria-hidden="true"></i><span class="sound_only">열기</span></button>
-                                            </h3>
-                                            <div class="con_inner">
-                                                <p>123</p><button type="button" class="closer_btn"><i class="fa fa-minus" aria-hidden="true"></i><span class="sound_only">닫기</span></button>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <h3>
-                                                <span class="tit_bg">Q</span><a href="#none" onclick="return faq_open(this);"><p>아이디 등록</p></a>
-                                                <button class="tit_btn" onclick="return faq_open(this);"><i class="fa fa-plus" aria-hidden="true"></i><span class="sound_only">열기</span></button>
-                                            </h3>
-                                            <div class="con_inner">
-                                                <p>123</p><button type="button" class="closer_btn"><i class="fa fa-minus" aria-hidden="true"></i><span class="sound_only">닫기</span></button>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <h3>
-                                                <span class="tit_bg">Q</span><a href="#none" onclick="return faq_open(this);"><p>아이디 등록</p></a>
-                                                <button class="tit_btn" onclick="return faq_open(this);"><i class="fa fa-plus" aria-hidden="true"></i><span class="sound_only">열기</span></button>
-                                            </h3>
-                                            <div class="con_inner">
-                                                <p>123</p><button type="button" class="closer_btn"><i class="fa fa-minus" aria-hidden="true"></i><span class="sound_only">닫기</span></button>
-                                            </div>
-                                        </li>
-                                    </ol>
-                                </section>
-                            </div>
-                            <div id="faq_thtml"></div>
-                            <!-- } FAQ 끝 -->
-                        </div>
-                    </div>
-                </div>
-                <!-- } 콘텐츠 끝 -->
-                <!-- //그누보드 끝 --- FAQ : 자주묻는 질문 -->
-            </div>
-            <!-- FOOTER -->
-        <button class="btn_top js__top" onclick="window.scrollTo(0,0);"><div class="arrow"></div></button>
-        <footer class="footer_off">
-                <div class="footer_close"></div>
-                <div class="footer_wrap">
-                    <div class="comp_info">
-						<img class="logo_baron" src="img/baron_logo.svg" alt="">
-                    	<span class="ceo">대표이사 <em>장종찬</em></span>
-					</div>
-					<div class="comp_copy">
-                    	<span class="btn_privacy"><a href="javascript:privacy('privacy');"><em>개인정보 처리방침</em></a><a href="javascript:privacy('agreement');">이용약관</a></span>
-						<span class="address">[05774] <em>서울특별시 송파구 오금로 554(거여동)</em></span>
-                    	<span class="copyright">© BARON Consultant Co,.Ltd All Rights Reserved.</span>
-					</div>
-                    <div class="comp_contact">
-						<ul class="footer_menu">
-                            <li><a href="value.php">EG-BIM</a></li>
-                            <li><a href="interface.php">인터페이스</a></li>
-                            <li><a href="primary.php">주요기능</a></li>
-                            <li><a href="floorplan.php">도면관리</a></li>
-                            <li><a href="forbim.php">for BIM</a></li>
-						</ul>
-						<div class="footer_sitemap">
-							<!-- <span>TOVA의 <em>다양한 소식</em>을 만나보세요</span> 
-							<div class="tova_sns">
-								<a href="https://cafe.naver.com/imtas" class="tova_cafe"><img src="img/ico_cafe.svg" alt=""></a>
-								 <a href="" class="tova_facebook"><img src="img/ico_facebook.svg" alt=""></a>
-							</div>-->
-							<div class="family_wrap">
-								<div class="family_btn"><span>Family Site</span><i></i></div>
-								<ul class="family_list">
-									<li><a href="http://k-tova.com" target="_blank">TOVA</a></li>
-									<li><a href="" target="_blank">GAIA</a></li>
-									<li><a href="" target="_blank">바론컨설턴트</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-                </div>
-            </footer>
-        <!-- //FOOTER -->
-        </div>
-        <script>
-            AOS.init();
-            const lenis = new Lenis()
-            lenis.on('scroll', (e) => {
-                // console.log(e)
-            })
-            lenis.on('scroll', ScrollTrigger.update)
-            gsap.ticker.add((time)=>{
-                lenis.raf(time * 1000)
-            })
-            gsap.ticker.lagSmoothing(0)
-        </script>
-    </body>
+        faqItems.forEach(function(item) {
+          const question = item.querySelector('.faq-question');
+          const icon = item.querySelector('.faq-icon .fa');
+          const answer = item.querySelector('.faq-answer');
+          
+          // 아코디언 토글 함수
+          function toggleAccordion() {
+            const isOpen = item.classList.contains('active');
+            
+            // 다른 항목들 닫기 (하나만 열리도록)
+            faqItems.forEach(function(otherItem) {
+              if (otherItem !== item) {
+                otherItem.classList.remove('active');
+                const otherAnswer = otherItem.querySelector('.faq-answer');
+                const otherIcon = otherItem.querySelector('.faq-icon .fa');
+                if (otherAnswer) {
+                  otherAnswer.style.maxHeight = null;
+                }
+                if (otherIcon) {
+                  otherIcon.classList.remove('fa-minus');
+                  otherIcon.classList.add('fa-plus');
+                }
+              }
+            });
+            
+            // 현재 항목 토글
+            if (isOpen) {
+              item.classList.remove('active');
+              if (answer) {
+                answer.style.maxHeight = null;
+              }
+              if (icon) {
+                icon.classList.remove('fa-minus');
+                icon.classList.add('fa-plus');
+              }
+            } else {
+              item.classList.add('active');
+              if (answer) {
+                answer.style.maxHeight = answer.scrollHeight + 'px';
+              }
+              if (icon) {
+                icon.classList.remove('fa-plus');
+                icon.classList.add('fa-minus');
+              }
+            }
+          }
+          
+          // faq-question 영역 전체 클릭 이벤트
+          if (question) {
+            question.addEventListener('click', function(e) {
+              e.preventDefault();
+              toggleAccordion();
+            });
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
- 
-

@@ -109,9 +109,6 @@ html {
         align-items: center;
       }
 
-      &.menu-item-hidden {
-        display: none;
-      }
     }
   }
 
@@ -163,7 +160,7 @@ html {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: var(--window-inner-height);
   background-color: #111;
   overflow: hidden;
   gap: 16px;
@@ -187,16 +184,24 @@ html {
     background-size: cover;
     background-position: center;     
     cursor: pointer; 
-    transition: all 0.5s;
+   
     z-index: 1;  
     overflow: hidden; 
     @include flex();
-    @include mq(tablet-wide, min) {
+    @include mq(desktop-small, min) {
+      transition: all 0.5s;
       &:hover {
         width: 60%;
+        
+        span {
+          font-size: 60px;
+        }
+        p {
+          font-size: 22px;
+        }
       }
     }
-    @include mq(tablet-wide, max) {
+    @include mq(desktop-small, max) {
       width: 100%;
     }
 
@@ -204,13 +209,22 @@ html {
       width: 100%;
       height: 100%;
       padding: 16px;
-      @include flex(center, flex-start);
+      color: #fff;
+      flex-direction: column;
+      gap: 16px;
+      @include flex(flex-start, center);
     }
     span {
       font-size: 32px;
       font-weight: 900;
-      color: #fff;
+      line-height: 1.4;
     }
+    p {
+      em {
+        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.80);
+      }
+    }
+
   }
 
 }

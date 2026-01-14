@@ -70,7 +70,7 @@ html:has(.wrap.main) {
     z-index: 1;
     text-indent: 0;
     transition: bottom 0.2s ease;
-
+/*
     &::before {
       content: " ";
       position: absolute;
@@ -82,7 +82,7 @@ html:has(.wrap.main) {
       height: calc(100% + 48px);
       pointer-events: none;
 
-      /* 중앙 0.4, 외곽으로 투명하게 */
+      /* 중앙 0.4, 외곽으로 투명하게 * /
       background: radial-gradient(
         ellipse at center,
         rgba(0, 0, 0, 0.1) 0%,
@@ -94,6 +94,7 @@ html:has(.wrap.main) {
       border-radius: 20px;
       mix-blend-mode: multiply;
     }
+    */
 
     li {
       display: flex;
@@ -206,5 +207,48 @@ html:has(.wrap.main) {
   }
   100% {
     width: 100%;
+  }
+}
+
+.intro-wrap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  
+  .txt-mask {
+    overflow: hidden;
+    
+    // SCSS 반복문으로 nth-child 반복 제거
+    @for $i from 1 through 3 {
+      &:nth-child(#{$i}) {
+        span {
+          animation: txt_mask 1.2s cubic-bezier(0.16, 1, 0.3, 1) #{$i * 0.1 - 0.1}s forwards;
+        }
+      }
+    }
+    
+    span {
+      display: block;
+      font-size: 56px;
+      text-align: center;
+      position: relative;
+      top: 80px;
+    }
+  }
+}
+
+@keyframes txt_mask {
+  0% {
+    top: 80px;
+    opacity: 0;
+  }
+  100% {
+    top: 0;
+    opacity: 1;
   }
 }

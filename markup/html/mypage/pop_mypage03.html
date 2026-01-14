@@ -6,114 +6,112 @@
             <img src="../assets/images/ico/ico_close.svg" alt="닫기">
         </button>
         <!-- popup_container -->
-        <div class="popup-container mypage-edit join">
+        <div class="popup-container mypage">
             <!-- pop_header -->
-            <div class="pop-join-left">
-                <span class="bg-tit-left" aria-hidden="true">My pa</span>
-                <div class="join-info">
-                    <h1 class="h-1" id="mypage03-title">내 정보 수정</h1>
-                    <h3 class="h-3">
-                        소중한 <em>내 정보</em>를 <br>
-                        <em>최신</em>으로 관리하세요.
-                    </h3>
-                </div>
+            <div class="pop-header">
+                <h1 class="tit" id="mypage03-title">내 정보 수정</h1>
+                <p class="sub-txt">
+                    소중한 <em>내 정보</em>를 <br>
+                    <em>최신</em>으로 관리하세요.
+                </p>
             </div>
             <!-- //pop_header -->
             <!-- pop_body -->
-            <div class="pop-input-wrap pop-join-right">
-                <span class="bg-tit-right" aria-hidden="true">ge</span>
+            <div class="pop-body">
                 <form action="" method="post" novalidate>
-                    <h6 class="important-msg pop-notice h-6">*항목은 필수 항목 입니다.</h6>
-                    <fieldset>
-                        <!--tbl_wrap-->
-                        <div class="tbl-wrap">
-                            <table>
-                                <tbody>
-                                    <tr>
-                                        <th class="h-4">아이디<span class="important-msg">*</span></th>
-                                        <td>
-                                            <div class="id-wrap">
-                                                <input type="text" placeholder="A1122" readonly>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="h-4">비밀번호<span class="important-msg">*</span></th>
-                                        <td>
-                                            <div class="password-wrap">
-                                                <input type="password" placeholder="************" required>
-                                                <input type="password" placeholder="************" required>
-                                            </div>
-                                            <span class="important-msg h-6">영문+숫자+특수기호 8자 이상</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="h-4">이름<span class="important-msg">*</span></th>
-                                        <td>
-                                            <div class="name-wrap">
-                                                <input type="text" placeholder="이지빔" readonly>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="h-4">이메일<span class="important-msg">*</span></th>
-                                        <td>
-                                            <div class="email-wrap">
-                                                <input type="text" placeholder="A1122" class="e-id" required>
-                                                <div><span>@</span></div>
-                                                <input type="text" id="custom-domain" placeholder="직접 입력" class="input-hidden" required>
-                                                <select id="domain-list" class="domain-list" required>
-                                                    <option value="" hidden disabled>선택</option>
-                                                    <option value="naver" selected>naver.com</option>
-                                                    <option value="gmail">gmail.com</option>
-                                                    <option value="daum">daum.net</option>
-                                                    <option value="nate">nate.com</option>
-                                                    <option value="hotmail">hotmail.com</option>
-                                                    <option value="yahoo">yahoo.com</option>
-                                                    <option value="type" id="domain-txt">직접입력</option>
-                                                </select>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="h-4">휴대전화번호<span class="important-msg">*</span></th>
-                                        <td>
-                                            <div class="phone-wrap">
-                                                <input type="text" placeholder="01012345678" required>
-                                                <button type="button" class="cert-number">인증번호</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="code code-hidden">
-                                        <th class="h-4">인증번호</th>
-                                        <td>
-                                            <div class="phone-wrap">
-                                                <input type="text" placeholder="인증번호 입력" required>
-                                                <span class="timer">03:00</span>
-                                                <button type="button" class="check">확인</button>
-                                                <button type="button" class="check complete check-hidden">인증완료</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th class="h-4">회사정보<span class="select-msg">(선택)</span></th>
-                                        <td>
-                                            <div class="company-wrap">
-                                                <input type="text" placeholder="(주)BBB" required>
-                                                <input type="text" placeholder="XXX부" required>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!--//tbl_wrap-->
-                        <div class="join-btn-wrap">
-                            <button type="button" class="btn-cancel">취소</button>
-                            <button type="button" class="btn-regist">수정</button>
-                        </div>
-                        <div class="sign-out"><a href=""><i class="signout"></i>회원 탈퇴하기</a></div>
-                    </fieldset>
+                    <div class="tbl-wrap">
+                        <span class="info-msg">*항목은 필수 항목 입니다.</span>
+                        <fieldset>
+                            <!--tbl_wrap-->
+                            <div class="tbl-wrap">
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <th>아이디<span class="point">*</span></th>
+                                            <td>
+                                                <div class="input-box">
+                                                    <input type="text" placeholder="A1122" readonly>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th  >비밀번호<span class="point">*</span></th>
+                                            <td>
+                                                <div class="input-box">
+                                                    <input type="password" placeholder="************" required>
+                                                    <input type="password" placeholder="************" required>
+                                                </div>
+                                                <span class="info-msg h-6">영문+숫자+특수기호 8자 이상</span>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="h-4">이름<span class="point">*</span></th>
+                                            <td>
+                                                <div class="input-box">
+                                                    <input type="text" placeholder="이지빔" readonly>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="h-4">이메일<span class="point">*</span></th>
+                                            <td>
+                                                <div class="input-box">
+                                                    <input type="text" placeholder="A1122" class="e-id" required>
+                                                    <div><span>@</span></div>
+                                                    <input type="text" id="custom-domain" placeholder="직접 입력" class="input-hidden" required>
+                                                    <select id="domain-list" class="domain-list" required>
+                                                        <option value="" hidden disabled>선택</option>
+                                                        <option value="naver" selected>naver.com</option>
+                                                        <option value="gmail">gmail.com</option>
+                                                        <option value="daum">daum.net</option>
+                                                        <option value="nate">nate.com</option>
+                                                        <option value="hotmail">hotmail.com</option>
+                                                        <option value="yahoo">yahoo.com</option>
+                                                        <option value="type" id="domain-txt">직접입력</option>
+                                                    </select>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="h-4">휴대전화번호<span class="point">*</span></th>
+                                            <td>
+                                                <div class="input-box">
+                                                    <input type="text" placeholder="01012345678" required>
+                                                    <button type="button" class="cert-number">인증번호</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="code code-hidden">
+                                            <th class="h-4">인증번호</th>
+                                            <td>
+                                                <div class="input-box">
+                                                    <input type="text" placeholder="인증번호 입력" required>
+                                                    <span class="timer">03:00</span>
+                                                    <button type="button" class="check">확인</button>
+                                                    <button type="button" class="check complete check-hidden">인증완료</button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th class="h-4">회사정보<span class="select-msg">(선택)</span></th>
+                                            <td>
+                                                <div class="input-box">
+                                                    <input type="text" placeholder="(주)BBB" required>
+                                                    <input type="text" placeholder="XXX부" required>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!--//tbl_wrap-->
+                            <div class="btn-wrap">
+                                <button type="button" class="btn-cancel">취소</button>
+                                <button type="button" class="btn-regist">수정</button>
+                            </div>
+                            <div class="sign-out"><a href=""><i class="signout"></i>회원 탈퇴하기</a></div>
+                        </fieldset>
+                    </div>
                 </form>
             </div>
             <!-- //pop_body -->

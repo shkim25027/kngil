@@ -1,0 +1,96 @@
+@use "../import/_mixin" as *;
+
+/* common */
+.wrap {
+    position: relative;
+    width: 100%;
+    min-height: var(--window-inner-height);
+    overflow: hidden;
+    flex-direction: column;
+    @include flex();
+    
+    &.main {
+      height: var(--window-inner-height);
+      min-height: var(--window-inner-height);
+    }
+  }
+  
+  .inner {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+  
+  
+  .container {
+    position: relative;
+    width: 100%;
+    flex-grow: 1;
+  }
+  
+  .btn-top {
+    position: fixed;
+    bottom: 60px;
+    right: 60px;
+    z-index: 10;
+    width: 60px;
+    height: 60px;
+    background-color: #14100c;
+    cursor: pointer;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    &.on {
+      opacity: 1;
+    }
+    &::before {
+      content: "";
+      background: #fff;
+      width: 30px;
+      height: 2px;
+      display: block;
+      position: absolute;
+      top: 12px;
+      left: calc(50% - 15px);
+      border-radius: 20px;
+    }
+    &:hover {
+      &:before {
+        background: var(--color-yellow);
+      }
+      .arrow {
+        bottom: 14px;
+        background-color: var(--color-yellow);
+        transition: 0.2s;
+        &::after,
+        &::before {
+          background: var(--color-yellow);
+        }
+      }
+    }
+    .arrow {
+      width: 2px;
+      height: 32px;
+      background-color: #fff;
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      border-radius: 20px;
+      &::after,
+      &::before {
+        position: absolute;
+        content: "";
+        width: 16px;
+        height: 2px;
+        background-color: #fff;
+        top: 6px;
+        left: 50%;
+      }
+      &::after{
+        transform: translateX(calc(-50% + 6px)) rotate(45deg);
+      }
+      &::before {
+        transform: translateX(calc(-50% - 6px)) rotate(-45deg);
+      }
+    }
+  }
+  

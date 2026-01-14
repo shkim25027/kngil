@@ -4,4 +4,6 @@
 // 전역 레이아웃 컴포넌트들을 통합 관리
 
 @forward "header";  // 헤더 레이아웃
+@forward "body";    // 바디 레이아웃
 @forward "footer";  // 푸터 레이아웃
+@forward "floating"; // 플로팅 메뉴 레이아웃

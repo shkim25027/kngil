@@ -7,10 +7,148 @@
     <div class="wrap">
       @@include("_include/_header.html")
       <!-- container -->
-      <div class="container">
-     
+      <div class="container forbim">
+        <section class="sub-header">
+          <div class="page-title">
+            <h2 data-aos="fade-down" data-aos-duration="1000">for BIM</h2>
+            <span>디지털전환시대, 도면과 BIM모델을 동시에 본다</span>
+          </div>
+          <div class="keyword">
+            <i class="egbim-obj k"></i>
+            <span>
+              더블클릭 한번으로<br>
+              도면과 함께  3D BIM모델을 볼 수 있습니다
+            </span>
+            <p>EG-BIM은 도면만으로 확인하기 어려운 많은 설계정보를 <br>
+            3D Viewer 를 통하여 BIM모델과 함께 쉽게 확인할 수 있는 기능을 제공합니다.</p>
+          </div>
+          <div class="visual" data-aos="fade-up" data-aos-duration="1000">
+            <img src="./assets/images/forbim_visaul.png" alt="">
+          </div>
+        </section>
+        
+        <section class="theorys js__dark">
+          <span class="mid-tit" data-aos="fade-down" data-aos-duration="1000">
+            " <b class="gr-txt">BIM모델 정보</b>와 <b class="og-txt">도면</b>의 CROSS CHECK "
+          </span>
+          <div class="diagram-wrap" data-aos="fade-up" data-aos-duration="1000">
+            <div class="dia-element">
+              <ul class="dia-text">
+                <li>위치정보</li>
+                <li>형상정보</li>
+                <li>수량정보</li>
+              </ul>
+              <div class="line"></div>
+            </div>
+            <div class="dia-circles-wrap">
+              <div class="circle-bim">
+                <div class="circle-belt"></div>
+                <div class="circle-core">
+                  <span>BIM 모델</span>
+                  <i></i>
+                </div>
+                <div class="circle-dots move">
+                  <div class="dot"></div>
+                </div>
+                <div class="circle-dots">
+                  <div class="dot"></div>
+                </div>
+              </div>
+              <div class="circle-floorplan">
+                <div class="circle-belt"></div>
+                <div class="circle-core">
+                  <span>도면</span>
+                  <i></i>
+                </div>
+                <div class="circle-dots move">
+                  <div class="dot"></div>
+                </div>
+                <div class="circle-dots">
+                  <div class="dot"></div>
+                </div>
+              </div>
+            </div>
+            <div class="dia-element">
+              <ul class="dia-text">
+                <li>종평면도</li>
+                <li>일반도</li>
+                <li>상세도</li>
+              </ul>
+              <div class="line"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="layout-fix-left process">
+          <div class="left" data-aos="fade-right" data-aos-duration="1000">
+            <div class="bg js__fixLeft-bg on"></div>
+            <div class="bg js__fixLeft-bg"></div>
+            <span class="mid-tit js__fixLeft-tit on"><font class="num">01. </font>도면과 BIM<br><em>동시보기</em>
+            </span>
+            <span class="mid-tit js__fixLeft-tit"><font class="num">02. </font><em>BIM모델<br> 상세보기</em></span>
+          </div>
+          <div class="right js__fixLeft-secs">
+            <div>
+              <span class="sub-tit">
+                <img src="./assets/images/ico/ico_forbim_link.svg" alt="">
+                도면과 BIM모델의 정보연동
+              </span>
+              <div class="sub-text">
+                <b>도면과 BIM모델간의 정보연동</b>으로 <b>선택부재가 실시간 표시</b>되어 도면과 BIM모델을 동시에 보면서 부재의 위치 및 형상정보 등의 속정정보를 확인 할 수 있습니다.
+              </div>
+              <div class="sub-figs">
+                <img src="./assets/images/forbim_process_01.png" alt="">
+              </div>
+            </div>
+            <div>
+              <span class="sub-tit">
+                <img src="./assets/images/ico/ico_forbim_check.svg" alt="">
+                BIM모델의 속성정보 및 형상 확인
+              </span>
+              <div class="sub-text">
+                <span>
+                  3D Viewer의 다양한 시각적인 기능을 통해 <b>모델의 형상과 각 부재의 간섭관계 등을 상세하게 확인</b> 할 수 있습니다.
+                </span>
+              </div>
+              <div class="sub-figs">
+                <img src="./assets/images/forbim_process_02.png" alt="">
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
       <!-- // container -->
+      @@include("_include/_footer.html")
+      
+      <!-- 모든 팝업페이지 경로 -->
+      @@include("mypage/pop_agreement.html")
+      @@include("mypage/pop_join.html")
+      @@include("mypage/pop_login.html")
+      @@include("mypage/pop_mypage01.html")
+      @@include("mypage/pop_mypage02.html")
+      @@include("mypage/pop_mypage03.html")
+      @@include("mypage/pop_search.html")
+      @@include("popup/pop_privacy.html")
+      <!-- // 모든 팝업페이지 경로 -->
     </div>
+    <script src="./assets/js/forbim.js"></script>
+    <script>
+      AOS.init();
+      
+      const lenis = new Lenis()
+      lenis.on('scroll', (e) => {
+        // console.log(e)
+      })
+      lenis.on('scroll', ScrollTrigger.update)
+      gsap.ticker.add((time)=>{
+        lenis.raf(time * 1000)
+      })
+      gsap.ticker.lagSmoothing(0)
+    </script>
+    <script>
+      function scroll(id) {
+        elem = document.getElementById(id).scrollIntoView();
+      }
+    </script>
   </body>
 </html>

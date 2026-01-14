@@ -1,28 +1,24 @@
 <!-- popup_wrap -->
 <div class="popup-wrap" id="pop_mypage02" role="dialog" aria-labelledby="mypage02-title" aria-modal="true">
     <!-- popup_in -->
-    <div class="popup-in member">
+    <div class="popup-in mypage">
         <button class="btn-close" type="button" aria-label="팝업 닫기">
             <img src="../assets/images/ico/ico_close.svg" alt="닫기">
         </button>
 
         <!-- popup_container -->
-        <div class="popup-container mypage">
+        <div class="popup-container">
             <!-- pop_header -->
-            <div class="pop-join-left">
-                <span class="bg-tit-left" aria-hidden="true">My pa</span>
-                <div class="join-info">
-                    <h1 class="h-1" id="mypage02-title">마이페이지</h1>
-                    <h3 class="h-3">
-                        소중한 <em>내 정보</em>를 <br>
-                        <em>최신</em>으로 관리하세요.
-                    </h3>
-                </div>
+            <div class="pop-header">
+                <h2 class="tit" id="mypage02-title">마이페이지</h2>
+                <p class="sub-txt">
+                    소중한 <em>내 정보</em>를 <br>
+                    <em>최신</em>으로 관리하세요.
+                </p>
             </div>
             <!-- //pop_header -->
             <!-- pop_body -->
-            <div class="pop-input-wrap pop-join-right">
-                <span class="bg-tit-right" aria-hidden="true">ge</span>
+            <div class="pop-body">
                 <div class="contents-wrap">
                     <div class="my-info">
                         <div class="name">
@@ -49,6 +45,14 @@
                     <div class="my-qna">
                         <h4>내 문의</h4>
                         <table>
+                            <colgroup>
+                                <col span="1" style="width: 7%;">
+                                <col span="1" style="width: 10%;">  
+                                <col span="1" style="width: auto;">
+                                <col span="1" style="width: 10%;">
+                                <col span="1" style="width: 10%;">
+                                <col span="1" style="width: 10%;">
+                            </colgroup>
                             <thead>
                                 <tr>
                                     <th class="col-num">번호</th>

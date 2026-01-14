@@ -1,167 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>구매하기</title>
-        <link rel="stylesheet" href="css/reset.css"/>
-        <link rel="stylesheet" href="css/font.css"/>
-        <link rel="stylesheet" href="css/style.css"/>
-
-        <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" type="text/css"/>
-        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script src="https://unpkg.com/lenis@1.1.9/dist/lenis.min.js"></script> 
-        <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.9/dist/lenis.css">
-        <script type="text/javascript" src="js/jquery-3.6.1.min.js"></script>
-        <script type="text/javascript" src="js/jquery.mousewheel.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollToPlugin.min.js"></script>
-
-        <script type="text/javascript" src="js/common.js"></script>
-        <script type="text/javascript" src="js/popup.js"></script>
-    </head>
-    <body>
-        <div class="wrapper">
-            <!-- HEADER -->
-            <header class="js__header">
-                <h1><a href="index.html"></a></h1>
-                <div class="menu_my">                        
-                    <img src="img/ico_my.svg" alt="">
-                    <ul class="menu_my_list" style="display: none;">
-                        <li class="my_login" style="display: none;"><a href="javascript:login();">로그인</a></li>
-                        <li class="my_join"  style="display: none;"><a href="javascript:agreement();">회원가입</a></li>
-                        <li class="my_join"><a href="javascript:mypage01();">마이페이지</a></li>                       
-                        <li class="my_login"><a href="javascript:logout();">로그아웃</a></li>
-                    </ul>
-                </div>
-                <div class="menu_ham"><a href="javascript:sitemap();"><div></div><div></div><div></div></a></div>
-            </header>
-            <!-- //Header -->
-            
-           <!-- floating_menu -->
-           <div class="floating_menu">
-            <ul>
-                <li class="floating_buy"><a href="buy.html">
-                   <i></i>
-                    <span>구매하기</span>
-                </a></li>
-                <li class="floating_faq"><a href="faq.html">
-                    <i></i>
-                    <span>FAQ</span>
-                </a></li>                        
-            </ul>
-        </div>
-        <!-- //floating_menu -->
-            
-            <!-- 모든 팝업페이지 경로 -->            
-            <div class="pop_open" data-include-path="pop/pop_agreement.html"></div>
-            <div class="pop_open" data-include-path="pop/pop_join.html"></div>
-            <div class="pop_open" data-include-path="pop/pop_login.html"></div>
-            <div class="pop_open" data-include-path="pop/pop_mypage01.html"></div>
-            <div class="pop_open" data-include-path="pop/pop_mypage02.html"></div>
-            <div class="pop_open" data-include-path="pop/pop_mypage03.html"></div>
-            <div class="pop_open" data-include-path="pop/pop_search.html"></div>
-            <div class="pop_open" data-include-path="pop/pop_sitemap.html"></div>
-            <div class="pop_open" data-include-path="pop/pop_privacy.html"></div>
-            <!-- //모든 팝업페이지 경로 -->
-            <!-- 컨텐츠 시작 -->
-            <div class="container buy">
-                <section class="intro">
-                    <div class="top js__dark">
-                        <h2 data-aos="fade-down" data-aos-duration="1000">구매하기</h2>
-                        <span>EG-BIM 구매문의 및 제품 안내</span>
-                    </div>
-                </section>
-                <section class="contents_wrap">
-                    
-                    <div class="ask_area">
-                        <div class="ask_l">
-                            <span class="mid_tit"><font class="egbim k">EG-BIM S/W</font>으로<br><b>부담없이</b> CAD를 도입하세요</span>
-                        </div>
-                        <div class="ask_r">
-                            <span class="sub_text"><em>라이선스 중복 시  <font style="color: var(--color-orange)">이용이 제한</font></em>될 수 있습니다.</span>
-                            <div class="ask_btn">
-                                <a href="faq.html" class="btn_ask" ><i></i>EG-BIM 구매문의</a>
-                                <a href="download/EGBIM_leaflet.pdf" download class="btn_brochure"><i></i>브로슈어</a>
-                                <a href="download/EGBIM_manual.pdf" download class="btn_manual"><i></i>매뉴얼</a>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="video_area" data-aos="fade-right" data-aos-duration="1000">
-                        <video autoplay muted loop >
-                            <source src="img/EGBIM_buy.mp4">
-                        </video>
-                        <div class="contact_area">
-                            <span class="mid_tit">구매 상담</span>
-                            <span class="sub_text"><em>EG-BIM 담당자에게 직접 문의하기</em></span>                            
-                            <ul>
-                                <li class="tel"><i></i>02 - 2131 - 7434</li>
-                                <li class="mail"><i></i>baroncs@baroncs.co.kr</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    
-                </section>
+<html lang="ko">
+  <head>
+    @@include("_include/_head.html")
+  </head>
+  <body>
+    <div class="wrap">
+      @@include("_include/_header.html")
+      <!-- container -->
+      <div class="container buy">
+        <section class="sub-header">
+          <div class="page-title">
+            <h2 data-aos="fade-down" data-aos-duration="1000">구매하기</h2>
+            <p class="sub-txt">KNGIL 구매문의 및 제품 안내</p>
+          </div>
+        </section>
+        <section class="contents-wrap">
+          <div class="ask-area">
+            <div class="ask-l">
+              <span class="mid-tit"><font class="egbim k">EG-BIM S/W</font>으로<br><b>부담없이</b> CAD를 도입하세요</span>
             </div>
-            <!-- //컨텐츠 시작 -->
-            <!-- FOOTER -->
-        <button class="btn_top js__top" onclick="window.scrollTo(0,0);"><div class="arrow"></div></button>
-        <footer class="footer_off">
-                <div class="footer_close"></div>
-                <div class="footer_wrap">
-                    <div class="comp_info">
-						<img class="logo_baron" src="img/baron_logo.svg" alt="">
-                    	<span class="ceo">대표이사 <em>장종찬</em></span>
-					</div>
-					<div class="comp_copy">
-                    	<span class="btn_privacy"><a href="javascript:privacy('privacy');"><em>개인정보 처리방침</em></a><a href="javascript:privacy('agreement');">이용약관</a></span>
-						<span class="address">[05774] <em>서울특별시 송파구 오금로 554(거여동)</em></span>
-                    	<span class="copyright">© BARON Consultant Co,.Ltd All Rights Reserved.</span>
-					</div>
-                    <div class="comp_contact">
-						<ul class="footer_menu">
-                            <li><a href="value.php">EG-BIM</a></li>
-                            <li><a href="interface.php">인터페이스</a></li>
-                            <li><a href="primary.php">주요기능</a></li>
-                            <li><a href="floorplan.php">도면관리</a></li>
-                            <li><a href="forbim.php">for BIM</a></li>
-						</ul>
-						<div class="footer_sitemap">
-							<!-- <span>TOVA의 <em>다양한 소식</em>을 만나보세요</span> 
-							<div class="tova_sns">
-								<a href="https://cafe.naver.com/imtas" class="tova_cafe"><img src="img/ico_cafe.svg" alt=""></a>
-								 <a href="" class="tova_facebook"><img src="img/ico_facebook.svg" alt=""></a>
-							</div>-->
-							<div class="family_wrap">
-								<div class="family_btn"><span>Family Site</span><i></i></div>
-								<ul class="family_list">
-									<li><a href="http://k-tova.com" target="_blank">TOVA</a></li>
-									<li><a href="" target="_blank">GAIA</a></li>
-									<li><a href="" target="_blank">바론컨설턴트</a></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-                </div>
-            </footer>
-        <!-- //FOOTER -->
-        </div>
-        <script>
-            AOS.init();
-            
-            const lenis = new Lenis()
-            lenis.on('scroll', (e) => {
-                // console.log(e)
-            })
-            lenis.on('scroll', ScrollTrigger.update)
-            gsap.ticker.add((time)=>{
-                lenis.raf(time * 1000)
-            })
-            gsap.ticker.lagSmoothing(0)
-
-        </script>
-    </body>
+            <div class="ask-r">
+              <span class="sub-text"><em>라이선스 중복 시  <font style="color: var(--color-orange)">이용이 제한</font></em>될 수 있습니다.</span>
+              <div class="ask-btn">
+                <a href="faq.html" class="btn-ask"><i></i>EG-BIM 구매문의</a>
+                <a href="download/EGBIM_leaflet.pdf" download class="btn-brochure"><i></i>브로슈어</a>
+                <a href="download/EGBIM_manual.pdf" download class="btn-manual"><i></i>매뉴얼</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="video-area" data-aos="fade-right" data-aos-duration="1000">
+            <video autoplay muted loop>
+              <source src="./assets/video/EGBIM_buy.mp4">
+            </video>
+            <div class="contact-area">
+              <span class="mid-tit">구매 상담</span>
+              <span class="sub-text"><em>EG-BIM 담당자에게 직접 문의하기</em></span>
+              <ul>
+                <li class="tel"><i></i>02 - 2131 - 7434</li>
+                <li class="mail"><i></i>baroncs@baroncs.co.kr</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+      <!-- // container -->
+      @@include("_include/_footer.html")
+      
+      <!-- 모든 팝업페이지 경로 -->
+      @@include("mypage/pop_agreement.html")
+      @@include("mypage/pop_join.html")
+      @@include("mypage/pop_login.html")
+      @@include("mypage/pop_mypage01.html")
+      @@include("mypage/pop_mypage02.html")
+      @@include("mypage/pop_mypage03.html")
+      @@include("mypage/pop_search.html")
+      @@include("popup/pop_privacy.html")
+      <!-- // 모든 팝업페이지 경로 -->
+    </div>
+    <script>
+      AOS.init();
+      
+      const lenis = new Lenis()
+      lenis.on('scroll', (e) => {
+        // console.log(e)
+      })
+      lenis.on('scroll', ScrollTrigger.update)
+      gsap.ticker.add((time)=>{
+        lenis.raf(time * 1000)
+      })
+      gsap.ticker.lagSmoothing(0)
+    </script>
+  </body>
 </html>

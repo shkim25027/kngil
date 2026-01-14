@@ -1,15 +1,12 @@
+@use "../base" as *;
+
 // =======================================
 // FAQ Page
 // =======================================
 .faq {
-  .intro {
-    padding: 0;
-
-    .top {
-      background-image: url(../img/faq_intro_bg.png);
-    }
+  .sub-header {
+    background-image: url(../img/faq_intro_bg.png);
   }
-
   .sub-tab {
     display: flex;
     width: 100%;
@@ -23,13 +20,13 @@
       width: 100%;
       height: 100%;
       color: #fff;
-      padding-left: 370px;
-
-      &:last-child {
-        padding-left: 0;
-        padding-right: 370px;
+      @include mq(desktop-small, min) {
+        padding-left: 370px;
+        &:last-child {
+          padding-left: 0;
+          padding-right: 370px;
+        }
       }
-
       a {
         width: 100%;
         height: 100%;
@@ -57,642 +54,607 @@
     }
   }
 
-  .sub-tit {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 60px;
-    color: #000;
-  }
-
-  #hd_login_msg {
-    display: none;
-  }
-
-  #container_wr {
-    width: 100%;
-    margin: 40px 0 120px;
-
-    * {
-      font-size: 16px;
-      box-shadow: none !important;
-    }
-  }
-
-  #container {
-    width: 100%;
-    margin: 0 auto;
-    float: initial;
-    padding: 0 320px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 40px;
-
-    &::after {
-      display: none;
-    }
-
-    &:has(#bo_list) {
-      display: block;
-    }
-
-    &:has(#bo_v) {
-      display: block;
-    }
-
-    &:has(#bo_w) {
-      display: block;
-    }
-  }
-
-  #container_title {
-    display: none;
-  }
-
-  #faq_hhtml {
-    display: none;
-  }
-
-  #faq_thtml {
-    display: none;
-  }
-
-  #faq_sch {
-    grid-column: 2;
-    padding: 0;
-    margin: 0;
-    background-color: initial;
-    justify-self: flex-end;
-    width: max-content;
-
-    form {
-      display: flex;
-      gap: 8px;
-
-      input {
-        width: 300px;
-        border: 1px solid #ddd;
-      }
-    }
-
-    .btn_submit {
-      background-color: var(--color-han-br);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 4px;
-      width: 88px;
-      padding: 0;
-    }
-  }
-
-  #bo_cate {
-    grid-area: 1/1;
-    padding: 0;
-    margin: 0;
-
-    h2 {
-      display: none;
-    }
-
-    ul {
-      display: none;
-    }
-
-    li {
-      padding: 0;
-
-      a {
-        border: 1px solid #00000022 !important;
-        color: #555;
-        border-radius: 3px;
-        height: 45px;
-        display: flex;
-        align-items: center;
-
-        &:hover {
-          background-color: #fafafa;
-          color: #000;
-        }
-      }
-    }
-
-    #bo_cate_on {
-      background-color: var(--color-yellow);
+  .sub-content{
+    max-width: 1280px;
+    padding: 60px 16px 120px 16px;
+    margin: auto;
+    .sub-tit {
       color: #000;
+      margin-bottom: 40px;
+      @include flex(center, center);
     }
   }
 
-  #faq_wrap {
-    margin: 0;
-    grid-column: span 2;
+  // 카테고리 그룹 버튼 스타일
+  .search-wrap {
+    gap: 20px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    @include flex(center, space-between);
   }
 
-  #faq_con {
-    li {
-      h3 {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 20px;
-        padding: 0 16px;
-        width: 100%;
-        height: 64px;
-        font-size: 16px;
-        font-weight: initial;
+  .category-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
 
-        .tit_bg {
-          font-weight: 700;
-          font-size: 20px;
-          position: initial;
-          font-size: 16px;
-          color: #555;
-        }
-
-        a {
-          flex: 1;
-          width: 100%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          font-weight: 500;
-        }
-
-        .tit_btn {
-          background: none;
-        }
-      }
+    label {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: 500;
+      color: #333;
+      background-color: #f5f5f5;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+      user-select: none;
 
       &:hover {
-        background-color: #fafafa;
-
-        h3 .tit_btn {
-          color: #000;
-        }
+        background-color: #eeeeee;
+        border-color: #d0d0d0;
       }
 
-      &:has(.faq_li_open) {
-        background-color: #fafafa;
+      // 체크박스 숨기기
+      input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+        pointer-events: none;
       }
 
-      .faq_li_open a {
-        color: #000 !important;
+      // 체크된 상태일 때 배경색 변경 (:has() 선택자 사용)
+      &:has(input[type="checkbox"]:checked) {
+        background-color: var(--color-yellow, #ffc600);
+        border-color: var(--color-yellow, #ffc600);
+        color: #000;
+        font-weight: 600;
       }
-    }
-
-    .con_inner .closer_btn {
-      border-radius: 3px;
-      border: 1px solid #00000011;
-      background-color: var(--color-green);
-      color: #ffffff;
     }
   }
+  // 게시판 리스트 테이블 스타일
+  .board-list {
+    width: 100%;
+    margin-top: 40px;
+    overflow-y: hidden;
+    overflow-x: auto;
 
-  #bo_list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    row-gap: 40px;
-
-    &::after {
-      display: none;
-    }
-
-    #bo_btn_top {
-      grid-column: 2;
-      margin: 0;
-
-      #bo_list_total {
-        display: none;
-      }
-
-      .btn_bo_user {
-        li {
-          &:first-child .btn_bo_sch {
-            display: none;
-          }
-
-          &:last-child {
-            display: none;
-          }
-        }
-      }
-
-      .bo_sch_wrap {
-        display: block;
-        position: initial;
-      }
-
-      .bo_sch {
-        position: initial;
-        margin: 0;
-        border: none;
-        background: none;
-        border-radius: none;
-
-        h3 {
-          display: none;
-        }
-
-        form {
-          padding: 0;
-
-          #sfl {
-            display: none;
-          }
-
-          .sch_bar {
-            margin: 0;
-            height: 45px;
-            width: 100%;
-            border: none;
-            display: flex;
-            gap: 8px;
-          }
-
-          .bo_sch_cls {
-            display: none;
-          }
-        }
-
-        .sch_input {
-          width: 300px;
-          height: 100%;
-          border: 1px solid #ddd;
-          border-radius: 3px;
-          padding: 4px;
-
-          &::placeholder {
-            color: transparent;
-          }
-        }
-
-        .sch_btn {
-          width: 88px;
-          height: 100%;
-          background-color: var(--color-han-br);
-          color: #fff;
-          font-weight: 700;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 4px;
-          border-radius: 3px;
-
-          .sound_only {
-            position: initial;
-            width: initial;
-            height: initial;
-            overflow: visible !important;
-          }
-        }
-      }
-    }
-
-    #fqalist {
-      grid-column: span 2;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      row-gap: 40px;
-
-      .tbl_wrap {
-        margin: 0;
-        grid-column: span 3;
-      }
-
-      table {
-        table-layout: fixed;
-        border: none;
-      }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+      background-color: #fff;
 
       caption {
-        display: none;
+        @include textBlind;
       }
 
-      thead th {
-        height: 48px;
-        padding: 0;
-        font-weight: 500;
-        border-bottom: 1px solid #000;
-        border-top: 2px solid #000;
+      thead {
+        background-color: #f8f8f8;
+        border-top: 2px solid #333;
+        border-bottom: 1px solid #e0e0e0;
+
+        th {
+          padding: 16px 12px;
+          font-size: 16px;
+          font-weight: 600;
+          color: #333;
+          text-align: center;
+          vertical-align: middle;
+          border-bottom: 1px solid #e0e0e0;
+
+          &:first-child {
+            text-align: center;
+          }
+
+          &.all_chk {
+            text-align: center;
+          }
+        }
       }
 
       tbody {
-        td {
-          color: #555;
-          height: 60px;
-          word-break: break-all;
-          text-align: center;
-          border-bottom: 1px solid #eee;
-        }
-
         tr {
-          td {
-            background: none;
-          }
+          border-bottom: 1px solid #e0e0e0;
+          transition: background-color 0.2s ease;
 
-          &:hover td {
-            background: #fafafa;
-          }
-
-          &.answer {
-            background-color: #ffdd0022;
-
-            td em {
-              color: #00000080;
-              font-weight: 500;
-            }
-          }
-        }
-
-        .td_subject {
-          display: flex;
-          align-items: center;
-          border-top: none;
-          gap: 16px;
-        }
-
-        .bo_tit {
-          text-align: left;
-          width: 100%;
-          text-decoration: none;
-          font-weight: 500;
-        }
-
-        .bo_cate_link {
-          width: 58px;
-          height: 28px;
-          font-size: 14px;
-          font-weight: 500 !important;
-          border-radius: 3px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          color: var(--color-accent);
-          background: none;
-          position: relative;
-          overflow: hidden;
-
-          &::after {
-            position: absolute;
-            content: "";
-            width: 100%;
-            height: 100%;
-            background-color: var(--color-accent);
-            opacity: 0.08;
-          }
-        }
-
-        .td_stat {
-          span {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 14px;
-            font-weight: 500;
-            color: #555;
-            width: 80px;
-            margin: 0 auto;
-            border: 1px solid #00000011;
-          }
-
-          .txt_rdy {
+          &:hover {
             background-color: #fafafa;
           }
 
-          .txt_done {
-            background-color: var(--color-green);
-            color: #fff;
-          }
-        }
-
-        .td.tit {
-          padding: 10px 0;
-          color: #000;
-          text-align: left;
-        }
-
-        td em {
-          color: var(--color-orange);
-        }
-
-        .answer td.tit a {
-          display: flex;
-          justify-content: left;
-          align-items: center;
-          gap: 8px;
-        }
-      }
-
-      .pg_wrap {
-        grid-column: 2;
-
-        .pg {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 12px;
-          width: 100%;
-          height: 100%;
-
-          * {
-            width: 32px;
-            height: 32px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 30px;
-            background: none;
-            border: none;
-            color: #000;
-            margin: 0;
-            padding: 0;
-            background-position: center;
-            background-repeat: no-repeat;
+          &.even {
+            background-color: #fafafa;
           }
 
-          .sound_only {
-            display: none !important;
-          }
-        }
+          td {
+            padding: 16px 12px;
+            font-size: 15px;
+            color: #333;
+            text-align: center;
+            vertical-align: middle;
+            border-bottom: 1px solid #f0f0f0;
+            &.subject {
+              text-align: left;
+              padding-left: 20px;
+              color: #333;
+              .cate {
+                display: inline-block;
+                padding: 4px 12px;
+                margin-right: 8px;
+                font-size: 13px;
+                font-weight: 500;
+                color: #666;
+                background-color: #f0f0f0;
+                border-radius: 4px;
+              }
+            }
 
-        .pg_current {
-          background-color: var(--color-han-br);
-          color: #fff;
-        }
+            &.status {
+              text-align: center;
+              width: 10%;
 
-        .pg_start {
-          background-image: url(../img/ico_pg_left.svg);
-        }
+              .txt_done {
+                display: inline-block;
+                padding: 4px 12px;
+                font-size: 13px;
+                font-weight: 500;
+                color: #007243;
+                background-color: #e8f5e9;
+                border-radius: 4px;
+              }
 
-        .pg_end {
-          background-image: url(../img/ico_pg_right.svg);
-        }
-      }
-
-      .bo_fx {
-        grid-column: 3;
-        margin: 0;
-      }
-
-      .btn_bo_user {
-        li:first-child {
-          display: none;
-        }
-
-        .btn_b01 {
-          background-color: var(--color-han-br);
-          color: #fff;
-          border-radius: 3px;
-          width: 120px;
-          height: 45px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          gap: 8px;
-
-          .sound_only {
-            position: initial;
-            width: initial;
-            height: initial;
-            overflow: visible !important;
+              .txt_rdy {
+                display: inline-block;
+                padding: 4px 12px;
+                font-size: 13px;
+                font-weight: 500;
+                color: #ff9800;
+                background-color: #fff3e0;
+                border-radius: 4px;
+              }
+            }
           }
         }
       }
     }
-  }
 
-  header {
-    position: initial;
-    padding: initial;
-    height: initial;
+    // 체크박스 스타일 (테이블 내부)
+    .check-box {
+      position: relative;
+      display: inline-block;
+      height: 20px;
+      vertical-align: middle;
+      input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+        pointer-events: none;
+      }
 
-    #bo_v_title {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 24px;
-      color: #000;
-
-      .bo_v_cate {
-        width: 58px;
-        height: 28px;
-        font-size: 14px;
-        font-weight: 500 !important;
-        border-radius: 3px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: var(--color-accent);
-        background: none;
+      label {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 2px solid #ddd;
+        border-radius: 4px;
+        background-color: #fff;
+        cursor: pointer;
+        transition: all 0.2s ease;
         position: relative;
-        overflow: hidden;
 
         &::after {
-          position: absolute;
           content: "";
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) scale(0);
+          width: 6px;
+          height: 10px;
+          border: solid #fff;
+          border-width: 0 2px 2px 0;
+          transform-origin: center;
+          transition: transform 0.2s ease;
+        }
+
+        span {
+          display: block;
           width: 100%;
           height: 100%;
-          background-color: var(--color-accent);
-          opacity: 0.08;
+        }
+      }
+
+      input[type="checkbox"]:checked + label,
+      label:has(input[type="checkbox"]:checked) {
+        background-color: var(--color-yellow, #ffc600);
+        border-color: var(--color-yellow, #ffc600);
+
+        &::after {
+          transform: translate(-50%, -60%) rotate(45deg) scale(1);
         }
       }
     }
   }
 
-  #bo_v_info h2 {
-    display: none;
-  }
+  // 페이지네이션
+  .pagination {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
 
-  #bo_v_top .bo_v_com {
-    > li {
-      &:nth-child(1),
-      &:nth-child(2) {
-        display: none;
+    a,
+    .pg_current {
+      min-width: 40px;
+      height: 40px;
+      padding: 0 12px;
+      border-radius: 6px;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 40px;
+      text-align: center;
+      border: 1px solid #e0e0e0;
+      background-color: #fff;
+      color: #333;
+    }
+
+    a {
+      text-decoration: none;
+      transition: background-color 0.2s ease, border-color 0.2s ease,
+        color 0.2s ease;
+
+      &:hover {
+        border-color: var(--color-yellow, #ffc600);
+        background-color: #fff7df;
+      }
+
+      &.prev,
+      &.next {
+        min-width: 72px;
+        padding: 0 14px;
       }
     }
 
-    .more_opt li {
-      width: 80px;
-
-      i {
-        margin-right: 4px;
-      }
-    }
-  }
-
-  #bo_v_atc h2 {
-    display: none;
-  }
-
-  .bo_v_nb li:hover {
-    background: none;
-  }
-
-  #bo_v_ans_form {
-    h2 {
-      display: flex;
+    .pg_current {
+      border-color: var(--color-yellow, #ffc600);
+      background-color: var(--color-yellow, #ffc600);
       color: #000;
-      overflow: visible;
-      position: initial;
-      font-size: 24px;
-      line-height: initial;
-      margin: 32px 0 16px;
+      font-weight: 700;
     }
 
-    .btn_cke_sc {
-      display: none;
-    }
+    @include mq(tablet-small, max) {
+      margin-top: 24px;
 
-    .btn_submit {
-      background-color: var(--color-han-br);
-      color: #fff;
+      a,
+      .pg_current {
+        min-width: 36px;
+        height: 36px;
+        line-height: 36px;
+        font-size: 14px;
+      }
+
+      a.prev,
+      a.next {
+        min-width: 64px;
+      }
     }
   }
 
-  #bo_w {
-    h2 {
-      display: flex;
+  // 글쓰기 버튼 영역
+  .btn-area {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  // 문의등록 버튼
+  .btn-write {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 44px;
+    padding: 0 18px;
+    border: 1px solid var(--color-primary, #1b7f63);
+    background-color: var(--color-primary, #1b7f63);
+    color: #fff;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease,
+      color 0.2s ease, transform 0.1s ease;
+
+    .fa {
+      font-size: 16px;
+    }
+
+    &:hover {
+      background-color: #0f5a44;
+      border-color: #0f5a44;
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--color-yellow, #ffc600);
+      outline-offset: 2px;
+    }
+  }
+
+  @include mq(tablet-small, max) {
+    .btn-area {
+      justify-content: center;
+    }
+
+    .btn-write {
+      width: 100%;
+      max-width: 320px;
+      height: 42px;
+      font-size: 14px;
+    }
+  }
+
+  legend{
+    display: inline-block;
+    @include textBlind;
+  }
+  .sound-only {
+    @include textBlind;
+  }
+  .search-box{
+    position: relative;
+    justify-self: flex-end;
+    width: 100%;
+    max-width: 320px;
+    gap: 8px;
+    @include flex(center, center);
+    
+   
+    
+  }
+  input{
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 0 16px;
+    height: 45px;
+    font-size: 20px;
+    color: #000;
+    border-radius: 3px;
+  }
+  .btn-submit{
+    background-color: #000;
+    gap: 4px;
+    width: 160px;
+    height: 45px;
+    padding: 0;
+    font-size: 20px;
+    color: #fff;
+    border-radius: 3px;
+    @include flex(center, center);
+  }
+
+  // FAQ 아코디언 스타일
+  .faq-list {
+    margin-top: 40px;
+    list-style: none;
+    padding: 0;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: center;
+    padding: 24px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin: 0;
+    position: relative;
+
+    &:hover {
+      background-color: #f8f8f8;
+    }
+
+    .tit_bg {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: var(--color-yellow, #ffd700);
       color: #000;
-      overflow: visible;
-      position: initial;
-      font-size: 24px;
-      line-height: initial;
-      margin-bottom: 16px;
+      font-weight: 700;
+      font-size: 18px;
+      border-radius: 50%;
+      margin-right: 16px;
+      flex-shrink: 0;
     }
 
-    .cke_sc {
-      display: none;
+    .faq-link {
+      flex: 1;
+      text-decoration: none;
+      color: #000;
+      font-size: 18px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      pointer-events: none; // 링크 클릭 방지 (부모 영역 클릭으로 동작)
+
+      &:hover {
+        color: var(--color-yellow, #ffd700);
+      }
     }
 
-    .write_div {
-      display: flex;
-      justify-content: flex-end;
-      gap: 8px;
+    .faq-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-left: 16px;
+      color: #666;
+      flex-shrink: 0;
+      pointer-events: none; // 아이콘 클릭 방지 (부모 영역 클릭으로 동작)
 
-      .btn {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: max-content;
-        height: 45px;
-        padding: 0 16px;
-        color: #000;
+      .fa {
+        font-size: 20px;
+        transition: transform 0.3s ease, color 0.3s ease;
+      }
+    }
+
+    // 활성화 상태
+    .faq-item.active & {
+      background-color: #f8f8f8;
+
+      .faq-link {
+        color: var(--color-yellow, #ffd700);
+        font-weight: 700;
       }
 
-      .btn_cancel {
-        background-color: #eee;
-      }
-
-      .btn_submit {
-        background-color: var(--color-han-gr);
-        color: #fff;
+      .faq-icon {
+        color: var(--color-yellow, #ffd700);
       }
     }
   }
 
-  .btn_submit:hover {
-    background-image: linear-gradient(120deg, #ffffff40 0%, #27241D00 80%) !important;
-    color: #fff !important;
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: #fafafa;
+  }
+
+  .faq-item.active .faq-answer {
+    max-height: 1000px; // 충분히 큰 값
+  }
+
+  .con_inner {
+    padding: 24px 20px 24px 76px; // 왼쪽 패딩은 Q 아이콘 너비 + 마진 고려
+    position: relative;
+
+    p {
+      margin: 0 0 16px 0;
+      line-height: 1.8;
+      color: #333;
+      font-size: 16px;
+    }
+
+    .closer_btn {
+      position: absolute;
+      top: 24px;
+      right: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      color: #666;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: var(--color-yellow, #ffd700);
+      }
+
+      &:focus {
+        outline: 2px solid var(--color-yellow, #ffd700);
+        outline-offset: 2px;
+      }
+
+      .fa {
+        font-size: 18px;
+      }
+    }
+  }
+
+  // 반응형 디자인
+  @include mq(tablet-small, max) {
+    .board-list {
+      table {
+        thead {
+          th {
+            padding: 12px 8px;
+            font-size: 14px;
+          }
+        }
+
+        tbody {
+          tr {
+            td {
+              padding: 12px 8px;
+              font-size: 14px;
+
+              &.td_subject {
+                padding-left: 12px;
+
+                .bo_cate_link {
+                  padding: 3px 8px;
+                  font-size: 12px;
+                  margin-right: 6px;
+                }
+              }
+
+              &.td_stat {
+                .txt_done,
+                .txt_rdy {
+                  padding: 3px 8px;
+                  font-size: 12px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .faq-question {
+      padding: 20px 16px;
+
+      .tit_bg {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+        margin-right: 12px;
+      }
+
+      .faq-link {
+        font-size: 16px;
+      }
+
+      .faq-icon {
+        margin-left: 12px;
+
+        .fa {
+          font-size: 18px;
+        }
+      }
+    }
+
+    .con_inner {
+      padding: 20px 16px 20px 64px;
+
+      p {
+        font-size: 15px;
+      }
+
+      .closer_btn {
+        top: 20px;
+        right: 16px;
+      }
+    }
   }
 }

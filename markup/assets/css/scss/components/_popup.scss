@@ -7,7 +7,7 @@
 // Variables
 // =======================================
 $popup-overlay-bg: #000000aa;
-$popup-border-color: #0e3c2e;
+$popup-border-color: #1A543D;
 $popup-shadow: 20px -20px 50px #000000cc;
 $popup-bg-gradient: linear-gradient(0deg, #ffffff00 0%, #eee7dd 100%), 
                     linear-gradient(90deg, #d4cbbd 0%, #d4cbbd 100%);
@@ -22,6 +22,28 @@ $popup-right: 86px;
 $popup-member-width: 1140px;
 $popup-member-min-height: 725px;
 $popup-privacy-height: 662px;
+$popup-mypage-width: 1300px;
+
+// Spacing
+$popup-padding-desktop: 80px 24px;
+$popup-padding-mobile: 40px 20px;
+$popup-header-padding-desktop: 120px 0 90px 48px;
+$popup-header-padding-mobile: 40px 24px;
+$popup-form-gap: 24px;
+$popup-form-gap-mobile: 16px;
+$popup-form-gap-terms: 32px;
+$popup-form-gap-terms-mobile: 20px;
+
+// Colors
+$popup-text-white: #fff;
+$popup-bg-white-alpha: #ffffffaa;
+$popup-bg-white-alpha-light: #ffffff55;
+$popup-bg-white-alpha-header: #ffffff80;
+$popup-border-alpha: #00000020;
+$popup-border-gray: #777;
+$popup-text-gray: #00000080;
+$popup-text-gray-light: #777;
+$popup-answer-bg: #ffdd0022;
 
 // =======================================
 // Mixins
@@ -39,7 +61,6 @@ $popup-privacy-height: 662px;
   background-size: contain;
 }
 
-// Common popup container styles
 @mixin popup-container-base {
   width: 100%;
   height: 100%;
@@ -52,7 +73,6 @@ $popup-privacy-height: 662px;
   background: $popup-bg-gradient;
 }
 
-// Reset popup container when nested
 @mixin popup-container-reset {
   position: static;
   top: auto;
@@ -63,6 +83,58 @@ $popup-privacy-height: 662px;
   background: transparent;
   width: 100%;
   height: 100%;
+}
+
+@mixin popup-body-base($justify: flex-start) {
+  width: 100%;
+  padding: $popup-padding-desktop;
+  flex-direction: column;
+  @include flex(center, $justify);
+
+  @include mq(desktop-small, max) {
+    padding: $popup-padding-mobile;
+  }
+}
+
+@mixin popup-form-base($justify: flex-start) {
+  width: 100%;
+  height: 100%;
+  max-width: 480px;
+  gap: $popup-form-gap;
+  flex-direction: column;
+  @include flex(center, $justify);
+
+  @include mq(desktop-small, max) {
+    max-width: 100%;
+    gap: $popup-form-gap-mobile;
+  }
+
+  &:has(.terms-wrap) {
+    gap: $popup-form-gap-terms;
+
+    @include mq(desktop-small, max) {
+      gap: $popup-form-gap-terms-mobile;
+    }
+  }
+}
+
+@mixin popup-close-button-mobile {
+  background: none;
+  filter: invert(99%) sepia(100%) saturate(2%) hue-rotate(82deg) brightness(106%) contrast(100%);
+  top: 16px;
+  right: 20px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+}
+
+@mixin popup-header-decorative-text($before-content, $after-content) {
+  &::before {
+    content: $before-content;
+  }
+  &::after {
+    content: $after-content;
+  }
 }
 
 // =======================================
@@ -123,14 +195,7 @@ $popup-privacy-height: 662px;
   // =======================================
   @include mq(tablet-small, max) {
     .btn-close {
-      background: none;
-      filter: invert(99%) sepia(100%) saturate(2%) hue-rotate(82deg) brightness(106%) contrast(100%);
-      top: 16px;
-      right: 20px;
-      width: 28px;
-      height: 28px;
-      padding: 0;
-
+      @include popup-close-button-mobile;
     }
   }
 
@@ -138,10 +203,208 @@ $popup-privacy-height: 662px;
   // Member Popup (회원가입/로그인)
   // =======================================
   &.member {
+    width: $popup-member-width;
+
+    .pop-body {
+      @include popup-body-base(flex-start);
+
+      .form-wrap,
+      form {
+        @include popup-form-base(flex-start);
+      }
+    }
+
+    // =======================================
+    // Table
+    // =======================================
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 20px;
+
+      th {
+        width: 25%;
+        text-align: left;
+        font-size: 18px;
+        font-weight: 600;
+        min-height: 42px;
+        vertical-align: top;
+        padding-top: 12px;
+      }
+    }
+  }
+  
+  // =======================================
+  // mypage Popup
+  // =======================================
+  &.mypage {
+    width: $popup-mypage-width;
+
+    .pop-body {
+      @include popup-body-base(center);
+
+      .form-wrap,
+      form {
+        @include popup-form-base(center);
+      }
+
+      .my-info {
+        flex-direction: column;
+        @include flex(flex-end, center);
+        
+        .name {
+          @include flex(center, flex-end);
+        }
+
+        .detail {
+          gap: $popup-form-gap;
+          @include flex(center, flex-end);
+
+          li {
+            padding: 0 48px;
+            text-align: right;
+            white-space: nowrap;
+          }
+        }
+      }
+    }
+
+    // =======================================
+    // Table Styles
+    // =======================================
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid $popup-border-alpha;
+
+      thead {
+        tr {
+          border-bottom: 1px solid #000;
+          background: $popup-bg-white-alpha-header;
+
+          th {
+            padding: 10px 0;
+            font-size: 18px;
+            text-align: center;
+            white-space: nowrap;
+          }
+        }
+      }
+
+      tbody {
+        tr {
+          border-bottom: 1px solid $popup-border-gray;
+          background: #ffffff33;
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+          td {
+            padding: 16px 0;
+            color: $popup-text-gray;
+            font-weight: 500;
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    // =======================================
+    // Pagination
+    // =======================================
+    .pagination {
+      gap: 40px;
+      font-size: 18px;
+      font-weight: 500;
+      @include flex(center, center);
+
+      &-list {
+        gap: 20px;
+        @include flex(center, center);
+
+        .on {
+          width: 30px;
+          height: 30px;
+          background-color: var(--color-primary);
+          border-radius: 50%;
+          @include flex(center, center);
+
+          a {
+            color: $popup-text-white;
+          }
+        }
+      }
+    }
+
+    // =======================================
+    // Q&A Table
+    // =======================================
+    .my_qna {
+      tbody {
+        tr {
+          td.td_name {
+            padding: 10px 8px;
+            color: #000;
+            text-align: left;
+          }
+
+          td.td_stat {
+            .txt_done {
+              color: #000;
+            }
+
+            .txt_rdy {
+              color: $popup-text-gray-light;
+            }
+          }
+
+          td {
+            .bo_cate_link {
+              float: none;
+              margin-right: 0;
+              background: transparent;
+              color: #000;
+              height: auto;
+              padding: 8px;
+              display: inline-block;
+              border-radius: 5px;
+              line-height: 10px;
+            }
+          }
+
+          &.answer {
+            background-color: $popup-answer-bg;
+
+            td {
+              em {
+                color: $popup-text-gray;
+                font-weight: 500;
+              }
+
+              &.tit {
+                a {
+                  display: flex;
+                  justify-content: left;
+                  align-items: center;
+                  gap: 8px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // =======================================
+  // mypage & member Popup (공통 스타일)
+  // =======================================
+  &.mypage,
+  &.member {
     position: absolute;
     top: $popup-top;
     right: $popup-right;
-    width: $popup-member-width;
     height: $popup-member-min-height;
 
     @include mq(desktop-small, max) {
@@ -152,35 +415,32 @@ $popup-privacy-height: 662px;
       top: auto;
       right: auto;
       overflow-y: auto;
-      
+
       .btn-close {
-        background: none;
-        filter: invert(99%) sepia(100%) saturate(2%) hue-rotate(82deg) brightness(106%) contrast(100%);
-        top: 16px;
-        right: 20px;
-        width: 28px;
-        height: 28px;
-        padding: 0;
-  
+        @include popup-close-button-mobile;
       }
+
       .popup-container {
         flex-direction: column;
       }
     }
 
+    // =======================================
+    // Popup Header
+    // =======================================
     .pop-header {
       position: relative;
       min-width: 420px;
       display: flex;
       flex-direction: column;
-      padding: 120px 0 90px 48px;
+      padding: $popup-header-padding-desktop;
       @include background-image-cover;
-      color: #ffffff;
+      color: $popup-text-white;
       gap: 38px;
 
       @include mq(desktop-small, max) {
         min-width: auto;
-        padding: 40px 24px;
+        padding: $popup-header-padding-mobile;
         gap: 20px;
         min-height: 160px;
         justify-content: center;
@@ -204,60 +464,48 @@ $popup-privacy-height: 662px;
         }
       }
 
-      &::after,
-      &::before {
+      &::before,
+      &::after {
         position: absolute;
         top: -40px;
-        right: 0;
         font-size: 180px;
         font-weight: 900;
-        color: #fff;
         white-space: nowrap;
         letter-spacing: -0.06em;
-        mix-blend-mode: overlay;
         opacity: 0.5;
+        color: $popup-text-white;
+        mix-blend-mode: overlay;
         z-index: 1;
       }
 
       &::before {
-        left: 407px;
+        right: 6px;
+      }
+
+      &::after {
+        left: 406px;
       }
     }
 
+    // =======================================
+    // Popup Body
+    // =======================================
     .pop-body {
       width: 100%;
-      padding: 80px 24px;
-      flex-direction: column;
-      @include flex(center, flex-start);
-
+      max-width: calc(100% - 420px);
+      @include popup-body-base(flex-start);
       @include mq(desktop-small, max) {
-        padding: 40px 20px;
+        max-width: 100%;
       }
-
       .form-wrap,
       form {
-        width: 100%;
-        height: 100%;
-        max-width: 480px;
-        gap: 24px;
-        flex-direction: column;
-        @include flex(center, flex-start);
-
-        @include mq(desktop-small, max) {
-          max-width: 100%;
-          gap: 16px;
-        }
-
-        &:has(.terms-wrap) {
-          gap: 32px;
-
-          @include mq(desktop-small, max) {
-            gap: 20px;
-          }
-        }
+        @include popup-form-base(flex-start);
       }
     }
 
+    // =======================================
+    // Form Elements
+    // =======================================
     // Input Fields
     input[type="text"],
     input[type="password"] {
@@ -286,6 +534,7 @@ $popup-privacy-height: 662px;
           background-image: url(../images/ico/ico_pw.svg);
         }
       }
+      
     }
 
     // Link Buttons
@@ -329,7 +578,7 @@ $popup-privacy-height: 662px;
         position: relative;
         cursor: pointer;
         border-bottom: 0;
-        background-color: #ffffffaa;
+        background-color: $popup-bg-white-alpha;
         box-shadow: inset 0px 0px 1px #00000022;
         padding: 0;
         display: inline-block;
@@ -353,10 +602,11 @@ $popup-privacy-height: 662px;
       font-size: 14px;
       text-align: left;
       box-sizing: border-box;
-      background-color: #ffffff55;
+      background-color: $popup-bg-white-alpha-light;
       overflow-y: auto;
     }
   }
+
 
   // =======================================
   // Privacy Popup
@@ -370,7 +620,8 @@ $popup-privacy-height: 662px;
     height: $popup-privacy-height;
     max-height: 700px;
     translate: -50% -50%;
-    @include mq(tablet-small, max) {  
+
+    @include mq(tablet-small, max) {
       width: 100%;
       height: var(--window-inner-height);
       max-height: var(--window-inner-height);
@@ -384,6 +635,7 @@ $popup-privacy-height: 662px;
       justify-content: center;
       width: 100%;
       @include background-image-cover;
+
       @include mq(tablet-small, max) {
         padding: 56px 16px 16px;
         gap: 16px;
@@ -416,12 +668,12 @@ $popup-privacy-height: 662px;
     }
 
     .tab-content {
-      color: #fff;
+      color: $popup-text-white;
+
       @include mq(tablet-small, max) {
         font-size: 16px;
       }
     }
-
   }
 }
 
@@ -430,8 +682,6 @@ $popup-privacy-height: 662px;
 // =======================================
 .popup-container {
   @include popup-container-base;
-
-
 
   // =======================================
   // Login Popup Variant
@@ -456,14 +706,18 @@ $popup-privacy-height: 662px;
     }
   }
 
-  &.search{
-      .hidden {
-        display: none;
-      }
-      .radio-wrap {
-        width: 100%;
-        @include flex(center, space-around);
-      }
+  // =======================================
+  // Search Popup Variant
+  // =======================================
+  &.search {
+    .hidden {
+      display: none;
+    }
+
+    .radio-wrap {
+      width: 100%;
+      @include flex(center, space-around);
+    }
   }
 
   // =======================================
@@ -482,19 +736,21 @@ $popup-privacy-height: 662px;
     }
   }
 
-  .btn-black {
-    min-width: 76px;
+  .btn-sm {
+    width: 74px;
     font-size: 16px;
     padding: 4px 8px;
-    height: 30px;
-    background: #000;
-    color: #fff;
+    height: 32px;
+    background: #1A543D;
+    color: $popup-text-white;
     border: none;
     border-radius: 2px;
     cursor: pointer;
     align-self: end;
     margin-bottom: 4px;
   }
+
+
 
   // =======================================
   // Text & Messages
@@ -513,24 +769,6 @@ $popup-privacy-height: 662px;
     text-align: right;
   }
 
-  // =======================================
-  // Table
-  // =======================================
-  table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0 20px;
-
-    th {
-      width: 25%;
-      text-align: left;
-      font-size: 18px;
-      font-weight: 600;
-      min-height: 42px;
-      vertical-align: top;
-      padding-top: 12px;
-    }
-  }
 
   // =======================================
   // Tabs
@@ -554,6 +792,7 @@ $popup-privacy-height: 662px;
       align-items: center;
       justify-content: center;
       cursor: pointer;
+
       &:not(.on):hover {
         background-color: #dbcbb4;
       }
@@ -561,7 +800,7 @@ $popup-privacy-height: 662px;
 
     .on {
       background-color: var(--color-primary);
-      color: #fff;
+      color: $popup-text-white;
     }
   }
 
@@ -586,25 +825,24 @@ $popup-privacy-height: 662px;
       display: block;
     }
   }
+
+
 }
 
 // =======================================
 // Popup Header Decorative Text
 // =======================================
 @include mq(desktop-small, min) {
-  .login .pop-header::after {
-    content: "Logi";
+  .login .pop-header {
+    @include popup-header-decorative-text("Logi", "n");
   }
 
-  .login .pop-header::before {
-    content: "n";
+  .join .pop-header {
+    @include popup-header-decorative-text("Sign u", "p");
   }
 
-  .join .pop-header::after {
-    content: "Sign u";
-  }
-
-  .join .pop-header::before {
-    content: "p";
+  .mypage .pop-header {
+    @include popup-header-decorative-text("My pa", "ge");
   }
 }
+
