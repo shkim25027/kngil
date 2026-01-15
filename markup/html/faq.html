@@ -22,24 +22,34 @@
         <section class="sub-content">
           <h3 class="sub-tit">자주하는 질문</h3>
           
-            <form name="faq_search_form" method="get">
+            <form name="faq_search_form" method="get" role="search" aria-label="FAQ 검색">
               <fieldset id="faq_sch" class="search-box">
                 <legend>FAQ 검색</legend>
                 <input type="hidden" name="fm_id" value="1">
                 <label for="stx" class="sound-only">검색어<strong> 필수</strong></label>
-                <input type="text" name="stx" value="" required="" id="stx" class="frm_input" size="15" maxlength="15">
-                <button type="submit" value="검색" class="btn-submit">
+                <input 
+                  type="text" 
+                  name="stx" 
+                  value="" 
+                  required="" 
+                  id="stx" 
+                  class="frm_input" 
+                  size="15" 
+                  maxlength="15"
+                  aria-required="true"
+                  placeholder="검색어를 입력하세요">
+                <button type="submit" value="검색" class="btn-submit" aria-label="FAQ 검색 실행">
                   <i class="fa fa-search" aria-hidden="true"></i> 검색
                 </button>
               </fieldset>
             </form>
     
-          <ol class="faq-list">
-            <li class="faq-item">
+          <ol class="faq-list" role="list">
+            <li class="faq-item" role="listitem">
               <h3 class="faq-question">
-                <span class="tit_bg">Q</span>
+                <span class="tit_bg" aria-hidden="true">Q</span>
                 <a href="#none" class="faq-link">탈퇴는 어떻게 하나요?</a>
-                <span class="faq-icon">
+                <span class="faq-icon" aria-hidden="true">
                   <i class="fa fa-plus" aria-hidden="true"></i>
                 </span>
               </h3>
@@ -152,78 +162,40 @@
       <!-- // 모든 팝업페이지 경로 -->
     </div>
     <script>
-      AOS.init();
+      // AOS 초기화
+      if (typeof AOS !== 'undefined') {
+        AOS.init();
+      }
       
-      const lenis = new Lenis()
-      lenis.on('scroll', (e) => {
-        // console.log(e)
-      })
-      lenis.on('scroll', ScrollTrigger.update)
-      gsap.ticker.add((time)=>{
-        lenis.raf(time * 1000)
-      })
-      gsap.ticker.lagSmoothing(0)
-
-      // FAQ 아코디언 기능
-      document.addEventListener('DOMContentLoaded', function() {
-        const faqItems = document.querySelectorAll('.faq-item');
-        
-        faqItems.forEach(function(item) {
-          const question = item.querySelector('.faq-question');
-          const icon = item.querySelector('.faq-icon .fa');
-          const answer = item.querySelector('.faq-answer');
-          
-          // 아코디언 토글 함수
-          function toggleAccordion() {
-            const isOpen = item.classList.contains('active');
-            
-            // 다른 항목들 닫기 (하나만 열리도록)
-            faqItems.forEach(function(otherItem) {
-              if (otherItem !== item) {
-                otherItem.classList.remove('active');
-                const otherAnswer = otherItem.querySelector('.faq-answer');
-                const otherIcon = otherItem.querySelector('.faq-icon .fa');
-                if (otherAnswer) {
-                  otherAnswer.style.maxHeight = null;
-                }
-                if (otherIcon) {
-                  otherIcon.classList.remove('fa-minus');
-                  otherIcon.classList.add('fa-plus');
-                }
-              }
-            });
-            
-            // 현재 항목 토글
-            if (isOpen) {
-              item.classList.remove('active');
-              if (answer) {
-                answer.style.maxHeight = null;
-              }
-              if (icon) {
-                icon.classList.remove('fa-minus');
-                icon.classList.add('fa-plus');
-              }
-            } else {
-              item.classList.add('active');
-              if (answer) {
-                answer.style.maxHeight = answer.scrollHeight + 'px';
-              }
-              if (icon) {
-                icon.classList.remove('fa-plus');
-                icon.classList.add('fa-minus');
-              }
-            }
-          }
-          
-          // faq-question 영역 전체 클릭 이벤트
-          if (question) {
-            question.addEventListener('click', function(e) {
-              e.preventDefault();
-              toggleAccordion();
-            });
-          }
+      // Lenis 초기화 (common.js의 LenisManager 사용)
+      if (typeof window.handleStartLenis === 'function') {
+        window.handleStartLenis();
+      } else if (typeof Lenis !== 'undefined') {
+        const lenis = new Lenis({
+          lerp: 0.1,
+          smoothWheel: true,
+          smoothTouch: false,
         });
-      });
+        
+        window.lenis = lenis;
+        
+        lenis.on('scroll', (e) => {
+          // console.log(e)
+        });
+        
+        if (typeof ScrollTrigger !== 'undefined') {
+          lenis.on('scroll', ScrollTrigger.update);
+        }
+        
+        if (typeof gsap !== 'undefined' && gsap.ticker) {
+          gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+          });
+          gsap.ticker.lagSmoothing(0);
+        }
+      }
     </script>
+    <!-- FAQ 아코디언 기능 -->
+    <script src="./assets/js/faq.js"></script>
   </body>
 </html>

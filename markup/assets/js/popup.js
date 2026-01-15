@@ -100,13 +100,33 @@
   // ============================================
   const EmailDomainController = {
     init() {
-      $(CONFIG.SELECTORS.domainList).on('change', function() {
-        const $customDomain = $(CONFIG.SELECTORS.customDomain);
+      // ID 기반 선택자 (기존 호환성)
+      $(document).on('change', CONFIG.SELECTORS.domainList, function() {
+        const $select = $(this);
+        const $selectBox = $select.closest('.select-box');
+        const $customDomain = $selectBox.find(CONFIG.SELECTORS.customDomain);
         
-        if ($(this).val() === 'type') {
-          $customDomain.show().focus();
+        if ($select.val() === 'type') {
+          // 직접입력 선택 시 d-none 클래스 제거
+          $customDomain.removeClass('d-none').focus();
         } else {
-          $customDomain.hide().val('');
+          // 다른 선택지 선택 시 d-none 클래스 추가 및 값 초기화
+          $customDomain.addClass('d-none').val('');
+        }
+      });
+      
+      // 클래스 기반 선택자 (.domain-list)
+      $(document).on('change', '.domain-list', function() {
+        const $select = $(this);
+        const $inputBox = $select.closest('.input-box');
+        const $customDomain = $inputBox.find('.domain-domain');
+        
+        if ($select.val() === 'type') {
+          // 직접입력 선택 시 d-none 클래스 제거
+          $customDomain.removeClass('d-none').focus();
+        } else {
+          // 다른 선택지 선택 시 d-none 클래스 추가 및 값 초기화
+          $customDomain.addClass('d-none').val('');
         }
       });
     }
@@ -301,29 +321,64 @@
       // 약관 동의 상태 업데이트
       this.updateJoinButton();
 
-      // 전체 동의 체크박스
+      // 전체 동의 체크박스 (기존 호환성)
       $(CONFIG.SELECTORS.checkboxWrap).find('input[type="checkbox"]').on('change', (e) => {
         const isChecked = $(e.target).is(':checked');
         $(CONFIG.SELECTORS.termsWrap).find('input[type="checkbox"]').prop('checked', isChecked);
         this.updateJoinButton();
       });
 
+      // .chk-all 클래스를 가진 체크박스 (전체 동의)
+      $(document).on('change click', '.chk-all', function(e) {
+        e.stopPropagation(); // 이벤트 전파 중지
+        const $chkAll = $(this);
+        const isChecked = $chkAll.is(':checked');
+        const $termsWrap = $chkAll.closest('.terms-wrap');
+        
+        // .chk-all을 제외한 모든 체크박스 선택/해제
+        $termsWrap.find('input[type="checkbox"]:not(.chk-all)').prop('checked', isChecked);
+        
+        // updateJoinButton 호출 시 무한 루프 방지를 위해 플래그 설정
+        TermsAgreementController._updatingFromChkAll = true;
+        TermsAgreementController.updateJoinButton();
+        TermsAgreementController._updatingFromChkAll = false;
+      });
+
       // 개별 체크박스
       $(CONFIG.SELECTORS.termsWrap).find('input[type="checkbox"]').on('change', () => {
+        this.updateJoinButton();
+      });
+
+      // .terms-wrap 내의 개별 체크박스 (chk-all 제외)
+      $(document).on('change', '.terms-wrap input[type="checkbox"]:not(.chk-all)', () => {
         this.updateJoinButton();
       });
     },
 
     updateJoinButton() {
-      const $checkboxes = $(CONFIG.SELECTORS.termsWrap).find('input[type="checkbox"]');
-      const $checked = $checkboxes.filter(':checked');
-      const allChecked = $checkboxes.length === $checked.length;
-      const $joinBtnWrap = $(CONFIG.SELECTORS.joinBtnWrap);
+      // .terms-wrap 내의 모든 체크박스 확인 (chk-all 제외)
+      const $allTermsWraps = $('.terms-wrap');
+      let allChecked = true;
 
-      // 전체 동의 체크박스 상태 업데이트
+      $allTermsWraps.each(function() {
+        const $checkboxes = $(this).find('input[type="checkbox"]:not(.chk-all)');
+        const $checked = $checkboxes.filter(':checked');
+        if ($checkboxes.length > 0 && $checkboxes.length !== $checked.length) {
+          allChecked = false;
+          return false; // break
+        }
+      });
+
+      // .chk-all 체크박스 상태 업데이트 (무한 루프 방지)
+      if (!TermsAgreementController._updatingFromChkAll) {
+        $('.chk-all').prop('checked', allChecked);
+      }
+
+      // 전체 동의 체크박스 상태 업데이트 (기존 호환성)
       $(CONFIG.SELECTORS.checkboxWrap).find('input[type="checkbox"]').prop('checked', allChecked);
 
       // 버튼 상태 업데이트
+      const $joinBtnWrap = $(CONFIG.SELECTORS.joinBtnWrap);
       if (allChecked) {
         $joinBtnWrap.removeClass(CONFIG.CLASSES.none);
         $joinBtnWrap.find('button').prop('disabled', false);
@@ -391,6 +446,46 @@
     },
 
     /**
+     * 슬라이딩 인디케이터 위치 업데이트 (round 타입 탭 메뉴용)
+     * @param {jQuery} $tabMenu - 탭 메뉴 요소
+     * @param {jQuery} $activeTab - 활성화된 탭 요소
+     */
+    updateSliderPosition($tabMenu, $activeTab) {
+      // round 클래스가 있는 경우에만 처리
+      if (!$tabMenu.hasClass('round')) {
+        return;
+      }
+      
+      const $tabs = $tabMenu.find('li');
+      const activeIndex = $tabs.index($activeTab);
+      const tabCount = $tabs.length;
+      
+      if (tabCount === 0) return;
+      
+      // 탭 메뉴의 실제 너비와 패딩 확인
+      const tabMenuWidth = $tabMenu.width();
+      const padding = 0; // padding: 4px
+      const gap = 4; // gap: 4px
+      
+      // 사용 가능한 너비 (패딩 제외)
+      const availableWidth = tabMenuWidth - (padding * 2);
+      
+      // 각 탭의 너비 계산 (gap 포함)
+      // gap은 탭 사이에만 있으므로, 탭 개수 - 1개의 gap이 있음
+      const totalGapWidth = gap * (tabCount - 1);
+      const tabWidth = (availableWidth - totalGapWidth) / tabCount;
+      
+      // 인디케이터 위치 계산 (패딩 + 탭 너비 * 인덱스 + gap * 인덱스)
+      const indicatorPosition = padding + (tabWidth + gap) * activeIndex;
+      
+      // CSS 변수로 위치 설정 (픽셀 단위)
+      $tabMenu[0].style.setProperty('--tab-indicator-position', `${indicatorPosition}px`);
+      
+      // 인디케이터 너비도 동적으로 설정
+      $tabMenu[0].style.setProperty('--tab-indicator-width', `${tabWidth}px`);
+    },
+
+    /**
      * 탭 전환 처리
      * @param {jQuery} $clickedTab - 클릭된 탭 요소
      */
@@ -407,6 +502,9 @@
       
       // 클릭된 탭에 on 클래스 추가
       $clickedTab.addClass(CONFIG.CLASSES.on);
+      
+      // 슬라이딩 인디케이터 위치 업데이트 (round 타입인 경우)
+      this.updateSliderPosition($tabMenu, $clickedTab);
       
       // 모든 콘텐츠 숨기기
       $allContents.removeClass(CONFIG.CLASSES.show);
@@ -444,6 +542,16 @@
           const $firstTab = $tabs.first();
           $firstTab.addClass(CONFIG.CLASSES.on);
           TabController.switchTab($firstTab);
+        }
+        
+        // 리사이즈 시 인디케이터 위치 재계산
+        if ($tabMenu.hasClass('round')) {
+          $(window).on('resize.tabSlider', function() {
+            const $active = $tabMenu.find('li.' + CONFIG.CLASSES.on);
+            if ($active.length) {
+              TabController.updateSliderPosition($tabMenu, $active);
+            }
+          });
         }
       });
     },

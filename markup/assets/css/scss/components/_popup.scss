@@ -20,8 +20,8 @@ $popup-right: 86px;
 
 // Popup sizes
 $popup-member-width: 1140px;
-$popup-member-min-height: 725px;
-$popup-privacy-height: 662px;
+$popup-member-min-height: 805px;
+$popup-privacy-height: 662px; 
 $popup-mypage-width: 1300px;
 
 // Spacing
@@ -109,7 +109,7 @@ $popup-answer-bg: #ffdd0022;
     gap: $popup-form-gap-mobile;
   }
 
-  &:has(.terms-wrap) {
+  &:has(.terms-area) {
     gap: $popup-form-gap-terms;
 
     @include mq(desktop-small, max) {
@@ -214,24 +214,7 @@ $popup-answer-bg: #ffdd0022;
       }
     }
 
-    // =======================================
-    // Table
-    // =======================================
-    table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0 20px;
 
-      th {
-        width: 25%;
-        text-align: left;
-        font-size: 18px;
-        font-weight: 600;
-        min-height: 42px;
-        vertical-align: top;
-        padding-top: 12px;
-      }
-    }
   }
   
   // =======================================
@@ -249,62 +232,202 @@ $popup-answer-bg: #ffdd0022;
       }
 
       .my-info {
+        width: 100%; 
         flex-direction: column;
+        gap: 32px;
         @include flex(flex-end, center);
         
         .name {
+          gap: 8px;
+          font-size: 28px;
           @include flex(center, flex-end);
+          .user-id {
+            color: #777;
+          }
+          .btn-sm {
+            min-width: 94px;
+            width: 94px;
+            font-size: 14px;
+            border-radius: 4px;
+          }
         }
 
         .detail {
-          gap: $popup-form-gap;
+          width: 100%;
           @include flex(center, flex-end);
-
           li {
-            padding: 0 48px;
-            text-align: right;
-            white-space: nowrap;
+            width: 100% ;
+            padding: 0 24px;
+            &:not(:last-child) {
+              border-right: 1px solid rgba(0, 0, 0, 0.1);
+            }
+
+            h5 {
+              font-size: 18px;
+              font-weight: 500;
+              color: #000;
+              margin-bottom: 16px;
+              @include flex(center, flex-start);
+              gap: 8px;
+              i {
+                width: 22px;
+                height: 22px;
+                @include icon-background;
+                &.tel {
+                  background-image: url(../images/ico/ico_tel.svg);
+                }
+                &.company {
+                  background-image: url(../images/ico/ico_company.svg);
+                }
+                &.usage {
+                  background-image: url(../images/ico/ico_usage.svg);
+                }
+              }
+            }
           }
+          p {
+            font-size: 16px;
+            font-weight: 400;
+            color: #000;
+            &:not(:last-child) {
+              margin-bottom: 8px;
+            }
+            span {
+              margin-right: 16px;
+              color: #777; 
+            }
+            em {
+              font-size: 16px;
+              font-weight: 700;
+              color: #1A543D;
+            } 
+          }
+        }
+      }
+      .contents-wrap {
+        max-width: 100%;
+        margin-top: 50px;
+        flex-direction: column;
+        @include flex(flex-start, flex-start);
+        .tab-menu {
+          width: max-content;
+          border: none;
+          min-height: 50px;
+          border: none;
+          background:none;
+          gap: 0;
+          li {
+            width: 140px;
+            border-radius: 4px 4px 0  0;
+            border-radius: 4px 4px 0 0;
+            background: linear-gradient(86deg, rgba(87, 73, 49, 0.60) 0.47%, rgba(87, 73, 49, 0.30) 99.22%), #DFC6AD;
+            color: #fff;
+            font-weight: 700;
+            &.on {
+              color: #A55500;
+              border-top: 2px solid #A55500;
+              background: linear-gradient(180deg, rgba(165, 85, 0, 0.10) 0%, rgba(165, 85, 0, 0.00) 50%), rgba(255, 255, 255, 0.40);
+            }
+            span {
+              font-size: 16px;
+            }
+          }
+        } 
+        .tab-content  {
+          padding: 0;
+          .board-list {
+            flex-direction: column;
+            gap: 32px;
+            height:395px;
+            border-radius: 0 6px 0 0;
+            overflow: hidden;
+            @include flex(center, space-between);
+          }
+          table {
+            border: none;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.20);
+            thead {
+              tr {
+                border-radius: 0 6px 0 0;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.20);
+                
+                background: rgba(255, 255, 255, 0.40);
+                th {
+                  width: auto;
+                  font-size: 14px;
+                  font-weight: 400;
+                  color: #000;
+                  height: 52px;
+                  vertical-align: middle;
+                }
+              }
+            }
+            tbody {
+              tr{
+                background: none;
+              td {
+                padding: 16px 0;
+                color: rgba(0, 0, 0);
+                font-weight: 500;
+                text-align: center;
+                font-size: 14px;
+                height: 56px;
+                vertical-align: middle;
+                &.tit {
+                  text-align: left;
+                }
+              }
+            } 
+          }
+            
+          } 
         }
       }
     }
 
+    .edit {
+      .btn-wrap {
+        margin-top: 24px;
+      }
+    }
     // =======================================
     // Table Styles
     // =======================================
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      border: 1px solid $popup-border-alpha;
-
-      thead {
-        tr {
-          border-bottom: 1px solid #000;
-          background: $popup-bg-white-alpha-header;
-
-          th {
-            padding: 10px 0;
-            font-size: 18px;
-            text-align: center;
-            white-space: nowrap;
+    .board-list{
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 1px solid $popup-border-alpha;
+  
+        thead {
+          tr {
+            border-bottom: 1px solid #000;
+            background: $popup-bg-white-alpha-header;
+  
+            th {
+              padding: 10px 0;
+              font-size: 18px;
+              text-align: center;
+              white-space: nowrap;
+            }
           }
         }
-      }
-
-      tbody {
-        tr {
-          border-bottom: 1px solid $popup-border-gray;
-          background: #ffffff33;
-
-          &:last-child {
-            border-bottom: none;
-          }
-
-          td {
-            padding: 16px 0;
-            color: $popup-text-gray;
-            font-weight: 500;
-            text-align: center;
+  
+        tbody {
+          tr {
+            border-bottom: 1px solid $popup-border-gray;
+            background: #ffffff33;
+  
+            &:last-child {
+              border-bottom: none;
+            }
+  
+            td {
+              padding: 16px 0;
+              color: $popup-text-gray;
+              font-weight: 500;
+              text-align: center;
+            }
           }
         }
       }
@@ -314,10 +437,35 @@ $popup-answer-bg: #ffdd0022;
     // Pagination
     // =======================================
     .pagination {
-      gap: 40px;
+      gap: 30px;
       font-size: 18px;
       font-weight: 500;
       @include flex(center, center);
+
+      .btn-prev,
+      .btn-next {
+        width: 24px;
+        height: 24px;
+        border: none;
+        background: transparent;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        cursor: pointer;
+        padding: 0;
+        color: #000;
+        font-size: 0;
+        text-indent: -9999px;
+        overflow: hidden;
+      }
+
+      .btn-prev {
+        background-image: url(../images/ico/ico_arrow_page_left.svg);
+      }
+
+      .btn-next {
+        background-image: url(../images/ico/ico_arrow_page_right.svg);
+      }
 
       &-list {
         gap: 20px;
@@ -326,13 +474,17 @@ $popup-answer-bg: #ffdd0022;
         .on {
           width: 30px;
           height: 30px;
-          background-color: var(--color-primary);
+          background-color: #000;
           border-radius: 50%;
           @include flex(center, center);
 
           a {
             color: $popup-text-white;
           }
+        }
+
+        a {
+          color: #000;
         }
       }
     }
@@ -446,24 +598,6 @@ $popup-answer-bg: #ffdd0022;
         justify-content: center;
       }
 
-      h2 {
-        font-size: 80px;
-        font-weight: 900;
-
-        @include mq(desktop-small, max) {
-          font-size: 34px;
-          text-align: center;
-        }
-      }
-
-      p {
-        font-size: 20px;
-
-        @include mq(desktop-small, max) {
-          font-size: 16px;
-        }
-      }
-
       &::before,
       &::after {
         position: absolute;
@@ -484,6 +618,39 @@ $popup-answer-bg: #ffdd0022;
 
       &::after {
         left: 406px;
+      }
+
+      h2 {
+        font-size: 80px;
+        font-weight: 900;
+
+        @include mq(desktop-small, max) {
+          font-size: 34px;
+          text-align: center;
+        }
+      }
+
+      p {
+        font-size: 20px;
+
+        @include mq(desktop-small, max) {
+          font-size: 16px;
+          text-align: center;
+          text-wrap: balance;
+          word-break: keep-all;
+        }
+        @include mq(phone-wide, max) {
+          display: none;
+        }
+      }
+
+      br {
+        &.pc-only {
+          display: block;
+          @include mq(desktop-small, max) {
+            display: none;
+          }
+        }
       }
     }
 
@@ -507,13 +674,20 @@ $popup-answer-bg: #ffdd0022;
     // Form Elements
     // =======================================
     // Input Fields
+    select,
     input[type="text"],
-    input[type="password"] {
+    input[type="password"],
+    input[type="tel"] {
       width: 100%;
       height: 48px;
+      font-size: 18px;
       border-bottom: 1px solid #000;
     }
-
+    .select-box {
+      width: 100%;
+      @include flex(center, flex-start);
+      gap: 8px;
+    }
     .input-box {
       width: 100%;
       @include flex(center, flex-start);
@@ -533,8 +707,31 @@ $popup-answer-bg: #ffdd0022;
         &.pw {
           background-image: url(../images/ico/ico_pw.svg);
         }
+
+        &.phone {
+          background-image: url(../images/ico/ico_phone.svg);
+        }
       }
-      
+
+      // .input-box.group 스타일
+      &.group {
+        border-bottom: 1px solid #000;
+
+        input {
+          border-bottom: none;
+          flex: 1;
+        }
+
+        // input에 포커스가 있을 때 보더 표시
+        &:focus-within {
+          border-color: #000;
+        }
+
+        // input에 값이 있을 때 보더 표시 (JavaScript로 클래스 추가 필요)
+        &.has-value {
+          border-color: #000;
+        }
+      }
     }
 
     // Link Buttons
@@ -543,7 +740,7 @@ $popup-answer-bg: #ffdd0022;
       a {
         color: var(--text-body);
         font-size: 18px;
-        font-weight: 600;
+        font-weight: 700;
         gap: 8px;
         @include flex(center, center);
       }
@@ -577,8 +774,8 @@ $popup-answer-bg: #ffdd0022;
         border-radius: 2px;
         position: relative;
         cursor: pointer;
-        border-bottom: 0;
-        background-color: $popup-bg-white-alpha;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        background-color: $popup-bg-white-alpha; 
         box-shadow: inset 0px 0px 1px #00000022;
         padding: 0;
         display: inline-block;
@@ -589,6 +786,15 @@ $popup-answer-bg: #ffdd0022;
           background-color: var(--color-green);
           box-shadow: inset 0px 0px 1px #00000022;
         }
+
+        // .chk-all 클래스가 있는 체크박스 배경색
+        &.chk-all {
+          background-color: #f7e4e8;
+
+          &:checked {
+            background-color: var(--color-green);
+          }
+        }
       }
     }
 
@@ -597,16 +803,16 @@ $popup-answer-bg: #ffdd0022;
       width: 100%;
       height: 128px;
       border-radius: 4px;
-      padding: 8px 16px;
+      padding: 10px 16px;
       margin-top: 8px;
       font-size: 14px;
       text-align: left;
       box-sizing: border-box;
+      border: 1px solid rgba(0, 0, 0, 0.2);
       background-color: $popup-bg-white-alpha-light;
       overflow-y: auto;
     }
   }
-
 
   // =======================================
   // Privacy Popup
@@ -694,6 +900,8 @@ $popup-answer-bg: #ffdd0022;
 
       .input-box {
         gap: 16px;
+        height: 80px;
+        padding: 16px 0;
         border-bottom: 1px solid #000;
       }
 
@@ -701,42 +909,184 @@ $popup-answer-bg: #ffdd0022;
       input[type="tel"],
       input[type="password"] {
         padding: 0 16px;
+        font-size: 24px;
         border-bottom: none;
       }
     }
+    .tab-content {
+      padding: 40px 0;
+    }
+  }
+
+  // =======================================
+  // Join Popup Variant
+  // =======================================
+  &.join {
+    // Join popup specific styles
   }
 
   // =======================================
   // Search Popup Variant
   // =======================================
   &.search {
+    .pop-header {
+      .tit {
+        font-size: 67px;
+      }
+    }
     .hidden {
       display: none;
     }
 
     .radio-wrap {
       width: 100%;
-      @include flex(center, space-around);
+      padding: 0 8px;
+      @include flex(center, flex-start);
+      gap: 48px;
+      margin-bottom: 24px;
+
+      label {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 18px;
+        font-weight: 500;
+        color: #333;
+        cursor: pointer;
+        user-select: none;
+
+        input[type="radio"] {
+          appearance: none;
+          -webkit-appearance: none;
+          -moz-appearance: none;
+          width: 29px;
+          height: 29px;
+          margin: 0;
+          padding: 0;
+          border: 2px solid #C5C5C5;
+          border-radius: 50%;
+          background: transparent;
+          position: relative;
+          cursor: pointer;
+          flex-shrink: 0;
+          transition: all 0.2s ease;
+
+          // 내부 원 (체크된 상태)
+          &::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #00832A;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+          }
+
+          // 체크된 상태
+          &:checked {
+            border-color: #00832A;
+            
+            &::after {
+              opacity: 1;
+            }
+          }
+
+          // 호버 효과
+          &:hover {
+            border-color: #00832A;
+            
+            &::after {
+              background: #00832A;
+            }
+          }
+
+        }
+
+        // 활성화된 라디오 버튼 (.on 클래스가 있는 경우)
+        input[type="radio"].on {
+          border-color: #00832A;
+          
+          &::after {
+            opacity: 1;
+          }
+        }
+      }
     }
+    
   }
 
   // =======================================
+  // Common Elements
+  // =======================================
+  .contents-wrap {
+    width: 100%;
+    max-width: 480px;
+    margin-top: 92px;   
+    flex-grow: 1;
+  }
+  // Center Wrap
+  .center-wrap {
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    gap: 32px;
+    @include flex(center, center);
+
+  }
+  .terms-wrap {
+    gap: 32px;
+    flex-direction: column;
+    height: 100%;
+    @include flex(center, center);
+  }
+
+      // =======================================
+    // Table
+    // =======================================
+    table {
+      width: 100%;
+      border-collapse: separate;
+
+      tr:not(:last-child) {
+        th,
+        td {
+          padding-bottom: 24px;
+        }
+      }
+      th {
+        width: 25%;
+        text-align: left;
+        font-size: 18px;
+        font-weight: 500;
+        vertical-align: top;
+        padding-top: 12px;
+      }
+    }
+  // =======================================
   // Buttons
   // =======================================
+  .btn-wrap {
+    margin-top: 16px;
+    gap: 8px;
+  }
   .btn-full {
     font-size: 24px;
     font-weight: 700;
     height: 80px;
-    background: linear-gradient(90deg, #53472e 0%, #3b3123 100%),
-                 linear-gradient(180deg, #886d35 0%, #423625 9%, #f3dba8 26%, #0e0b06 84%, #574b30 100%);
+    background: linear-gradient(92deg, rgba(255, 234, 198, 0.40) 0%, rgba(255, 255, 255, 0.00) 100%), #856120;
+    backdrop-filter: blur(5px);
 
     &:hover {
-      background: linear-gradient(90deg, #8e7339 0%, #a57839 100%),
-                   linear-gradient(90deg, #886d35 0%, #423625 9%, #f3dba8 26%, #0e0b06 84%, #574b30 100%);
+      background: linear-gradient(92deg, rgba(0, 144, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), #1A543D;
     }
   }
 
   .btn-sm {
+    min-width: 74px;
     width: 74px;
     font-size: 16px;
     padding: 4px 8px;
@@ -749,9 +1099,23 @@ $popup-answer-bg: #ffdd0022;
     align-self: end;
     margin-bottom: 4px;
   }
+  .btn-cancel{
+    min-width: 120px;
+    height: 80px;
+    font-size: 24px;
+    color: #fff;
+    border-radius: 4px;
+    background: #999;    
+    backdrop-filter: blur(5px);
+  }
 
-
-
+  .sign-out {
+    color: #766C5A;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: right;
+    margin-top: 20px;
+  }
   // =======================================
   // Text & Messages
   // =======================================
@@ -763,12 +1127,15 @@ $popup-answer-bg: #ffdd0022;
     font-size: 12px;
     color: var(--text-accent);
     margin-bottom: 16px;
+    &.txt-right {
+      display: block;
+      text-align: right;
+    }
   }
 
   .tbl-wrap > .info-msg {
     text-align: right;
   }
-
 
   // =======================================
   // Tabs
@@ -776,13 +1143,52 @@ $popup-answer-bg: #ffdd0022;
   .tab-menu {
     width: 100%;
     min-height: 67px;
-    padding: 4px;
-    border-radius: 4px;
-    border-top-right-radius: 0;
+    border-radius: 6px;
+    border: 2px solid #FFF;
     box-sizing: border-box;
-    background-color: #eee7dd;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.25) 100%);
     display: flex;
     gap: 4px;
+    &.round {
+      padding: 0;
+      border-radius: 50px;
+      border: 1px solid rgba(176, 176, 176, 0.50);
+      overflow: hidden;
+      position: relative;
+      
+      // 슬라이딩 배경 인디케이터
+      &::before {
+        content: ' ';
+        position: absolute;
+        top: 0px;
+        left: 0%;
+        width: 50%;
+        height: 100%;
+        border-radius: 50px;
+        background: linear-gradient(92deg, rgba(0, 144, 255, 0.20) 0%, rgba(255, 255, 255, 0.00) 100%), #1A543D;
+        background-blend-mode: plus-lighter, normal;
+        backdrop-filter: blur(5px);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 0;
+        pointer-events: none;
+        // CSS 변수를 사용하여 위치 제어 (JavaScript로 동적 설정)
+        transform: translateX(var(--tab-indicator-position, 0));
+      }
+      
+      li {
+        border-radius: inherit;
+        position: relative;
+        z-index: 1;
+        color: #7A7A7A;
+        transition: color 0.3s ease;
+        
+        // 활성화된 탭의 배경 제거 (인디케이터가 대신 처리)
+        &.on {
+          background: transparent;
+          color: #fff;
+        }
+      }
+    }
 
     li {
       position: relative;
@@ -792,14 +1198,14 @@ $popup-answer-bg: #ffdd0022;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-
+      color: #7A7A7A;
       &:not(.on):hover {
         background-color: #dbcbb4;
       }
     }
 
     .on {
-      background-color: var(--color-primary);
+      background-color: #1A543D;
       color: $popup-text-white;
     }
   }
@@ -810,7 +1216,7 @@ $popup-answer-bg: #ffdd0022;
     width: 100%;
     flex-grow: 1;
     border-radius: 4px;
-    padding: 40px;
+    padding: 40px 0;
     font-size: 16px;
     text-align: left;
     box-sizing: border-box;
@@ -824,9 +1230,25 @@ $popup-answer-bg: #ffdd0022;
     &.show {
       display: block;
     }
+    
+    .inquiry {
+      font-size: 14px;
+      color: #555;
+    }
+    
+    .info-box {
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.40);
+      width: 100%;
+      padding: 16px 10px;
+      @include flex(center, center);
+      gap: 10px;      
+      p {
+        text-align: center;
+        word-break: keep-all;
+      }
+    }
   }
-
-
 }
 
 // =======================================
@@ -844,5 +1266,7 @@ $popup-answer-bg: #ffdd0022;
   .mypage .pop-header {
     @include popup-header-decorative-text("My pa", "ge");
   }
+  .search .pop-header {
+    @include popup-header-decorative-text("ID/P", "W");
+  }
 }
-

@@ -19,110 +19,166 @@
             <!-- //pop_header -->
             <!-- pop_body -->
             <div class="pop-body">
+                <div class="my-info">
+                    <div class="name">
+                        <span><em>이지빔</em>님<span class="user-id">(A1122)</span></span>
+                        <button class="btn-sm" onclick="javascript:mypage03();">내 정보 수정</button>
+                    </div>
+                    <ul class="detail">
+                        <li>
+                            <h5><i class="tel"></i>연락처</h5>                            
+                            <p>010-1234-5678</p>
+                            <p>abcdefg1234523@naver.com</p>
+                        </li>
+                        <li>
+                            <h5><i class="company"></i>회사정보</h5>
+                            <p>(주) 바론컨설턴트</p>
+                            <p>도시계획 1부</p>
+                        </li>
+                        <li>
+                            <h5><i class="usage"></i>사용량 (단위:m2)</h5>
+                            <p><span>누적</span><em>42,000</em></p>
+                            <p><span>당년</span><em>1,200</em></p>
+                        </li>
+                    </ul>
+                </div>
                 <div class="contents-wrap">
-                    <div class="my-info">
-                        <div class="name">
-                            <h4>이지빔님<span>(A1122)</span></h4>
-                            <button onclick="javascript:mypage03();">내 정보 수정</button>
+                    <ul class="tab-menu">
+                        <li class="tab-history on"><span>서비스 사용이력</span></li>
+                        <li class="tab-qna"><span>Q&A 내역</span></li>
+                    </ul>
+                    <div class="tab-content history show">
+                        <div class="board-list">
+                            <table>
+                                <colgroup>
+                                    <col style="width: 10%;">
+                                    <col style="width: auto;">
+                                    <col style="width: 15%;">
+                                    <col style="width: 15%;">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th>번호</th>
+                                        <th>서비스 구분</th>
+                                        <th>등록일</th>
+                                        <th><em>사용량</em>(단위:m2)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td class="tit"><a href="">서비스 01</a></td>
+                                        <td>24-06-22</td>
+                                        <td><em>300</em></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td class="tit"><a href="">서비스 01</a></td>
+                                        <td>24-06-23</td>
+                                        <td><em>400</em></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td class="tit"><a href="">서비스 01</a></td>
+                                        <td>24-06-23</td>
+                                        <td><em>300</em></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td class="tit"><a href="">서비스 01</a></td>
+                                        <td>24-06-23</td>
+                                        <td><em>200</em></td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td class="tit"><a href="">서비스 01</a></td>
+                                        <td>24-06-23</td>
+                                        <td><em>400</em></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pagination">
+                                <button type="button" class="btn-prev"></button>
+                                <ul class="pagination-list">
+                                    <li class="on"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                </ul>
+                                <button type="button" class="btn-next"></button>
+                            </div>
                         </div>
-                        <ul class="detail">
-                            <!-- 라이센스 구매이력 부분 -->
-                            <li class="license"></li>
-                            <li>
-                                <div><i class="phone"></i>휴대전화번호</div>
-                                <span>010-1234-5678</span>
-                            </li>
-                            <li>
-                                <div><i class="email"></i>이메일</div>
-                                <span>A1122@naver.com</span>
-                            </li>
-                            <li>
-                                <div><i class="company"></i>회사정보</div>
-                                <span>(주)BBB XXX부</span>
-                            </li>
-                        </ul>
                     </div>
-                    <div class="my-qna">
-                        <h4>내 문의</h4>
-                        <table>
-                            <colgroup>
-                                <col span="1" style="width: 7%;">
-                                <col span="1" style="width: 10%;">  
-                                <col span="1" style="width: auto;">
-                                <col span="1" style="width: 10%;">
-                                <col span="1" style="width: 10%;">
-                                <col span="1" style="width: 10%;">
-                            </colgroup>
-                            <thead>
-                                <tr>
-                                    <th class="col-num">번호</th>
-                                    <th class="col-category">구분</th>
-                                    <th class="col-title">제목</th>
-                                    <th class="col-author">글쓴이</th>
-                                    <th class="col-date">날짜</th>
-                                    <th class="col-view">조회</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>11</td>
-                                    <td>사용</td>
-                                    <td class="tit"><a href="">C기능 사용 방법 문의 <em>[1]</em></a></td>
-                                    <td>이지빔</td>
-                                    <td>24-06-22</td>
-                                    <td>31</td>
-                                </tr>
-                                <tr>
-                                    <td>12</td>
-                                    <td>사용</td>
-                                    <td class="tit"><a href="">C기능 사용 방법 문의 <em>[1]</em></a></td>
-                                    <td>이지빔</td>
-                                    <td>24-06-23</td>
-                                    <td>32</td>
-                                </tr>
-                                <tr>
-                                    <td>13</td>
-                                    <td>사용</td>
-                                    <td class="tit"><a href="">C기능 사용 방법 문의 <em>[1]</em></a></td>
-                                    <td>이지빔</td>
-                                    <td>24-06-24</td>
-                                    <td>33</td>
-                                </tr>
-                                <tr class="answer">
-                                    <td></td>
-                                    <td></td>
-                                    <td class="tit">
-                                        <a href="">
-                                            <i class="answer"></i><em>답글</em>
-                                            <span>C기능 사용 방법 문의C기능 사용 방법</span>
-                                            <i class="lock"></i>
-                                        </a>
-                                    </td>
-                                    <td>관리자</td>
-                                    <td>24-06-24</td>
-                                    <td>33</td>
-                                </tr>
-                                <tr>
-                                    <td>13</td>
-                                    <td>사용</td>
-                                    <td class="tit"><a href="">C기능 사용 방법 문의 <em>[1]</em></a></td>
-                                    <td>이지빔</td>
-                                    <td>24-06-24</td>
-                                    <td>33</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="pagination">
-                        <button type="button" class="btn-prev"></button>
-                        <ul class="pagination-list">
-                            <li class="on"><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                        </ul>
-                        <button type="button" class="btn-next"></button>
+                    <div class="tab-content qna">
+                        <div class="board-list">
+                            <table>
+                                <colgroup>
+                                    <col style="width: 7%;">
+                                    <col style="width: 15%;">  
+                                    <col style="width: auto;">
+                                    <col style="width: 15%;">
+                                    <col style="width: 15%;">
+                                </colgroup>
+                                <thead>
+                                    <tr>
+                                        <th class="col-num">번호</th>
+                                        <th class="col-category">구분</th>
+                                        <th class="col-title">제목</th>
+                                        <th class="col-date">날짜</th>
+                                        <th class="col-view">조회</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>문의</td>
+                                        <td class="tit"><a href="">Q&A 문의 내용 <span class="point">[0]</span></a></td>
+                                        <td>24-06-20</td>
+                                        <td>15</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>문의</td>
+                                        <td class="tit"><a href="">Q&A 문의 내용 <span class="point">[1]</span></a></td>
+                                        <td>24-06-21</td>
+                                        <td>12</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>문의</td>
+                                        <td class="tit"><a href="">Q&A 문의 내용 <span class="point">[2]</span></a></td>
+                                        <td>24-06-22</td>
+                                        <td>8</td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td>문의</td>
+                                        <td class="tit"><a href="">Q&A 문의 내용 <span class="point">[0]</span></a></td>
+                                        <td>24-06-23</td>
+                                        <td>5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>문의</td>
+                                        <td class="tit"><a href="">Q&A 문의 내용 <span class="point">[1]</span></a></td>
+                                        <td>24-06-24</td>
+                                        <td>3</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="pagination">
+                                <button type="button" class="btn-prev"></button>
+                                <ul class="pagination-list">
+                                    <li class="on"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                </ul>
+                                <button type="button" class="btn-next"></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

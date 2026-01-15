@@ -163,7 +163,7 @@ html {
   height: var(--window-inner-height);
   background-color: #111;
   overflow: hidden;
-  gap: 16px;
+  gap: 32px;
   padding: 20px;
   pointer-events: none;
   animation: enableHover 0.8s forwards;
@@ -171,11 +171,25 @@ html {
   display: none;
   &.open {
     @include flex(center, center);
+    
+    // sitemap이 열려있을 때 lenis 스크롤 완전 차단
+    ~ * {
+      overflow: hidden !important;
+    }
   }
 
-  @include mq(tablet-wide, max) {
+  @include mq(desktop-small, max) {
+    gap: 16px;
     flex-direction: column;
   }
+  
+  // 다른 li가 hover될 때 나머지 li는 축소
+  @include mq(desktop-small, min) {
+    &:has(li:hover) li:not(:hover) {
+      width: calc(40% / 4);
+    }
+  }
+  
   li {
     position: relative; 
     width: calc(100% / 5);
@@ -184,14 +198,38 @@ html {
     background-size: cover;
     background-position: center;     
     cursor: pointer; 
-   
     z-index: 1;  
     overflow: hidden; 
     @include flex();
+    
+    // 어두운 오버레이 (기본 상태)
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      pointer-events: none;
+      transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 1;
+      z-index: 1;
+    }
+    
     @include mq(desktop-small, min) {
-      transition: all 0.5s;
+      // width와 transform을 함께 사용하여 더 부드러운 애니메이션
+      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+                  background-color 0.4s ease;
+      
+      // hover 시 오버레이 제거 및 확장
       &:hover {
         width: 60%;
+        z-index: 2;
+        
+        &::before {
+          opacity: 0;
+        }
         
         span {
           font-size: 60px;
@@ -201,6 +239,8 @@ html {
         }
       }
     }
+    
+    
     @include mq(desktop-small, max) {
       width: 100%;
     }
@@ -212,16 +252,35 @@ html {
       color: #fff;
       flex-direction: column;
       gap: 16px;
+      z-index: 2;
+      position: relative;
       @include flex(flex-start, center);
+      @include mq(desktop-small, max) {
+        justify-content: center;
+        align-items: center;
+      }
     }
+    
     span {
       font-size: 32px;
       font-weight: 900;
       line-height: 1.4;
+      transition: font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      @include flex(flex-end, center);
+      @include mq(desktop-small, min) {
+        height: 50%;
+      }
+      
     }
+    
     p {
+      height: 50%;
+      transition: font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       em {
         text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.80);
+      }
+      @include mq(desktop-small, max) {
+        display: none;
       }
     }
 
@@ -234,5 +293,25 @@ html {
 @keyframes enableHover {
   to {
     pointer-events: auto;
+  }
+}
+
+// sitemap이 열려있을 때 lenis 스크롤 완전 차단
+.sitemap.open ~ *,
+body:has(.sitemap.open) {
+  overflow: hidden !important;
+  
+  &.lenis-scrolling,
+  &.lenis {
+    overflow: hidden !important;
+  }
+}
+
+html:has(.sitemap.open) {
+  overflow: hidden !important;
+  
+  &.lenis-scrolling,
+  &.lenis {
+    overflow: hidden !important;
   }
 }

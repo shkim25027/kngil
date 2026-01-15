@@ -9,7 +9,7 @@
         <div class="popup-container search">
             <!-- pop_header -->
             <div class="pop-header">
-                <h2 class="tit" id="search-title">아이디/ <br> 비밀번호 찾기</h2>
+                <h2 class="tit" id="search-title">아이디 찾기 / <br> 비밀번호 변경</h2>
             </div>
             <!-- //pop_header -->
             <!-- pop_body -->
@@ -20,11 +20,11 @@
                         <li class="tab-pw"><span>비밀번호 찾기</span></li>
                     </ul>
                     <div class="tab-content id">
+                        <div class="radio-wrap">
+                            <label><input type="radio" class="find-ph on" checked> 휴대전화 번호로 찾기</label>
+                            <label><input type="radio" class="find-email"> 이메일 주소로 찾기</label>
+                        </div>
                         <div class="form-wrap">
-                            <div class="radio-wrap">
-                                <label><input type="radio" class="find-ph on" checked> 휴대전화 번호로 찾기</label>
-                                <label><input type="radio" class="find-email"> 이메일 주소로 찾기</label>
-                            </div>
                             <table class="ph">
                                 <tbody>
                                     <tr>
@@ -61,8 +61,8 @@
                                             <div class="input-box">
                                                 <input type="text" placeholder="이메일 입력" class="e-id" required>
                                                 <div><span>@</span></div>
-                                                <input type="text" id="custom-domain" placeholder="직접 입력" class="input-hidden" required>
-                                                <select id="domain-list" class="domain-list" required>
+                                                <input type="text" id="custom_domain" class="domain-domain d-none" placeholder="직접 입력" required>
+                                                <select id="domain_list" class="domain-list" required>
                                                     <option value="" hidden disabled selected>선택</option>
                                                     <option value="naver">naver.com</option>
                                                     <option value="gmail">gmail.com</option>
@@ -71,12 +71,13 @@
                                                     <option value="hotmail">hotmail.com</option>
                                                     <option value="yahoo">yahoo.com</option>
                                                     <option value="type" id="domain-txt">직접입력</option>
-                                                </select>
+                                                </select>                                          
                                             </div>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
+                            
                             <div class="btn-wrap">
                                 <button class="btn-full" type="button">확인</button>
                             </div>
@@ -90,20 +91,19 @@
                                     <tr>
                                         <th>아이디</th>
                                         <td>
-                                            <div class="input-box id">
+                                            <div class="input-box">
                                                 <input type="text" placeholder="아이디 입력" required>
-                                                <button type="button" class="btn-sm">중복확인</button>
                                             </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th >이메일</th>
-                                        <td class="email-confirm">
+                                        <td>
                                             <div class="input-box">
                                                 <input type="text" placeholder="이메일 입력" class="e-id" required>
                                                 <div><span>@</span></div>
-                                                <input type="text" id="custom-domain" placeholder="직접 입력" class="input-hidden" required>
-                                                <select id="domain-list" required>
+                                                <input type="text" id="custom_domain" placeholder="직접 입력" class="d-none domain-domain" required>
+                                                <select id="domain_list" class="domain-list" required>
                                                     <option value="" hidden disabled selected>선택</option>
                                                     <option value="naver">naver.com</option>
                                                     <option value="gmail">gmail.com</option>
@@ -114,21 +114,13 @@
                                                     <option value="type" id="domain-txt">직접입력</option>
                                                 </select>
                                             </div>
-                                            <button type="button" class="btn-sm">인증번호</button>
-                                        </td>
-                                    </tr>
-                                    <tr class="code code-hidden">
-                                        <th >인증번호</th>
-                                        <td>
-                                            <div class="input-box">
-                                                <input type="text" placeholder="인증번호 입력" required>
-                                                <button type="button" class="btn-sm">확인</button>
-                                                <button type="button" class="btn-sm hidden">인증완료</button>
-                                            </div>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <div class="info-box">
+                                <p>아이디와 이메일 일치시에 비밀번호는<br> <em>등록된 휴대폰 번호</em>로 변경됩니다.</p>
+                            </div>
                             <div class="btn-wrap">
                                 <button class="btn-full" type="button">확인</button>
                             </div>

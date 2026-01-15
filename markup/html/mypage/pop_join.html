@@ -18,7 +18,7 @@
       <div class="pop-body">
         <form action="" method="post" name="joinForm" novalidate>
           <div class="tbl-wrap">
-            <span class="info-msg">*항목은 필수 항목 입니다.</span>
+            <span class="info-msg txt-right">*항목은 필수 항목 입니다.</span>
             <table>
               <tbody>
                 <!-- 아이디 -->
@@ -28,7 +28,7 @@
                     <span class="point" aria-label="필수">*</span>
                   </th>
                   <td>
-                    <div class="input-box">
+                    <div class="input-box group">
                       <input 
                         class="user-id"
                         type="text" 
@@ -89,7 +89,7 @@
                     <span class="important-msg" aria-label="필수">*</span>
                   </th>
                   <td>
-                    <div class="name-wrap">
+                    <div class="info-box">
                       <input 
                         type="text" 
                         id="user-name"
@@ -100,7 +100,6 @@
                     </div>
                   </td>
                 </tr>
-
                 <!-- 이메일 -->
                 <tr>
                   <th class="h-4">
@@ -121,16 +120,15 @@
                       <div aria-hidden="true"><span>@</span></div>
                       <input 
                         type="text" 
-                        id="custom-domain" 
+                        id="custom_domain" 
                         name="customDomain"
                         placeholder="직접 입력" 
-                        class="custom-domain"
-                        style="display: none;"
+                        class="custom-domain d-none"
                         aria-label="이메일 도메인 직접 입력"
                       >
                       <select 
                         name="emailDomain" 
-                        id="domain-list" 
+                        id="domain_list" 
                         class="domain-list" 
                         required
                         aria-describedby="email-help"
@@ -156,7 +154,7 @@
                     <span class="point" aria-label="필수">*</span>
                   </th>
                   <td>
-                    <div class="input-box phone">
+                    <div class="input-box group">
                       <input 
                         type="tel" 
                         id="user-phone"
@@ -165,7 +163,7 @@
                         required
                         pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
                       >
-                      <button type="button" class="cert-number" aria-label="인증번호 발송">
+                      <button type="button" class="btn-sm" aria-label="인증번호 발송">
                         인증번호
                       </button>
                     </div>
@@ -227,7 +225,7 @@
 
           <div class="btn-wrap">
             <button type="submit" class="btn-full">
-              가입
+              가입하기
             </button>
           </div>
         </form>
@@ -248,3 +246,4 @@
   <!-- //popup_in -->
 </div>
 <!-- //popup_wrap -->
+ 

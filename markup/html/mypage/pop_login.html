@@ -11,30 +11,57 @@
             <div class="pop-header">
                 <h2 class="tit" id="login-title">로그인</h2>
                 <p class="sub-txt">
-                    KNGIL 로그인 시<br>
-                    <em>다운로드 및  1:1문의 서비스를</em><br /> 이용하실 수 있습니다.
+                    KNGIL 로그인 시<br class="pc-only">
+                    <em>다운로드 및  1:1문의 서비스를</em><br class="pc-only" /> 이용하실 수 있습니다.
                 </p>
             </div>
             <!-- //pop_header -->
             <!-- pop_body -->
             <div class="pop-body">
-                <form action="" method="post" novalidate>
-                    <div class="input-box id">
-                        <i class="id" aria-hidden="true"></i>
-                        <input type="text" id="login-id" name="userId" placeholder="아이디" required aria-label="아이디">
+                <div class="contents-wrap">
+                    <ul class="tab-menu round">
+                        <li class="tab-phone on"><span>휴대폰 인증</span></li>
+                        <li class="tab-id"><span>아이디 로그인</span></li>
+                    </ul>
+                    <div class="tab-content phone">
+                        <form action="" method="post" novalidate>
+                            <div class="form-wrap">
+                                <div class="input-box group">
+                                    <i class="phone" aria-hidden="true"></i>
+                                    <input type="text" id="login-phone" name="userPhone" placeholder="휴대폰 번호" required aria-label="휴대폰 번호">
+                                </div>
+                                <div class="btn-wrap">
+                                    <button class="btn-full" type="submit">인증 링크 요청</button>
+                                </div>
+                                <div class="btn-wrap">
+                                    <div class="go-signup"><a href="javascript:agreement();"><span>회원가입</span><i class="arrow-r" aria-hidden="true"></i></a></div>
+                                </div> 
+                            </div>
+                        </form>
                     </div>
-                    <div class="input-box pw">
-                        <i class="pw" aria-hidden="true"></i>
-                        <input type="password" id="login-password" name="userPassword" placeholder="비밀번호" required aria-label="비밀번호">
+                    <div class="tab-content id">
+                        <form action="" method="post" novalidate>
+                            <div class="form-wrap">
+                                <div class="input-box group">
+                                    <i class="id" aria-hidden="true"></i>
+                                    <input type="text" id="login-id" name="userId" placeholder="아이디" required aria-label="아이디">
+                                </div>
+                                <div class="input-box group">
+                                    <i class="pw" aria-hidden="true"></i>
+                                    <input type="password" id="login-password" name="userPassword" placeholder="비밀번호" required aria-label="비밀번호">
+                                </div>
+                                <div class="btn-wrap">
+                                    <button class="btn-full" type="submit">로그인</button>
+                                </div>
+                                <div class="btn-wrap">
+                                    <div class="go-signup"><a href="javascript:agreement();"><span>회원가입</span><i class="arrow-r" aria-hidden="true"></i></a></div>
+                                    <div class="go-find"><a href="javascript:search();"><span>아이디/비밀번호 찾기</span><i class="arrow-r" aria-hidden="true"></i></a></div>
+                                </div> 
+                            </div>
+                        </form>
                     </div>
-                    <div class="btn-wrap">
-                        <button class="btn-full" type="submit">로그인</button>
-                    </div>
-                    <div class="btn-wrap">
-                        <div class="go-signup"><a href="javascript:agreement();"><span>회원가입</span><i class="arrow-r" aria-hidden="true"></i></a></div>
-                        <div class="go-find"><a href="javascript:search();"><span>아이디/비밀번호 찾기</span><i class="arrow-r" aria-hidden="true"></i></a></div>
-                    </div> 
-                </form>
+                </div>
+                
             </div>
             <!-- //pop_body -->
         </div>
