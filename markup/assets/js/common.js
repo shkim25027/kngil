@@ -849,4 +849,70 @@
   window.FooterController = FooterController;
   window.footerController = footerController;
 
+  // ============================================
+  // AOS & Lenis Initializer (index.html 제외)
+  // ============================================
+  class AOSLenisInitializer {
+    /**
+     * 초기화
+     * index.html이 아닐 때만 실행
+     */
+    init() {
+      // index.html 체크: .wrap.main 클래스가 있으면 index.html
+      const isIndexPage = document.querySelector('.wrap.main');
+      if (isIndexPage) {
+        return;
+      }
+
+      // AOS 초기화
+      if (typeof AOS !== 'undefined') {
+        AOS.init();
+      }
+
+      // Lenis 초기화 (LenisManager가 있으면 사용, 없으면 직접 초기화)
+      if (typeof window.handleStartLenis === 'function') {
+        window.handleStartLenis();
+      } else if (typeof Lenis !== 'undefined') {
+        const lenis = new Lenis({
+          lerp: 0.1,
+          smoothWheel: true,
+          smoothTouch: false,
+        });
+        
+        window.lenis = lenis;
+        
+        lenis.on('scroll', (e) => {
+          // console.log(e)
+        });
+        
+        if (typeof ScrollTrigger !== 'undefined') {
+          lenis.on('scroll', ScrollTrigger.update);
+        }
+        
+        if (typeof gsap !== 'undefined' && gsap.ticker) {
+          gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+          });
+          gsap.ticker.lagSmoothing(0);
+        }
+      }
+    }
+  }
+
+  const aosLenisInitializer = new AOSLenisInitializer();
+  
+  // DOMContentLoaded 또는 load 이벤트에서 초기화
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      aosLenisInitializer.init();
+    });
+  } else {
+    // 이미 로드된 경우 즉시 실행
+    aosLenisInitializer.init();
+  }
+  
+  // 전역 노출
+  window.AOSLenisInitializer = AOSLenisInitializer;
+  window.aosLenisInitializer = aosLenisInitializer;
+
 })(); // IIFE 종료

@@ -21,8 +21,8 @@
       5: './results.html'
     },
     SELECTORS: {
-      video: '#video-play',
-      videoLink: '#main-video-link',
+      video: '#video_play',
+      videoLink: '#main_video_link',
       pagination: '.main-pagination',
       paginationItem: '.main-pagination div',
       intro: '.intro-wrap',
@@ -199,10 +199,21 @@
     },
 
     handleClick(e) {
-      const target = e.target.closest('[data-page]');
+      // 클릭된 요소 또는 그 부모 요소에서 data-page 속성을 찾음
+      let target = e.target.closest('[data-page]');
+      
+      // 만약 li 요소를 직접 클릭한 경우, 그 안의 div를 찾음
+      if (!target) {
+        const liElement = e.target.closest('li');
+        if (liElement) {
+          target = liElement.querySelector('[data-page]');
+        }
+      }
+      
       if (!target) return;
 
       e.preventDefault();
+      e.stopPropagation();
       
       const pageNum = parseInt(target.getAttribute('data-page'), 10);
       if (Utils.isValidPageNum(pageNum)) {

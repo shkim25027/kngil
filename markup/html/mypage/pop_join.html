@@ -1,249 +1,260 @@
 <!-- popup_wrap -->
-<div class="popup-wrap" id="pop_join" role="dialog" aria-labelledby="join-title" aria-modal="true">
-  <!-- popup_in -->
-  <div class="popup-in member">
-    <button class="btn-close" type="button" aria-label="팝업 닫기">
-      <img src="./assets/images/ico/ico_close.svg" alt="닫기">
-    </button>
-    
-    <!-- popup_container -->
-    <div class="popup-container join">
-      <!-- pop_header -->
-      <div class="pop-header">
-        <h2 class="tit" id="join-title">회원가입</h2>
-      </div>
-      <!-- //pop_header -->
-      
-      <!-- pop_body -->
-      <div class="pop-body">
-        <form action="" method="post" name="joinForm" novalidate>
-          <div class="tbl-wrap">
-            <span class="info-msg txt-right">*항목은 필수 항목 입니다.</span>
-            <table>
-              <tbody>
-                <!-- 아이디 -->
-                <tr>
-                  <th>
-                    <label for="user_id">아이디</label>
-                    <span class="point" aria-label="필수">*</span>
-                  </th>
-                  <td>
-                    <div class="input-box group">
-                      <input 
-                        class="user-id"
-                        type="text" 
-                        id="user_id"
-                        name="userId"
-                        placeholder="아이디 입력" 
-                        required
-                        pattern="[a-zA-Z][a-zA-Z0-9]{3,11}"
-                        aria-describedby="id-help"
-                      >
-                      <button type="button" class="btn-sm" aria-label="아이디 중복 확인">
-                        중복확인
-                      </button>
+<div class="popup-wrap" id="pop_join" role="dialog" aria-labelledby="join_title" aria-modal="true">
+    <!-- popup_in -->
+    <div class="popup-in member">
+        <button class="btn-close" type="button" aria-label="팝업 닫기">
+            <img src="../assets/images/ico/ico_close.svg" alt="닫기">
+        </button>
+        <!-- popup_container -->
+        <div class="popup-container join">
+            <!-- pop_header -->
+            <div class="pop-header">
+                <h2 class="tit" id="join_title">회원가입</h2>
+            </div>
+            <!-- //pop_header -->
+            <!-- pop_body -->
+            <div class="pop-body">
+                <form action="" method="post" name="joinForm" novalidate>
+                    <div class="tbl-wrap">
+                        <span class="info-msg txt-right">*항목은 필수 항목 입니다.</span>
+                        <table>
+                            <tbody>
+                                <!-- 아이디 -->
+                                <tr>
+                                    <th>
+                                        <label for="user_id">아이디</label>
+                                        <span class="point" aria-label="필수">*</span>
+                                    </th>
+                                    <td>
+                                        <div class="input-box group">
+                                            <input 
+                                                class="user-id"
+                                                type="text" 
+                                                id="user_id"
+                                                name="userId"
+                                                placeholder="아이디 입력" 
+                                                required
+                                                pattern="[a-zA-Z][a-zA-Z0-9]{3,11}"
+                                                aria-describedby="id_help"
+                                            >
+                                            <button type="button" class="btn-sm" aria-label="아이디 중복 확인">
+                                                중복확인
+                                            </button>
+                                        </div>
+                                        <span class="info-msg" id="id_help">
+                                            영문+숫자 4~12자(영문으로 시작)
+                                        </span>
+                                    </td>
+                                </tr>
+
+                                <!-- 비밀번호 -->
+                                <tr>
+                                    <th>
+                                        <label for="user_password">비밀번호</label>
+                                        <span class="point" aria-label="필수">*</span>
+                                    </th>
+                                    <td>
+                                        <div class="input-box">
+                                            <input 
+                                                type="password" 
+                                                id="user_password"
+                                                name="userPassword"
+                                                placeholder="비밀번호 입력" 
+                                                required
+                                                minlength="8"
+                                                pattern="^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$"
+                                                aria-describedby="password_help"
+                                            >
+                                            <input 
+                                                type="password" 
+                                                id="user_password_confirm"
+                                                name="userPasswordConfirm"
+                                                placeholder="비밀번호 확인" 
+                                                required
+                                                aria-describedby="password_help"
+                                            >
+                                        </div>
+                                        <span class="info-msg" id="password_help">
+                                            영문+숫자+특수기호 8자 이상
+                                        </span>
+                                    </td>
+                                </tr>
+
+                                <!-- 이름 -->
+                                <tr>
+                                    <th class="h-4">
+                                        <label for="user_name">이름</label>
+                                        <span class="point" aria-label="필수">*</span>
+                                    </th>
+                                    <td>
+                                        <div class="info-box">
+                                            <input 
+                                                type="text" 
+                                                id="user_name"
+                                                name="userName"
+                                                placeholder="이름 입력" 
+                                                required
+                                            >
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- 이메일 -->
+                                <tr>
+                                    <th class="h-4">
+                                        <label for="user_email">이메일</label>
+                                        <span class="point" aria-label="필수">*</span>
+                                    </th>
+                                    <td>
+                                        <div class="input-box">
+                                            <input 
+                                                type="text" 
+                                                id="user_email"
+                                                name="userEmail"
+                                                class="e-id" 
+                                                placeholder="이메일 입력" 
+                                                required
+                                                aria-describedby="email_help"
+                                            >
+                                            <div aria-hidden="true"><span>@</span></div>
+                                            <input 
+                                                type="text" 
+                                                id="custom_domain" 
+                                                name="customDomain"
+                                                placeholder="직접 입력" 
+                                                class="custom-domain d-none"
+                                                aria-label="이메일 도메인 직접 입력"
+                                            >
+                                            <select 
+                                                name="emailDomain" 
+                                                id="domain_list" 
+                                                class="domain-list" 
+                                                required
+                                                aria-describedby="email_help"
+                                            >
+                                                <option value="" hidden disabled selected>선택</option>
+                                                <option value="naver.com">naver.com</option>
+                                                <option value="gmail.com">gmail.com</option>
+                                                <option value="daum.net">daum.net</option>
+                                                <option value="nate.com">nate.com</option>
+                                                <option value="hotmail.com">hotmail.com</option>
+                                                <option value="yahoo.com">yahoo.com</option>
+                                                <option value="type">직접입력</option>
+                                            </select>
+                                        </div>
+                                        <span class="info-msg d-none" id="email_help">이메일 도메인을 선택하거나 직접 입력하세요</span>
+                                    </td>
+                                </tr>
+
+                                <!-- 휴대전화번호 -->
+                                <tr>
+                                    <th>
+                                        <label for="user_phone">휴대전화번호</label>
+                                        <span class="point" aria-label="필수">*</span>
+                                    </th>
+                                    <td>
+                                        <div class="input-box group">
+                                            <input 
+                                                type="tel" 
+                                                id="user_phone"
+                                                name="userPhone"
+                                                placeholder="휴대폰 번호" 
+                                                required
+                                                pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+                                            >
+                                            <span class="timer d-none">03:00</span>
+                                            <button type="button" class="btn-sm btn-code" aria-label="인증번호 발송">
+                                                인증번호
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <!-- 휴대전화번호 인증완료 -->
+                                <tr class="d-none">
+                                    <th>
+                                        <label for="user_phone">휴대전화번호</label>
+                                        <span class="point" aria-label="필수">*</span>
+                                    </th>
+                                    <td>
+                                        <div class="input-box group">
+                                            <input 
+                                                type="tel" 
+                                                id="user_phone"
+                                                name="userPhone"
+                                                placeholder="휴대폰 번호" 
+                                                required
+                                                pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+                                            >
+                                            <span class="complete-msg"><i class="ico-check" aria-hidden="true"></i>인증완료</span>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <!-- 회사정보 -->
+                                <tr>
+                                  <th>
+                                      <label for="company_name">회원유형</label>
+                                  </th>
+                                  <td>
+                                      <div class="input-box">
+                                          <label for="member_type1">
+                                            <input type="radio" id="member_type1" name="memberType" value="1" checked>
+                                            <span>기업회원</span>
+                                          </label>
+                                          <label for="member_type2">
+                                            <input type="radio" id="member_type2" name="memberType" value="2">
+                                            <span>개인회원</span>
+                                          </label>
+                                      </div>
+                                  </td>
+                                </tr>
+
+                                <!-- 회사정보 -->
+                                <tr class="company-group">
+                                    <th>
+                                        <label for="company_name">회사정보</label>
+                                    </th>
+                                    <td>
+                                        <div class="input-box">
+                                            <input 
+                                                type="text" 
+                                                id="company_name"
+                                                name="companyName"
+                                                placeholder="회사명 입력"
+                                            >
+                                            <input 
+                                                type="text" 
+                                                id="department_name"
+                                                name="departmentName"
+                                                placeholder="소속부서 입력"
+                                            >
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <span class="info-msg" id="id-help">
-                      영문+숫자 4~12자(영문으로 시작)
+
+                    <div class="btn-wrap">
+                        <button type="submit" class="btn-full">
+                            가입하기
+                        </button>
+                    </div>
+                </form>
+                
+                <!-- 가입완료 메시지 -->
+                <div class="messages" style="display: none;" role="alert" aria-live="polite">
+                    <i class="complete" aria-hidden="true"></i>
+                    <span>
+                        <em>이지빔님 환영합니다!</em><br>
+                        회원가입이 완료 되었습니다.
                     </span>
-                  </td>
-                </tr>
-
-                <!-- 비밀번호 -->
-                <tr>
-                  <th>
-                    <label for="user-password">비밀번호</label>
-                    <span class="point" aria-label="필수">*</span>
-                  </th>
-                  <td>
-                    <div class="input-box">
-                      <input 
-                        type="password" 
-                        id="user-password"
-                        name="userPassword"
-                        placeholder="비밀번호 입력" 
-                        required
-                        minlength="8"
-                        pattern="^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$"
-                        aria-describedby="password-help"
-                      >
-                      <input 
-                        type="password" 
-                        id="user-password-confirm"
-                        name="userPasswordConfirm"
-                        placeholder="비밀번호 확인" 
-                        required
-                        aria-describedby="password-help"
-                      >
-                    </div>
-                    <span class="info-msg" id="password-help">
-                      영문+숫자+특수기호 8자 이상
-                    </span>
-                  </td>
-                </tr>
-
-                <!-- 이름 -->
-                <tr>
-                  <th class="h-4">
-                    <label for="user-name">이름</label>
-                    <span class="important-msg" aria-label="필수">*</span>
-                  </th>
-                  <td>
-                    <div class="info-box">
-                      <input 
-                        type="text" 
-                        id="user-name"
-                        name="userName"
-                        placeholder="이름 입력" 
-                        required
-                      >
-                    </div>
-                  </td>
-                </tr>
-                <!-- 이메일 -->
-                <tr>
-                  <th class="h-4">
-                    <label for="user-email">이메일</label>
-                    <span class="point" aria-label="필수">*</span>
-                  </th>
-                  <td>
-                    <div class="input-box">
-                      <input 
-                        type="text" 
-                        id="user-email"
-                        name="userEmail"
-                        class="e-id" 
-                        placeholder="이메일 입력" 
-                        required
-                        aria-describedby="email-help"
-                      >
-                      <div aria-hidden="true"><span>@</span></div>
-                      <input 
-                        type="text" 
-                        id="custom_domain" 
-                        name="customDomain"
-                        placeholder="직접 입력" 
-                        class="custom-domain d-none"
-                        aria-label="이메일 도메인 직접 입력"
-                      >
-                      <select 
-                        name="emailDomain" 
-                        id="domain_list" 
-                        class="domain-list" 
-                        required
-                        aria-describedby="email-help"
-                      >
-                        <option value="" hidden disabled selected>선택</option>
-                        <option value="naver.com">naver.com</option>
-                        <option value="gmail.com">gmail.com</option>
-                        <option value="daum.net">daum.net</option>
-                        <option value="nate.com">nate.com</option>
-                        <option value="hotmail.com">hotmail.com</option>
-                        <option value="yahoo.com">yahoo.com</option>
-                        <option value="type">직접입력</option>
-                      </select>
-                    </div>
-                    <span class="info-msg" id="email-help">이메일 도메인을 선택하거나 직접 입력하세요</span>
-                  </td>
-                </tr>
-
-                <!-- 휴대전화번호 -->
-                <tr>
-                  <th>
-                    <label for="user-phone">휴대전화번호</label>
-                    <span class="point" aria-label="필수">*</span>
-                  </th>
-                  <td>
-                    <div class="input-box group">
-                      <input 
-                        type="tel" 
-                        id="user-phone"
-                        name="userPhone"
-                        placeholder="휴대폰 번호" 
-                        required
-                        pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
-                      >
-                      <button type="button" class="btn-sm" aria-label="인증번호 발송">
-                        인증번호
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-
-                <!-- 인증번호 -->
-                <tr class="code" style="display: none;">
-                  <th>
-                    <label for="cert-code">인증번호</label>
-                  </th>
-                  <td>
-                    <div class="input-box phone">
-                      <input 
-                        type="text" 
-                        id="cert-code"
-                        name="certCode"
-                        placeholder="인증번호 입력" 
-                        required
-                        aria-describedby="cert-timer"
-                      >
-                      <span class="timer" id="cert-timer" aria-live="polite">03:00</span>
-                      <button type="button" class="check" aria-label="인증번호 확인">
-                        확인
-                      </button>
-                      <button type="button" class="check complete" style="display: none;" aria-label="인증 완료">
-                        인증완료
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-
-                <!-- 회사정보 -->
-                <tr>
-                  <th>
-                    <label for="company-name">회사정보</label>
-                    <span class="info-msg">*</span>
-                  </th>
-                  <td>
-                    <div class="input-box">
-                      <input 
-                        type="text" 
-                        id="company-name"
-                        name="companyName"
-                        placeholder="회사명 입력"
-                      >
-                      <input 
-                        type="text" 
-                        id="department-name"
-                        name="departmentName"
-                        placeholder="부서명 입력"
-                      >
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-          <div class="btn-wrap">
-            <button type="submit" class="btn-full">
-              가입하기
-            </button>
-          </div>
-        </form>
-        
-        <!-- 가입완료 메시지 -->
-        <div class="messages" style="display: none;" role="alert" aria-live="polite">
-          <i class="complete" aria-hidden="true"></i>
-          <span>
-            <em>이지빔님 환영합니다!</em><br>
-            회원가입이 완료 되었습니다.
-          </span>
+                </div>
+            </div>
+            <!-- //pop_body -->
         </div>
-      </div>
-      <!-- //pop_body -->
+        <!-- //popup_container -->
     </div>
-    <!-- //popup_container -->
-  </div>
-  <!-- //popup_in -->
+    <!-- //popup_in -->
 </div>
 <!-- //popup_wrap -->
  

@@ -42,9 +42,9 @@
                   <input type="hidden" name="token" value="cc17c33cc38751d26f7b4a6995d3fdff">
                   <input type="hidden" name="qa_html" value="1">
                   
-                  <div class="form_01">
+                  <div class="form-01">
                     <ul>
-                      <li class="bo_w_select write_div">
+                      <li class="bo-w-select write-div">
                         <label for="qa_category" class="sound-only">분류<strong>필수</strong></label>
                         <select name="qa_category" id="qa_category" required="">
                           <option value="">분류를 선택하세요</option>
@@ -52,41 +52,41 @@
                           <option value="포인트">포인트</option>
                         </select>
                       </li>
-                      <li class="bo_w_mail chk_box">
+                      <li class="bo-w-mail chk-box">
                         <label for="qa_email" class="sound-only">이메일</label>
-                        <input type="text" name="qa_email" value="sdi9429@naver.com" id="qa_email" class=" frm_input full_input email" size="50" maxlength="100" placeholder="이메일">
-                        <input type="checkbox" name="qa_email_recv" id="qa_email_recv" value="1" class="selec_chk">
-                        <label for="qa_email_recv" class="frm_info"><span></span>답변받기</label>
+                        <input type="text" name="qa_email" value="sdi9429@naver.com" id="qa_email" class=" frm-input full-input email" size="50" maxlength="100" placeholder="이메일">
+                        <input type="checkbox" name="qa_email_recv" id="qa_email_recv" value="1" class="selec-chk">
+                        <label for="qa_email_recv" class="frm-info"><span></span>답변받기</label>
                       </li>
-                      <li class="bo_w_hp chk_box">
+                      <li class="bo-w-hp chk-box">
                         <label for="qa_hp" class="sound-only">휴대폰</label>
-                        <input type="text" name="qa_hp" value="" id="qa_hp" class=" frm_input full_input" size="30" placeholder="휴대폰">
+                        <input type="text" name="qa_hp" value="" id="qa_hp" class=" frm-input full-input" size="30" placeholder="휴대폰">
                       </li>
-                      <li class="bo_w_sbj">
+                      <li class="bo-w-sbj">
                         <label for="qa_subject" class="sound-only">제목<strong class="sound-only">필수</strong></label>
-                        <input type="text" name="qa_subject" value="" id="qa_subject" required="" class="frm_input full_input required" size="50" maxlength="255" placeholder="제목">
+                        <input type="text" name="qa_subject" value="" id="qa_subject" required="" class="frm-input full-input required" size="50" maxlength="255" placeholder="제목">
                       </li>
-                      <li class="qa_content_wrap smarteditor2">
+                      <li class="qa-content-wrap smarteditor2">
                         <label for="qa_content" class="sound-only">내용<strong class="sound-only">필수</strong></label>
                         <span class="sound-only">웹에디터 시작</span>
-                        <script>document.write("<div class='cke_sc'><button type='button' class='btn_cke_sc'>단축키 일람</button></div>");</script>
-                        <div class="cke_sc"><button type="button" class="btn_cke_sc">단축키 일람</button></div>
+                        <script>document.write("<div class='cke-sc'><button type='button' class='btn-cke-sc'>단축키 일람</button></div>");</script>
+                        <div class="cke-sc"><button type="button" class="btn-cke-sc">단축키 일람</button></div>
                         <script src="http://localhost/tova/plugin/editor/smarteditor2/js/service/HuskyEZCreator.js"></script>
                         <script>var g5_editor_url = "http://localhost/tova/plugin/editor/smarteditor2", oEditors = [], ed_nonce = "8WC57wZ8Kj|1721892342|294b18005b976d1315bccbaebadd420cd6f7f70a";</script>
                         <script src="http://localhost/tova/plugin/editor/smarteditor2/config.js"></script>
                         <script>
                           $(function(){
-                            $(".btn_cke_sc").click(function(){
-                              if ($(this).next("div.cke_sc_def").length) {
-                                $(this).next("div.cke_sc_def").remove();
+                            $(".btn-cke-sc").click(function(){
+                              if ($(this).next("div.cke-sc-def").length) {
+                                $(this).next("div.cke-sc-def").remove();
                                 $(this).text("단축키 일람");
                               } else {
-                                $(this).after("<div class='cke_sc_def' />").next("div.cke_sc_def").load("http://localhost/tova/plugin/editor/smarteditor2/shortcut.html");
+                                $(this).after("<div class='cke-sc-def' />").next("div.cke-sc-def").load("http://localhost/tova/plugin/editor/smarteditor2/shortcut.html");
                                 $(this).text("단축키 일람 닫기");
                               }
                             });
-                            $(document).on("click", ".btn_cke_sc_close", function(){
-                              $(this).parent("div.cke_sc_def").remove();
+                            $(document).on("click", ".btn-cke-sc-close", function(){
+                              $(this).parent("div.cke-sc-def").remove();
                             });
                           });
                         </script>
@@ -94,24 +94,24 @@
                         <iframe frameborder="0" scrolling="no" src="http://localhost/tova/plugin/editor/smarteditor2/SmartEditor2Skin.html" style="width: 100%; height: 349px;"></iframe>
                         <span class="sound-only">웹 에디터 끝</span>
                       </li>
-                      <li class="bo_w_flie">
-                        <div class="file_wr">
-                          <label for="bf_file_1" class="lb_icon"><i class="fa fa-download" aria-hidden="true"></i><span class="sound-only"> 파일 #1</span></label>
-                          <input type="file" name="bf_file[1]" id="bf_file_1" title="파일첨부 1 :  용량 1,048,576 바이트 이하만 업로드 가능" class="frm_file">
+                      <li class="bo-w-flie">
+                        <div class="file-wr">
+                          <label for="bf_file_1" class="lb-icon"><i class="fa fa-download" aria-hidden="true"></i><span class="sound-only"> 파일 #1</span></label>
+                          <input type="file" name="bf_file[1]" id="bf_file_1" title="파일첨부 1 :  용량 1,048,576 바이트 이하만 업로드 가능" class="frm-file">
                         </div>
                       </li>
-                      <li class="bo_w_flie">
-                        <div class="file_wr">
-                          <label for="bf_file_2" class="lb_icon"><i class="fa fa-download" aria-hidden="true"></i><span class="sound-only"> 파일 #2</span></label>
-                          <input type="file" name="bf_file[2]" id="bf_file_2" title="파일첨부 2 :  용량 1,048,576 바이트 이하만 업로드 가능" class="frm_file">
+                      <li class="bo-w-flie">
+                        <div class="file-wr">
+                          <label for="bf_file_2" class="lb-icon"><i class="fa fa-download" aria-hidden="true"></i><span class="sound-only"> 파일 #2</span></label>
+                          <input type="file" name="bf_file[2]" id="bf_file_2" title="파일첨부 2 :  용량 1,048,576 바이트 이하만 업로드 가능" class="frm-file">
                         </div>
                       </li>
                     </ul>
                   </div>
                   
-                  <div class="btn_confirm write_div">
-                    <a href="http://localhost/tova/bbs/qalist.php" class="btn_cancel btn">취소</a>
-                    <button type="submit" id="btn_submit" accesskey="s" class="btn_submit btn">작성완료</button>
+                  <div class="btn-confirm write-div">
+                    <a href="http://localhost/tova/bbs/qalist.php" class="btn-cancel btn">취소</a>
+                    <button type="submit" id="btn_submit" accesskey="s" class="btn-submit btn">작성완료</button>
                   </div>
                 </form>
                 
@@ -213,30 +213,6 @@
       </div>
       <!-- // container -->
       @@include("_include/_footer.html")
-      
-      <!-- 모든 팝업페이지 경로 -->
-      @@include("mypage/pop_agreement.html")
-      @@include("mypage/pop_join.html")
-      @@include("mypage/pop_login.html")
-      @@include("mypage/pop_mypage01.html")
-      @@include("mypage/pop_mypage02.html")
-      @@include("mypage/pop_mypage03.html")
-      @@include("mypage/pop_search.html")
-      @@include("popup/pop_privacy.html")
-      <!-- // 모든 팝업페이지 경로 -->
     </div>
-    <script>
-      AOS.init();
-      
-      const lenis = new Lenis()
-      lenis.on('scroll', (e) => {
-        // console.log(e)
-      })
-      lenis.on('scroll', ScrollTrigger.update)
-      gsap.ticker.add((time)=>{
-        lenis.raf(time * 1000)
-      })
-      gsap.ticker.lagSmoothing(0)
-    </script>
   </body>
 </html>

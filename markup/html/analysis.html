@@ -9,7 +9,7 @@
       <!-- container -->
       <div class="container floorplan">
         <section class="intro">
-          <div class="top js__dark">
+          <div class="top js-dark">
             <h2 data-aos="fade-down" data-aos-duration="1000">도면관리</h2>
             <span>대량의 설계도면의 효율적 관리</span>
           </div>
@@ -68,13 +68,13 @@
             <div class="mid-tit">
               <span data-aos="fade-right" data-aos-duration="600">도면탐색 과<br><em>도면정보열람</em></span>
             </div>
-            <ul data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300" class="js__fixLeft_tit">
+            <ul data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300" class="js-fixLeft-tit">
               <li class="on"><span><em>01</em>사용자 지정폴더</span></li>
               <li><span><em>02</em>도면정보 열람</span></li>
               <li><span><em>03</em>도면 미리보기</span></li>
             </ul>
           </div>
-          <div class="right js__fixLeft_secs">
+          <div class="right js-fixLeft-secs">
             <div class="find01">
               <span class="sub-tit">사용자 지정폴더</span>
               <div class="sub-text">
@@ -171,12 +171,12 @@
             <div class="mid-tit">
               <span data-aos="fade-right" data-aos-duration="600">도면정보 선택<br><em>및 정보수정</em></span>
             </div>
-            <ul data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300" class="js__fixLeft_tit">
+            <ul data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300" class="js-fixLeft-tit">
               <li class="on"><span><em>01</em>도면정보 수정</span></li>
               <li><span><em>02</em>열람하고자 하는 도면정보 선택 </span></li>
             </ul>
           </div>
-          <div class="right js__fixLeft_secs">
+          <div class="right js-fixLeft-secs">
             <div class="info01">
               <span class="sub-tit">도면정보 수정</span>
               <div class="sub-text">
@@ -242,12 +242,12 @@
             <div class="mid-tit">
               <span data-aos="fade-right" data-aos-duration="600">인쇄옵션 설정과<br><em>일괄출력</em></span>
             </div>
-            <ul data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300" class="js__fixLeft_tit">
+            <ul data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300" class="js-fixLeft-tit">
               <li class="on"><span><em>01</em>인쇄 파일 선택 및 인쇄설정값 표시</span></li>
               <li><span><em>02</em>출력옵션 설정 및 미리보기</span></li>
             </ul>
           </div>
-          <div class="right js__fixLeft_secs">
+          <div class="right js-fixLeft-secs">
             <div class="print01">
               <span class="sub-tit">인쇄 파일 선택 및 인쇄설정값 표시</span>
               <div class="sub-text">
@@ -310,31 +310,7 @@
       </div>
       <!-- // container -->
       @@include("_include/_footer.html")
-      
-      <!-- 모든 팝업페이지 경로 -->
-      @@include("mypage/pop_agreement.html")
-      @@include("mypage/pop_join.html")
-      @@include("mypage/pop_login.html")
-      @@include("mypage/pop_mypage01.html")
-      @@include("mypage/pop_mypage02.html")
-      @@include("mypage/pop_mypage03.html")
-      @@include("mypage/pop_search.html")
-      @@include("popup/pop_privacy.html")
-      <!-- // 모든 팝업페이지 경로 -->
     </div>
     <script src="./assets/js/floorplan.js"></script>
-    <script>
-      AOS.init();
-      
-      const lenis = new Lenis()
-      lenis.on('scroll', (e) => {
-        // console.log(e)
-      })
-      lenis.on('scroll', ScrollTrigger.update)
-      gsap.ticker.add((time)=>{
-        lenis.raf(time * 1000)
-      })
-      gsap.ticker.lagSmoothing(0)
-    </script>
   </body>
 </html>

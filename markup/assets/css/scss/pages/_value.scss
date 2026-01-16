@@ -1,3 +1,4 @@
+@use "../import/_mixin" as *;
 // =======================================
 // Value Page
 // =======================================
@@ -15,10 +16,6 @@
       margin-top: 150px;
     }
 
-    .keyword i.egbim-obj.w {
-      width: 77px;
-      height: 12px;
-    }
 
     .summarys-wrap {
       display: block;
@@ -312,7 +309,7 @@
     }
   }
 
-  .feature-intro {
+  .value-service {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -322,19 +319,34 @@
     gap: 40px;
     text-align: center;
     position: relative;
-    overflow: hidden;
-    background-image: url(../img/value/bg_value_feature.jpg);
+    background-image: url(../images/value/bg_value_feature.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     scroll-snap-align: center;
     scroll-snap-stop: always;
 
-    .grand-tit {
-      width: 100%;
+    .ico-logo {
+      width: 220px;
+      height: 54px;
+      background-image: url(../images/loco_kngil_c.svg);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      @include textBlind();
     }
 
-    p {
+    dl {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+    }
+    dt {
+      gap: 20px;
+      @include flex(center, center);
+    }
+    dd {
       font-size: 24px;
       line-height: 160%;
     }
@@ -355,160 +367,145 @@
       background-color: #555;
       position: absolute;
       top: 65%;
-      left: calc(50% - 3px);
+      left: calc(50% - 3.5px);
     }
   }
 
-  .features {
+  .values {
     width: 100%;
     height: 100vh;
     display: flex;
     gap: 40px;
-    padding: 100px 20px 20px;
+    padding: 20px;
     position: relative;
-    overflow: hidden;
-
-    .f-wrap {
+    margin-top: 30px;
+    margin-bottom: 60px;
+    z-index: 1;
+    .card {
       width: 100%;
       height: 100%;
-      border-radius: 0px;
+      position: relative;
+      border-radius: 4px;
       overflow: hidden;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-color: #000000;
+      animation: bg_zoom_in 1s ease forwards;
+      backdrop-filter: blur(10px);
+      transition: all 1s;
+      padding: 200px 60px 0 42px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
 
-      .card {
+      &::after {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
-        position: relative;
+        z-index: -1;
+        background: linear-gradient(#00000033 0%, #000000ee 100%);
       }
 
-      .front,
-      .back {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        backface-visibility: hidden;
-        padding: 100px 60px 0 42px;
+      &:hover {
+        padding-top: 100px;
+        transform: scale(1.03);
+      }
+
+      dl {
         display: flex;
         flex-direction: column;
         gap: 24px;
-        justify-content: center;
       }
 
-      i {
+      dt {
+        color: #fff;
+        flex-direction: column;
+        @include flex(flex-start, center);
+        gap: 12px;
+
+        &.sub-tit {
+          // 서브 타이틀 스타일
+        }
+
+        i {
+          display: block;
+          width: 48px;
+          height: 48px;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          @include clearfix();
+        }
+      }
+
+      dd {
+        width: 100%;
+        height: 240px;
+        color: #FFF;
+        font-weight: normal;
+        text-align: justify;
+        line-height: 32px;
+        transition: all 1s;
+      }
+
+      &:hover dd {
+        color: #ffffff;
+      }
+    }
+
+    .card-wrap {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+
+      .card {
+        height: calc(50% - 20px);
+      }
+    }
+
+    .gis {
+      background-image: url(../images/value/bg_value_gis.png);
+
+      dt i {
+        width: 54px;
+        height: 32px;
+        background-image: url(../images/ico/ico_value_gis.svg);
+      }
+    }
+
+    .data {
+      background-image: url(../images/value/bg_value_data.png);
+
+      dt i {
+        width: 42px;
+        height: 42px;
+        background-image: url(../images/ico/ico_value_data.svg);
+      }
+    }
+
+    .map {
+      background-image: url(../images/value/bg_value_map.png);
+
+      dt i {
         width: 48px;
         height: 48px;
-      }
-
-      .sub-tit {
-        color: #000;
-      }
-
-      .back {
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-color: #000000;
-        z-index: -1;
-        animation: bg_zoom_in 1s ease forwards;
-        backdrop-filter: blur(10px);
-        transition: all 1s;
-        padding-top: 200px;
-
-        .sub-text {
-          width: 100%;
-          height: 240px;
-          color: #ffffff55;
-          font-weight: normal;
-          text-align: justify;
-          line-height: 32px;
-          transition: all 1s;
-        }
-
-        &:hover {
-          padding-top: 100px;
-          transform: scale(1.03);
-
-          .sub-text {
-            color: #ffffff;
-          }
-        }
-
-        &::after {
-          position: absolute;
-          content: "";
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          z-index: -1;
-          background: linear-gradient(#00000033 0%, #000000ee 100%);
-        }
-
-        .sub-tit {
-          color: #fff;
-        }
-      }
-
-      .front {
-        background: #ffffff90;
-        z-index: 1;
-        backdrop-filter: blur(20px) brightness(1.2) contrast(1.2);
-        opacity: 0;
+        background-image: url(../images/ico/ico_value_map.svg);
       }
     }
 
-    .interface {
-      .back {
-        background-image: url(../img/value_feature_interface_bg.png);
-      }
+    .custom {
+      background-image: url(../images/value/bg_value_custom.png);
 
-      i {
-        background-image: url(../img/ico_value_interface_k.svg);
-      }
-
-      .back i {
-        background-image: url(../img/ico_value_interface_w.svg);
-      }
-    }
-
-    .tool {
-      .back {
-        background-image: url(../img/value_feature_tool_bg.png);
-      }
-
-      i {
-        background-image: url(../img/ico_value_tool_k.svg);
-      }
-
-      .back i {
-        background-image: url(../img/ico_value_tool_w.svg);
-      }
-    }
-
-    .floorplan {
-      .back {
-        background-image: url(../img/value_feature_floorplan_bg.png);
-      }
-
-      i {
-        background-image: url(../img/ico_value_floorplan_k.svg);
-      }
-
-      .back i {
-        background-image: url(../img/ico_value_floorplan_w.svg);
-      }
-    }
-
-    .bim {
-      .back {
-        background-image: url(../img/value_feature_bim_bg.png);
-      }
-
-      i {
-        background-image: url(../img/ico_value_bim_k.svg);
-      }
-
-      .back i {
-        background-image: url(../img/ico_value_bim_w.svg);
+      dt i {
+        width: 48px;
+        height: 48px;
+        background-image: url(../images/ico/ico_value_filter.svg);
       }
     }
 
@@ -528,7 +525,7 @@
         }
 
         div[class^="v"] {
-          top: 80px;
+          top: 0px;
           border-left: 1px solid #aaa;
           width: 1px;
           height: 0;
@@ -543,11 +540,11 @@
 
         .h {
           border: 1px solid #aaa;
-          top: 80px;
+          top: 0px;
           left: 50%;
           transform: translateX(-50%);
           width: 0;
-          height: calc(100% - 80px);
+          height: 100%;
           border-left: 0;
           border-right: 0;
           animation-name: h-draw;
@@ -829,6 +826,172 @@
           left: -30px;
         }
       }
+      }
+    }
+
+    .values {
+      .lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+
+      &.move-ani {
+        * {
+          animation-duration: 1s;
+          animation-fill-mode: both;
+          position: absolute;
+        }
+
+        div[class^="v"] {
+          top: 0px;
+          border-left: 1px solid #aaa;
+          width: 1px;
+          height: 0;
+        }
+
+        div[class^="d"] {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background-color: #555;
+        }
+
+        .h {
+          border: 1px solid #aaa;
+          top: 0px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 0;
+          height: 100%;
+          border-left: 0;
+          border-right: 0;
+          animation-name: h-draw;
+        }
+
+        .v1 {
+          left: calc(50% - 1px);
+          animation-name: v-center;
+        }
+
+        .v2 {
+          left: 25%;
+          animation-name: v-side;
+        }
+
+        .v3 {
+          left: 75%;
+          animation-name: v-side;
+        }
+
+        .d1 {
+          animation-name: dot-center;
+        }
+
+        .d2 {
+          animation-name: dot-side-left;
+        }
+
+        .d3 {
+          animation-name: dot-side-right;
+        }
+      }
+    }
+  }
+
+  @keyframes h-draw {
+    0% {
+      width: 0;
+    }
+    30% {
+      width: 0;
+    }
+    70% {
+      width: 50%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+
+  @keyframes v-center {
+    0% {
+      top: 0;
+    }
+    30% {
+      top: 0;
+      height: 80px;
+    }
+    100% {
+      top: 0;
+      height: 100%;
+    }
+  }
+
+  @keyframes v-side {
+    0% {
+      height: 0;
+    }
+    70% {
+      height: 0;
+    }
+    100% {
+      height: 100%;
+    }
+  }
+
+  @keyframes dot-center {
+    0% {
+      top: 0;
+      left: calc(50% - 3.5px);
+    }
+    30% {
+      top: calc(0px - 3.5px);
+      left: calc(50% - 3.5px);
+    }
+    100% {
+      top: calc(0px - 3.5px);
+      left: calc(50% - 3.5px);
+    }
+  }
+
+  @keyframes dot-side-left {
+    0% {
+      top: 0;
+      left: calc(50% - 3.5px);
+    }
+    30% {
+      top: calc(0px - 3.5px);
+      left: calc(50% - 3.5px);
+    }
+    70% {
+      top: calc(0px - 3.5px);
+      left: calc(25% - 3.5px);
+    }
+    100% {
+      top: calc(0px - 3.5px);
+      left: calc(25% - 3.5px);
+    }
+  }
+
+  @keyframes dot-side-right {
+    0% {
+      top: 0;
+      left: calc(50% - 3.5px);
+    }
+    30% {
+      top: calc(0px - 3.5px);
+      left: calc(50% - 3.5px);
+    }
+    70% {
+      top: calc(0px - 3.5px);
+      left: calc(75% - 3.5px);
+    }
+    100% {
+      top: calc(0px - 3.5px);
+      left: calc(75% - 3.5px);
     }
   }
 }

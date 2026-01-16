@@ -1,5 +1,5 @@
 <!-- popup_wrap -->
-<div class="popup-wrap" id="pop_mypage02" role="dialog" aria-labelledby="mypage02-title" aria-modal="true">
+<div class="popup-wrap" id="pop_mypage02" role="dialog" aria-labelledby="mypage02_title" aria-modal="true">
     <!-- popup_in -->
     <div class="popup-in mypage">
         <button class="btn-close" type="button" aria-label="팝업 닫기">
@@ -10,7 +10,7 @@
         <div class="popup-container">
             <!-- pop_header -->
             <div class="pop-header">
-                <h2 class="tit" id="mypage02-title">마이페이지</h2>
+                <h2 class="tit" id="mypage02_title">마이페이지</h2>
                 <p class="sub-txt">
                     소중한 <em>내 정보</em>를 <br>
                     <em>최신</em>으로 관리하세요.
@@ -42,142 +42,67 @@
                         </li>
                     </ul>
                 </div>
-                <div class="contents-wrap">
-                    <ul class="tab-menu">
-                        <li class="tab-history on"><span>서비스 사용이력</span></li>
-                        <li class="tab-qna"><span>Q&A 내역</span></li>
-                    </ul>
-                    <div class="tab-content history show">
-                        <div class="board-list">
-                            <table>
-                                <colgroup>
-                                    <col style="width: 10%;">
-                                    <col style="width: auto;">
-                                    <col style="width: 15%;">
-                                    <col style="width: 15%;">
-                                </colgroup>
-                                <thead>
-                                    <tr>
-                                        <th>번호</th>
-                                        <th>서비스 구분</th>
-                                        <th>등록일</th>
-                                        <th><em>사용량</em>(단위:m2)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td class="tit"><a href="">서비스 01</a></td>
-                                        <td>24-06-22</td>
-                                        <td><em>300</em></td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td class="tit"><a href="">서비스 01</a></td>
-                                        <td>24-06-23</td>
-                                        <td><em>400</em></td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td class="tit"><a href="">서비스 01</a></td>
-                                        <td>24-06-23</td>
-                                        <td><em>300</em></td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td class="tit"><a href="">서비스 01</a></td>
-                                        <td>24-06-23</td>
-                                        <td><em>200</em></td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td class="tit"><a href="">서비스 01</a></td>
-                                        <td>24-06-23</td>
-                                        <td><em>400</em></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div class="pagination">
-                                <button type="button" class="btn-prev"></button>
-                                <ul class="pagination-list">
-                                    <li class="on"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                </ul>
-                                <button type="button" class="btn-next"></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-content qna">
-                        <div class="board-list">
-                            <table>
-                                <colgroup>
-                                    <col style="width: 7%;">
-                                    <col style="width: 15%;">  
-                                    <col style="width: auto;">
-                                    <col style="width: 15%;">
-                                    <col style="width: 15%;">
-                                </colgroup>
-                                <thead>
-                                    <tr>
-                                        <th class="col-num">번호</th>
-                                        <th class="col-category">구분</th>
-                                        <th class="col-title">제목</th>
-                                        <th class="col-date">날짜</th>
-                                        <th class="col-view">조회</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>문의</td>
-                                        <td class="tit"><a href="">Q&A 문의 내용 <span class="point">[0]</span></a></td>
-                                        <td>24-06-20</td>
-                                        <td>15</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>문의</td>
-                                        <td class="tit"><a href="">Q&A 문의 내용 <span class="point">[1]</span></a></td>
-                                        <td>24-06-21</td>
-                                        <td>12</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>문의</td>
-                                        <td class="tit"><a href="">Q&A 문의 내용 <span class="point">[2]</span></a></td>
-                                        <td>24-06-22</td>
-                                        <td>8</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>문의</td>
-                                        <td class="tit"><a href="">Q&A 문의 내용 <span class="point">[0]</span></a></td>
-                                        <td>24-06-23</td>
-                                        <td>5</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>문의</td>
-                                        <td class="tit"><a href="">Q&A 문의 내용 <span class="point">[1]</span></a></td>
-                                        <td>24-06-24</td>
-                                        <td>3</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <div class="pagination">
-                                <button type="button" class="btn-prev"></button>
-                                <ul class="pagination-list">
-                                    <li class="on"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">4</a></li>
-                                    <li><a href="#">5</a></li>
-                                </ul>
-                                <button type="button" class="btn-next"></button>
-                            </div>
+                <div class="my-history">
+                    <h5>서비스 사용이력</h5>
+                    <div class="board-list">
+                        <table>
+                            <colgroup>
+                                <col style="width: 10%;">
+                                <col style="width: auto;">
+                                <col style="width: 15%;">
+                                <col style="width: 15%;">
+                            </colgroup>
+                            <thead>
+                                <tr>
+                                    <th>번호</th>
+                                    <th>서비스 구분</th>
+                                    <th>등록일</th>
+                                    <th><em>사용량</em>(단위:m2)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td class="tit"><a href="">서비스 01</a></td>
+                                    <td>24-06-22</td>
+                                    <td><em>300</em></td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td class="tit"><a href="">서비스 01</a></td>
+                                    <td>24-06-23</td>
+                                    <td><em>400</em></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td class="tit"><a href="">서비스 01</a></td>
+                                    <td>24-06-23</td>
+                                    <td><em>300</em></td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td class="tit"><a href="">서비스 01</a></td>
+                                    <td>24-06-23</td>
+                                    <td><em>200</em></td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td class="tit"><a href="">서비스 01</a></td>
+                                    <td>24-06-23</td>
+                                    <td><em>400</em></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="pagination">
+                            <button type="button" class="btn-prev"></button>
+                            <ul class="pagination-list">
+                                <li class="on"><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">4</a></li>
+                                <li><a href="#">5</a></li>
+                            </ul>
+                            <button type="button" class="btn-next"></button>
                         </div>
                     </div>
                 </div>

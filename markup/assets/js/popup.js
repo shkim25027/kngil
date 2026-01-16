@@ -156,8 +156,32 @@
         $(CONFIG.SELECTORS.timer).remove();
       });
 
-      // 초기 타이머 시작
-      this.start();
+      // 로그인 페이지 휴대폰 인증 폼의 인증 링크 요청 버튼 클릭 시
+      $(document).on('submit', '#pop_login .tab-content.phone form', (e) => {
+        e.preventDefault();
+        const $form = $(e.target);
+        const $timer = $form.find('.timer');
+        const $infoBox = $form.find('.info-box');
+        
+        // 타이머와 info-box 표시
+        $timer.removeClass('hide');
+        $infoBox.removeClass('d-none');
+        
+        // 타이머 시작 (해당 폼 내의 타이머만)
+        if ($timer.length) {
+          this.stop();
+          this.display = $timer;
+          this.start();
+        }
+      });
+
+      // 초기 타이머 시작 (다른 페이지에서 사용하는 경우를 위해)
+      // 숨겨지지 않은 타이머만 자동 시작
+      const $visibleTimers = $(CONFIG.SELECTORS.timer).not('.hide').not('.d-none');
+      if ($visibleTimers.length > 0) {
+        this.display = $visibleTimers.first();
+        this.start();
+      }
     },
 
     start() {

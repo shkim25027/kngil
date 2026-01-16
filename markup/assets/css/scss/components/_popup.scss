@@ -222,9 +222,25 @@ $popup-answer-bg: #ffdd0022;
   // =======================================
   &.mypage {
     width: $popup-mypage-width;
-
+    .popup-container {
+      &.edit {
+        .pop-body {
+          padding: 80px 82px;
+          z-index: 1;
+        }
+      }
+      .pop-body {
+        padding: 80px 48px;
+        .form-wrap,
+          form {
+            width: 100%;
+            max-width: 100%; 
+          }
+      }
+    }
     .pop-body {
       @include popup-body-base(center);
+
 
       .form-wrap,
       form {
@@ -304,51 +320,29 @@ $popup-answer-bg: #ffdd0022;
           }
         }
       }
-      .contents-wrap {
-        max-width: 100%;
-        margin-top: 50px;
-        flex-direction: column;
-        @include flex(flex-start, flex-start);
-        .tab-menu {
-          width: max-content;
-          border: none;
-          min-height: 50px;
-          border: none;
-          background:none;
-          gap: 0;
-          li {
-            width: 140px;
-            border-radius: 4px 4px 0  0;
-            border-radius: 4px 4px 0 0;
-            background: linear-gradient(86deg, rgba(87, 73, 49, 0.60) 0.47%, rgba(87, 73, 49, 0.30) 99.22%), #DFC6AD;
-            color: #fff;
-            font-weight: 700;
-            &.on {
-              color: #A55500;
-              border-top: 2px solid #A55500;
-              background: linear-gradient(180deg, rgba(165, 85, 0, 0.10) 0%, rgba(165, 85, 0, 0.00) 50%), rgba(255, 255, 255, 0.40);
-            }
-            span {
-              font-size: 16px;
-            }
-          }
-        } 
-        .tab-content  {
+        .my-history  {
           padding: 0;
+          margin-top: 40px;
+          h5 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 16px;
+          }
           .board-list {
             flex-direction: column;
-            gap: 32px;
+            gap: 14px;
             height:395px;
-            border-radius: 0 6px 0 0;
             overflow: hidden;
+            
             @include flex(center, space-between);
           }
           table {
             border: none;
+            border-top: 2px solid #000;
             border-bottom: 2px solid rgba(0, 0, 0, 0.20);
             thead {
               tr {
-                border-radius: 0 6px 0 0;
                 border-bottom: 1px solid rgba(0, 0, 0, 0.20);
                 
                 background: rgba(255, 255, 255, 0.40);
@@ -382,13 +376,18 @@ $popup-answer-bg: #ffdd0022;
             
           } 
         }
-      }
     }
 
     .edit {
+      .pop-header{
+        .tit {
+          letter-spacing: -0.08em;
+        }
+      }
       .btn-wrap {
         margin-top: 24px;
       }
+    
     }
     // =======================================
     // Table Styles
@@ -732,24 +731,147 @@ $popup-answer-bg: #ffdd0022;
           border-color: #000;
         }
       }
+
+      // 라디오 버튼이 있는 경우
+      &:has(input[type="radio"]) {
+        gap: 40px;
+
+        label {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          font-size: 16px;
+          font-weight: 500;
+          color: #333;
+          cursor: pointer;
+          user-select: none;
+
+          input[type="radio"] {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 18px;
+            height: 18px;
+            margin: 0;
+            padding: 0;
+            border: 2px solid #C5C5C5;
+            border-radius: 50%;
+            background: transparent;
+            position: relative;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+
+            // 내부 원 (체크된 상태)
+            &::after {
+              content: '';
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              width: 10px;
+              height: 10px;
+              border-radius: 50%;
+              background: #00832A;
+              opacity: 0;
+              transition: opacity 0.2s ease;
+            }
+
+            // 체크된 상태
+            &:checked {
+              border-color: #00832A;
+              
+              &::after {
+                opacity: 1;
+              }
+            }
+
+            // disabled 상태 (checked보다 우선순위 높게)
+            &:disabled {
+              border-color: #999;
+              cursor: not-allowed;
+              pointer-events: none;
+
+              &:checked {
+                border-color: #999;
+
+                &::after {
+                  background: #999;
+                  opacity: 1;
+                }
+              }
+
+              + span {
+                color: #999;
+              }
+            }
+
+            // 호버 효과
+            &:hover:not(:disabled) {
+              border-color: #00832A;
+              
+              &::after {
+                background: #00832A;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // Timer 스타일
+    .timer {
+      color: #FB3C00;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    // Complete Message 스타일
+    .complete-msg {
+      color: var(--text-success);
+      font-size: 18px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      
+      .ico-check {
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        // SVG 색상을 success 컬러로 변경하기 위해 mask 사용
+        background-color: var(--text-success);
+        mask-image: url(../images/ico/ico_check.svg);
+        mask-size: contain;
+        mask-repeat: no-repeat;
+        mask-position: center;
+        -webkit-mask-image: url(../images/ico/ico_check.svg);
+        -webkit-mask-size: contain;
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-position: center;
+      }
     }
 
     // Link Buttons
     .go-signup,
     .go-find {
-      a {
-        color: var(--text-body);
+      color: var(--text-body);
         font-size: 18px;
         font-weight: 700;
         gap: 8px;
         @include flex(center, center);
-      }
 
       .arrow-r {
         width: 16px;
         height: 16px;
         background-image: url(../images/ico/ico_arrow_r.svg);
         @include icon-background;
+      }
+    }
+
+    .go-signup {
+      &:first-child:last-child {
+        margin-left: auto;
       }
     }
 
@@ -873,8 +995,13 @@ $popup-answer-bg: #ffdd0022;
       }
     }
 
+    .tab-menu {
+      background-color: #eee7dd;
+    }
+
     .tab-content {
       color: $popup-text-white;
+      padding: 40px;
 
       @include mq(tablet-small, max) {
         font-size: 16px;
@@ -1054,7 +1181,7 @@ $popup-answer-bg: #ffdd0022;
       tr:not(:last-child) {
         th,
         td {
-          padding-bottom: 24px;
+          padding-bottom: 20px;
         }
       }
       th {
@@ -1065,12 +1192,114 @@ $popup-answer-bg: #ffdd0022;
         vertical-align: top;
         padding-top: 12px;
       }
+
+      // 비활성화된 행 스타일
+      tr.disabled {
+        color: #999;
+
+        input:disabled {
+          color: #999;
+          border-bottom-color: #999;
+          cursor: not-allowed;
+          pointer-events: none;
+
+          &::placeholder {
+            color: #999;
+            opacity: 1;
+          }
+
+          &::-webkit-input-placeholder {
+            color: #999;
+            opacity: 1;
+          }
+
+          &::-moz-placeholder {
+            color: #999;
+            opacity: 1;
+          }
+
+          &:-ms-input-placeholder {
+            color: #999;
+            opacity: 1;
+          }
+        }
+
+        // 라디오 버튼 disabled 스타일
+        input[type="radio"]:disabled {
+          border-color: #999;
+          cursor: not-allowed;
+          pointer-events: none;
+
+          // 체크된 상태도 #999로
+          &:checked {
+            border-color: #999;
+
+            &::after {
+              background: #999;
+              opacity: 1;
+            }
+          }
+
+          + span {
+            color: #999;
+          }
+        }
+
+        label {
+          color: #999;
+          cursor: not-allowed;
+        }
+
+        // 버튼 disabled 스타일
+        button:disabled,
+        .btn-sm:disabled,
+        .btn-full:disabled,
+        .btn-cancel:disabled {
+          color: #999;
+          background: #f5f5f5;
+          cursor: not-allowed;
+          opacity: 0.6;
+        }
+      }
+
+      // 비활성화된 회사정보 행 스타일
+      tr.company-group.disabled {
+        color: #999;
+
+        input:disabled {
+          color: #999;
+          border-bottom-color: #999;
+          cursor: not-allowed;
+          pointer-events: none;
+
+          &::placeholder {
+            color: #999;
+            opacity: 1;
+          }
+
+          &::-webkit-input-placeholder {
+            color: #999;
+            opacity: 1;
+          }
+
+          &::-moz-placeholder {
+            color: #999;
+            opacity: 1;
+          }
+
+          &:-ms-input-placeholder {
+            color: #999;
+            opacity: 1;
+          }
+        }
+      }
     }
   // =======================================
   // Buttons
   // =======================================
   .btn-wrap {
     margin-top: 16px;
+    display: flex;
     gap: 8px;
   }
   .btn-full {
@@ -1096,8 +1325,15 @@ $popup-answer-bg: #ffdd0022;
     border: none;
     border-radius: 2px;
     cursor: pointer;
-    align-self: end;
-    margin-bottom: 4px;
+    
+    &.light {
+      background: var(--text-success);
+    }
+
+    &.change {
+      min-width: 110px;
+      width: auto;
+    }
   }
   .btn-cancel{
     min-width: 120px;
@@ -1109,18 +1345,50 @@ $popup-answer-bg: #ffdd0022;
     backdrop-filter: blur(5px);
   }
 
+  // 버튼 disabled 전역 스타일
+  button:disabled,
+  .btn-sm:disabled,
+  .btn-full:disabled,
+  .btn-cancel:disabled {
+    color: #999;
+    background: #f5f5f5;
+    cursor: not-allowed;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
   .sign-out {
     color: #766C5A;
     font-size: 16px;
     font-weight: 700;
     text-align: right;
     margin-top: 20px;
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ico-signout {
+      width: 24px;
+      height: 24px;
+      display: inline-block;
+      background-image: url(../images/ico/ico_sign_out.svg);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
   }
   // =======================================
   // Text & Messages
   // =======================================
   .point {
     color: var(--text-accent);
+  }
+
+  .txt-done {
+    color: #00832A;
   }
 
   .info-msg {

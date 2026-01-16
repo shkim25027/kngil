@@ -200,32 +200,9 @@
       </div>
       <!-- // container -->
       @@include("_include/_footer.html")
-      
-      <!-- 모든 팝업페이지 경로 -->
-      @@include("mypage/pop_agreement.html")
-      @@include("mypage/pop_join.html")
-      @@include("mypage/pop_login.html")
-      @@include("mypage/pop_mypage01.html")
-      @@include("mypage/pop_mypage02.html")
-      @@include("mypage/pop_mypage03.html")
-      @@include("mypage/pop_search.html")
-      @@include("popup/pop_privacy.html")
-      <!-- // 모든 팝업페이지 경로 -->
     </div>
     <script src="./assets/js/primary.js"></script>
     <script>
-      AOS.init();
-      
-      const lenis = new Lenis()
-      lenis.on('scroll', (e) => {
-        // console.log(e)
-      })
-      lenis.on('scroll', ScrollTrigger.update)
-      gsap.ticker.add((time)=>{
-        lenis.raf(time * 1000)
-      })
-      gsap.ticker.lagSmoothing(0)
-
       // goto 함수 정의
       window.goto = function(id) {
         const element = document.getElementById(id);

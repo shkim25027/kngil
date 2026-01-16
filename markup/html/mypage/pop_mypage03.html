@@ -1,5 +1,5 @@
 <!-- popup_wrap -->
-<div class="popup-wrap" id="pop_mypage03" role="dialog" aria-labelledby="mypage03-title" aria-modal="true">
+<div class="popup-wrap" id="pop_mypage03" role="dialog" aria-labelledby="mypage03_title" aria-modal="true">
     <!-- popup_in -->
     <div class="popup-in mypage">
         <button class="btn-close" type="button" aria-label="팝업 닫기">
@@ -9,7 +9,7 @@
         <div class="popup-container edit">
             <!-- pop_header -->
             <div class="pop-header">
-                <h1 class="tit" id="mypage03-title">내 정보 수정</h1>
+                <h2 class="tit" id="mypage03_title">내 정보 수정</h2>
                 <p class="sub-txt">
                     소중한 <em>내 정보</em>를 <br>
                     <em>최신</em>으로 관리하세요.
@@ -24,11 +24,11 @@
                         <fieldset>
                             <table>
                                 <tbody>
-                                    <tr>
+                                    <tr class="disabled">
                                         <th>아이디</th>
                                         <td>
                                             <div class="input-box">
-                                                <input type="text" placeholder="A1122" readonly>
+                                                <input type="text" placeholder="A1122" readonly disabled>
                                             </div>
                                         </td>
                                     </tr>
@@ -38,15 +38,16 @@
                                             <div class="input-box">
                                                 <input type="password" placeholder="************" required>
                                                 <input type="password" placeholder="************" required>
+                                                <button type="button" class="btn-sm change">비밀번호 변경</button>
                                             </div>
-                                            <span class="info-msg h-6">영문+숫자+특수기호 8자 이상</span>
+                                            <span class="info-msg d-none">영문+숫자+특수기호 8자 이상</span>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <tr class="disabled">
                                         <th class="h-4">이름<span class="point">*</span></th>
                                         <td>
                                             <div class="input-box">
-                                                <input type="text" placeholder="이지빔" readonly>
+                                                <input type="text" placeholder="이지빔" readonly disabled>
                                             </div>
                                         </td>
                                     </tr>
@@ -65,37 +66,96 @@
                                                     <option value="nate">nate.com</option>
                                                     <option value="hotmail">hotmail.com</option>
                                                     <option value="yahoo">yahoo.com</option>
-                                                    <option value="type" id="domain-txt">직접입력</option>
+                                                    <option value="type" id="domain_txt">직접입력</option>
                                                 </select>
                                             </div>
                                         </td>
                                     </tr>
+                                    <!-- 휴대전화번호 -->
                                     <tr>
-                                        <th class="h-4">휴대전화번호<span class="point">*</span></th>
+                                        <th>
+                                            <label for="user_phone">휴대전화번호</label>
+                                            <span class="point" aria-label="필수">*</span>
+                                        </th>
                                         <td>
                                             <div class="input-box group">
-                                                <input type="text" placeholder="01012345678" required>
-                                                <button type="button" class="btn-sm">인증번호</button>
+                                                <input 
+                                                    type="tel" 
+                                                    id="user_phone"
+                                                    name="userPhone"
+                                                    placeholder="휴대폰 번호" 
+                                                    required
+                                                    pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+                                                >
+                                                <span class="timer d-none">03:00</span>
+                                                <button type="button" class="btn-sm btn-code" aria-label="인증번호 발송">
+                                                    인증번호
+                                                </button>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr class="code code-hidden">
-                                        <th class="h-4">인증번호</th>
+                                    <!-- 휴대전화번호 인증완료 -->
+                                    <tr class="d-none">
+                                        <th>
+                                            <label for="user_phone">휴대전화번호</label>
+                                            <span class="point" aria-label="필수">*</span>
+                                        </th>
                                         <td>
                                             <div class="input-box group">
-                                                <input type="text" placeholder="인증번호 입력" required>
-                                                <span class="timer">03:00</span>
-                                                <button type="button" class="btn-sm">확인</button>
-                                                <button type="button" class="btn-sm complete d-none">인증완료</button>
+                                                <input 
+                                                    type="tel" 
+                                                    id="user_phone"
+                                                    name="userPhone"
+                                                    placeholder="휴대폰 번호" 
+                                                    required
+                                                    pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+                                                >
+                                                <span class="complete-msg"><i class="ico-check" aria-hidden="true"></i>인증완료</span>
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <th class="h-4">회사정보<span class="select-msg">(선택)</span></th>
+
+                                    <!-- 휴대전화번호 변경 -->
+                                    <tr class="d-none">
+                                        <th>
+                                            <label for="user_phone">휴대전화번호</label>
+                                            <span class="point" aria-label="필수">*</span>
+                                        </th>
+                                        <td>
+                                            <div class="input-box group">
+                                                <input 
+                                                    type="tel" 
+                                                    id="user_phone"
+                                                    name="userPhone"
+                                                    placeholder="휴대폰 번호" 
+                                                    required
+                                                    pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
+                                                >
+                                                <button class="btn-sm change" type="button">휴대폰 번호 변경</button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="disabled">
+                                        <th>회원유형</th>
                                         <td>
                                             <div class="input-box">
-                                                <input type="text" placeholder="(주)BBB" required>
-                                                <input type="text" placeholder="XXX부" required>
+                                                <label for="member_type1">
+                                                    <input type="radio" id="member_type1" name="memberType" value="1" checked disabled>
+                                                    <span>기업회원</span>
+                                                </label>
+                                                <label for="member_type2">
+                                                    <input type="radio" id="member_type2" name="memberType" value="2" disabled>
+                                                    <span>개인회원</span>
+                                                </label>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="company-group disabled">
+                                        <th>회사정보</th>
+                                        <td>
+                                            <div class="input-box">
+                                                <input type="text" id="company_name" name="companyName" placeholder="(주)BBB" required disabled>
+                                                <input type="text" id="department_name" name="departmentName" placeholder="XXX부" required disabled>
                                             </div>
                                         </td>
                                     </tr>
@@ -105,7 +165,7 @@
                                 <button type="button" class="btn-cancel">취소</button>
                                 <button type="button" class="btn-full">수정</button>
                             </div>
-                            <div class="sign-out"><a href=""><i class="signout"></i>회원 탈퇴하기</a></div>
+                            <div class="sign-out"><a href=""><i class="ico-signout" aria-hidden="true"></i>회원 탈퇴하기</a></div>
                         </fieldset>
                     </div>
                 </form>

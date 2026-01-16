@@ -27,7 +27,7 @@
           </div>
         </section>
         
-        <section class="theorys js__dark">
+        <section class="theorys js-dark">
           <span class="mid-tit" data-aos="fade-down" data-aos-duration="1000">
             " <b class="gr-txt">BIM모델 정보</b>와 <b class="og-txt">도면</b>의 CROSS CHECK "
           </span>
@@ -81,13 +81,13 @@
 
         <section class="layout-fix-left process">
           <div class="left" data-aos="fade-right" data-aos-duration="1000">
-            <div class="bg js__fixLeft-bg on"></div>
-            <div class="bg js__fixLeft-bg"></div>
-            <span class="mid-tit js__fixLeft-tit on"><font class="num">01. </font>도면과 BIM<br><em>동시보기</em>
+            <div class="bg js-fixLeft-bg on"></div>
+            <div class="bg js-fixLeft-bg"></div>
+            <span class="mid-tit js-fixLeft-tit on"><font class="num">01. </font>도면과 BIM<br><em>동시보기</em>
             </span>
-            <span class="mid-tit js__fixLeft-tit"><font class="num">02. </font><em>BIM모델<br> 상세보기</em></span>
+            <span class="mid-tit js-fixLeft-tit"><font class="num">02. </font><em>BIM모델<br> 상세보기</em></span>
           </div>
-          <div class="right js__fixLeft-secs">
+          <div class="right js-fixLeft-secs">
             <div>
               <span class="sub-tit">
                 <img src="./assets/images/ico/ico_forbim_link.svg" alt="">
@@ -119,32 +119,8 @@
       </div>
       <!-- // container -->
       @@include("_include/_footer.html")
-      
-      <!-- 모든 팝업페이지 경로 -->
-      @@include("mypage/pop_agreement.html")
-      @@include("mypage/pop_join.html")
-      @@include("mypage/pop_login.html")
-      @@include("mypage/pop_mypage01.html")
-      @@include("mypage/pop_mypage02.html")
-      @@include("mypage/pop_mypage03.html")
-      @@include("mypage/pop_search.html")
-      @@include("popup/pop_privacy.html")
-      <!-- // 모든 팝업페이지 경로 -->
     </div>
     <script src="./assets/js/forbim.js"></script>
-    <script>
-      AOS.init();
-      
-      const lenis = new Lenis()
-      lenis.on('scroll', (e) => {
-        // console.log(e)
-      })
-      lenis.on('scroll', ScrollTrigger.update)
-      gsap.ticker.add((time)=>{
-        lenis.raf(time * 1000)
-      })
-      gsap.ticker.lagSmoothing(0)
-    </script>
     <script>
       function scroll(id) {
         elem = document.getElementById(id).scrollIntoView();

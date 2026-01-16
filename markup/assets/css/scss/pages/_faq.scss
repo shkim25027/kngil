@@ -472,7 +472,7 @@
       background-color: #f8f8f8;
     }
 
-    .tit_bg {
+    .tit-bg {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -542,7 +542,7 @@
     max-height: 1000px; // 충분히 큰 값
   }
 
-  .con_inner {
+  .con-inner {
     padding: 24px 20px 24px 76px; // 왼쪽 패딩은 Q 아이콘 너비 + 마진 고려
     position: relative;
 
@@ -624,7 +624,7 @@
     .faq-question {
       padding: 20px 16px;
 
-      .tit_bg {
+      .tit-bg {
         width: 36px;
         height: 36px;
         font-size: 16px;
@@ -644,7 +644,7 @@
       }
     }
 
-    .con_inner {
+    .con-inner {
       padding: 20px 16px 20px 64px;
 
       p {
