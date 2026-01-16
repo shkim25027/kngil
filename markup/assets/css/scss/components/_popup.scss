@@ -247,6 +247,12 @@ $popup-answer-bg: #ffdd0022;
         @include popup-form-base(center);
       }
 
+      &.password {
+        .center-wrap {
+          max-width: 480px;
+        }
+      }
+
       .my-info {
         width: 100%; 
         flex-direction: column;
