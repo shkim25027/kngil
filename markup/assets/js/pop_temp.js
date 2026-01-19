@@ -27,15 +27,20 @@
     privacy: '#pop_privacy'
   };
 
+  var retryCount = 0;
+  var RETRY_MAX = 20;
+
   function init() {
     var pop = getParam('pop').toLowerCase();
     var tab = getParam('tab').toLowerCase();
 
     if (!pop) return;
 
-    // popupManager 로드 대기 (common.js가 head에서 먼저 로드됨)
     if (typeof popupManager === 'undefined' || !popupManager.open) {
-      setTimeout(init, 30);
+      if (retryCount < RETRY_MAX) {
+        retryCount += 1;
+        setTimeout(init, 30);
+      }
       return;
     }
 
@@ -47,12 +52,7 @@
     }
 
     var sel = popMap[pop];
-    if (sel) {
-      // DOM·다른 스크립트 안정화 후 팝업 오픈
-      setTimeout(function () {
-        popupManager.open(sel);
-      }, 0);
-    }
+    if (sel) popupManager.open(sel);
   }
 
   if (typeof $ !== 'undefined' && $.fn && $.fn.jquery) {

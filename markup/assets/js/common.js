@@ -74,6 +74,7 @@
      * data-include-path 속성을 가진 요소들의 HTML 포함 처리
      */
     loadIncludes() {
+      if (!document.querySelector('[data-include-path]')) return;
       const allElements = document.getElementsByTagName('*');
       Array.prototype.forEach.call(allElements, (el) => {
         const includePath = el.dataset.includePath;
@@ -111,6 +112,7 @@
   class PopupManager {
     constructor() {
       this.popupScriptLoaded = false;
+      this.currentPopupId = null;
       this.popupMap = {
         agreement: '#pop_agreement',
         join: '#pop_join',
@@ -169,9 +171,12 @@
         return;
       }
 
-      $('.popup-wrap').hide();
+      if (this.currentPopupId && this.currentPopupId !== popupId) {
+        $(this.currentPopupId).hide();
+      }
+      this.currentPopupId = popupId;
+
       const $popup = $(popupId);
-      
       if ($popup.length === 0) {
         console.warn(`[PopupManager] Popup not found: ${popupId}`);
         return;
@@ -188,9 +193,13 @@
      * 개인정보 보호정책 팝업 열기
      */
     openPrivacy(type = 'privacy') {
-      $('.popup-wrap').hide();
-      const $popup = $('#pop_privacy');
-      
+      var id = '#pop_privacy';
+      if (this.currentPopupId && this.currentPopupId !== id) {
+        $(this.currentPopupId).hide();
+      }
+      this.currentPopupId = id;
+
+      const $popup = $(id);
       if ($popup.length === 0) {
         console.warn('[PopupManager] Privacy popup not found');
         return;
