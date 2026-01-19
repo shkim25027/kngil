@@ -1,5 +1,5 @@
 <!-- popup_wrap -->
-<div class="popup-wrap" id="pop_mypage03" role="dialog" aria-labelledby="mypage03_title" aria-modal="true">
+<div class="popup-wrap" id="pop_mypage07" role="dialog" aria-labelledby="mypage03_title" aria-modal="true">
     <!-- popup_in -->
     <div class="popup-in mypage">
         <button class="btn-close" type="button" aria-label="팝업 닫기">
@@ -20,6 +20,7 @@
             <div class="pop-body">
                 <form action="" method="post" novalidate>
                     <div class="tbl-wrap">
+                        <span class="info-msg txt-right">*항목은 필수 항목 입니다.</span>
                         <table>
                             <tbody>
                                 <tr class="disabled">
@@ -31,9 +32,10 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th  >비밀번호</th>
+                                    <th  >비밀번호<span class="point">*</span></th>
                                     <td>
-                                        <div class="input-box"> 
+                                        <div class="input-box">
+                                            <input type="password" placeholder="************" required>
                                             <input type="password" placeholder="************" required>
                                             <button type="button" class="btn-sm change">비밀번호 변경</button>
                                         </div>
@@ -41,7 +43,7 @@
                                     </td>
                                 </tr>
                                 <tr class="disabled">
-                                    <th>이름 </th>
+                                    <th class="h-4">이름<span class="point">*</span></th>
                                     <td>
                                         <div class="input-box">
                                             <input type="text" placeholder="이지빔" readonly disabled>
@@ -49,7 +51,7 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th  >이메일 </th>
+                                    <th class="h-4">이메일<span class="point">*</span></th>
                                     <td>
                                         <div class="input-box">
                                             <input type="text" placeholder="A1122" class="e-id" required>
@@ -69,9 +71,10 @@
                                     </td>
                                 </tr>
                                 <!-- 휴대전화번호 -->
-                                <tr>
+                                <tr class="d-none">
                                     <th>
                                         <label for="user_phone">휴대전화번호</label>
+                                        <span class="point" aria-label="필수">*</span>
                                     </th>
                                     <td>
                                         <div class="input-box group">
@@ -85,15 +88,16 @@
                                             >
                                             <span class="timer d-none">03:00</span>
                                             <button type="button" class="btn-sm btn-code" aria-label="인증번호 발송">
-                                                인증요청
+                                                인증번호
                                             </button>
                                         </div>
                                     </td>
                                 </tr>
                                 <!-- 휴대전화번호 인증완료 -->
-                                <tr class="d-none">
+                                <tr >
                                     <th>
                                         <label for="user_phone">휴대전화번호</label>
+                                        <span class="point" aria-label="필수">*</span>
                                     </th>
                                     <td>
                                         <div class="input-box group">
@@ -114,6 +118,7 @@
                                 <tr class="d-none">
                                     <th>
                                         <label for="user_phone">휴대전화번호</label>
+                                        <span class="point" aria-label="필수">*</span>
                                     </th>
                                     <td>
                                         <div class="input-box group">

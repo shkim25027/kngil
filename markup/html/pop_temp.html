@@ -2,6 +2,7 @@
 <html lang="ko">
   <head>
     @@include("_include/_head.html")
+    <script src="./assets/js/common.js"></script>
     <title>팝업 테스트 - KNGIL</title>
   </head>
   <body>
@@ -26,44 +27,6 @@
 
     @@include("_include/_popups.html")
 
-    <script>
-      (function () {
-        function getParam(name) {
-          var m = new RegExp('[?&]' + name + '=([^&#]*)').exec(location.search);
-          return m ? decodeURIComponent(m[1]) : '';
-        }
-
-        var popMap = {
-          login: '#pop_login',
-          join: '#pop_join',
-          agreement: '#pop_agreement',
-          mypage01: '#pop_mypage01',
-          mypage02: '#pop_mypage02',
-          mypage03: '#pop_mypage03',
-          search: '#pop_search',
-          password: '#pop_password',
-          privacy: '#pop_privacy'
-        };
-
-        $(function () {
-          var pop = getParam('pop').toLowerCase();
-          var tab = getParam('tab').toLowerCase();
-
-          if (!pop) return;
-
-          if (pop === 'privacy') {
-            if (typeof popupManager !== 'undefined' && popupManager.openPrivacy) {
-              popupManager.openPrivacy(tab === 'agreement' ? 'agreement' : 'privacy');
-            }
-            return;
-          }
-
-          var sel = popMap[pop];
-          if (sel && typeof popupManager !== 'undefined' && popupManager.open) {
-            popupManager.open(sel);
-          }
-        });
-      })();
-    </script>
+    <script src="./assets/js/pop_temp.js"></script>
   </body>
 </html>

@@ -12,7 +12,21 @@
   "links": {
     "공통": {
       "팝업": {
-        "팝업": ["../popup/pop_temp.html?pop=privacy", "mainframe", "컨펌대기", ""]
+        "개인정보보호": ["../pop_temp.html?pop=privacy", "mainframe", "컨펌대기", ""],
+        "로그인": ["../pop_temp.html?pop=login", "mainframe", "컨펌대기", ""],
+        "로그인 휴대폰인증": ["../pop_temp.html?pop=login2", "mainframe", "컨펌대기", ""],
+        "비밀번호 변경안내": ["../pop_temp.html?pop=password", "mainframe", "컨펌대기", ""],
+        "이용약관(가입)": ["../pop_temp.html?pop=agreement", "mainframe", "컨펌대기", ""],
+        "회원가입": ["../pop_temp.html?pop=join", "mainframe", "컨펌대기", ""],
+        "회원가입 휴대폰인증": ["../pop_temp.html?pop=join2", "mainframe", "컨펌대기", ""],
+        "회원가입 휴대폰인증 완료": ["../pop_temp.html?pop=join3", "mainframe", "컨펌대기", ""], 
+        "마이페이지": ["../pop_temp.html?pop=mypage02", "mainframe", "컨펌대기", ""],
+        "마이페이지 인증": ["../pop_temp.html?pop=mypage01", "mainframe", "컨펌대기", ""],
+        "마이페이지 정보수정": ["../pop_temp.html?pop=mypage03", "mainframe", "컨펌대기", ""],
+        "마이페이지 비밀번호 변경": ["../pop_temp.html?pop=mypage04", "mainframe", "컨펌대기", ""],
+        "마이페이지 휴대폰번호 변경": ["../pop_temp.html?pop=mypage05", "mainframe", "컨펌대기", ""],
+        "마이페이지 휴대폰번호 변경 완료": ["../pop_temp.html?pop=mypage06", "mainframe", "컨펌대기", ""],
+        "회원탈퇴": ["../pop_temp.html?pop=cancel", "mainframe", "컨펌대기", ""] 
       },
       "메인": {
         "메인": ["../index.html", "mainframe", "컨펌대기", ""]
