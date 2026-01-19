@@ -1573,4 +1573,7 @@ $popup-answer-bg: #ffdd0022;
   .search .pop-header {
     @include popup-header-decorative-text("ID/P", "W");
   }
+  .cancel .pop-header {
+    @include popup-header-decorative-text("Cancel", "Memvership");
+  }
 }
