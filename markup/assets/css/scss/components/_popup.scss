@@ -237,6 +237,9 @@ $popup-answer-bg: #ffdd0022;
             max-width: 100%; 
           }
       }
+      &.cancel .pop-body {
+        padding: 80px;
+      }
     }
     .pop-body {
       @include popup-body-base(center);
@@ -1066,15 +1069,6 @@ $popup-answer-bg: #ffdd0022;
     // Join popup specific styles
   }
 
-  // =======================================
-  // Cancel Popup Variant
-  // =======================================
-  &.cancel {
-    .pop-body {
-      padding: 80px;
-    }
-  }
-  
   // =======================================
   // messages Popup Variant
   // =======================================
