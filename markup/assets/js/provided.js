@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   sections.forEach((section, i) => {
     if (!section) return;
-    const start = i === 0 ? "top top" : "top center";
+    const start = i === 0 ? "top center" : "top center";
     ScrollTrigger.create({
       trigger: section,
       start,
