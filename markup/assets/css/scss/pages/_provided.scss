@@ -461,7 +461,16 @@
   }
 
   .process {
+    // theme: natural #00832A / social #A55500
+    $natural-color: #00832A;
+    $social-color: #A55500;
+    $natural-dl-bg: linear-gradient(180deg, #EAFFF1 0%, rgba(255, 255, 255, 0.00) 101.39%);
+    $social-dl-bg: linear-gradient(180deg, #FFF2E5 0%, rgba(255, 255, 255, 0.00) 101.39%);
+    $natural-fig-bg: linear-gradient(90deg, var(--L_Green, rgba(0, 131, 42, 0.50)) 0%, rgba(0, 131, 42, 0.00) 100%), var(--D_green, #1A543D);
+    $social-fig-bg: linear-gradient(90deg, rgba(165, 85, 0, 0.50) 0%, rgba(165, 85, 0, 0.00) 100%), #6E412A;
+
     .left {
+      align-self: flex-start; /* flex 기본 stretch 때문에 sticky 무효화 방지 */
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -469,25 +478,25 @@
       min-width: 575px;
       padding: 0;
       padding-left: 200px;
+      height: auto; /* _layout-fix height: 200% 오버라이드 */
+      min-height: var(--window-inner-height);
+      position: sticky;
+      top: 0;
+      left: 0;
+      z-index: 1;
 
       .bg {
+        $bg-overlay: linear-gradient(90deg, #00000000 0, #00000080 100%);
         &:nth-child(1) {
-          background: linear-gradient(90deg, #00000000 0, #00000080 100%), url(../img/primary_style_bg.png);
+          background: $bg-overlay, url(../images/provided/bg_provided_natural.png);
           background-size: cover;
           background-position: bottom center;
         }
-
         &:nth-child(2) {
-          background: linear-gradient(90deg, #00000000 0, #00000080 100%), url(../img/primary_block_bg.png);
+          background: $bg-overlay, url(../images/provided/bg_provided_social.png);
           background-size: cover;
           background-position: bottom center;
         }
-
-        &:nth-child(3) {
-          background: linear-gradient(90deg, #00000000 0, #00000080 100%), url(../img/primary_print_bg.png);
-          background-size: cover;
-        }
-
         &.on {
           transform: scale(1);
         }
@@ -550,13 +559,13 @@
       padding: 200px 200px 100px 135px;
       display: flex;
       flex-direction: column;
-      gap: 60px;
+      gap: 450px;
 
       .sub-tit {
         display: flex;
         flex-direction: column;
         font-size: 28px;
-        margin-bottom: 20px;
+        margin-bottom: 40px;
         color: var(--color-green);
 
         img {
@@ -569,67 +578,104 @@
         margin-bottom: 32px;
       }
 
-      .def-list {
-        margin-bottom: 24px;
-
-        .def-list__term {
-          font-weight: 600;
-          margin-bottom: 8px;
+      .cont-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 12px;
+        .cont-item {
+          position: relative;
+          flex-direction: column;
+          gap: 28px;
+          @include flex(center, space-between);
+          border: 2px solid transparent;
+          border-radius: 6px;
+          transition: border-color 0.25s ease;
+          &::before{ 
+            content: " ";
+            width: calc(100% - 4px);
+            height: 12px;
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            z-index: 1;
+            border: 2px solid #00832A;
+            border-bottom: none;
+            box-sizing: border-box;
+          }
         }
-
-        .def-list__data {
-          margin: 0;
+        dl {
+          padding: 24px 12px;
+          width: 100%;
+          background: $natural-dl-bg;
+          gap: 18px;
+          flex-direction: column;
+          @include flex(center, center);
+          dt {
+            font-size: 22px;
+            font-weight: 700;
+          }
+          dd {
+            width: 100%;
+            height: 196px;
+            padding: 16px 20px;
+            background-color: #fff;
+            p {
+              margin: 12px 0;
+              text-align: center;
+              font-weight: 500;
+            }
+          }
         }
       }
 
-      .list-1 {
-        list-style: none;
-        padding: 0;
-        margin: 0;
+      .natural {
+        .sub-tit { color: $natural-color; }
+        .cont-list dl dt { color: $natural-color; }
+      }
 
-        > li {
-          position: relative;
-          padding-left: 16px;
-          margin-bottom: 8px;
-          font-size: 16px;
-          line-height: 1.5;
-
-          &::before {
-            position: absolute;
-            content: "";
-            top: 10px;
-            left: 0;
-            width: 5px;
-            height: 4px;
-            background-color: var(--color-green);
-            transform: skew(-40deg);
+      .social {
+        .sub-tit { color: $social-color; }
+        .cont-list {
+          .cont-item{
+            &::before{ 
+              border-color: $social-color;
+            }
           }
+          dl {
+            background: $social-dl-bg;
+            dt { color: $social-color; }
+          }
+        } 
+        .sub-figs .fig-caption {
+          background: $social-fig-bg;
         }
       }
 
       .sub-figs {
         background: var(--color-han-bgbr);
         width: 100%;
-        min-height: 350px;
-        display: flex;
-        flex-direction: column-reverse;
+      
         border-radius: 4px;
-        margin-bottom: 32px;
-        padding: 24px 20px;
-        gap: 20px;
-
+        overflow: hidden;
+        
         .imgs {
           width: 100%;
-          margin-top: 24px;
-
           img {
             width: 100%;
           }
         }
 
         .fig-caption {
-          margin: 0;
-          font-size: 16px;
+          width: 100%;
+          height: 40px;
+          padding: 5px 10px;
+          font-size: 18px;
+          font-weight: 700;
+          text-align: center;
+          color: #fff;
+          background: $natural-fig-bg;
+          background-blend-mode: screen, normal;
+          @include flex(center, center);
         }
 
         .text {
