@@ -1488,13 +1488,23 @@ $popup-answer-bg: #ffdd0022;
         position: relative;
         z-index: 1;
         color: #7A7A7A;
-        transition: color 0.3s ease;
+        transition: color 0.3s ease, background 0.25s ease;
         
         // 활성화된 탭의 배경 제거 (인디케이터가 대신 처리)
         &.on {
           background: transparent;
           color: #fff;
         }
+      }
+
+      // 호버 시 active 탭 방향으로 그라데이션 (투명하게 빠짐)
+      &:has(.tab-phone.on) .tab-id:not(.on):hover {
+        background: linear-gradient(90deg, transparent 0%, #dbcbb4 100%);
+        background-color: transparent;
+      }
+      &:has(.tab-id.on) .tab-phone:not(.on):hover {
+        background: linear-gradient(90deg, #dbcbb4 0%, transparent 100%);
+        background-color: transparent;
       }
     }
 

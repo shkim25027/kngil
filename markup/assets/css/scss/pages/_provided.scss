@@ -8,6 +8,22 @@
     background: url(../images/provided/bg_provided_title.jpg) no-repeat center center;
     background-size: cover;
   }
+  .sub-content {
+    position: relative;
+    min-height: 966px;
+    overflow: hidden;
+
+    &::before {
+      content: "Provided Data";
+      font-size: 140px;
+      font-weight: 900;
+      line-height: 120px;
+      opacity: 0.05;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+    }
+  }
   .sub-text {
     text-align: justify;
     line-height: 1.4em;
@@ -274,7 +290,7 @@
         .sub-tit {
           font-size: 28px;
           font-weight: 500;
-          color: #007243;
+          color: #00832A;
           margin-bottom: 20px;
         }
 
@@ -553,6 +569,44 @@
         margin-bottom: 32px;
       }
 
+      .def-list {
+        margin-bottom: 24px;
+
+        .def-list__term {
+          font-weight: 600;
+          margin-bottom: 8px;
+        }
+
+        .def-list__data {
+          margin: 0;
+        }
+      }
+
+      .list-1 {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        > li {
+          position: relative;
+          padding-left: 16px;
+          margin-bottom: 8px;
+          font-size: 16px;
+          line-height: 1.5;
+
+          &::before {
+            position: absolute;
+            content: "";
+            top: 10px;
+            left: 0;
+            width: 5px;
+            height: 4px;
+            background-color: var(--color-green);
+            transform: skew(-40deg);
+          }
+        }
+      }
+
       .sub-figs {
         background: var(--color-han-bgbr);
         width: 100%;
@@ -566,11 +620,16 @@
 
         .imgs {
           width: 100%;
-          margin-top: 24;
+          margin-top: 24px;
 
           img {
             width: 100%;
           }
+        }
+
+        .fig-caption {
+          margin: 0;
+          font-size: 16px;
         }
 
         .text {
