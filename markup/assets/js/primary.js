@@ -1,10 +1,12 @@
 document.addEventListener("DOMContentLoaded", (event) => {
+   
     // ---------------------------------------------
-    // js-fixLeft 오른쪽에 따라 왼쪽 내용 변하기
-    // 사용 클래스 : js-fixLeft-tit, js-fixLeft-bg, js-fixLeft-sec
+    // js__fixLeft 오른쪽에 따라 왼쪽 내용 변하기
+    // 사용 클래스 : js__fixLeft_tit, js__fixLeft_bg, js__fixLeft_sec
     // ---------------------------------------------
-    // primary.html 페이지에서만 실행
-    if (!document.querySelector(".js-fixLeft-tit")) {
+    // floorplan.html 페이지에서만 실행
+    const key1 = document.querySelector('.key.find');
+    if (!key1) {
         return;
     }
 
@@ -15,53 +17,30 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    const tits = document.querySelectorAll(".js-fixLeft-tit");
-    const bgs = document.querySelectorAll(".js-fixLeft-bg");
-    const sections = document.querySelectorAll(".js-fixLeft-secs > div");
+    const key1Tits = key1.querySelectorAll(".js__fixLeft_tit > li");
+    const key1Sections = key1.querySelectorAll(".js__fixLeft_secs > div");   
+    const key2 = document.querySelector('.key.info');
+    const key2Tits = key2 ? key2.querySelectorAll(".js__fixLeft_tit > li") : [];
+    const key2Sections = key2 ? key2.querySelectorAll(".js__fixLeft_secs > div") : [];   
+    const key3 = document.querySelector('.key.print');
+    const key3Tits = key3 ? key3.querySelectorAll(".js__fixLeft_tit > li") : [];
+    const key3Sections = key3 ? key3.querySelectorAll(".js__fixLeft_secs > div") : [];   
 
-
-    function bgOnEnter(element) {
-        gsap.to(element, {
-            transform: "scale(1.05)",
-            duration: 0.5
-        });
-    }
-
-    function bgOnLeave(element) {
-        gsap.to(element, {
-            transform: "scale(1)",
-            duration: 0.5
-        });
-    }
     
     function titOnEnter(element) {
         gsap.to(element, {
-            opacity: 1,
-            transform: "scale(1) translate(0%, 0%)",
             duration: 0.5
         });
     }
     
     function titOnLeave(element) {
         gsap.to(element, {
-            opacity: 0.5,
-            transform: "scale(0.7) translate(-47%, 0%)",
             duration: 0.5
         });
     }
 
-    function updateElements(index) {
-        bgs.forEach((bg, i) => {
-            if (i === index) {
-                bg.classList.add("on");
-                bgOnEnter(bg);
-            } else {
-                bg.classList.remove("on");
-                bgOnLeave(bg);
-            }
-        });
-        
-        tits.forEach((tit, i) => {
+    function key1UpdateTit(index) {
+        key1Tits.forEach((tit, i) => {
             if (i === index) {
                 tit.classList.add("on");
                 titOnEnter(tit);
@@ -71,62 +50,109 @@ document.addEventListener("DOMContentLoaded", (event) => {
             }
         });
     }
-   
+
+    function key2UpdateTit(index) {
+        key2Tits.forEach((tit, i) => {
+            if (i === index) {
+                tit.classList.add("on");
+                titOnEnter(tit);
+            } else {
+                tit.classList.remove("on");
+                titOnLeave(tit);
+            }
+        });
+    }
+
+    function key3UpdateTit(index) {
+        key3Tits.forEach((tit, i) => {
+            if (i === index) {
+                tit.classList.add("on");
+                titOnEnter(tit);
+            } else {
+                tit.classList.remove("on");
+                titOnLeave(tit);
+            }
+        });
+    }
+    
     ScrollTrigger.create({
-        trigger: sections[0],
-        start: "top top",
+        trigger: key1Sections[0],
+        start: "top 30%",
         // markers: true,
-        onEnter: () => updateElements(0),
-        onLeaveBack: () => updateElements(0)
+        onEnter: () => key1UpdateTit(0),
+        onLeaveBack: () => key1UpdateTit(0)
     });
     
     ScrollTrigger.create({
-        trigger: sections[1],
-        start: "top center",
+        trigger: key1Sections[1],
+        start: "center 70%",
         // markers: true,
-        onEnter: () => updateElements(1),
-        onLeaveBack: () => updateElements(1)
+        onEnter: () => key1UpdateTit(1),
+        onLeaveBack: () => key1UpdateTit(1)
     });
 
     ScrollTrigger.create({
-        trigger: sections[2],
-        start: "top center",
-       // markers: true,
-        onEnter: () => updateElements(2),
-        onLeaveBack: () => updateElements(2)
+        trigger: key1Sections[2],
+        start: "bottom bottom",
+        // markers: true,
+        onEnter: () => key1UpdateTit(2),
+        onLeaveBack: () => key1UpdateTit(2)
+    });
+
+    ScrollTrigger.create({
+        trigger: key2Sections[0],
+        start: "top 30%",
+        // markers: true,
+        onEnter: () => key2UpdateTit(0),
+        onLeaveBack: () => key2UpdateTit(0)
+    });
+    
+    ScrollTrigger.create({
+        trigger: key2Sections[1],
+        start: "center 70%",
+        // markers: true,
+        onEnter: () => key2UpdateTit(1),
+        onLeaveBack: () => key2UpdateTit(1)
+    });
+
+    ScrollTrigger.create({
+        trigger: key2Sections[2],
+        start: "bottom bottom",
+        // markers: true,
+        onEnter: () => key2UpdateTit(2),
+        onLeaveBack: () => key2UpdateTit(2)
+    });
+
+    ScrollTrigger.create({
+        trigger: key2Sections[3],
+        start: "bottom bottom",
+        // markers: true,
+        onEnter: () => key2UpdateTit(3),
+        onLeaveBack: () => key2UpdateTit(3)
+    });
+
+    ScrollTrigger.create({
+        trigger: key3Sections[0],
+        start: "top 30%",
+        // markers: true,
+        onEnter: () => key3UpdateTit(0),
+        onLeaveBack: () => key3UpdateTit(0)
+    });
+    
+    ScrollTrigger.create({
+        trigger: key3Sections[1],
+        start: "center 70%",
+        // markers: true,
+        onEnter: () => key3UpdateTit(1),
+        onLeaveBack: () => key3UpdateTit(1)
+    });
+
+    ScrollTrigger.create({
+        trigger: key3Sections[2],
+        start: "bottom bottom",
+        // markers: true,
+        onEnter: () => key3UpdateTit(2),
+        onLeaveBack: () => key3UpdateTit(2)
     });
 
 });
-// 고정 슬라이드
-document.addEventListener('DOMContentLoaded', function() {
-    const route = document.querySelector('.route');
-    if (!route) {
-        return;
-    }
-    const sections = route.querySelectorAll('#sec1, #sec2, #sec3');
-    const tabs = route.querySelectorAll('.tabs .tabs-li');
-    const subs = route.querySelectorAll('.subs li');
-    const imgs = route.querySelectorAll('.imgs li');
-
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.5
-    };
-
-    const observerCallback = (entries) => {
-        entries.filter(entry => entry.isIntersecting).forEach(entry => {
-            const id = entry.target.id;
-            [tabs, subs, imgs].forEach(group => 
-                group.forEach((el, index) => 
-                    el.classList.toggle('on', id === `sec${index + 1}`)
-                )
-            );
-        });
-    };
-
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
-    sections.forEach(section => observer.observe(section));
-});
-
-

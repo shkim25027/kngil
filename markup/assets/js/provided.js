@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", (event) => {
     // ---------------------------------------------
-    // js__fixLeft 오른쪽에 따라 왼쪽 내용 변하기
-    // 사용 클래스 : js__fixLeft_tit, js__fixLeft_bg, js__fixLeft_sec
+    // js-fixLeft 오른쪽에 따라 왼쪽 내용 변하기
+    // 사용 클래스 : js-fixLeft-tit, js-fixLeft-bg, js-fixLeft-sec
     // ---------------------------------------------
-    // interface.html 페이지에서만 실행
-    if (!document.querySelector(".js__fixLeft_tit")) {
+    // primary.html 페이지에서만 실행
+    if (!document.querySelector(".js-fixLeft-tit")) {
         return;
     }
 
@@ -15,9 +15,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     gsap.registerPlugin(ScrollTrigger);
 
-    const tits = document.querySelectorAll(".js__fixLeft_tit");
-    const bgs = document.querySelectorAll(".js__fixLeft_bg");
-    const sections = document.querySelectorAll(".js__fixLeft_secs > div");
+    const tits = document.querySelectorAll(".js-fixLeft-tit");
+    const bgs = document.querySelectorAll(".js-fixLeft-bg");
+    const sections = document.querySelectorAll(".js-fixLeft-secs > div");
 
 
     function bgOnEnter(element) {
@@ -74,30 +74,29 @@ document.addEventListener("DOMContentLoaded", (event) => {
    
     ScrollTrigger.create({
         trigger: sections[0],
-        start: "center top",
-    //    markers: true,
+        start: "top top",
+        // markers: true,
         onEnter: () => updateElements(0),
         onLeaveBack: () => updateElements(0)
     });
     
     ScrollTrigger.create({
         trigger: sections[1],
-        start: "center center",
-        //markers: true,
+        start: "top center",
+        // markers: true,
         onEnter: () => updateElements(1),
         onLeaveBack: () => updateElements(1)
     });
 
     ScrollTrigger.create({
         trigger: sections[2],
-        start: "center bottom",
+        start: "top center",
        // markers: true,
         onEnter: () => updateElements(2),
         onLeaveBack: () => updateElements(2)
     });
 
 });
-
 // 고정 슬라이드
 document.addEventListener('DOMContentLoaded', function() {
     const route = document.querySelector('.route');
@@ -105,13 +104,13 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
     }
     const sections = route.querySelectorAll('#sec1, #sec2, #sec3');
-    const tabs = route.querySelectorAll('.tabs li');
+    const tabs = route.querySelectorAll('.tabs .tabs-li');
     const subs = route.querySelectorAll('.subs li');
     const imgs = route.querySelectorAll('.imgs li');
 
     const observerOptions = {
         root: null,
-        rootMargin: '20px',
+        rootMargin: '0px',
         threshold: 0.5
     };
 
@@ -130,43 +129,4 @@ document.addEventListener('DOMContentLoaded', function() {
     sections.forEach(section => observer.observe(section));
 });
 
-
-// 듀얼모니터 시퀀스 애니메이션
-$(function(){
-
-// define images
-var images = Array();
-
-for (let i = 1; i < 105; i++) {
-    images.push(`img/com_img/comp_${i}.png`);
-}
-
-	// TweenMax can tween any property of any object. We use this object to cycle through the array
-	var obj = {curImg: 0};
-
-	// create tween
-	var tween = TweenMax.to(obj, 1,
-		{
-			curImg: images.length - 1,	// animate propery curImg to number of images
-			roundProps: "curImg",				// only integers so it can be used as an array index
-					// repeat 3 times
-			immediateRender: true,			// load first image automatically
-			ease: Linear.easeNone,			// show every image the same ammount of time
-			onUpdate: function () {
-			  $("#myimg").attr("src", images[obj.curImg]); // set the image source
-			}
-		}
-	);
-
-	// init controller
-	var controller = new ScrollMagic.Controller();
-
-	// build scene
-	var scene = new ScrollMagic.Scene({triggerElement: ".dual", duration: 3000, triggerHook: 0})
-					.setTween(tween)
-					.setPin('.dual')
-					//.addIndicators() // add indicators (requires plugin)
-					.addTo(controller);
-
-});
 

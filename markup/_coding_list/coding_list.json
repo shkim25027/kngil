@@ -1,0 +1,22 @@
+{
+  "templete": {
+    "h2Title": "<h2><a href=\"#\" onclick=\"toggleFunc(event, this)\">{title}</a></h2>",
+    "detail": [
+      "{html}",
+      "<td colspan=\"{colspan}\" class=\"{td_class}\"><a href=\"{href}\" target=\"{target}\" class=\"{class}\" onclick=\"clickFuncs(event, this)\">{subject}<span class=\"{comment_class}\">{comment}</span></a><a href=\"{href}\" target=\"_blank\" class=\"new_window\">새창</a></td>"
+    ]
+  },
+  "header": {
+    "title": "코딩리스트"
+  },
+  "links": {
+    "공통": {
+      "팝업": {
+        "팝업": ["../popup/pop_temp.html?pop=privacy", "mainframe", "컨펌대기", ""]
+      },
+      "메인": {
+        "메인": ["../index.html", "mainframe", "컨펌대기", ""]
+      }
+    }
+  }
+}

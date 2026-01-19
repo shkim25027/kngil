@@ -15,6 +15,7 @@ import imageminSvgo from "imagemin-svgo"; //SVG 최적화
 import includer from "gulp-file-include"; //Gulp 빌드 시 정적 HTML 조립
 import prettier from "gulp-prettier"; //JS/CSS/HTML 코드 자동 포맷팅
 import { deleteAsync } from "del";
+import gulpCache from "gulp-cache"; // 파일 변경 감지 캐싱
 
 const babel = await import("gulp-babel").then((mod) => mod.default || mod);
 const CacheBuster = await import("gulp-cachebust").then(
@@ -24,6 +25,10 @@ const cachebust = new CacheBuster();
 
 const browserSync = browserSyncLib.create();
 const sassCompiler = gulpSass(sass);
+
+// 개발 모드 플래그 (환경 변수로 제어 가능)
+// build 작업에서는 항상 production 모드로 실행
+const isDev = process.env.NODE_ENV !== "production" && process.argv.indexOf("build") === -1;
 
 // ------------------------------------
 // Paths
@@ -61,6 +66,11 @@ const paths = {
     ],
     dest: "./dist",
   },
+  codingList: {
+    html: "./markup/coding_list.html",
+    folder: "./markup/_coding_list/**/*",
+    dest: "./dist",
+  },
 };
 
 // ------------------------------------
@@ -85,33 +95,43 @@ function video() {
   }).pipe(dest(paths.video.dest));
 }
 
-// Images
+// Images - 개발 모드에서는 최적화 건너뛰기
 function images() {
-  return src(paths.img.src, {
+  const stream = src(paths.img.src, {
     encoding: false,
     buffer: true,
-  })
-    .pipe(
-      imagemin(
-        [
-          //0: 최적화 안 함 (빠름, 용량 큰 편)
-          //3: 적당한 최적화 (속도와 용량 균형) ✅ 권장
-          //5: 기본값 (더 작은 용량, 좀 더 느림)
-          //7: 최대 최적화 (가장 작은 용량, 매우 느림)
-          imageminOptipng({ optimizationLevel: 3 }), // 5 대신 3으로 낮춤
-          imageminSvgo({
-            plugins: [{ name: "removeViewBox", active: false }],
-          }),
-        ],
+  });
 
-        {
-          verbose: true, // 로그 출력
-        }
+  // 개발 모드가 아니거나 프로덕션 빌드일 때만 최적화 실행
+  if (!isDev) {
+    return stream
+      .pipe(
+        gulpCache(
+          imagemin(
+            [
+              //0: 최적화 안 함 (빠름, 용량 큰 편)
+              //3: 적당한 최적화 (속도와 용량 균형) ✅ 권장
+              //5: 기본값 (더 작은 용량, 좀 더 느림)
+              //7: 최대 최적화 (가장 작은 용량, 매우 느림)
+              imageminOptipng({ optimizationLevel: 3 }), // 5 대신 3으로 낮춤
+              imageminSvgo({
+                plugins: [{ name: "removeViewBox", active: false }],
+              }),
+            ],
+            {
+              verbose: true, // 로그 출력
+            }
+          ),
+          {
+            name: "imagemin", // 캐시 이름
+          }
+        )
       )
-    )
-    .pipe(dest(paths.img.dest));
-  //return src(paths.img.src).pipe(imagemin()).pipe(dest(paths.img.dest));
-  // return src(paths.img.src).pipe(dest(paths.img.dest));
+      .pipe(dest(paths.img.dest));
+  }
+
+  // 개발 모드: 최적화 없이 그대로 복사 (빠름)
+  return stream.pipe(dest(paths.img.dest));
 }
 
 // SCSS → CSS
@@ -131,10 +151,15 @@ function csscopy() {
 
 // JS
 function scripts() {
-  return src([paths.js.src, ...paths.js.ignore])
-    .pipe(concat("common.js"))
-    .pipe(babel({ presets: ["@babel/preset-env"] }))
-    .pipe(terser())
+  const stream = src([paths.js.src, ...paths.js.ignore])
+    .pipe(concat("common.js"));
+
+  // 개발 모드가 아닐 때만 최적화 실행
+  if (!isDev) {
+    stream.pipe(babel({ presets: ["@babel/preset-env"] })).pipe(terser());
+  }
+
+  return stream
     //.pipe(rename({ suffix: ".min" }))
     .pipe(dest(paths.js.dest))
     .pipe(browserSync.stream());
@@ -150,16 +175,32 @@ function jsindex() {
   return src(paths.jsindex.src).pipe(dest(paths.jsindex.dest));
 }
 
+// Coding List - coding_list.html 및 _coding_list 폴더 복사
+function codingListHtml() {
+  return src(paths.codingList.html).pipe(dest(paths.codingList.dest));
+}
+function codingListFolder() {
+  return src(paths.codingList.folder, { base: "./markup" }).pipe(
+    dest(paths.codingList.dest)
+  );
+}
+
 // HTML SSI
 function html() {
-  return src([paths.html.src, ...paths.html.ignore]) // 배열로 합침
+  const stream = src([paths.html.src, ...paths.html.ignore]) // 배열로 합침
     .pipe(
       includer({
         prefix: "@@", // include 구문: @@include("header.html")
         basepath: "./markup/html", // ✅ 기준 경로를 html 폴더 전체로 설정
       })
-    )
-    .pipe(prettier())
+    );
+
+  // 개발 모드가 아닐 때만 prettier 실행 (빌드 시에만 포맷팅)
+  if (!isDev) {
+    stream.pipe(prettier());
+  }
+
+  return stream
     .pipe(dest(paths.html.dest))
     .pipe(browserSync.stream());
 }
@@ -179,26 +220,73 @@ function serve() {
   watch(paths.js.src, scripts);
   watch(paths.jscopy.src, jscopy);
   watch(paths.jsindex.src, jsindex);
+  // 개발 모드에서는 이미지 최적화 없이 빠르게 복사만
   watch(paths.img.src, images);
   watch(paths.fonts.src, fonts);
   watch(paths.video.src, video);
   watch(paths.html.src, html);
+  watch(paths.codingList.html, codingListHtml);
+  watch(paths.codingList.folder, codingListFolder);
 }
 
 // ------------------------------------
 // Series / Parallel Tasks
 // ------------------------------------
+// 프로덕션 빌드: 최적화 포함
 const build = series(
   clean,
-  parallel(fonts, images, video, scss, csscopy, scripts, jscopy, jsindex, html),
+  parallel(
+    fonts,
+    images,
+    video,
+    scss,
+    csscopy,
+    scripts,
+    jscopy,
+    jsindex,
+    html,
+    codingListHtml,
+    codingListFolder
+  ),
   cache
 );
 
+// 개발 모드: clean 없이 빠르게 시작 (이미 빌드된 파일 유지)
 const dev = series(
-  clean,
-  parallel(fonts, images, video, scss, csscopy, scripts, jscopy, jsindex, html),
+  parallel(
+    fonts,
+    images,
+    video,
+    scss,
+    csscopy,
+    scripts,
+    jscopy,
+    jsindex,
+    html,
+    codingListHtml,
+    codingListFolder
+  ),
   parallel(serve)
 );
 
-export { build, dev, clean };
+// 초기 빌드가 필요한 경우 사용
+const devClean = series(
+  clean,
+  parallel(
+    fonts,
+    images,
+    video,
+    scss,
+    csscopy,
+    scripts,
+    jscopy,
+    jsindex,
+    html,
+    codingListHtml,
+    codingListFolder
+  ),
+  parallel(serve)
+);
+
+export { build, dev, devClean, clean };
 export default dev;

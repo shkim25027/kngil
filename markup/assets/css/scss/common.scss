@@ -167,30 +167,6 @@ font.egbim {
 }
 
 // =======================================
-// Lists
-// =======================================
-
-ul {
-  line-height: 160%;
-}
-
-.value ul li {
-  position: relative;
-  text-indent: 16px;
-
-  &::before {
-    position: absolute;
-    content: "";
-    top: 14px;
-    left: 0;
-    width: 5px;
-    height: 4px;
-    background-color: var(--color-accent);
-    transform: skew(-40deg);
-  }
-}
-
-// =======================================
 // Icons
 // =======================================
 

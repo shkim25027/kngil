@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    @@include("_include/_head.html")
+    <title>팝업 테스트 - KNGIL</title>
+  </head>
+  <body>
+    <div class="wrap" style="padding: 40px; min-height: 100vh;">
+      <h1 style="font-size: 18px; margin-bottom: 16px;">팝업 테스트</h1>
+      <p style="color: #666; margin-bottom: 8px;">URL 파라미터 <code>pop</code>으로 팝업을 엽니다.</p>
+      <p style="color: #888; font-size: 13px; margin-bottom: 20px;">
+        예: <code>?pop=login</code> / <code>?pop=privacy&tab=agreement</code>
+      </p>
+      <ul style="color: #666; font-size: 13px; line-height: 1.8;">
+        <li><code>pop=login</code> 로그인</li>
+        <li><code>pop=join</code> 회원가입</li>
+        <li><code>pop=agreement</code> 이용약관(가입)</li>
+        <li><code>pop=mypage01</code> 마이페이지 1</li>
+        <li><code>pop=mypage02</code> 마이페이지 2</li>
+        <li><code>pop=mypage03</code> 마이페이지 3 (정보수정)</li>
+        <li><code>pop=search</code> ID/PW 찾기</li>
+        <li><code>pop=password</code> 비밀번호 재설정 안내</li>
+        <li><code>pop=privacy</code> 개인정보처리방침 · <code>pop=privacy&tab=agreement</code> 이용약관 탭</li>
+      </ul>
+    </div>
+
+    @@include("_include/_popups.html")
+
+    <script>
+      (function () {
+        function getParam(name) {
+          var m = new RegExp('[?&]' + name + '=([^&#]*)').exec(location.search);
+          return m ? decodeURIComponent(m[1]) : '';
+        }
+
+        var popMap = {
+          login: '#pop_login',
+          join: '#pop_join',
+          agreement: '#pop_agreement',
+          mypage01: '#pop_mypage01',
+          mypage02: '#pop_mypage02',
+          mypage03: '#pop_mypage03',
+          search: '#pop_search',
+          password: '#pop_password',
+          privacy: '#pop_privacy'
+        };
+
+        $(function () {
+          var pop = getParam('pop').toLowerCase();
+          var tab = getParam('tab').toLowerCase();
+
+          if (!pop) return;
+
+          if (pop === 'privacy') {
+            if (typeof popupManager !== 'undefined' && popupManager.openPrivacy) {
+              popupManager.openPrivacy(tab === 'agreement' ? 'agreement' : 'privacy');
+            }
+            return;
+          }
+
+          var sel = popMap[pop];
+          if (sel && typeof popupManager !== 'undefined' && popupManager.open) {
+            popupManager.open(sel);
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

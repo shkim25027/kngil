@@ -119,6 +119,7 @@
         mypage02: '#pop_mypage02',
         mypage03: '#pop_mypage03',
         search: '#pop_search',
+        password: '#pop_password',
         privacy: '#pop_privacy'
       };
     }

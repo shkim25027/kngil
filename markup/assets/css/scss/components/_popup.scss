@@ -697,6 +697,9 @@ $popup-answer-bg: #ffdd0022;
       width: 100%;
       @include flex(center, flex-start);
       gap: 8px;
+      &:has(input[type="radio"]) {
+        height: 48px;
+      }
 
       i {
         display: inline-block;
@@ -720,7 +723,7 @@ $popup-answer-bg: #ffdd0022;
 
       // .input-box.group 스타일
       &.group {
-        border-bottom: 1px solid #000;
+        border-bottom: 1px solid #000; 
 
         input {
           border-bottom: none;
@@ -1036,6 +1039,11 @@ $popup-answer-bg: #ffdd0022;
         height: 80px;
         padding: 16px 0;
         border-bottom: 1px solid #000;
+        .group {
+          .timer  {
+            margin-right: 16px;
+          }
+        }
       }
 
       input[type="text"],
@@ -1056,6 +1064,17 @@ $popup-answer-bg: #ffdd0022;
   // =======================================
   &.join {
     // Join popup specific styles
+  }
+  
+  // =======================================
+  // messages Popup Variant
+  // =======================================
+  .messages {
+    width: 100%;
+    flex-grow: 1;
+    flex-direction: column;
+    text-align: center;
+    @include flex(center, center);
   }
 
   // =======================================
