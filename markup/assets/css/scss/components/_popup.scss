@@ -391,7 +391,7 @@ $popup-answer-bg: #ffdd0022;
         }
       }
       .btn-wrap {
-        margin-top: 24px;
+        margin-top: 48px;
       }
     
     }
@@ -1064,6 +1064,15 @@ $popup-answer-bg: #ffdd0022;
   // =======================================
   &.join {
     // Join popup specific styles
+  }
+
+  // =======================================
+  // Cancel Popup Variant
+  // =======================================
+  &.cancel {
+    .pop-body {
+      padding: 80px;
+    }
   }
   
   // =======================================
