@@ -193,7 +193,7 @@ function codingListFolder() {
 
 // HTML SSI
 function html() {
-  const stream = src([paths.html.src, ...paths.html.ignore]) // 배열로 합침
+  let stream = src([paths.html.src, ...paths.html.ignore]) // 배열로 합침
     .pipe(
       includer({
         prefix: "@@", // include 구문: @@include("header.html")
@@ -203,7 +203,7 @@ function html() {
 
   // 개발 모드가 아닐 때만 prettier 실행 (빌드 시에만 포맷팅)
   if (!isDev) {
-    stream.pipe(prettier());
+    stream = stream.pipe(prettier());
   }
 
   return stream

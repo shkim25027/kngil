@@ -12,7 +12,7 @@ $popup-shadow: 20px -20px 50px #000000cc;
 $popup-bg-gradient: linear-gradient(0deg, #ffffff00 0%, #eee7dd 100%), 
                     linear-gradient(90deg, #d4cbbd 0%, #d4cbbd 100%);
 $popup-bg-image: url(../images/bg_pop.png);
-$popup-close-bg: url('../images/bg_close.png');
+$popup-close-bg: url('../images/bg_close.svg');
 
 // Popup positioning
 $popup-top: 72px;
@@ -1039,10 +1039,9 @@ $popup-answer-bg: #ffdd0022;
         height: 80px;
         padding: 16px 0;
         border-bottom: 1px solid #000;
-        .group {
-          .timer  {
-            margin-right: 16px;
-          }
+        .timer {
+          font-size: 24px;
+          margin-right: 24px;
         }
       }
 
