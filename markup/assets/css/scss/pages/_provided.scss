@@ -9,6 +9,10 @@
 }
 
 .provided {
+  section {
+    max-width: 1920px;
+    margin: 0 auto;
+  }
   .sub-header{
     background: url(../images/provided/bg_provided_title.jpg) no-repeat center center;
     background-size: cover;
@@ -570,9 +574,8 @@
       gap: 450px;
 
       .sub-tit {
-        display: flex;
-        flex-direction: column;
         font-size: 28px;
+        font-weight: 500;
         margin-bottom: 40px;
         color: var(--color-green);
         .ico-natural {
