@@ -429,11 +429,11 @@
         const $form = $(e.currentTarget);
         const $timer = $form.find(CONFIG.SELECTORS.timer);
         const $infoBox = $form.find(CONFIG.SELECTORS.infoBox);
-        const $phoneInput = $form.find('input[type="tel"]');
-        const phone = $phoneInput.val();
+        const $phoneInput = $form.find('#login_phone, input[name="userPhone"], input[type="tel"]').first();
+        const phone = ($phoneInput.val() || '').replace(/\D/g, '');
 
-        // 전화번호 유효성 검사
-        if (!phone || !phone.match(/[0-9]{3}-[0-9]{4}-[0-9]{4}/)) {
+        // 전화번호 유효성 검사 (숫자 10~11자리)
+        if (phone.length < 10 || phone.length > 11) {
           alert('올바른 휴대폰 번호를 입력해주세요.');
           return;
         }

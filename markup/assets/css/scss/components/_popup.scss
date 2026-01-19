@@ -606,27 +606,28 @@ $popup-answer-bg: #ffdd0022;
       &::before,
       &::after {
         position: absolute;
-        top: -40px;
-        font-size: 180px;
+        top: 10px;
+        font-size: 120px;
         font-weight: 900;
         white-space: nowrap;
-        letter-spacing: -0.06em;
+        letter-spacing: -0.02em;
         opacity: 0.5;
-        color: $popup-text-white;
-        mix-blend-mode: overlay;
         z-index: 1;
+        text-shadow: 0 0 50px rgba(0, 0, 0, 0.05);
       }
 
       &::before {
         right: 6px;
+        color: rgba(255, 255, 255, 0.15);
       }
 
       &::after {
-        left: 406px;
+        left: 410px;
+        color: rgba(255, 255, 255, 0.30);
       }
 
       h2 {
-        font-size: 80px;
+        font-size: 67px;
         font-weight: 900;
 
         @include mq(desktop-small, max) {
@@ -1085,11 +1086,6 @@ $popup-answer-bg: #ffdd0022;
   // Search Popup Variant
   // =======================================
   &.search {
-    .pop-header {
-      .tit {
-        font-size: 67px;
-      }
-    }
     .hidden {
       display: none;
     }
