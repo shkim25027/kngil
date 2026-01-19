@@ -253,6 +253,10 @@ $popup-answer-bg: #ffdd0022;
       &.password {
         .center-wrap {
           max-width: 480px;
+        
+        }
+        .input-box {
+          padding: 16px 0;
         }
       }
 
