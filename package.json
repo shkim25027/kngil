@@ -37,8 +37,5 @@
     "imagemin-optipng": "^8.0.0",
     "imagemin-svgo": "^11.0.1",
     "sass": "^1.93.2"
-  },
-  "dependencies": {
-    "-": "^0.0.1"
   }
 }

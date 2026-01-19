@@ -5,6 +5,10 @@ on:
     branches: [main]
   workflow_dispatch:
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 permissions:
   contents: read
   pages: write
@@ -26,32 +30,23 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build with Gulp
-        run: npx gulp build
+      - name: Build
+        run: npm run build
+        env:
+          NODE_ENV: production
 
-      # 디버깅: dist 폴더 상세 확인 (여기서 문제 원인 파악!)
-      - name: Verify dist folder contents
+      - name: Verify dist
         run: |
-          echo "=== Dist folder structure ==="
           ls -la dist/
-          echo "=== HTML files ==="
-          find dist/ -name "*.html" -type f
-          echo "=== Total files in dist ==="
-          find dist/ | wc -l
-          if [ ! -f "dist/index.html" ]; then
-            echo "❌ ERROR: index.html not found in dist! Gulp build failed."
-            exit 1
-          fi
-        shell: bash
+          test -f dist/index.html || (echo "❌ index.html not found in dist" && exit 1)
 
-      # Artifact 업로드 (v4, 이름 자동 "github-pages")
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
           path: ./dist/
 
   deploy:
-    needs: build # build 성공해야 실행
+    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
