@@ -568,7 +568,7 @@
     }
 
     .right {
-      padding: 200px 200px 100px 135px;
+      padding: 200px 170px 100px 135px;
       display: flex;
       flex-direction: column;
       gap: 450px;
@@ -601,11 +601,28 @@
       }
 
       .cont-list {
+        position: relative;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 12px;
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: 50%;
+          bottom: 42%;
+          width: 437px;
+          height: 89px;
+          translate: -50% 0;
+          background: url(../images/provided/img_arrow_natural.svg) no-repeat center bottom;
+          background-size: 100% auto;
+          pointer-events: none;
+          z-index: 2;
+        }
+
         .cont-item {
           position: relative;
+          z-index: 1; /* cont-list::before( wave ) 위에 보이도록 */
           flex-direction: column;
           gap: 28px;
           @include flex(center, space-between);
@@ -690,6 +707,9 @@
       .social {
         .sub-tit { color: $social-color; }
         .cont-list {
+          &::before {
+            background-image: url(../images/provided/img_arrow_social.svg);
+          }
           .cont-item{
             &::before{ 
               border-color: $social-color;
