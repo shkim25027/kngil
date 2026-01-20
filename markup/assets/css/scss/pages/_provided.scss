@@ -21,7 +21,8 @@
     position: relative;
     min-height: 966px;
     overflow: hidden;
-
+    padding-top: 160px;
+    padding-bottom: 120px;
     &::before {
       content: "Provided Data";
       font-size: 140px;
@@ -31,6 +32,23 @@
       position: absolute;
       left: 0;
       bottom: 34px;
+    }
+    .sub-tit-box {
+      position: relative;
+      text-align: center;
+      margin-bottom: 100px;
+      &::before {
+        content: "";
+        position: absolute;
+        top: -67px;
+        left: calc(50% - 50px);
+        width: 100px;
+        height: 25px;
+        background: url(../images/ico_title_obj.svg) no-repeat center center;
+      }
+      .sub-tit {
+        font-weight: 400;
+      }
     }
   }
   .sub-text {
@@ -601,6 +619,9 @@
       }
 
       .cont-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
         position: relative;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -686,11 +707,29 @@
             }
           }
           dd {
+            position: relative;
             width: 100%;
             height: 196px;
             padding: 16px 12px;
             background-color: #fff;
-            p {
+            border-radius: 4px;
+            &::before { 
+              content: " ";
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background: linear-gradient(180deg, #DADADA 0%, rgba(218, 218, 218, 0.00) 100%);
+              box-sizing: border-box;
+              @include maskContents();
+            }
+            ul {
+              list-style: none;
+              padding: 0;
+              margin: 0;
+            }
+            li {
               margin: 12px 0;
               text-align: center;
               font-weight: 500;
@@ -817,26 +856,6 @@
     }
   }
 
-  .sub-content {
-    padding: 80px 20px;
-    text-align: center;
-
-    .sub-tit-box {
-      margin-bottom: 80px;
-
-      .sub-tit {
-        font-size: 32px;
-        line-height: 1.6;
-        margin-bottom: 20px;
-        font-weight: 600;
-      }
-
-      p {
-        font-size: 18px;
-        color: rgba(0, 0, 0, 0.6);
-      }
-    }
-  }
 
   .data-provision {
     position: relative;
@@ -850,19 +869,39 @@
     box-shadow: 0 0 14.1px 0 rgba(0, 0, 0, 0.25);
     @include flex(center, space-between);
     overflow: visible;
-
+    &::before {
+      content: " ";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #178C5E 0%, #B9A279 100%);
+      box-sizing: border-box;
+      @include maskContents();
+    }
+    // SVG path 기반 블렛 애니메이션 (offset-path)
     .data-bullet {
       position: absolute;
+      top: 0;
+      left: 0;
       width: 12px;
       height: 12px;
-      background: #268C64;
+      background: #357863;
       border-radius: 50%;
       box-shadow: 0 0 8px rgba(38, 140, 100, 0.6);
+      offset-path: path('M 135,0 L 585,0 A 135 135 0 0 1 720 135 A 135 135 0 0 1 585 270 L 135,270 A 135 135 0 0 1 0 135 A 135 135 0 0 1 135 0 Z');
+      offset-rotate: 0deg;
+      animation: moveBullet 10s linear infinite;
       z-index: 20;
-      top: -6px;
-      left: 50%;
-      margin-left: -6px;
-      animation: orbitBullet 10s linear infinite;
+      pointer-events: none;
+      opacity: 0.5;
+
+      &.bullet-2 {
+        background: #886018;
+        box-shadow: 0 0 8px rgba(167, 116, 24, 0.6);
+        animation-delay: -5s;
+      }
     }
 
     .data-core {
@@ -905,48 +944,224 @@
 
         &.spatial {
           .category-circle {
-            background: linear-gradient(90deg, rgba(0, 0, 0, 0.00) 13.19%, rgba(0, 0, 0, 0.30) 87.92%), linear-gradient(0deg, rgba(26, 84, 61, 0.00) 15%, #1A543D 100%), linear-gradient(0deg, #1A543D 0%, #1A543D 100%);       
-            box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
-            border: 5px solid rgba(255, 255, 255, 0.15);
+            background: linear-gradient(90deg, rgba(0, 0, 0, 0.00) 13.19%, rgba(0, 0, 0, 0.30) 87.92%), linear-gradient(0deg, rgba(26, 84, 61, 0.00) 15%, #1A543D 100%), linear-gradient(0deg, #1A543D 0%, #1A543D 100%);
           }
-          .category-images  {
+          .category-images {
             left: -100px;
+          }
+          // .fix 형식: fix-0X (p+span) + dot, 직계 자식
+          > .fix {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            position: absolute;
+            left: -212px;
+            right: auto;
+            top: 50%;
+            height: 270px;
+            translate: 0 -50%;
+            justify-content: space-between;
+            align-items: flex-start;
+            z-index: 1;
+            user-select: text;
 
-            ul {
-              left: -120px;
-              right: auto;
+            > div {
+              display: flex;
+              align-items: center;
+              position: relative;
+              opacity: 0;
+              animation: fadeInRight 0.5s ease forwards;
+
+              &:nth-child(1) {
+                align-self: flex-start;
+                margin-left: 40px;
+                animation-delay: 0.1s;
+                .dot {
+                  top: calc(50% + 4px);
+                  transform: skewY(20deg);
+                  &::before { transform: translate(50%, -50%) skewY(-20deg); }
+                }
+              }
+              &:nth-child(2) {
+                align-self: flex-start;
+                margin-left: -24px;
+                animation-delay: 0.2s;
+              }
+              &:nth-child(3) {
+                align-self: flex-start;
+                animation-delay: 0.3s;
+              }
+              &:nth-child(4) {
+                align-self: flex-start;
+                margin-left: 4px;
+                animation-delay: 0.4s;
+                .dot {
+                  top: -50% ;
+                  transform: skewY(-20deg);
+                  &::before { transform: translate(50%, -50%) skewY(20deg); }
+                }
+              }
             }
 
-            ul li::before {
-              right: -48px;
-              left: auto;
+            [class^="fix-"] {
+              order: 1;
+              p {
+                margin: 0;
+                padding-right: 12px;
+                font-size: 16px;
+                font-weight: 700;
+                white-space: nowrap;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+
+                span {
+                  font-size: 11px;
+                  font-weight: 500;
+                  color: #268C64;
+                  opacity: 0.75;
+                  margin-top: 2px;
+                }
+              }
+            }
+
+            .dot {
+              order: 2;
+              position: relative;
+              flex-shrink: 0;
+              width: 50px;
+              height: 0;
+              border-top: 1px dashed #268C64;
+              &::before {
+                content: "";
+                position: absolute;
+                right: 0;
+                top: 50%;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: #1A543D;
+                border: 2px solid #268C64;
+                box-shadow: 0 0 0 2px rgba(38, 140, 100, 0.2);
+                transform: translate(50%, -50%);
+              }
             }
           }
         }
 
         &.statistical {
           .category-circle {
-            border: 5px solid rgba(255, 255, 255, 0.15);
-
             background: linear-gradient(90deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.00) 74.74%), linear-gradient(0deg, #654A19 0%, #A77418 100%), linear-gradient(0deg, #1A543D 0%, #1A543D 100%);
-            
             box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
           }
-          .category-images  {
+          .category-images {
             right: -100px;
+          }
+          // .fix 형식: fix-0X (p+span) + dot, 직계 자식
+          > .fix {
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            position: absolute;
+            right: -92px;
+            left: auto;
+            top: 50%;
+            width: 0;
+            height: 270px;
+            translate: 0 -50%;
+            justify-content: space-between;
+            align-items: flex-start;
+            z-index: 1;
+            user-select: text;
 
-            ul {
-              right: -120px;
-              left: auto;
+            > div {
+              display: flex;
+              align-items: center;
+              position: relative;
+              opacity: 0;
+              animation: fadeInRight 0.5s ease forwards;
+
+              &:nth-child(1) {
+                align-self: flex-start;
+                margin-left: -40px;
+                animation-delay: 0.1s;
+                .dot {
+                  top: calc(50% + 4px);
+                  transform: skewY(-20deg);
+                  &::before { transform: translate(-50%, -50%) skewY(20deg); }
+                }
+              }
+              &:nth-child(2) {
+                align-self: flex-start;
+                margin-left: -2px;
+                animation-delay: 0.2s;
+              }
+              &:nth-child(3) {
+                align-self: flex-start;
+                animation-delay: 0.3s;
+              }
+              &:nth-child(4) {
+                align-self: flex-start;
+                margin-left: -36px;
+                animation-delay: 0.4s;
+                .dot {
+                  top: -50%;
+                  transform: skewY(20deg);
+                  &::before { transform: translate(-50%, -50%) skewY(-20deg); }
+                }
+              }
             }
 
-            ul li::before {
-              left: -48px;
-              right: auto;
-              border-color: #8D6318;
+            [class^="fix-"] {
+              order: 2;
+              p {
+                margin: 0;
+                padding-left: 12px;
+                font-size: 16px;
+                color: #000;
+                font-weight: 700;
+                white-space: nowrap;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-end;
+
+                span {
+                  font-size: 11px;
+                  font-weight: 500;
+                  color: #8D6318;
+                  opacity: 0.85;
+                  margin-top: 2px;
+                }
+              }
+            }
+
+            .dot {
+              order: 1;
+              position: relative;
+              flex-shrink: 0;
+              width: 50px;
+              height: 0;
+              border-top: 1px dashed #8D6318;
+              transform: skew(-40deg);
+              &::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 50%;
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: #805B18;
+                border: 2px solid #8D6318;
+                box-shadow: 0 0 0 2px rgba(141, 99, 24, 0.2);
+                transform: translate(-50%, -50%) skew(40deg);
+              }
             }
           }
-
         }
 
         .category-circle {
@@ -960,7 +1175,19 @@
           gap: 20px;
           box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
           position: relative;
-
+          &::before {
+            content: " ";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            box-sizing: border-box;
+            @include maskContents();
+            padding: 4px;
+          }
           .category-icon {
             width: 56px;
             height: 56px;
@@ -999,6 +1226,7 @@
             width: auto;
             overflow: hidden;
             position: relative;
+            z-index: 0;
             transition: transform 0.3s ease;
             display: flex;
             align-items: center;
@@ -1041,6 +1269,8 @@
             height: 100%;
             justify-content: space-between;
             align-items: flex-start;
+            z-index: 1;
+            user-select: text;
 
             li {
               position: relative;
@@ -1092,6 +1322,10 @@
     }
   }
 
+  @keyframes moveBullet {
+    to { offset-distance: 100%; }
+  }
+
   @keyframes fadeInRight {
     from {
       opacity: 0;
@@ -1102,196 +1336,6 @@
       transform: translateX(0);
     }
   }
+  
 
-  @keyframes orbitBullet {
-    // 상단 중앙에서 시작 (0도)
-    0% {
-      top: -6px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    // 상단 오른쪽 곡선 시작 (0-45도)
-    2% {
-      top: 8px;
-      left: calc(50% + 60px);
-    }
-    4% {
-      top: 20px;
-      left: calc(50% + 120px);
-    }
-    6% {
-      top: 35px;
-      left: calc(50% + 180px);
-    }
-    8% {
-      top: 52px;
-      left: calc(50% + 240px);
-    }
-    10% {
-      top: 70px;
-      left: calc(50% + 300px);
-    }
-    // 오른쪽 상단 모서리 (45-90도)
-    12% {
-      top: 88px;
-      left: calc(50% + 340px);
-    }
-    14% {
-      top: 105px;
-      left: calc(50% + 355px);
-    }
-    16% {
-      top: 120px;
-      left: calc(50% + 360px);
-    }
-    18% {
-      top: 135px;
-      left: calc(50% + 360px);
-    }
-    // 오른쪽 중앙 (90도)
-    20% {
-      top: 150px;
-      left: calc(50% + 360px);
-    }
-    22% {
-      top: 165px;
-      left: calc(50% + 360px);
-    }
-    // 오른쪽 하단 모서리 (90-135도)
-    24% {
-      top: 180px;
-      left: calc(50% + 360px);
-    }
-    26% {
-      top: 195px;
-      left: calc(50% + 355px);
-    }
-    28% {
-      top: 210px;
-      left: calc(50% + 340px);
-    }
-    30% {
-      top: 225px;
-      left: calc(50% + 300px);
-    }
-    32% {
-      top: 240px;
-      left: calc(50% + 240px);
-    }
-    34% {
-      top: 250px;
-      left: calc(50% + 180px);
-    }
-    36% {
-      top: 260px;
-      left: calc(50% + 120px);
-    }
-    38% {
-      top: 264px;
-      left: calc(50% + 60px);
-    }
-    // 하단 중앙 (180도)
-    40% {
-      top: 264px;
-      left: 50%;
-    }
-    // 하단 왼쪽 곡선 (180-225도)
-    42% {
-      top: 264px;
-      left: calc(50% - 60px);
-    }
-    44% {
-      top: 260px;
-      left: calc(50% - 120px);
-    }
-    46% {
-      top: 250px;
-      left: calc(50% - 180px);
-    }
-    48% {
-      top: 240px;
-      left: calc(50% - 240px);
-    }
-    50% {
-      top: 225px;
-      left: calc(50% - 300px);
-    }
-    // 왼쪽 하단 모서리 (225-270도)
-    52% {
-      top: 210px;
-      left: calc(50% - 340px);
-    }
-    54% {
-      top: 195px;
-      left: calc(50% - 355px);
-    }
-    56% {
-      top: 180px;
-      left: calc(50% - 360px);
-    }
-    58% {
-      top: 165px;
-      left: calc(50% - 360px);
-    }
-    // 왼쪽 중앙 (270도)
-    60% {
-      top: 150px;
-      left: calc(50% - 360px);
-    }
-    62% {
-      top: 135px;
-      left: calc(50% - 360px);
-    }
-    64% {
-      top: 120px;
-      left: calc(50% - 360px);
-    }
-    // 왼쪽 상단 모서리 (270-315도)
-    66% {
-      top: 105px;
-      left: calc(50% - 355px);
-    }
-    68% {
-      top: 88px;
-      left: calc(50% - 340px);
-    }
-    70% {
-      top: 70px;
-      left: calc(50% - 300px);
-    }
-    72% {
-      top: 52px;
-      left: calc(50% - 240px);
-    }
-    74% {
-      top: 35px;
-      left: calc(50% - 180px);
-    }
-    76% {
-      top: 20px;
-      left: calc(50% - 120px);
-    }
-    78% {
-      top: 8px;
-      left: calc(50% - 60px);
-    }
-    // 상단 중앙으로 복귀 (315-360도)
-    80% {
-      top: 2px;
-      left: calc(50% - 30px);
-    }
-    90% {
-      top: -2px;
-      left: calc(50% - 10px);
-    }
-    95% {
-      top: -4px;
-      left: calc(50% - 5px);
-    }
-    100% {
-      top: -6px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-  }
 }

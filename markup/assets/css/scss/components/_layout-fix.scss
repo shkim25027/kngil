@@ -35,16 +35,26 @@
     .mid-tit {
       color: #fff;
       display: block;
-      opacity: 0.5;
-
-      &.on {
-        opacity: 1;
-      }
     }
   }
 
   .right {
     width: 100%;
     max-width: 1373px;
+  }
+
+  // 2개 이상일 때만: 비활성 opacity 0.5 (1개면 .is-single로 미적용)
+  &:not(.is-single) {
+    .left .mid-tit {
+      opacity: 0.5;
+
+      &.on {
+        opacity: 1;
+      }
+    }
+
+    .left .js-fixLeft-tit > li:not(.on) {
+      opacity: 0.5;
+    }
   }
 }

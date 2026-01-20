@@ -48,9 +48,13 @@
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', () => {
       scrollManager.init();
+      const layoutFix = document.querySelectorAll('.layout-fix-left');
+      if (layoutFix.length === 1) layoutFix[0].classList.add('is-single');
     });
   } else {
     scrollManager.init();
+    const layoutFix = document.querySelectorAll('.layout-fix-left');
+    if (layoutFix.length === 1) layoutFix[0].classList.add('is-single');
   }
 
   // 전역 노출

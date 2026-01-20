@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-16 -6 752 282" fill="none" role="img" aria-hidden="true">
+  <defs>
+    <path id="orbitPath" d="M 150,0 L 570,0 A 150,135 0 0 1 720,135 A 150,135 0 0 1 570,270 L 150,270 A 150,135 0 0 1 0,135 A 150,135 0 0 1 150,0" />
+    <filter id="glowGreen" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <filter id="glowGold" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <circle r="6" fill="#357863" filter="url(#glowGreen)">
+    <animateMotion dur="10s" repeatCount="indefinite" rotate="auto">
+      <mpath href="#orbitPath" xlink:href="#orbitPath"/>
+    </animateMotion>
+  </circle>
+  <circle r="6" fill="#886018" filter="url(#glowGold)">
+    <animateMotion dur="10s" repeatCount="indefinite" begin="-5s" rotate="auto">
+      <mpath href="#orbitPath" xlink:href="#orbitPath"/>
+    </animateMotion>
+  </circle>
+</svg>

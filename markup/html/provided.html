@@ -11,7 +11,7 @@
         <section class="sub-header">
           <div class="page-title">
             <h2 data-aos="fade-down" data-aos-duration="1000">제공데이터</h2>
-            <p class="sub-txt">쉽고 편리하게 작업 할 수 있는 다양한 기능 탑재</p>
+            <p class="sub-txt">항목별 공공데이터를 기반으로<br> 공간정보(SHP), 통계자료, 응용데이터(추가 예정)등을 제공합니다.</p>
           </div>
         </section>
         <section class="sub-content">
@@ -21,7 +21,8 @@
           </div>
 
           <div class="data-provision">
-            <div class="data-bullet"></div>
+            <div class="data-bullet" aria-hidden="true"></div>
+            <div class="data-bullet bullet-2" aria-hidden="true"></div>
             <div class="data-core">
               <div class="core-oval">공공데이터 기반의 <em>제공데이터</em></div>
             </div>
@@ -29,44 +30,68 @@
             <div class="data-categories">
               <!-- 공간정보 -->
               <div class="category-item spatial">
+                <div class="category-images">
+                  <div class="image-item">
+                    <img src="./assets/images/provided/img_provided_spatial.png" alt="공간정보 데이터">
+                  </div>
+                 
+                </div>
                 <div class="category-circle">
                   <div class="category-icon">
                     <img src="./assets/images/ico/ico_map_marker.svg" alt="">
                   </div>
                   <div class="category-title">공간정보</div>
                 </div>
-                <div class="category-images">
-                  <div class="image-item">
-                    <img src="./assets/images/provided/img_provided_spatial.png" alt="">
+                <div class="fix">
+                  <div>
+                    <div class="fix-01"><p>행정경계</p></div>
+                    <div class="dot f-01"></div>
                   </div>
-                  <ul>
-                    <li>지형 및 지세</li>
-                    <li>도시계획도</li>
-                    <li>녹지 및 공원</li>
-                    <li>용도지역</li>
-                  </ul>
+                  <div>
+                    <div class="fix-02"><p>건물통합정보</p></div>
+                    <div class="dot f-02"></div>
+                  </div>
+                  <div>
+                    <div class="fix-03"><p>생태자연</p></div>
+                    <div class="dot f-03"></div>
+                  </div>
+                  <div>
+                    <div class="fix-04"><p>토지이용계획</p></div>
+                    <div class="dot f-04"></div>
+                  </div>
                 </div>
               </div>
 
               <!-- 통계자료 -->
               <div class="category-item statistical">
+                <div class="category-images">
+                  <div class="image-item">
+                    <img src="./assets/images/provided/img_provided_stat.png" alt="통계자료 데이터">
+                  </div>
+                </div>
                 <div class="category-circle">
                   <div class="category-icon">
                    <img src="./assets/images/ico/ico_chart_3d.svg" alt="">
                   </div>
                   <div class="category-title">통계자료</div>
                 </div>
-
-                <div class="category-images">
-                  <div class="image-item">
-                    <img src="./assets/images/provided/img_provided_stat.png" alt="">
+                <div class="fix">
+                  <div>
+                    <div class="fix-01"><p>인구</p></div>
+                    <div class="dot f-01"></div>
                   </div>
-                  <ul>
-                    <li>인구</li>
-                    <li>기상</li>
-                    <li>문화재</li>
-                    <li>기반시설</li>
-                  </ul>
+                  <div>
+                    <div class="fix-02"><p>기상</p></div>
+                    <div class="dot f-02"></div>
+                  </div>
+                  <div>
+                    <div class="fix-03"><p>문화재</p></div>
+                    <div class="dot f-03"></div>
+                  </div>
+                  <div>
+                    <div class="fix-04"><p>기반시설</p></div>
+                    <div class="dot f-04"></div>
+                  </div>
                 </div>
   
               </div>
@@ -79,183 +104,199 @@
           <div class="left" data-aos="fade-right" data-aos-duration="1000">
             <div class="bg js-fixLeft-bg on"></div>
             <div class="bg js-fixLeft-bg"></div>
-            <span class="mid-tit js-fixLeft-tit on"><font class="num">01. </font><em>자연조건</em></span>                        
-            <span class="mid-tit js-fixLeft-tit"><font class="num">02. </font><em>사회특성</em></span>
+            <span class="mid-tit js-fixLeft-tit on"><span class="num">01. </span><em>자연조건</em></span>
+            <span class="mid-tit js-fixLeft-tit"><span class="num">02. </span><em>사회특성</em></span>
           </div>
           <div class="right js-fixLeft-secs">
-            <div class="natural">
-              <h3 class="sub-tit">
-                <i class="ico-natural"></i>
+            <section class="natural" aria-labelledby="natural-tit">
+              <h3 id="natural-tit" class="sub-tit">
+                <i class="ico-natural" aria-hidden="true"></i>
                 자연적 환경 요소인 <em>지형, 기후, 생태자연, 도시주거</em> 항목을<br><em>자연조건</em>으로 분류하여 제공
               </h3>
-              <div class="cont-list">
-                <div class="cont-item">
+              <ul class="cont-list">
+                <li class="cont-item">
                   <dl>
                     <dt>
                       <i class="ico-location"></i>
                       지역의 개황
                     </dt>
                     <dd>
-                      <p>위치 및 행정구역</p>
-                      <p>지형 및 지세</p>
-                      <p>지진</p>
+                      <ul>
+                        <li>위치 및 행정구역</li>
+                        <li>지형 및 지세</li>
+                        <li>지진</li>
+                      </ul>
                     </dd>
                   </dl>
-                  <div class="sub-figs">
+                  <figure class="sub-figs">
                     <div class="imgs">
-                      <img src="./assets/images/provided/img_provided_natural_01.png" alt="">
+                      <img src="./assets/images/provided/img_provided_natural_01.png" alt="지진발생">
                     </div>
-                    <p class="fig-caption">지진발생</p>
-                  </div>
-                </div>
+                    <figcaption class="fig-caption">지진발생</figcaption>
+                  </figure>
+                </li>
 
-                <div class="cont-item">
+                <li class="cont-item">
                   <dl>
-                    <dt>
+                    <dt> 
                       <i class="ico-weather"></i>
                       기상 및 자연재해
                     </dt>
                     <dd>
-                      <p>기상</p>
-                      <p>풍수해</p>
+                      <ul>
+                        <li>기상</li>
+                        <li>풍수해</li>
+                      </ul>
                     </dd>
                   </dl>
-                  <div class="sub-figs">
+                  <figure class="sub-figs">
                     <div class="imgs">
-                      <img src="./assets/images/provided/img_provided_natural_02.png" alt="">
+                      <img src="./assets/images/provided/img_provided_natural_02.png" alt="현상일수">
                     </div>
-                    <p class="fig-caption">현상일수</p>
-                  </div>
-                </div>
+                    <figcaption class="fig-caption">현상일수</figcaption>
+                  </figure>
+                </li>
 
-                <div class="cont-item">
+                <li class="cont-item">
                   <dl>
                     <dt>
                       <i class="ico-eco"></i>
                       생태 및 자연환경
                     </dt>
                     <dd>
-                      <p>생태자연도</p>
-                      <p>국토환경성 평가</p>
-                      <p>임상도</p>
+                      <ul>
+                        <li>생태자연도</li>
+                        <li>국토환경성 평가</li>
+                        <li>임상도</li>
+                      </ul>
                     </dd>
                   </dl>
-                  <div class="sub-figs">
+                  <figure class="sub-figs">
                     <div class="imgs">
-                      <img src="./assets/images/provided/img_provided_natural_03.png" alt="">
+                      <img src="./assets/images/provided/img_provided_natural_03.png" alt="국토환경성 평가">
                     </div>
-                    <p class="fig-caption">국토환경성 평가</p>
-                  </div>
-                </div>
+                    <figcaption class="fig-caption">국토환경성 평가</figcaption>
+                  </figure>
+                </li>
 
 
-                <div class="cont-item">
+                <li class="cont-item">
                   <dl>
                     <dt>
                       <i class="ico-city"></i>
                       도시 및 주거환경
                     </dt>
                     <dd>
-                      <p>지연안전지수</p>
-                      <p>노후/불량 건축물</p>
-                      <p>호수밀도/접도율</p>
-                      <p>토지 형상</p>
+                      <ul>
+                        <li>지연안전지수</li>
+                        <li>노후/불량 건축물</li>
+                        <li>호수밀도/접도율</li>
+                        <li>토지 형상</li>
+                      </ul>
                     </dd>
                   </dl>
-                  <div class="sub-figs">
+                  <figure class="sub-figs">
                     <div class="imgs">
-                      <img src="./assets/images/provided/img_provided_natural_04.png" alt="">
+                      <img src="./assets/images/provided/img_provided_natural_04.png" alt="노후/불량 건축물">
                     </div>
-                    <p class="fig-caption">노후/불량 건축물</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="social">
-              <h3 class="sub-tit">
-                <i class="ico-social"></i>
+                    <figcaption class="fig-caption">노후/불량 건축물</figcaption>
+                  </figure>
+                </li>
+              </ul>
+            </section>
+            <section class="social" aria-labelledby="social-tit">
+              <h3 id="social-tit" class="sub-tit">
+                <i class="ico-social" aria-hidden="true"></i>
                 사회적 구조 요소인 <em>인구, 토지, 건축물, 사회기반시설</em> 항목을<br><em>사회특성</em>으로 분류하여 제공
               </h3>
-              <div class="cont-list">
-                <div class="cont-item">
+              <ul class="cont-list">
+                <li class="cont-item">
                   <dl>
                     <dt>
                       <i class="ico-population"></i>
                       인구
                     </dt>
                     <dd>
-                      <p>과거인구 추이</p>
-                      <p>행정구역별 인구</p>
-                      <p>연령(5세별) 및 성별 인구</p>
+                      <ul>
+                        <li>과거인구 추이</li>
+                        <li>행정구역별 인구</li>
+                        <li>연령(5세별) 및 성별 인구</li>
+                      </ul>
                     </dd>
                   </dl>
-                  <div class="sub-figs">
+                  <figure class="sub-figs">
                     <div class="imgs">
-                      <img src="./assets/images/provided/img_provided_social_01.png" alt="">
+                      <img src="./assets/images/provided/img_provided_social_01.png" alt="과거인구 추이">
                     </div>
-                    <p class="fig-caption">과거인구 추이</p>
-                  </div>
-                </div>  
-                <div class="cont-item">
+                    <figcaption class="fig-caption">과거인구 추이</figcaption>
+                  </figure>
+                </li>  
+                <li class="cont-item">
                   <dl>
                     <dt>
                       <i class="ico-land"></i>
                       토지
                     </dt>
                     <dd>
-                      <p>용도지정</p>
-                      <p>보호구역</p>
-                      <p>토지이용</p>
+                      <ul>
+                        <li>용도지정</li>
+                        <li>보호구역</li>
+                        <li>토지이용</li>
+                      </ul>
                     </dd>
                   </dl>
-                  <div class="sub-figs">
+                  <figure class="sub-figs">
                     <div class="imgs">
-                      <img src="./assets/images/provided/img_provided_social_02.png" alt="">
+                      <img src="./assets/images/provided/img_provided_social_02.png" alt="토지이용">
                     </div>
-                    <p class="fig-caption">토지이용</p>
-                  </div>
-                </div>
-                <div class="cont-item">
+                    <figcaption class="fig-caption">토지이용</figcaption>
+                  </figure>
+                </li>
+                <li class="cont-item">
                   <dl>
                     <dt>
                       <i class="ico-building"></i>
                       건축물
                     </dt>
                     <dd>
-                      <p>용도/구조/층수/경과연도</p>
-                      <p>연면적/건폐율/용적률</p>
-                      <p>임상도</p>
+                      <ul>
+                        <li>용도/구조/층수/경과연도</li>
+                        <li>연면적/건폐율/용적률</li>
+                        <li>임상도</li>
+                      </ul>
                     </dd>
                   </dl>
-                  <div class="sub-figs">
+                  <figure class="sub-figs">
                     <div class="imgs">
-                      <img src="./assets/images/provided/img_provided_social_03.png" alt="">
+                      <img src="./assets/images/provided/img_provided_social_03.png" alt="건축물">
                     </div>
-                    <p class="fig-caption">건축물</p>
-                  </div>
-                </div>
-                <div class="cont-item">
+                    <figcaption class="fig-caption">건축물</figcaption>
+                  </figure>
+                </li>
+                <li class="cont-item">
                   <dl>
                     <dt>
                       <i class="ico-society"></i>
                       사회기반시설
                     </dt>
                     <dd>
-                      <p>교통/공간/유통업무</p>
-                      <p>상수도</p>
-                      <p>환경기초</p>
-                      <p>방재/기타</p>
+                      <ul>
+                        <li>교통/공간/유통업무</li>
+                        <li>상수도</li>
+                        <li>환경기초</li>
+                        <li>방재/기타</li>
+                      </ul>
                     </dd>
                   </dl>
-                  <div class="sub-figs">
+                  <figure class="sub-figs">
                     <div class="imgs">
-                      <img src="./assets/images/provided/img_provided_social_04.png" alt="">
+                      <img src="./assets/images/provided/img_provided_social_04.png" alt="사회기반시설">
                     </div>
-                    <p class="fig-caption">사회기반시설</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+                    <figcaption class="fig-caption">사회기반시설</figcaption>
+                  </figure>
+                </li>
+              </ul>
+            </section>
           </div>
         </section>
       </div>

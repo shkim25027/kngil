@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const tits = document.querySelectorAll(".js-fixLeft-tit");
   const bgs = document.querySelectorAll(".js-fixLeft-bg");
-  const sections = document.querySelectorAll(".js-fixLeft-secs > div");
+  const sections = document.querySelectorAll(".js-fixLeft-secs > div, .js-fixLeft-secs > section");
 
   function setBgActive(el, active) {
     gsap.to(el, {

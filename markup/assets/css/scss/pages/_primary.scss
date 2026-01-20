@@ -1,12 +1,20 @@
+@use "../import/_mixin" as *;
+
 // =======================================
 // Floorplan Page
 // =======================================
-.floorplan {
-  .intro .top {
-    background-image: url(../img/floorplan_intro_bg.png);
+.wrap:has(.container.primary) {
+  overflow: visible;
+}
+.primary {
+  .sub-header {
+    background-image: url(../images/primary/bg_primary_title.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
 
-  .intro .condition {
+  .sub-content {
     margin: 0 auto;
     text-align: center;
     position: relative;
@@ -15,7 +23,7 @@
       position: absolute;
       bottom: 0px;
       left: 32px;
-      content: "Drawing\A management";
+      content: "Key\A Features";
       font-size: 120px;
       opacity: 0.03;
       text-align: left;
@@ -173,7 +181,8 @@
     margin-bottom: 160px;
     padding-top: 320px;
     gap: 48px;
-
+    max-width: 1920px;
+    margin: 0 auto;
     .left {
       overflow: initial;
       z-index: 10;
@@ -302,35 +311,32 @@
         }
       }
 
-      .find01 .sub-figs .imgs img.apx {
-        top: -10px;
-        left: -10px;
-        width: 235px;
+      // 사업구역 입력 (sub-figs 직하위 img)
+      .sec-area-input .sub-figs {
+        position: relative;
+
+        img.apx {
+          top: -10px;
+          left: -10px;
+          width: 235px;
+        }
       }
 
-      .find02 .sub-figs .imgs img.apx {
+      // 보고서 관련 설정
+      .sec-report-config .sub-figs .imgs img.apx {
         top: 7%;
         right: -10px;
         width: 580px;
       }
 
-      .find03 .sub-figs .imgs img.apx {
+      // 진행과정 실시간 / 사업비 기준 / 데이터 항목 선택
+      .sec-progress-realtime .sub-figs .imgs img.apx,
+      .sec-cost-criteria .sub-figs .imgs img.apx,
+      .sec-data-select .sub-figs .imgs img.apx {
         bottom: 40px;
-        left: 0px;
+        left: 0;
         width: 360px;
         z-index: 4;
-      }
-
-      .info01 .sub-figs .imgs img.apx {
-        top: 95px;
-        right: 75px;
-        width: 40px;
-      }
-
-      .info02 .sub-figs .imgs img.apx {
-        top: 12px;
-        right: 20px;
-        width: 340px;
       }
 
       .sub-figs .find-03-move {
@@ -367,21 +373,8 @@
       }
     }
 
-    &.find .left .mid-tit {
-      background-image: url(../img/floorplan_01.png);
-    }
-
-    &.info .left .mid-tit {
-      background-image: url(../img/floorplan_02.png);
-      left: 188px;
-
-      span {
-        left: 20px;
-      }
-    }
-
-    &.print .left .mid-tit {
-      background-image: url(../img/floorplan_03.png);
+    &.key .left .mid-tit {
+      background-image: url(../images/primary/bg_key_title.png);
     }
   }
 }

@@ -19,9 +19,10 @@
   .page-title {
     width: 100%;
     height: 480px;
+    padding-bottom: 130px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     text-align: center;
     background-position: center;
