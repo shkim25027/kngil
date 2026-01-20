@@ -1,0 +1,21 @@
+<svg width="326" height="353" viewBox="0 0 326 353" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style type="text/css">
+    
+    .cls-1 {
+      stroke-dasharray:600;
+      stroke-dashoffset:-600;
+      animation: anime 5s ease-in-out infinite;
+    }
+
+    @keyframes anime {
+      0% {stroke-dashoffset: 600;}
+      50% {stroke-dashoffset: 0;}
+      100% {stroke-dashoffset: 600;}
+    }
+  </style>
+<path class="cls-1" d="M133.69 14.9265C141.486 8.5028 149.895 5.01562 158.611 5.01562C199.614 5.01562 232.883 81.7947 232.883 176.438C232.883 271.081 199.614 347.86 158.611 347.86C117.608 347.86 84.3389 271.081 84.3389 176.438C84.3389 121.255 95.6332 72.1284 113.188 40.8051" stroke="#249473" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+<path class="cls-1" d="M42.6605 281.971C27.2536 279.218 15.7138 272.672 9.63694 262.211C-10.8647 226.788 39.2231 159.737 121.475 112.385C203.727 65.0324 287.084 55.3662 307.585 90.7885C328.087 126.211 277.999 193.263 195.747 240.615C152.78 265.331 109.567 279.769 75.1316 282.889" stroke="#DA8858" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+<path class="cls-1" d="M299.422 205.498C281.007 174.542 243.871 140.098 195.747 112.385C113.495 65.0324 30.1385 55.3662 9.63694 90.7885C-10.8647 126.211 39.2231 193.263 121.475 240.615C203.727 287.967 287.084 297.633 307.585 262.211C311.882 254.808 313.11 245.998 311.514 236.21" stroke="#D5BE9A" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

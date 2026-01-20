@@ -3,6 +3,74 @@
 // =======================================
 // Floorplan Page
 // =======================================
+
+@keyframes expand {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  99% {
+    width: 500%;
+    height: 500%;
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    border-color: transparent;
+  }
+}
+
+@keyframes areaSubImgIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 배경 이미지 순환 (3장, 4s each, ~0.5s 크로스페이드)
+@keyframes bgSlideLayer1 {
+  0%, 29% { opacity: 1; }
+  33%, 97% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes bgSlideLayer2 {
+  0%, 29% { opacity: 0; }
+  33%, 62% { opacity: 1; }
+  67%, 100% { opacity: 0; }
+}
+@keyframes bgSlideLayer3 {
+  0%, 62% { opacity: 0; }
+  67%, 97% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+// 배경 이미지 순환 (4장)
+@keyframes bgSlide4Layer1 {
+  0%, 22% { opacity: 1; }
+  25%, 97% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes bgSlide4Layer2 {
+  0%, 22% { opacity: 0; }
+  25%, 47% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+@keyframes bgSlide4Layer3 {
+  0%, 47% { opacity: 0; }
+  50%, 72% { opacity: 1; }
+  75%, 100% { opacity: 0; }
+}
+@keyframes bgSlide4Layer4 {
+  0%, 72% { opacity: 0; }
+  75%, 97% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 .wrap:has(.container.primary) {
   overflow: visible;
 }
@@ -18,7 +86,10 @@
     margin: 0 auto;
     text-align: center;
     position: relative;
-
+    min-height: 966px;
+    overflow: visible;
+    padding-top: 160px;
+    padding-bottom: 120px;
     &::before {
       position: absolute;
       bottom: 0px;
@@ -32,149 +103,187 @@
       line-height: 0.8em;
       letter-spacing: -0.04em;
     }
+    .sub-tit-box {
+      position: relative;
+      text-align: center;
+      margin-bottom: 100px;
+      &::before {
+        content: "";
+        position: absolute;
+        top: -67px;
+        left: calc(50% - 50px);
+        width: 100px;
+        height: 25px;
+        background: url(../images/ico_title_obj.svg) no-repeat center center;
+      }
+      .sub-tit {
+        font-weight: 400;
+      }
+    }
 
     .diagram-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      gap: 40px;
-      margin: 0 0 60px 0;
-    }
-
-    .dia-element-bottom {
-      display: flex;
-      gap: 331px;
-      position: absolute;
-      bottom: -55px;
-    }
-
-    .dia-element {
-      gap: 12px;
-      align-items: center;
-
-      .line {
-        width: 40px;
-        height: 1px;
-        background: var(--color-han-br);
-      }
-
-      i {
-        width: 44px;
-        height: 54px;
+      width: 480px;
+      aspect-ratio: 1 / 1;
+      margin: 30px auto 60px auto;
+      position: relative;
+      overflow: visible;
+      background-image: url(../images/bg_atom_obj.svg);
+      background-repeat: no-repeat;
+      background-position: top center;
+      background-size: contain;
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        top: 0;
+        left: 0;
+        background-image: url(../images/bg_atom_line.svg);
+        background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
-        background-repeat: no-repeat;
       }
 
-      .dia-tit {
-        font-size: 18px;
-        line-height: 24px;
-      }
-
-      &.dia-element01 {
-        i {
-          background-image: url(../img/ico_floorplan_dia_01.svg);
-        }
-
-        .line {
-          transform: rotate(90deg);
-          top: calc(100% + 20px);
-        }
-      }
-
-      &.dia-element02 {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-
-        .dia-tit {
-          text-align: right;
-          white-space: nowrap;
-        }
-
-        i {
-          background-image: url(../img/ico_floorplan_dia_02.svg);
-        }
-
-        .line {
-          transform: rotate(-45deg);
-          bottom: 100%;
-          left: 100%;
-          z-index: 1;
-        }
-      }
-
-      &.dia-element03 {
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-
-        .dia-tit {
-          text-align: left;
-          white-space: nowrap;
-          line-height: 120%;
-        }
-
-        i {
-          background-image: url(../img/ico_floorplan_dia_03.svg);
-        }
-
-        .line {
-          transform: rotate(45deg);
-          bottom: 100%;
-          right: 100%;
-        }
-      }
-    }
-
-    .circle-belt {
-      background: linear-gradient(180deg, #9469241a 0%, #94692433 100%);
-      border: 1px solid var(--color-han-br);
-    }
-
-    .circle-dash {
-      border: 1px dashed #D4CBBD;
-    }
-
-    .dia-circles-wrap {
-      .circle-dots {
-        .dot {
-          background: var(--color-han-br);
-
-          &:nth-child(1) {
-            top: 0%;
-            left: calc(50% - 4px);
-            transform: translateY(-50%);
-          }
-
-          &:nth-child(2) {
-            top: 75%;
-            left: 16px;
-            transform: translateY(-50%) rotate(120deg);
-          }
-
-          &:nth-child(3) {
-            top: 75%;
-            right: 16px;
-            transform: translateY(-50%) rotate(240deg);
-          }
-        }
-
-        &.move {
-          animation-name: dot-rotate3;
+      .dia-circles-wrap {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        &::after {
+          display: none;
         }
       }
 
       .circle-core {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 52%;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(0deg, #1A543D 0%, #00832A 100%);
         line-height: 95%;
-
+        span {
+          font-size: 28px;
+          width: 100%;
+          font-weight: 700;
+        }
         span:first-child {
           font-size: 20px;
           font-weight: 400;
         }
       }
+
+      .circle-dots {
+        .dot {
+          position: absolute;
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: #116436;
+          &:nth-child(1) {
+            color: #afd7ca;
+            top: 5.41666%;
+            left: 38.3333%;
+            transform: translateY(-50%);
+          }
+          &:nth-child(2) {
+            background: rgba(100, 83, 60, 0.2);
+            color: #eaddce;
+            top: 24.25%;
+            left: 92.5%;
+            transform: translateY(-50%) rotate(240deg);
+          }
+          &:nth-child(3) {
+            color: #f1d1c1;
+            top: 67.70833%;
+            left: 16px;
+            transform: translateY(-50%) rotate(120deg);
+          }
+          &:nth-child(4) {
+            color: var(--color-han-br);
+            top:62.5%;
+            right: 24px;
+            transform: translateY(-50%) rotate(240deg);
+          }
+          &::before {
+            content: "";
+            width: inherit;
+            height: inherit;
+            border-radius: inherit;
+            position: absolute;
+            z-index: -10;
+            opacity: 0;
+            animation: 2s expand cubic-bezier(0.29, 0, 0, 1) infinite;
+            border: 2px solid;
+          }
+        }
+        &.move {
+          animation-name: dot-rotate3;
+        }
+      }
+
+      .dia-element {
+        position: absolute;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        gap: 16px;
+        text-align: right;
+        font-size: 16px;
+
+        i {
+          width: 40px;
+          aspect-ratio: 1 / 1;
+          flex-shrink: 0;
+          background-position: center;
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
+
+        &.e01 {
+          top: 0;
+          left: -14%;
+        }
+
+        &.e02 {
+          bottom: 27%;
+          left: -52%;
+        }
+
+        &.e03 {
+          bottom: 33%;
+          right: -59%;
+          flex-direction: row;
+          text-align: left;
+        }
+
+        &.e01 i {
+          background-image: url(../images/ico/ico_zone.svg);
+        }
+
+        &.e02 i {
+          background-image: url(../images/ico/ico_setting.svg);
+        }
+
+        &.e03 i {
+          background-image: url(../images/ico/ico_check_list.svg);
+        }
+
+        .dia-tit {
+          opacity: 0.9;
+        }
+      }
     }
+
   }
 
   .key {
@@ -182,7 +291,6 @@
     padding-top: 320px;
     gap: 48px;
     max-width: 1920px;
-    margin: 0 auto;
     .left {
       overflow: initial;
       z-index: 10;
@@ -200,7 +308,7 @@
 
         span {
           position: absolute;
-          bottom: -70px;
+          bottom: -140px;
           left: 220px;
 
           em {
@@ -210,7 +318,7 @@
       }
 
       ul {
-        padding-top: 200px;
+        padding-top: 240px;
         padding-left: 24px;
         display: flex;
         flex-direction: column;
@@ -240,7 +348,7 @@
       padding: 300px 200px 80px 0;
       display: flex;
       flex-direction: column;
-      gap: 100px;
+      gap: 140px;
 
       .sub-tit {
         margin-bottom: 20px;
@@ -259,118 +367,100 @@
         flex-direction: row;
         border-radius: 4px;
 
-        .imgs {
-          position: relative;
-          width: 70%;
-
-          img {
-            width: 100%;
-
-            &.apx {
-              position: absolute;
-            }
-          }
-        }
-
-        .text {
-          position: relative;
-          width: 30%;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 20px;
-          font-size: 18px;
-        }
-
-        .top {
-          text-align: center;
-        }
-
-        .line {
-          width: 40%;
-          border-top: 1px solid #000;
-          font-size: 0;
-          box-sizing: border-box;
-
-          img {
-            margin: -1px auto 0;
-            display: block;
-          }
-        }
-
-        .bottom {
-          display: flex;
-          flex-direction: row;
-          gap: 8px;
-          color: var(--color-green);
-
-          img {
-            width: 40px;
-          }
+        img:not(.apx) {
+          max-width: 100%;
+          height: auto;
+          object-fit: contain;
         }
       }
 
-      // 사업구역 입력 (sub-figs 직하위 img)
-      .sec-area-input .sub-figs {
+      // 배경 이미지 순환 애니메이션 (공통)
+      .sub-figs.sub-figs-bg-slide {
+        display: block;
         position: relative;
+        overflow: hidden;
+        border-radius: 4px;
+        aspect-ratio: 1030 / 357;
+        width: 100%;
+        background: #1a1a1a;
 
-        img.apx {
-          top: -10px;
-          left: -10px;
-          width: 235px;
+        .bg-slide-layer {
+          position: absolute;
+          inset: 0;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          border-radius: inherit;
         }
       }
 
-      // 보고서 관련 설정
-      .sec-report-config .sub-figs .imgs img.apx {
-        top: 7%;
-        right: -10px;
-        width: 580px;
+      // sec-area-input: 3장 (img_area_01~03)
+      .sec-area-input .sub-figs.sub-figs-bg-slide {
+        border-radius: 4px 0 0 4px;
+      }
+      .sec-area-input .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="1"] {
+        background-image: url(../images/primary/img_area_01.png);
+        animation: bgSlideLayer1 12s ease-in-out infinite;
+      }
+      .sec-area-input .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="2"] {
+        background-image: url(../images/primary/img_area_02.png);
+        animation: bgSlideLayer2 12s ease-in-out infinite;
+      }
+      .sec-area-input .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="3"] {
+        background-image: url(../images/primary/img_area_03.png);
+        animation: bgSlideLayer3 12s ease-in-out infinite;
       }
 
-      // 진행과정 실시간 / 사업비 기준 / 데이터 항목 선택
-      .sec-progress-realtime .sub-figs .imgs img.apx,
-      .sec-cost-criteria .sub-figs .imgs img.apx,
-      .sec-data-select .sub-figs .imgs img.apx {
-        bottom: 40px;
-        left: 0;
-        width: 360px;
-        z-index: 4;
+      // sec-progress-realtime: 4장 (img_progress_01_01 기준, 2~4는 동일 사용)
+      .sec-progress-realtime .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="1"] {
+        background-image: url(../images/primary/img_progress_01.png);
+        animation: bgSlide4Layer1 12s ease-in-out infinite;
+      }
+      .sec-progress-realtime .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="2"] {
+        background-image: url(../images/primary/img_progress_02.png);
+        animation: bgSlide4Layer2 12s ease-in-out infinite;
+      }
+      .sec-progress-realtime .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="3"] {
+        background-image: url(../images/primary/img_progress_03.png);
+        animation: bgSlide4Layer3 12s ease-in-out infinite;
+      }
+      .sec-progress-realtime .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="4"] {
+        background-image: url(../images/primary/img_progress_04.png);
+        animation: bgSlide4Layer4 12s ease-in-out infinite;
       }
 
-      .sub-figs .find-03-move {
-        display: flex;
-        flex-direction: row-reverse;
-        justify-content: space-between;
-        flex-wrap: nowrap;
-        align-items: center;
-        width: 45%;
-        height: 100%;
-        padding: 20px 0;
-
-        img {
-          width: 330%;
-        }
-
-        div {
-          &:nth-child(1) {
-            z-index: 3;
-          }
-
-          &:nth-child(2) {
-            z-index: 2;
-          }
-
-          &:nth-child(3) {
-            z-index: 1;
-          }
-        }
-
-        .element {
-          animation: find_03_ani 2.5s ease-in infinite;
-        }
+      // sec-cost-criteria: 4장 (img_cost_01~03, 4번은 03 재사용)
+      .sec-cost-criteria .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="1"] {
+        background-image: url(../images/primary/img_cost_01.png);
+        animation: bgSlide4Layer1 12s ease-in-out infinite;
       }
+      .sec-cost-criteria .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="2"] {
+        background-image: url(../images/primary/img_cost_02.png);
+        animation: bgSlide4Layer2 12s ease-in-out infinite;
+      }
+      .sec-cost-criteria .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="3"] {
+        background-image: url(../images/primary/img_cost_03.png);
+        animation: bgSlide4Layer3 12s ease-in-out infinite;
+      }
+      .sec-cost-criteria .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="4"] {
+        background-image: url(../images/primary/img_cost_04.png);
+        animation: bgSlide4Layer4 12s ease-in-out infinite;
+      }
+
+      // sec-data-select: 3장 (img_data_01~03)
+      .sec-data-select .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="1"] {
+        background-image: url(../images/primary/img_data_01.png);
+        animation: bgSlideLayer1 12s ease-in-out infinite;
+      }
+      .sec-data-select .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="2"] {
+        background-image: url(../images/primary/img_data_02.png);
+        animation: bgSlideLayer2 12s ease-in-out infinite;
+      }
+      .sec-data-select .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="3"] {
+        background-image: url(../images/primary/img_data_03.png);
+        animation: bgSlideLayer3 12s ease-in-out infinite;
+      }
+
     }
 
     &.key .left .mid-tit {

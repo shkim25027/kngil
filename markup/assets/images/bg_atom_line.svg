@@ -1,0 +1,33 @@
+<svg width="385" height="418" viewBox="0 0 385 418" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style type="text/css">
+    .cls-1 {
+      stroke-dasharray: 600;
+      stroke-dashoffset: -600;
+      animation: anime 5s ease-in-out infinite;
+    }
+    
+    .cls-2 {
+      stroke-dasharray: 600;
+      stroke-dashoffset: -600;
+      animation: anime 5s ease-in-out infinite;
+    }
+    
+    .cls-3 {
+      stroke-dasharray: 600;
+      stroke-dashoffset: -600;
+      animation: anime 5s ease-in-out infinite;
+    }
+
+    @keyframes anime {
+      0% {stroke-dashoffset: 600;}
+      50% {stroke-dashoffset: 0;}
+      100% {stroke-dashoffset: 600;}
+    }
+  </style>
+
+<path class="cls-1" d="M368.631 93.0189C332.681 63.367 238.631 77.921 145.71 130.006C78.1523 167.875 27.9846 216.113 8.8828 256.936C3.38148 268.692 0.45687 279.834 0.435663 289.936C0.418642 298.043 2.2718 305.48 6.16402 312.028C13.7464 324.738 28.1452 332.69 47.3691 336.035C55.1896 337.118 74.2413 338.858 87.885 337.15C130.852 333.359 184.771 315.819 238.383 285.791C334.124 232.125 394.939 157.631 381.904 112.936" stroke="#D5BE9A" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+<path class="cls-2" d="M367.743 243.129C344.766 205.52 298.43 163.675 238.383 130.006C135.753 72.4786 31.7449 60.7353 6.16402 103.769C-19.4169 146.804 43.0802 228.264 145.71 285.791C248.34 343.319 352.349 355.062 377.929 312.028C383.291 303.035 384.822 292.332 382.831 280.44" stroke="#DA8858" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+<path class="cls-3" d="M160.867 12.4857C170.575 4.67416 181.047 0.433594 191.902 0.433594C242.964 0.433594 284.395 93.8005 284.395 208.891C284.395 323.982 242.964 417.348 191.902 417.348C140.839 417.348 99.4082 323.982 99.4082 208.891C99.4082 141.786 113.473 82.0459 135.335 43.9552" stroke="#249473" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

@@ -28,8 +28,10 @@
         "마이페이지 휴대폰번호 변경 완료": ["../pop_temp.html?pop=mypage06", "mainframe", "컨펌대기", ""],
         "회원탈퇴": ["../pop_temp.html?pop=cancel", "mainframe", "컨펌대기", ""] 
       },
-      "메인": {
-        "메인": ["../index.html", "mainframe", "컨펌대기", ""]
+      "페이지": {
+        "메인": ["../index.html", "mainframe", "컨펌대기", ""],
+        "제공데이터": ["../provided.html", "mainframe", "컨펌대기", ""],
+        "주요기능": ["../primary.html", "mainframe", "컨펌대기", ""]
       }
     }
   }
