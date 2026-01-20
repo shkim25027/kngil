@@ -7,6 +7,8 @@
     min-height: var(--window-inner-height);
     overflow: hidden;
     flex-direction: column;
+    max-width: 1920px;
+    margin: 0 auto;
     @include flex();
     
     &.main {
@@ -21,7 +23,7 @@
   }
   
   
-  .container {
+  .container { 
     position: relative;
     width: 100%;
     flex-grow: 1;

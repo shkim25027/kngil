@@ -47,7 +47,7 @@ html {
       display: block;
       width: 90px;
       height: 22px;
-      background: url(../images/logo_kngil.svg) center no-repeat;
+      background: url(../img/logo_kngil.svg) center no-repeat;
       background-size: contain;
       @include textBlind();
     }
@@ -80,7 +80,7 @@ html {
 
     &::before {
       content: " ";
-      background: url(../images/tri_img.svg) no-repeat;
+      background: url(../img/tri_img.svg) no-repeat;
       background-size: cover;
       width: 12px;
       height: 10px;

@@ -9,7 +9,7 @@
 
 .analysis {
   .sub-header {
-    background-image: url(../images/analysis/bg_analysis_title.jpg);
+    background-image: url(../img/analysis/bg_analysis_title.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -47,7 +47,7 @@
         left: calc(50% - 50px);
         width: 100px;
         height: 25px;
-        background: url(../images/ico_title_obj.svg) no-repeat center center;
+        background: url(../img/ico_title_obj.svg) no-repeat center center;
       }
       .sub-tit {
         font-weight: 400;
@@ -97,7 +97,7 @@
         left: 50%;
         translate: -50% 0;
         i {
-          background-image: url(../images/ico/ico_statistic.svg);
+          background-image: url(../img/ico/ico_statistic.svg);
         }
 
         .line {
@@ -114,7 +114,7 @@
         text-align: right;
         @include flex(flex-end, flex-start);
         i {
-          background-image: url(../images/ico/ico_graph_box.svg);
+          background-image: url(../img/ico/ico_graph_box.svg);
         }
 
         .line {
@@ -133,7 +133,7 @@
         text-align: left;
         @include flex(flex-end, flex-start);
         i {
-          background-image: url(../images/ico/ico_mind_map.svg);
+          background-image: url(../img/ico/ico_mind_map.svg);
         }
 
         .line {
@@ -296,8 +296,6 @@
         background: var(--color-han_bgbr);
         width: 100%;
         border-radius: 4px;
-        display: grid;
-        grid-template-columns: 2.5fr 1fr;
 
         .imgs {
           position: relative;
@@ -365,8 +363,11 @@
   // Key.spatial
   // ---------------------------------
   .spatial {
+    .sub-figs {
+      position: relative;
+    }
     .left .mid-tit {
-      background-image: url(../images/analysis/bg_spatial_title.png);
+      background-image: url(../img/analysis/bg_spatial_title.png);
     }
 
     .spatial01 .sub-figs .imgs .apx {
@@ -379,11 +380,53 @@
       right: -2%;
     }
 
+    .spatial03 {
+      
+      .markers {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        i {
+          position: absolute;
+          width: 26px; 
+          height: 26px;
+          border-radius: 50%;
+          border: 2px solid #FF1919;
+          background: url(../img/ico/ico_marker.svg) no-repeat center center;
+          animation: marker-blink 1.8s ease-in-out infinite;
+        }
+        .marker-01 {
+          top: 74.7899%;
+          left: 13.2893%;
+        }
+        .marker-02 {
+          top: 48.4593%;
+          left: 23.58%;
+        }
+        .marker-03 {
+          top: 68.6274%;
+          left: 28.0291%;
+        }
+        .marker-04 {
+          top: 35.2941%;
+          left: 39.9563%;
+        }
+        .marker-05 {
+          top: 4.2134%;
+          right: 34.4475%;
+        }
+      }
+    }
+
     .spatial03 .sub-figs .imgs .apx {
       width: 50%;
       top: 24%;
       z-index: 1;
     }
+
 
     .spatial03 .sub-figs .spatial-03-move {
       width: 100%;
@@ -421,7 +464,7 @@
   // ---------------------------------
   .statistics {
     .left .mid-tit {
-      background-image: url(../images/analysis/bg_statistics_title.png);
+      background-image: url(../img/analysis/bg_statistics_title.png);
       left: calc(176px - 12px);
       width: calc(100vw - 176px);
       max-width: 1744px;
@@ -450,7 +493,7 @@
   // ---------------------------------
   .attribute {
     .left .mid-tit {
-      background-image: url(../images/analysis/bg_attribute_title.png);
+      background-image: url(../img/analysis/bg_attribute_title.png);
     }
 
     .right .attribute02 .sub-figs .imgs img,
@@ -490,6 +533,11 @@
   100% {
     opacity: 0;
   }
+}
+
+@keyframes marker-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
 }
 
 // ---------------------------------

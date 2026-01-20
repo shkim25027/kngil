@@ -4,7 +4,7 @@
 // =======================================
 .value {
   .visual {
-    background-image: url(../img/bg_value_visual.png);
+    background-image: url(../img/value/bg_value_visual.png);
     background: linear-gradient(180deg, rgba(116, 82, 20, 0.00) 0.51%, #59441C 97.2%);
     background-repeat: no-repeat;
     background-position: center top;
@@ -583,7 +583,7 @@
     gap: 40px;
     text-align: center;
     position: relative;
-    background-image: url(../images/value/bg_value_feature.jpg);
+    background-image: url(../img/value/bg_value_feature.jpg);
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -593,7 +593,7 @@
     .ico-logo {
       width: 220px;
       height: 54px;
-      background-image: url(../images/loco_kngil_c.svg);
+      background-image: url(../img/loco_kngil_c.svg);
       background-size: contain;
       background-repeat: no-repeat;
       background-position: center;
@@ -734,42 +734,42 @@
     }
 
     .gis {
-      background-image: url(../images/value/bg_value_gis.jpg);
+      background-image: url(../img/value/bg_value_gis.jpg);
 
       dt i {
         width: 54px;
         height: 32px;
-        background-image: url(../images/ico/ico_value_gis.svg);
+        background-image: url(../img/ico/ico_value_gis.svg);
       }
     }
 
     .data {
-      background-image: url(../images/value/bg_value_data.png);
+      background-image: url(../img/value/bg_value_data.png);
 
       dt i {
         width: 42px;
         height: 42px;
-        background-image: url(../images/ico/ico_value_data.svg);
+        background-image: url(../img/ico/ico_value_data.svg);
       }
     }
 
     .map {
-      background-image: url(../images/value/bg_value_map.jpg);
+      background-image: url(../img/value/bg_value_map.jpg);
 
       dt i {
         width: 48px;
         height: 48px;
-        background-image: url(../images/ico/ico_value_map.svg);
+        background-image: url(../img/ico/ico_value_map.svg);
       }
     }
 
     .custom {
-      background-image: url(../images/value/bg_value_custom.jpg);
+      background-image: url(../img/value/bg_value_custom.jpg);
 
       dt i {
         width: 48px;
         height: 48px;
-        background-image: url(../images/ico/ico_value_filter.svg);
+        background-image: url(../img/ico/ico_value_filter.svg);
       }
     }
 

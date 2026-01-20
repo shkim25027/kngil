@@ -14,7 +14,7 @@
     margin: 0 auto;
   }
   .sub-header{
-    background: url(../images/provided/bg_provided_title.jpg) no-repeat center center;
+    background: url(../img/provided/bg_provided_title.jpg) no-repeat center center;
     background-size: cover;
   }
   .sub-content {
@@ -44,7 +44,7 @@
         left: calc(50% - 50px);
         width: 100px;
         height: 25px;
-        background: url(../images/ico_title_obj.svg) no-repeat center center;
+        background: url(../img/ico_title_obj.svg) no-repeat center center;
       }
       .sub-tit {
         font-weight: 400;
@@ -518,12 +518,12 @@
       .bg {
         $bg-overlay: linear-gradient(90deg, #00000000 0, #00000080 100%);
         &:nth-child(1) {
-          background: $bg-overlay, url(../images/provided/bg_provided_natural.png);
+          background: $bg-overlay, url(../img/provided/bg_provided_natural.png);
           background-size: cover;
           background-position: bottom center;
         }
         &:nth-child(2) {
-          background: $bg-overlay, url(../images/provided/bg_provided_social.png);
+          background: $bg-overlay, url(../img/provided/bg_provided_social.png);
           background-size: cover;
           background-position: bottom center;
         }
@@ -600,13 +600,13 @@
           width: 64px;
           height: 64px;
           margin-bottom: 32px;
-          background: url(../images/ico/ico_natural.svg) no-repeat center center;
+          background: url(../img/ico/ico_natural.svg) no-repeat center center;
         }
         .ico-social {
           width: 64px;
           height: 64px;
           margin-bottom: 32px;
-          background: url(../images/ico/ico_social.svg) no-repeat center center;
+          background: url(../img/ico/ico_social.svg) no-repeat center center;
         }
         img {
           width: 48px;
@@ -635,7 +635,7 @@
           width: 437px;
           height: 89px;
           translate: -50% 0;
-          background: url(../images/provided/img_arrow_natural.svg) no-repeat center bottom;
+          background: url(../img/provided/img_arrow_natural.svg) no-repeat center bottom;
           background-size: 100% auto;
           pointer-events: none;
           z-index: 2;
@@ -681,28 +681,28 @@
               margin-right: auto;
               margin-bottom: 4px;
               &.ico-location {
-                background: url(../images/ico/ico_location.svg) no-repeat center center;
+                background: url(../img/ico/ico_location.svg) no-repeat center center;
               }
               &.ico-weather {
-                background: url(../images/ico/ico_weather.svg) no-repeat center center;
+                background: url(../img/ico/ico_weather.svg) no-repeat center center;
               }
               &.ico-eco {
-                background: url(../images/ico/ico_eco.svg) no-repeat center center;
+                background: url(../img/ico/ico_eco.svg) no-repeat center center;
               }
               &.ico-city {
-                background: url(../images/ico/ico_city.svg) no-repeat center center;
+                background: url(../img/ico/ico_city.svg) no-repeat center center;
               }
               &.ico-population {
-                background: url(../images/ico/ico_population.svg) no-repeat center center;
+                background: url(../img/ico/ico_population.svg) no-repeat center center;
               }
               &.ico-land {
-                background: url(../images/ico/ico_land.svg) no-repeat center center;
+                background: url(../img/ico/ico_land.svg) no-repeat center center;
               }
               &.ico-building {
-                background: url(../images/ico/ico_building.svg) no-repeat center center;
+                background: url(../img/ico/ico_building.svg) no-repeat center center;
               }
               &.ico-society {
-                background: url(../images/ico/ico_society.svg) no-repeat center center;
+                background: url(../img/ico/ico_society.svg) no-repeat center center;
               }
             }
           }
@@ -747,7 +747,7 @@
         .sub-tit { color: $social-color; }
         .cont-list {
           &::before {
-            background-image: url(../images/provided/img_arrow_social.svg);
+            background-image: url(../img/provided/img_arrow_social.svg);
           }
           .cont-item{
             &::before{ 

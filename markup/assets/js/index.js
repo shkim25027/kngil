@@ -12,7 +12,7 @@
     TOTAL_PAGES: 5,
     INTRO_DELAY: 2800,
     VISITED_STORAGE_KEY: 'visited',
-    VIDEO_BASE_PATH: './assets/video',
+    VIDEO_BASE_PATH: './video',
     PAGE_LINKS: {
       1: './value.html',
       2: './provided.html',

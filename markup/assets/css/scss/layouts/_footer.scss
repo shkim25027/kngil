@@ -150,7 +150,7 @@
         content: " ";
         width: 12px;
         aspect-ratio: 1 / 1;
-        background-image: url(../images/ico/ico_angle.svg);
+        background-image: url(../img/ico/ico_angle.svg);
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -208,7 +208,7 @@
       animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
     .footer-close {
-      background: url(../images/ico/ico_footer_close.svg) no-repeat;
+      background: url(../img/ico/ico_footer_close.svg) no-repeat;
       background-size: cover;
       background-position: center;
       position: absolute;

@@ -155,7 +155,7 @@
         return;
       }
 
-      $.getScript('./assets/js/popup.js')
+      $.getScript('./js/popup.js')
         .done(() => {
           this.popupScriptLoaded = true;
           if (callback) callback();

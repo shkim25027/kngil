@@ -6,7 +6,7 @@
 
 .results {
   .sub-header {
-    background-image: url(../images/results/bg_results_title.jpg);
+    background-image: url(../img/results/bg_results_title.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -44,7 +44,7 @@
         left: calc(50% - 50px);
         width: 100px;
         height: 25px;
-        background: url(../images/ico_title_obj.svg) no-repeat center center;
+        background: url(../img/ico_title_obj.svg) no-repeat center center;
       }
       .sub-tit {
         font-weight: 400;
@@ -101,7 +101,7 @@
         left: 50%;
         translate: -50% 0;
         i {
-          background-image: url(../images/ico/ico_statistic.svg);
+          background-image: url(../img/ico/ico_statistic.svg);
         }
 
         .line {
@@ -118,7 +118,7 @@
         text-align: right;
         @include flex(flex-end, flex-start);
         i {
-          background-image: url(../images/ico/ico_graph_box.svg);
+          background-image: url(../img/ico/ico_graph_box.svg);
         }
 
         .line {
@@ -137,7 +137,7 @@
         text-align: left;
         @include flex(flex-end, flex-start);
         i {
-          background-image: url(../images/ico/ico_mind_map.svg);
+          background-image: url(../img/ico/ico_mind_map.svg);
         }
 
         .line {
@@ -370,7 +370,7 @@
   // ---------------------------------
   .spatial {
     .left .mid-tit {
-      background-image: url(../images/analysis/bg_spatial_title.png);
+      background-image: url(../img/analysis/bg_spatial_title.png);
     }
 
     .spatial01 .sub-figs .imgs .apx {
@@ -425,7 +425,7 @@
   // ---------------------------------
   .statistics {
     .left .mid-tit {
-      background-image: url(../images/analysis/bg_statistics_title.png);
+      background-image: url(../img/analysis/bg_statistics_title.png);
       left: calc(176px - 12px);
       width: calc(100vw - 176px);
       max-width: 1744px;
@@ -454,7 +454,7 @@
   // ---------------------------------
   .attribute {
     .left .mid-tit {
-      background-image: url(../images/analysis/bg_attribute_title.png);
+      background-image: url(../img/analysis/bg_attribute_title.png);
     }
 
     .right .attribute02 .sub-figs .imgs img,

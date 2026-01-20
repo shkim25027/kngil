@@ -76,7 +76,7 @@
 }
 .primary {
   .sub-header {
-    background-image: url(../images/primary/bg_primary_title.jpg);
+    background-image: url(../img/primary/bg_primary_title.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -114,7 +114,7 @@
         left: calc(50% - 50px);
         width: 100px;
         height: 25px;
-        background: url(../images/ico_title_obj.svg) no-repeat center center;
+        background: url(../img/ico_title_obj.svg) no-repeat center center;
       }
       .sub-tit {
         font-weight: 400;
@@ -127,7 +127,7 @@
       margin: 30px auto 60px auto;
       position: relative;
       overflow: visible;
-      background-image: url(../images/bg_atom_obj.svg);
+      background-image: url(../img/bg_atom_obj.svg);
       background-repeat: no-repeat;
       background-position: top center;
       background-size: contain;
@@ -138,7 +138,7 @@
         aspect-ratio: 1 / 1;
         top: 0;
         left: 0;
-        background-image: url(../images/bg_atom_line.svg);
+        background-image: url(../img/bg_atom_line.svg);
         background-repeat: no-repeat;
         background-position: center;
         background-size: contain;
@@ -267,15 +267,15 @@
         }
 
         &.e01 i {
-          background-image: url(../images/ico/ico_zone.svg);
+          background-image: url(../img/ico/ico_zone.svg);
         }
 
         &.e02 i {
-          background-image: url(../images/ico/ico_setting.svg);
+          background-image: url(../img/ico/ico_setting.svg);
         }
 
         &.e03 i {
-          background-image: url(../images/ico/ico_check_list.svg);
+          background-image: url(../img/ico/ico_check_list.svg);
         }
 
         .dia-tit {
@@ -399,72 +399,72 @@
         border-radius: 4px 0 0 4px;
       }
       .sec-area-input .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="1"] {
-        background-image: url(../images/primary/img_area_01.png);
+        background-image: url(../img/primary/img_area_01.png);
         animation: bgSlideLayer1 12s ease-in-out infinite;
       }
       .sec-area-input .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="2"] {
-        background-image: url(../images/primary/img_area_02.png);
+        background-image: url(../img/primary/img_area_02.png);
         animation: bgSlideLayer2 12s ease-in-out infinite;
       }
       .sec-area-input .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="3"] {
-        background-image: url(../images/primary/img_area_03.png);
+        background-image: url(../img/primary/img_area_03.png);
         animation: bgSlideLayer3 12s ease-in-out infinite;
       }
 
       // sec-progress-realtime: 4장 (img_progress_01_01 기준, 2~4는 동일 사용)
       .sec-progress-realtime .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="1"] {
-        background-image: url(../images/primary/img_progress_01.png);
+        background-image: url(../img/primary/img_progress_01.png);
         animation: bgSlide4Layer1 12s ease-in-out infinite;
       }
       .sec-progress-realtime .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="2"] {
-        background-image: url(../images/primary/img_progress_02.png);
+        background-image: url(../img/primary/img_progress_02.png);
         animation: bgSlide4Layer2 12s ease-in-out infinite;
       }
       .sec-progress-realtime .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="3"] {
-        background-image: url(../images/primary/img_progress_03.png);
+        background-image: url(../img/primary/img_progress_03.png);
         animation: bgSlide4Layer3 12s ease-in-out infinite;
       }
       .sec-progress-realtime .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="4"] {
-        background-image: url(../images/primary/img_progress_04.png);
+        background-image: url(../img/primary/img_progress_04.png);
         animation: bgSlide4Layer4 12s ease-in-out infinite;
       }
 
       // sec-cost-criteria: 4장 (img_cost_01~03, 4번은 03 재사용)
       .sec-cost-criteria .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="1"] {
-        background-image: url(../images/primary/img_cost_01.png);
+        background-image: url(../img/primary/img_cost_01.png);
         animation: bgSlide4Layer1 12s ease-in-out infinite;
       }
       .sec-cost-criteria .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="2"] {
-        background-image: url(../images/primary/img_cost_02.png);
+        background-image: url(../img/primary/img_cost_02.png);
         animation: bgSlide4Layer2 12s ease-in-out infinite;
       }
       .sec-cost-criteria .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="3"] {
-        background-image: url(../images/primary/img_cost_03.png);
+        background-image: url(../img/primary/img_cost_03.png);
         animation: bgSlide4Layer3 12s ease-in-out infinite;
       }
       .sec-cost-criteria .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="4"] {
-        background-image: url(../images/primary/img_cost_04.png);
+        background-image: url(../img/primary/img_cost_04.png);
         animation: bgSlide4Layer4 12s ease-in-out infinite;
       }
 
       // sec-data-select: 3장 (img_data_01~03)
       .sec-data-select .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="1"] {
-        background-image: url(../images/primary/img_data_01.png);
+        background-image: url(../img/primary/img_data_01.png);
         animation: bgSlideLayer1 12s ease-in-out infinite;
       }
       .sec-data-select .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="2"] {
-        background-image: url(../images/primary/img_data_02.png);
+        background-image: url(../img/primary/img_data_02.png);
         animation: bgSlideLayer2 12s ease-in-out infinite;
       }
       .sec-data-select .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="3"] {
-        background-image: url(../images/primary/img_data_03.png);
+        background-image: url(../img/primary/img_data_03.png);
         animation: bgSlideLayer3 12s ease-in-out infinite;
       }
 
     }
 
     &.key .left .mid-tit {
-      background-image: url(../images/primary/bg_key_title.png);
+      background-image: url(../img/primary/bg_key_title.png);
     }
   }
 }
