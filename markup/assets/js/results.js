@@ -1,5 +1,27 @@
 document.addEventListener("DOMContentLoaded", () => {
   // ---------------------------------------------
+  // results-wrap 탭: tab-list 클릭 시 tab-content 전환
+  // ---------------------------------------------
+  const wrap = document.querySelector(".results-wrap");
+  const tabList = wrap?.querySelector(".tab-list");
+  const tabContents = wrap?.querySelectorAll(".tab-content");
+  if (tabList && tabContents?.length) {
+    const links = tabList.querySelectorAll("li a");
+    const ids = ["key-natural", "key-social", "key-cost"];
+    links.forEach((a, i) => {
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        const id = ids[i];
+        if (!id) return;
+        tabContents.forEach((el) => el.classList.remove("on"));
+        const target = document.getElementById(id);
+        if (target) target.classList.add("on");
+        tabList.querySelectorAll("li").forEach((li, j) => li.classList.toggle("on", j === i));
+      });
+    });
+  }
+
+  // ---------------------------------------------
   // js-fixLeft: 오른쪽 스크롤에 따라 왼쪽 타이틀 전환 (results 페이지, key 3블록: natural, social, cost)
   // 사용 클래스: js-fixLeft-tit, js-fixLeft-secs
   // ---------------------------------------------

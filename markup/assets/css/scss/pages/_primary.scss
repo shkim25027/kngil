@@ -32,7 +32,7 @@
   }
 }
 
-// 배경 이미지 순환 (3장, 4s each, ~0.5s 크로스페이드)
+// 배경 이미지 순환 (3장, 4s each) — 바로 전환
 @keyframes bgSlideLayer1 {
   0%, 29% { opacity: 1; }
   33%, 97% { opacity: 0; }
@@ -380,9 +380,8 @@
         position: relative;
         overflow: hidden;
         border-radius: 4px;
-        aspect-ratio: 1030 / 357;
+
         width: 100%;
-        background: #1a1a1a;
 
         .bg-slide-layer {
           position: absolute;
@@ -396,7 +395,19 @@
 
       // sec-area-input: 3장 (img_area_01~03)
       .sec-area-input .sub-figs.sub-figs-bg-slide {
-        border-radius: 4px 0 0 4px;
+        aspect-ratio: 1030 / 369;
+      }
+
+      .sec-report-config .sub-figs.sub-figs-bg-slide {
+        aspect-ratio: 1030 / 423;
+      }
+      .sec-cost-criteria .sub-figs.sub-figs-bg-slide {
+        aspect-ratio: 1030 / 446;
+      }
+
+      .sec-progress-realtime .sub-figs.sub-figs-bg-slide,
+      .sec-data-select .sub-figs.sub-figs-bg-slide {
+        aspect-ratio: 1030 / 357;
       }
       .sec-area-input .sub-figs.sub-figs-bg-slide .bg-slide-layer[data-bg="1"] {
         background-image: url(../img/primary/img_area_01.png);

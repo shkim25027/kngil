@@ -25,14 +25,6 @@
           </div>
           <div class="condition">
             <div class="diagram-wrap" data-aos="fade-up" data-aos-duration="1000">
-              <div class="dia-element-top">
-                <div class="dia-element dia-element01">
-                  <i></i>
-                  <span class="dia-tit"><em>토지</em></span>
-                  <div class="line"></div>
-                </div>
-              </div>
-
               <div class="dia-circles-wrap">
                 <div class="circle-dash"></div>
                 <div class="circle-belt"></div>
@@ -48,91 +40,149 @@
                   <div class="dot"></div>
                   <div class="dot"></div>
                   <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
+                  <div class="dot"></div>
                 </div>
-              </div>
-              
-              <div class="dia-element-bottom">
-                <div class="dia-element dia-element02">
-                  <i></i>
-                  <span class="dia-tit"><em>인구</em></span>
-                  <div class="line"></div>
-                </div>
-                <div class="dia-element dia-element03">
-                  <i></i>
-                  <span class="dia-tit"><em>기반시설</em></span>
-                  <div class="line"></div>
-                </div>
-              </div>
-              <div class="dia-element-bottom">
-                <div class="dia-element dia-element02">
-                  <i></i>
-                  <span class="dia-tit"><em>기상 </em></span>
-                  <div class="line"></div>
-                </div>
-                <div class="dia-element dia-element03">
-                  <i></i>
-                  <span class="dia-tit"><em>생태&자연</em></span>
-                  <div class="line"></div>
-                </div>
-              </div>
-              <div class="dia-element-top">
-                <div class="dia-element dia-element01">
-                  <i></i>
-                  <span class="dia-tit"><em>도시&주거</em></span>
-                  <div class="line"></div>
+                <!-- 원형 배치: provided .fix 스타일 참고, 6개를 원 위에 배치 -->
+                <div class="dia-element-ring">
+                  <div class="dia-element dia-pos-1" style="--angle: 0deg">
+                    <span class="dia-tit"><i></i><em>토지</em></span>
+                    <div class="dot"></div>
+                  </div>
+                  <div class="dia-element dia-pos-2" style="--angle: 60deg">
+                    <span class="dia-tit"><i></i><em>인구</em></span>
+                    <div class="dot"></div>
+                  </div>
+                  <div class="dia-element dia-pos-3" style="--angle: 120deg">
+                    <span class="dia-tit"><i></i><em>기반시설</em></span>
+                    <div class="dot"></div>
+                  </div>
+                  <div class="dia-element dia-pos-4" style="--angle: 180deg">
+                    <span class="dia-tit"><i></i><em>도시&주거</em></span>
+                    <div class="dot"></div>
+                  </div>
+                  
+                  <div class="dia-element dia-pos-5" style="--angle: 240deg">
+                    <span class="dia-tit"><i></i><em>생태&자연</em></span>
+                    <div class="dot"></div>
+                  </div>
+                  <div class="dia-element dia-pos-6" style="--angle: 300deg">
+                    <span class="dia-tit"><i></i><em>기상</em></span>
+                    <div class="dot"></div>
+                  </div>
                 </div>
               </div>
 
             </div>
           </div>
         </section>
+
         <!-- 3. Category Tabs -->
-        <nav class="results-tabs">
-          <ul>
-            <li class="on"><a href="#key-natural">🌿 자연조건 데이터</a></li>
-            <li><a href="#key-social">👥 사회특성 데이터</a></li>
-            <li><a href="#key-cost">💰 추정사업비 데이터</a></li>
-          </ul>
-        </nav>
-
-        <!-- 4. Natural Data Section -->
-        <section id="key-natural" class="key-section natural">
-          <div class="section-hero">
-            <div class="section-hero-left">
-              <h2 class="section-title-large">
-                Excel<br>
+        <section class="results-wrap">
+          <ul class="tab-list">
+            <li class="on">
+              <a href="#key-natural">
+                <i class="ico-nature"></i>
                 자연조건 데이터
-              </h2>
-              <p class="section-desc">
-                지역의 개황, 기상 및 자연재해,<br>
-                생태 및 자연환경, 도시 및 주거환경<br>
-                관련 데이터를 제공합니다.
-              </p>
-            </div>
-            <div class="section-hero-right">
-              <div class="report-stack">
-                <div class="report-page" style="--index: 0"> 
-                  <img src="./img/results/img_report_natural_01.png" alt="지역의 개황">
+              </a>
+            </li>
+            <li>
+              <a href="#key-social">
+                <i class="ico-social"></i> 
+                사회특성 데이터
+              </a>
+            </li>
+            <li>
+              <a href="#key-cost">
+                <i class="ico-cost"></i> 
+                추정사업비 데이터
+              </a>
+            </li>
+          </ul>
+            <div id="key-natural" class="tab-content natural on">
+              <div class="section-hero">
+                <div class="section-hero-left">
+                  <h2 class="section-title-large">
+                    <span class="watermark">Excel</span>
+                    자연조건 데이터
+                  </h2>
+                  <p class="section-desc">
+                    지역의 개황, 기상 및 자연재해,<br>
+                    생태 및 자연환경, 도시 및 주거환경<br>
+                    관련 데이터를 제공합니다. 
+                  </p>
                 </div>
-                <div class="report-page" style="--index: 1">
-                  <img src="./img/results/img_report_natural_02.png" alt="기상 및 자연재해">
-                </div>
-                <div class="report-page" style="--index: 2">
-                  <img src="./img/results/img_report_natural_03.png" alt="생태 및 자연환경">
-                </div>
-                <div class="report-page" style="--index: 3">
-                  <img src="./img/results/img_report_natural_04.png" alt="도시 및 주거환경">
-                </div>
-                <div class="report-page" style="--index: 4">
-                  <img src="./img/results/img_report_natural_05.png" alt="추가 데이터">
+                <div class="section-hero-right">
+                  <div class="report-stack">
+                    <div class="report-page" style="--index: 0">
+                      <span class="report-pick"></span>
+                      <img src="./img/results/imb_report_natural_1.png" alt="지역의 개황">
+                    </div>
+                    <div class="report-page" style="--index: 1"><img src="./img/results/imb_report_natural_2.png" alt="기상 및 자연재해"></div>
+                    <div class="report-page" style="--index: 2"><img src="./img/results/imb_report_natural_3.png" alt="지역의 개황"></div>
+                    <div class="report-page" style="--index: 3"><img src="./img/results/imb_report_natural_4.png" alt="기상 및 자연재해"></div>
+                    <div class="report-page" style="--index: 4"><img src="./img/results/imb_report_natural_5.png" alt="생태 및 자연환경"></div>
+                    <div class="report-page" style="--index: 5"><img src="./img/results/imb_report_natural_6.png" alt="도시 및 주거환경"></div>
+                  </div>
                 </div>
               </div>
-              <p class="report-caption">
-                *실제 보고서가 분류체계별 순서대로 제공
-              </p>
+            </div>
+          <div id="key-social" class="tab-content social">
+            <div class="section-hero">
+              <div class="section-hero-left">
+                <h2 class="section-title-large">
+                  <span class="watermark">Excel</span>
+                  사회특성 데이터
+                </h2>
+                <p class="section-desc">
+                  인구, 토지, 건축물, 사회기반시설 관련<br>데이터를 제공합니다.
+                </p>
+              </div>
+              <div class="section-hero-right">
+                <div class="report-stack">
+                  <div class="report-page" style="--index: 0">
+                    <span class="report-pick"></span>
+                    <img src="./img/results/imb_report_social_1.png" alt="지역의 개황">
+                  </div>
+                  <div class="report-page" style="--index: 1"><img src="./img/results/imb_report_social_2.png" alt="기상 및 자연재해"></div>
+                  <div class="report-page" style="--index: 2"><img src="./img/results/imb_report_social_3.png" alt="지역의 개황"></div>
+                  <div class="report-page" style="--index: 3"><img src="./img/results/imb_report_social_4.png" alt="기상 및 자연재해"></div>
+                  <div class="report-page" style="--index: 4"><img src="./img/results/imb_report_social_5.png" alt="생태 및 자연환경"></div>
+                  <div class="report-page" style="--index: 5"><img src="./img/results/imb_report_social_6.png" alt="도시 및 주거환경"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div id="key-cost" class="tab-content cost">
+            <div class="section-hero">
+              <div class="section-hero-left">
+                <h2 class="section-title-large">
+                  <span class="watermark">Excel</span>
+                  추정사업비 데이터
+                </h2>
+                <p class="section-desc">
+                  산정기준, 총사업비, 보상비,<br>공사비, 설계비, 부대비 <br>관련 데이터를 제공합니다.
+                </p>
+              </div>
+              <div class="section-hero-right">
+                <div class="report-stack">
+                  <div class="report-page" style="--index: 0">
+                    <span class="report-pick"></span>
+                    <img src="./img/results/imb_report_cost_1.png" alt="지역의 개황">
+                  </div>
+                  <div class="report-page" style="--index: 1"><img src="./img/results/imb_report_cost_2.png" alt="기상 및 자연재해"></div>
+                  <div class="report-page" style="--index: 2"><img src="./img/results/imb_report_cost_3.png" alt="지역의 개황"></div>
+                  <div class="report-page" style="--index: 3"><img src="./img/results/imb_report_cost_4.png" alt="기상 및 자연재해"></div>
+                  <div class="report-page" style="--index: 4"><img src="./img/results/imb_report_cost_5.png" alt="생태 및 자연환경"></div>
+                  <div class="report-page" style="--index: 5"><img src="./img/results/imb_report_cost_6.png" alt="도시 및 주거환경"></div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
+
+
       </div>
       <!-- // container -->
       

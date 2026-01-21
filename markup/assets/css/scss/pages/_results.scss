@@ -163,6 +163,11 @@
         &.move {
           .dot {
             background:#046A50;
+            &:nth-child(2) {
+              top: 100%;
+              left: calc(50% - 4px);
+              transform: translateY(-50%);
+            }
           }
         }
         .dot {
@@ -182,6 +187,23 @@
 
           &:nth-child(3) {
             top: 75%;
+            right: 5.5%;
+            transform: translateY(-50%) rotate(240deg);
+          }
+          &:nth-child(4) {
+            bottom: -8px;
+            left: calc(50% - 4px);
+            transform: translateY(-50%);
+          }
+
+          &:nth-child(5) {
+            top: 25%;
+            left: 5.5%;
+            transform: translateY(-50%) rotate(120deg);
+          }
+
+          &:nth-child(6) {
+            top: 25%;
             right: 5.5%;
             transform: translateY(-50%) rotate(240deg);
           }
@@ -210,6 +232,110 @@
         span:first-child {
           font-size: 20px;
           font-weight: 400;
+        }
+      }
+
+      // 원형 배치: provided .fix 참고, 6개를 원 위에 + dot(점선)으로 중앙 연결
+      .dia-element-ring {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        z-index: 2;
+        pointer-events: none;
+
+        .dia-element {
+          position: absolute;
+          left: 0;
+          top: 0;
+          transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateY(-210px) rotate(calc(-1 * var(--angle, 0deg)));
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 8px;
+          pointer-events: auto;
+
+          .dia-tit {
+            font-size: 16px;
+            white-space: nowrap;
+            flex-direction: column;
+            gap: 8px;
+            @include flex(center, center);
+          }
+
+          i {
+            aspect-ratio: 1 / 1;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+          }
+
+          // provided .dot 스타일: 점선으로 중앙(원) 연결, --angle로 중심 방향 회전
+          .dot {
+            width: 0;
+            height: 32px;
+            border-left: 1px dashed #046A50;
+            position: relative;
+            flex-shrink: 0;
+            transform: rotate(var(--angle, 0deg));
+            transform-origin: center top;
+          }
+          &.dia-pos-2 {
+            margin-left: 24px;
+            flex-direction: row-reverse;
+            .dia-tit {
+              flex-direction: row;
+            }
+            .dot{
+              top: 24px;
+            }
+          }
+          &.dia-pos-3 {
+            margin-left: 44px;
+            flex-direction: row-reverse;
+            .dia-tit {
+              flex-direction: row;
+            }
+            .dot{
+              top: 10px;
+            }
+          }
+          &.dia-pos-4 {
+            flex-direction: column-reverse;
+            .dot {
+              transform: rotate(0);
+            }
+          }
+          &.dia-pos-5{
+            margin-left:-50px;
+            flex-direction: row;
+            .dia-tit {
+              flex-direction: row;
+            }
+            .dot{
+              top: 10px; /* dot이 영역 밖으로 벗어나지 않도록 상단에 가깝게 정렬 */
+            }
+          }
+          
+         &.dia-pos-6 {
+            margin-left:-30px;
+            flex-direction: row;
+            .dia-tit {
+              flex-direction: row-reverse;
+            }
+            .dot{
+              top: 22px;
+            }
+          }
+          
+          // 아이콘: 토지, 인구, 기반시설, 기상, 생태&자연, 도시&주거
+          &.dia-pos-1 i { width: 26px; background-image: url(../img/results/ico_map.svg); }
+          &.dia-pos-2 i { width: 30px; background-image: url(../img/results/ico_people.svg); }
+          &.dia-pos-3 i { width: 32px; background-image: url(../img/results/ico_facility.svg); }
+          &.dia-pos-4 i { width: 25px; background-image: url(../img/results/ico_city.svg); }
+          &.dia-pos-5 i { width: 36px; background-image: url(../img/results/ico_eco.svg); }
+          &.dia-pos-6 i { width: 33px; background-image: url(../img/results/ico_weather.svg); }
         }
       }
     }
@@ -493,6 +619,18 @@
   }
   100% {
     opacity: 0;
+  }
+}
+
+// .tab-content.on 시 report-page: 오파시티 0→1 + 밑에서 하나씩 순차 등장
+@keyframes reportPageUp {
+  from {
+    opacity: 0;
+    transform: translateY(120px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -891,6 +1029,269 @@
 
     .key .right .attribute02 .sub-figs .text br.brk {
       display: initial !important;
+    }
+  }
+}
+
+
+.results-wrap {
+  display: flex;
+  flex-direction: column;
+  padding-top: 120px;
+  min-height: var(--window-inner-height);
+
+  .tab-list {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 60px;
+
+    li  {
+      a {
+        display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      min-width: 224px;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: 600;
+      color: rgba(0,0,0,0.5);
+      border: 1px solid #E5E5E5;
+      background: #E5E5E5;
+      text-decoration: none;
+      transition: background 0.25s, color 0.25s;
+      }
+    }
+    li.on a  {
+      color: #FFF;
+      font-size: 18px;
+      border: 1px solid rgba(114, 80, 31, 0.50);
+      background: #BCA17B;
+      i{
+        opacity: 1;
+        background-color: #fff;
+      }
+    }
+      .ico-nature {
+        width:  18px;
+        height: 18px;
+        opacity: 0.5;
+        @include svgIconMask('../img/results/ico_tab_natural.svg', #000);
+      }
+      .ico-social {
+        width:  16px;
+        height: 16px;
+        opacity: 0.5;
+      @include svgIconMask('../img/results/ico_tab_social.svg', #000);
+      }
+      .ico-cost {
+        width:  16px;
+        height: 10px; 
+        opacity: 0.5;
+        @include svgIconMask('../img/results/ico_tab_cost.svg', #000);
+      }
+  }
+
+  .tab-content {
+    position: relative;
+    display: none;
+    width: 100%;
+    overflow: visible;
+    flex: 1;
+    background-image: url(../img/results/bg_natural_left.png), url(../img/results/bg_grid.png);
+    background-repeat: no-repeat, no-repeat;
+    background-position: left bottom, right bottom;
+    background-size: 70.5729% auto, 100% auto;
+
+
+    &.social {
+      background-image: url(../img/results/bg_social_left.png), url(../img/results/bg_grid.png);
+      background-repeat: no-repeat, no-repeat;
+      background-position: left bottom, right bottom;
+      background-size: 60.15625% auto, 100% auto;
+    }
+    &.cost {
+      background-image: url(../img/results/bg_cost_left.png), url(../img/results/bg_grid.png);
+      background-repeat: no-repeat, no-repeat;
+      background-position: left bottom, right bottom;
+      background-size: 31.9270% auto, 100% auto;
+    }
+
+    // 콘텐츠가 배경 위에 오도록
+    > .section-hero,
+    > .inner {
+      position: relative;
+      z-index: 1;
+      padding-bottom: 60px;
+      @include flex(center, center);
+    }
+
+    &.on {
+      display: flex;
+      flex-direction: column;
+
+      .report-page {
+        animation: reportPageUp 1s ease-out forwards;
+        animation-delay: calc(var(--index, 0) * 0.15s);
+      }
+    }
+  }
+
+  // 자연조건: 왼쪽 타이틀+설명, 오른쪽 보고서 스택 (tab-content 높이 상속)
+  .section-hero {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    align-items: center;
+    gap: 60px;
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+
+  .section-hero-left {
+    padding-bottom: 160px;
+    .section-title-large {
+      position: relative;
+      font-size: 52px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: #1a1a1a;
+
+      .watermark {
+        position: absolute;
+        bottom: 20px;
+        left: -10px;
+        display: block;
+        font-size: 120px;
+        font-weight: 900;
+        line-height: 1;
+        opacity: 0.08;
+        color: #666;
+        margin-bottom: 4px;
+      }
+    }
+    .section-desc {
+      font-size: 20px;
+      font-weight: 400;
+      color: rgba(0,0,0,0.8);
+    }
+  }
+
+  .section-hero-right {
+    position: relative;
+    min-height: 330px;
+
+    .report-stack {
+      position: relative;
+      width: 100%;
+      display: flex;
+    }
+
+    .report-page {
+      position: relative;
+      flex-shrink: 0;
+      width: 246px;
+      height: 330px;
+      overflow: hidden;
+      z-index: var(--index);
+
+      // 첫번째 카드 뒤배경 (270x350, 그라데이션)
+      &:first-child {
+        overflow: visible;
+        &::before {
+          content: '';
+          position: absolute;
+          z-index: -1;
+          left: -12px;
+          top: -10px;
+          width: 270px;
+          height: 350px;
+          border-radius: 6px;
+          background: linear-gradient(170deg, rgba(227, 227, 227, 0.24) 4.48%, rgba(0, 0, 0, 0.40) 92.19%), #242D2B;
+        }
+      }
+
+      &:not(:first-child) {
+        margin-left: -84px;
+        box-shadow: -5px 0 4px 0 rgba(0, 0, 0, 0.20);
+      }
+
+      .report-pick {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+        width: 80px;
+        height: 16px;
+        border-radius: 2px;
+        background: #D9D9D9;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 6px;
+          border-radius: 2px 2px 0 0;
+          opacity: 0.6;
+          background: linear-gradient(180deg, #D9D9D9 0%, #BCBCBC 50.96%, #D9D9D9 98.56%);
+        }
+        &::after{
+          content: '';
+          position: absolute;
+          top: 2px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 76px;
+          height: 1px;
+          opacity: 0.42;
+          background: linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, #FFF 45.67%, rgba(255, 255, 255, 0.00) 100%);  
+        }
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        vertical-align: top;
+      }
+    }
+
+    .report-caption {
+      margin-top: 16px;
+      font-size: 14px;
+      color: rgba(0,0,0,0.5);
+      text-align: center;
+    }
+  }
+
+  .inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 20px;
+  }
+
+  dl {
+    dt {
+      font-size: 52px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #1a1a1a;
+    }
+    dd {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.7;
+      color: rgba(0,0,0,0.8);
     }
   }
 }
