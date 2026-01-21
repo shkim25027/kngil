@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const target = document.getElementById(id);
         if (target) target.classList.add("on");
         tabList.querySelectorAll("li").forEach((li, j) => li.classList.toggle("on", j === i));
+        links.forEach((link, j) => link.setAttribute("aria-selected", j === i ? "true" : "false"));
       });
     });
   }

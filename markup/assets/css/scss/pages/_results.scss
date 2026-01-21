@@ -1,8 +1,13 @@
 @use "../import/_mixin" as *;
 
 // =======================================
-// 성과품 results 
+// 성과품 results
 // =======================================
+
+// --- Results 전용 변수 ---
+$results-dot: #046A50;
+$results-belt: #F0F7F5;
+$results-dash: #B6D0C9;
 
 .results {
   .sub-header {
@@ -19,8 +24,7 @@
     position: relative;
     padding-top: 160px;
     padding-bottom: 120px;
-    max-width: 1920px; 
-    margin: 0 auto;
+    max-width: 1920px;
     @include flex(center, center);
     &::before {
       position: absolute;
@@ -79,7 +83,7 @@
         width: 32px;
         height: 1px;
       // background:#046A50;
-        border:1px dashed #046A50;
+        border: 1px dashed $results-dot;
       }
 
       .dia-tit {
@@ -151,18 +155,18 @@
 
     .dia-circles-wrap {
       .circle-belt {
-        background: #F0F7F5;
-        border: 1px solid #B6D0C9;
+        background: $results-belt;
+        border: 1px solid $results-dash;
       }
 
       .circle-dash {
-        border: 1px dashed #B6D0C9;
+        border: 1px dashed $results-dash;
       }
 
       .circle-dots {
         &.move {
           .dot {
-            background:#046A50;
+            background: $results-dot;
             &:nth-child(2) {
               top: 100%;
               left: calc(50% - 4px);
@@ -171,41 +175,21 @@
           }
         }
         .dot {
-          background:#046A50;
-
-          &:nth-child(1) {
-            top: 0%;
-            left: calc(50% - 4px);
-            transform: translateY(-50%);
-          }
-
-          &:nth-child(2) {
-            top: 75%;
-            left: 5.5%;
-            transform: translateY(-50%) rotate(120deg);
-          }
-
-          &:nth-child(3) {
-            top: 75%;
-            right: 5.5%;
-            transform: translateY(-50%) rotate(240deg);
-          }
-          &:nth-child(4) {
-            bottom: -8px;
-            left: calc(50% - 4px);
-            transform: translateY(-50%);
-          }
-
-          &:nth-child(5) {
-            top: 25%;
-            left: 5.5%;
-            transform: translateY(-50%) rotate(120deg);
-          }
-
-          &:nth-child(6) {
-            top: 25%;
-            right: 5.5%;
-            transform: translateY(-50%) rotate(240deg);
+          background: $results-dot;
+          $dot-positions: (
+            1: (top: 0%, left: calc(50% - 4px), transform: translateY(-50%)),
+            2: (top: 75%, left: 5.5%, transform: translateY(-50%) rotate(120deg)),
+            3: (top: 75%, right: 5.5%, transform: translateY(-50%) rotate(240deg)),
+            4: (bottom: -8px, left: calc(50% - 4px), transform: translateY(-50%)),
+            5: (top: 25%, left: 5.5%, transform: translateY(-50%) rotate(120deg)),
+            6: (top: 25%, right: 5.5%, transform: translateY(-50%) rotate(240deg)),
+          );
+          @each $n, $props in $dot-positions {
+            &:nth-child(#{$n}) {
+              @each $k, $v in $props {
+                #{$k}: $v;
+              }
+            }
           }
         }
 
@@ -275,7 +259,7 @@
           .dot {
             width: 0;
             height: 32px;
-            border-left: 1px dashed #046A50;
+            border-left: 1px dashed $results-dot;
             position: relative;
             flex-shrink: 0;
             transform: rotate(var(--angle, 0deg));
@@ -329,6 +313,7 @@
             }
           }
           
+          // 아이콘: 토지, 인구, 기반시설, 기상, 생태&자연, 도시&주거
           // 아이콘: 토지, 인구, 기반시설, 기상, 생태&자연, 도시&주거
           &.dia-pos-1 i { width: 26px; background-image: url(../img/results/ico_map.svg); }
           &.dia-pos-2 i { width: 30px; background-image: url(../img/results/ico_people.svg); }
@@ -635,7 +620,8 @@
 }
 
 // ---------------------------------
-// Media Queries
+// Media Queries (.analysis 전용 — 데이터분석 페이지)
+// results 페이지에는 .analysis 없음. _analysis.scss로 이관 검토 가능.
 // ---------------------------------
 @media (max-width: 1600px) {
   .analysis {
@@ -1034,12 +1020,16 @@
 }
 
 
+// ---------------------------------
+// results-wrap: 탭 + tab-content (자연/사회/비용)
+// ---------------------------------
 .results-wrap {
   position: relative;
   display: flex;
   flex-direction: column;
   padding-top: 120px;
   min-height: var(--window-inner-height);
+
   &::before {
     content: "";
     position: absolute;
@@ -1052,6 +1042,14 @@
   }
 
 
+  .tab-panels {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    width: 100%;
+  }
+
   .tab-list {
     display: flex;
     justify-content: center;
@@ -1061,9 +1059,8 @@
     padding: 0;
     margin: 0 0 60px;
 
-    li  {
-      a {
-        display: flex;
+    li a {
+      display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
@@ -1072,40 +1069,34 @@
       border-radius: 10px;
       font-size: 18px;
       font-weight: 600;
-      color: rgba(0,0,0,0.5);
+      color: rgba(0, 0, 0, 0.5);
       border: 1px solid #E5E5E5;
       background: #E5E5E5;
       text-decoration: none;
       transition: background 0.25s, color 0.25s;
-      }
     }
-    li.on a  {
+    li.on a {
       color: #FFF;
       font-size: 18px;
       border: 1px solid rgba(114, 80, 31, 0.50);
       background: #BCA17B;
-      i{
+      i {
         opacity: 1;
         background-color: #fff;
       }
     }
-      .ico-nature {
-        width:  18px;
-        height: 18px;
-        opacity: 0.5;
-        @include svgIconMask('../img/results/ico_tab_natural.svg', #000);
-      }
-      .ico-social {
-        width:  16px;
-        height: 16px;
-        opacity: 0.5;
-      @include svgIconMask('../img/results/ico_tab_social.svg', #000);
-      }
-      .ico-cost {
-        width:  16px;
-        height: 10px; 
-        opacity: 0.5;
-        @include svgIconMask('../img/results/ico_tab_cost.svg', #000);
+      $tab-icons: (
+        nature: (18px, 18px, ico_tab_natural),
+        social: (16px, 16px, ico_tab_social),
+        cost: (16px, 10px, ico_tab_cost),
+      );
+      @each $name, $sizes in $tab-icons {
+        .ico-#{$name} {
+          width: nth($sizes, 1);
+          height: nth($sizes, 2);
+          opacity: 0.5;
+          @include svgIconMask('../img/results/#{nth($sizes, 3)}.svg', #000);
+        }
       }
   }
 
@@ -1115,22 +1106,17 @@
     width: 100%;
     overflow: visible;
     flex: 1;
-    background-image: url(../img/results/bg_natural_left.png), url(../img/results/bg_grid.png);
     background-repeat: no-repeat, no-repeat;
     background-position: left bottom, right bottom;
+    background-image: url(../img/results/bg_natural_left.png), url(../img/results/bg_grid.png);
     background-size: 70.5729% auto, 100% auto;
-
 
     &.social {
       background-image: url(../img/results/bg_social_left.png), url(../img/results/bg_grid.png);
-      background-repeat: no-repeat, no-repeat;
-      background-position: left bottom, right bottom;
       background-size: 60.15625% auto, 100% auto;
     }
     &.cost {
       background-image: url(../img/results/bg_cost_left.png), url(../img/results/bg_grid.png);
-      background-repeat: no-repeat, no-repeat;
-      background-position: left bottom, right bottom;
       background-size: 31.9270% auto, 100% auto;
     }
 
@@ -1274,7 +1260,6 @@
         width: 100%;
         height: auto;
         object-fit: cover;
-        vertical-align: top;
       }
     }
 

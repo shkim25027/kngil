@@ -2,11 +2,16 @@
 // Header Component
 // =======================================
 
-@charset "UTF-8";
-
 @use "../import/_mixin" as *;
 
-// html.is-locked,
+// --- 변수 ---
+$header-overlay: #00000033;
+$sitemap-bg: #111;
+$sitemap-overlay: rgba(0, 0, 0, 0.5);
+$sitemap-divider: #fff;
+$menu-list-border: #131313;
+
+// --- html/body: 스크롤·잠금 ---
 html {
   scroll-behavior: smooth;
   &.is-locked {
@@ -22,6 +27,7 @@ html {
   }
 }
 
+// --- .header: 로고, 메뉴(회원/전체) ---
 .header {
   position: fixed;
   top: 0;
@@ -29,7 +35,7 @@ html {
   width: 100%;
   height: 100px;
   padding: 0 48px;
-  background: linear-gradient(180deg, #00000033, transparent);
+  background: linear-gradient(180deg, $header-overlay, transparent);
   transition: all 0.3s ease;  
   z-index: 99;
   @include flex(center, space-between);
@@ -67,7 +73,7 @@ html {
     background: #fff;
     border-radius: 4px;
     box-sizing: border-box;
-    border: 1px solid #131313;
+    border: 1px solid $menu-list-border;
     position: absolute;
     left: 50%;
     top: 50px;
@@ -155,27 +161,24 @@ html {
   }
 }
 
+// --- .sitemap: 풀사이즈 메뉴(5개) ---
 .sitemap {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: var(--window-inner-height);
-  background-color: #111;
+  background-color: $sitemap-bg;
   overflow: hidden;
-  gap: 32px;
   padding: 20px;
   pointer-events: none;
   animation: enableHover 0.8s forwards;
   animation-delay: 0.3s;
   display: none;
+
   &.open {
     @include flex(center, center);
-    
-    // sitemap이 열려있을 때 lenis 스크롤 완전 차단
-    ~ * {
-      overflow: hidden !important;
-    }
+    ~ * { overflow: hidden !important; }
   }
 
   @include mq(desktop-small, max) {
@@ -191,56 +194,123 @@ html {
   }
   
   li {
-    position: relative; 
+    position: relative;
     width: calc(100% / 5);
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.5);
-    background-size: cover;
-    background-position: center;     
-    cursor: pointer; 
-    z-index: 1;  
-    overflow: hidden; 
+    cursor: pointer;
+    z-index: 1;
+    padding: 0 16px;
+    overflow: hidden;
     @include flex();
-    
-    // 어두운 오버레이 (기본 상태)
-    &::before {
+
+    &::after {
       content: "";
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.5);
-      pointer-events: none;
-      transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      opacity: 1;
+      background-color: $sitemap-bg;
       z-index: 1;
+      animation: slideRight 0.5s ease-in forwards;
+      animation-delay: 0.1s;
     }
-    
-    @include mq(desktop-small, min) {
-      // width와 transform을 함께 사용하여 더 부드러운 애니메이션
-      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                  background-color 0.4s ease;
+    &:nth-child(1) {
+      a {
+        background-image: url(../img/img_sitemap_01.jpg);
+        background-position: left 42% center;
+        background-size: cover;
+        &::before { background-color: rgba(0, 0, 0, 0.3); }
+        &::after { animation-name: slideDown; }
+      }
+    }
+    &:nth-child(2) {
+     
+      a {
+        background-image: url(../img/img_sitemap_02.jpg);
+        background-position: left 32% center;
+        background-size: cover;
+        &::before { background-color: rgba(0, 0, 0, 0.2); }
+        &::after { animation-name: slideup; }
+      }
+    }
+    &:nth-child(3) {
+     
+      a {
+        background-image: url(../img/img_sitemap_03.jpg);
+        background-position: left 58% center;
+        background-size: cover;
+        &::after { animation-name: slideDown; }
+      }
+    }
+    &:nth-child(4) {
+     
+      a {
+        background-image: url(../img/img_sitemap_04.jpg);
+        background-position: left 38% center;
+        background-size: cover;
+        &::before { background-color: rgba(0, 0, 0, 0.4); }
+        &::after { animation-name: slideup; }
+      }
+    }
+    &:nth-child(5) {
+      a {
+        background-image: url(../img/img_sitemap_05.jpg);
+        background-position: left 2% center;
+        background-size: cover;
+        &::after { animation-name: slideDown; }
+      }
+    }
+
+    &:not(:last-child) {
+      a{
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: -16px;
+          width: 1px;
+          height: 100%;
+          background-color: $sitemap-divider;
+          animation-duration: 0.8s;
+          animation-timing-function: ease-out;
+          animation-fill-mode: both;
+        }
+      }
       
-      // hover 시 오버레이 제거 및 확장
-      &:hover {
-        width: 60%;
-        z-index: 2;
-        
-        &::before {
-          opacity: 0;
-        }
-        
-        span {
-          font-size: 60px;
-        }
-        p {
-          font-size: 22px;
-        }
+    }
+
+    a {
+      position: relative;
+      background-color: rgba(255, 255, 255, 0.5);
+      background-size: cover;
+      background-position: center;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $sitemap-overlay;
+        pointer-events: none;
+        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 1;
+        z-index: 1;
       }
     }
     
-    
+    @include mq(desktop-small, min) {
+      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease;
+      &:hover {
+        width: 60%;
+        z-index: 2;
+        a::before { opacity: 0; }
+        span { font-size: 60px; }
+        p { font-size: 22px; }
+      }
+    }
+
     @include mq(desktop-small, max) {
       width: 100%;
     }
@@ -266,50 +336,46 @@ html {
       font-weight: 900;
       line-height: 1.4;
       transition: font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1;
       @include flex(flex-end, center);
-      @include mq(desktop-small, min) {
-        height: 50%;
-      }
-      
+      @include mq(desktop-small, min) { height: 50%; }
     }
-    
+
     p {
       height: 50%;
       transition: font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      em {
-        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.80);
-      }
-      @include mq(desktop-small, max) {
-        display: none;
-      }
+      z-index: 1;
+      em { text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8); }
+      @include mq(desktop-small, max) { display: none; }
     }
-
   }
-
 }
 
+// --- Keyframes ---
+@keyframes slideDown {
+  0% { top: -1000px; opacity: 80%; }
+  100% { top: 0; opacity: 20%; }
+}
 
+@keyframes slideup {
+  0% { bottom: -1000px; opacity: 80%; }
+  100% { bottom: 0; opacity: 20%; }
+}
+
+@keyframes slideRight {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
 
 @keyframes enableHover {
-  to {
-    pointer-events: auto;
-  }
+  to { pointer-events: auto; }
 }
 
-// sitemap이 열려있을 때 lenis 스크롤 완전 차단
+// --- sitemap.open 시 스크롤·lenis 차단 ---
 .sitemap.open ~ *,
-body:has(.sitemap.open) {
-  overflow: hidden !important;
-  
-  &.lenis-scrolling,
-  &.lenis {
-    overflow: hidden !important;
-  }
-}
-
+body:has(.sitemap.open),
 html:has(.sitemap.open) {
   overflow: hidden !important;
-  
   &.lenis-scrolling,
   &.lenis {
     overflow: hidden !important;
