@@ -30,8 +30,13 @@
       },
       "페이지": {
         "메인": ["../index.html", "mainframe", "컨펌대기", ""],
+        "큰길소개": ["../value.html", "mainframe", "컨펌대기", ""],
         "제공데이터": ["../provided.html", "mainframe", "컨펌대기", ""],
-        "주요기능": ["../primary.html", "mainframe", "컨펌대기", ""]
+        "주요기능": ["../primary.html", "mainframe", "컨펌대기", ""],
+        "데이터분석": ["../analysis.html", "mainframe", "컨펌대기", ""],
+        "성과품": ["../results.html", "mainframe", "컨펌대기", ""],
+        "FAQ": ["../faq.html", "mainframe", "컨펌대기", ""],
+        "구매": ["../buy.html", "mainframe", "컨펌대기", ""]
       }
     }
   }
