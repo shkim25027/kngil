@@ -1,103 +1,221 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // ---------------------------------------------
-  // js-fixLeft: 오른쪽 스크롤에 따라 왼쪽 타이틀 전환 (primary 페이지)
-  // 사용 클래스: js-fixLeft-tit, js-fixLeft-secs
-  // ---------------------------------------------
-  const keySection = document.querySelector(".primary .key");
-  if (!keySection) return;
+/**
+ * Primary Page Controller
+ * 스크롤 기반 타이틀 전환 및 섹션 네비게이션
+ */
+(function() {
+  'use strict';
 
-  const tits = keySection.querySelectorAll(".js-fixLeft-tit > li");
-  const sections = keySection.querySelectorAll(".js-fixLeft-secs > div");
-  if (!tits.length || !sections.length) return;
-
-  if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") {
-    console.warn("GSAP or ScrollTrigger not loaded");
-    return;
-  }
-
-  gsap.registerPlugin(ScrollTrigger);
-  if (typeof ScrollToPlugin !== "undefined") {
-    gsap.registerPlugin(ScrollToPlugin);
-  }
-
-  function updateTit(index) {
-    tits.forEach((tit, i) => {
-      tit.classList.toggle("on", i === index);
-    });
-  }
-
-  // 헤더 높이에 맞춘 기준선 (헤더 100px + 여유)
-  const triggerLine = "top 100px";
-  const scrollOffsetY = 100;
-
-  // 스크롤 구간별 왼쪽 타이틀 on 전환
-  // - onEnter: 아래로 스크롤 시 섹션 top이 기준선을 지나면 해당 항목 on
-  // - onLeaveBack: 위로 스크롤 시 기준선을 벗어나면 이전 항목(i-1) on
-  sections.forEach((section, i) => { 
-    if (!section) return;
-    ScrollTrigger.create({
-      trigger: section,
-      start: triggerLine,
-      onEnter: () => updateTit(i),
-      onLeaveBack: () => updateTit(i > 0 ? i - 1 : 0),
-    });
-  });
-
-  // 마지막 섹션: 상단이 100px까지 올라오지 않아도, 페이지 맨 아래에 닿으면 on
-  const lastIdx = sections.length - 1;
-  if (lastIdx > 0) {
-    ScrollTrigger.create({
-      trigger: sections[lastIdx],
-      start: "bottom bottom",
-      onEnter: () => updateTit(lastIdx),
-    });
-  }
-
-  // 초기·리프레시: 현재 스크롤에 맞는 항목 (마지막 sec은 화면에 보이면 선택)
-  function setInitialTit() {
-    const atBottom = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 30;
-    if (atBottom) {
-      updateTit(lastIdx);
-      return;
+  // ============================================
+  // Configuration
+  // ============================================
+  const CONFIG = {
+    SELECTORS: {
+      keySection: '.primary .key',
+      titles: '.js-fixLeft-tit > li', // keySection 내에서 검색
+      sections: '.js-fixLeft-secs > article, .js-fixLeft-secs > div' // keySection 내에서 검색
+    },
+    SCROLL: {
+      triggerLine: 'center center', // 섹션의 중앙이 뷰포트 중앙에 도달했을 때
+      offsetY: 100,
+      bottomThreshold: 30
+    },
+    ANIMATION: {
+      duration: 0.6
     }
-    let active = 0;
-    const last = sections[lastIdx];
-    const lastRect = last.getBoundingClientRect();
-    const prevRect = lastIdx > 0 ? sections[lastIdx - 1].getBoundingClientRect() : null;
+  };
 
-    sections.forEach((sec, i) => {
-      if (sec.getBoundingClientRect().top <= scrollOffsetY) active = i;
-    });
-    if (lastRect.top < window.innerHeight && lastRect.bottom > 0 && prevRect && prevRect.top < 0) {
-      active = lastIdx;
+  // ============================================
+  // Utility Functions
+  // ============================================
+  const Utils = {
+    $(selector) {
+      return document.querySelector(selector);
+    },
+
+    $$(selector) {
+      return document.querySelectorAll(selector);
     }
-    updateTit(active);
-  }
-  setInitialTit();
-  ScrollTrigger.addEventListener("refresh", setInitialTit);
+  };
 
-  // 화면 끝까지 스크롤했을 때 마지막 항목 on
-  window.addEventListener("scroll", () => {
-    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 30) {
-      updateTit(lastIdx);
-    }
-  }, { passive: true });
+  // ============================================
+  // Title Controller
+  // ============================================
+  const TitleController = {
+    keySection: null,
+    titles: null,
+    sections: null,
+    lastIndex: 0,
 
-  // 왼쪽 메뉴 클릭 시 해당 섹션으로 스크롤 (기준선=offsetY로 맞춤)
-  tits.forEach((li, index) => {
-    li.addEventListener("click", () => {
-      const section = sections[index];
+    init() {
+      this.keySection = Utils.$(CONFIG.SELECTORS.keySection);
+      if (!this.keySection) return;
+
+      // keySection 내에서만 요소 찾기
+      this.titles = this.keySection.querySelectorAll(CONFIG.SELECTORS.titles);
+      this.sections = this.keySection.querySelectorAll(CONFIG.SELECTORS.sections);
+
+      if (!this.titles.length || !this.sections.length) return;
+
+      // GSAP 및 ScrollTrigger 확인
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+        console.warn('[TitleController] GSAP or ScrollTrigger not loaded');
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+      if (typeof ScrollToPlugin !== 'undefined') {
+        gsap.registerPlugin(ScrollToPlugin);
+      }
+
+      this.lastIndex = this.sections.length - 1;
+      this.setupScrollTriggers();
+      this.setupClickHandlers();
+      this.setInitialState();
+    },
+
+    setupScrollTriggers() {
+      // 각 섹션에 대한 스크롤 트리거 설정
+      this.sections.forEach((section, index) => {
+        if (!section) return;
+
+        ScrollTrigger.create({
+          trigger: section,
+          start: CONFIG.SCROLL.triggerLine,
+          onEnter: () => this.updateTitle(index),
+          onLeaveBack: () => this.updateTitle(index > 0 ? index - 1 : 0)
+        });
+      });
+
+      // 마지막 섹션: 페이지 하단 도달 시 활성화
+      if (this.lastIndex > 0) {
+        ScrollTrigger.create({
+          trigger: this.sections[this.lastIndex],
+          start: 'bottom bottom',
+          onEnter: () => this.updateTitle(this.lastIndex)
+        });
+      }
+
+      // 스크롤 리프레시 시 초기 상태 설정
+      ScrollTrigger.addEventListener('refresh', () => {
+        this.setInitialState();
+      });
+
+      // 스크롤 이벤트로 하단 감지
+      window.addEventListener('scroll', () => {
+        if (this.isAtBottom()) {
+          this.updateTitle(this.lastIndex);
+        }
+      }, { passive: true });
+    },
+
+    setupClickHandlers() {
+      this.titles.forEach((title, index) => {
+        // 클릭 이벤트
+        title.addEventListener('click', () => {
+          this.scrollToSection(index);
+        });
+
+        // 키보드 접근성 (Enter, Space)
+        title.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            this.scrollToSection(index);
+          }
+        });
+      });
+    },
+
+    updateTitle(activeIndex) {
+      this.titles.forEach((title, index) => {
+        const isActive = index === activeIndex;
+        title.classList.toggle('on', isActive);
+        title.setAttribute('aria-selected', isActive ? 'true' : 'false');
+        title.setAttribute('tabindex', isActive ? '0' : '-1');
+      });
+    },
+
+    scrollToSection(index) {
+      const section = this.sections[index];
       if (!section) return;
-      const cls = Array.from(section.classList).find((c) => c.startsWith("sec-"));
-      if (typeof ScrollToPlugin !== "undefined" && cls) {
+
+      const sectionClass = Array.from(section.classList).find(c => c.startsWith('sec-'));
+      
+      if (typeof ScrollToPlugin !== 'undefined' && sectionClass) {
         gsap.to(window, {
-          duration: 0.6,
-          scrollTo: { y: "." + cls, offsetY: scrollOffsetY },
+          duration: CONFIG.ANIMATION.duration,
+          scrollTo: { 
+            y: '.' + sectionClass, 
+            offsetY: CONFIG.SCROLL.offsetY 
+          }
         });
       } else {
-        section.scrollIntoView({ behavior: "smooth", block: "start" });
+        section.scrollIntoView({ 
+          behavior: 'smooth', 
+          block: 'start' 
+        });
       }
-      updateTit(index);
-    });
-  });
-});
+
+      this.updateTitle(index);
+    },
+
+    setInitialState() {
+      if (this.isAtBottom()) {
+        this.updateTitle(this.lastIndex);
+        return;
+      }
+
+      let activeIndex = 0;
+      const viewportCenter = window.innerHeight / 2;
+      let closestIndex = 0;
+      let closestDistance = Infinity;
+
+      // 각 섹션의 중앙점과 뷰포트 중앙의 거리를 계산
+      this.sections.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
+        const sectionCenter = rect.top + (rect.height / 2);
+        const distance = Math.abs(sectionCenter - viewportCenter);
+
+        // 섹션이 화면에 보이는 경우에만 고려
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          if (distance < closestDistance) {
+            closestDistance = distance;
+            closestIndex = index;
+          }
+        }
+
+        // 섹션의 상단이 뷰포트 중앙을 지나갔으면 해당 인덱스로 설정
+        if (rect.top <= viewportCenter && rect.bottom > viewportCenter) {
+          activeIndex = index;
+        }
+      });
+
+      // 가장 가까운 섹션이 있으면 그것을 사용
+      if (closestDistance < Infinity) {
+        activeIndex = closestIndex;
+      }
+
+      this.updateTitle(activeIndex);
+    },
+
+    isAtBottom() {
+      return window.scrollY + window.innerHeight >= 
+             document.documentElement.scrollHeight - CONFIG.SCROLL.bottomThreshold;
+    }
+  };
+
+  // ============================================
+  // Initialization
+  // ============================================
+  const init = () => {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        TitleController.init();
+      });
+    } else {
+      TitleController.init();
+    }
+  };
+
+  init();
+
+})();

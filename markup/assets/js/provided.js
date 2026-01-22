@@ -1,103 +1,201 @@
-// anchor 스무스 스크롤 (CSP 대응: 인라인 스크립트 대신 외부에서 정의)
-window.goto = function (id) {
-  const el = document.getElementById(id);
-  if (el) el.scrollIntoView({ behavior: "smooth" });
-};
+/**
+ * Provided Page Controller
+ * 스크롤 기반 애니메이션 및 네비게이션 제어
+ */
+(function() {
+  'use strict';
 
-document.addEventListener("DOMContentLoaded", () => {
-  // ---------------------------------------------
-  // js-fixLeft: 오른쪽 스크롤에 따라 왼쪽 타이틀/배경 전환
-  // 사용 클래스: js-fixLeft-tit, js-fixLeft-bg, js-fixLeft-secs
-  // provided, results 등 js-fixLeft를 쓰는 페이지에서 실행
-  // ---------------------------------------------
-  const titRoot = document.querySelector(".js-fixLeft-tit");
-  if (!titRoot) {
-    initRoute();
-    return;
-  }
-
-  if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined") {
-    console.warn("GSAP or ScrollTrigger not loaded");
-    initRoute();
-    return;
-  }
-
-  gsap.registerPlugin(ScrollTrigger);
-
-  const tits = document.querySelectorAll(".js-fixLeft-tit");
-  const bgs = document.querySelectorAll(".js-fixLeft-bg");
-  const sections = document.querySelectorAll(".js-fixLeft-secs > div, .js-fixLeft-secs > section");
-
-  function setBgActive(el, active) {
-    gsap.to(el, {
-      transform: active ? "scale(1.05)" : "scale(1)",
-      duration: 0.5,
-    });
-  }
-
-  function setTitActive(el, active) {
-    gsap.to(el, {
-      opacity: active ? 1 : 0.5,
-      transform: active ? "scale(1) translate(0%, 0%)" : "scale(0.7) translate(-47%, 0%)",
-      duration: 0.5,
-    });
-  }
-
-  function updateElements(index) {
-    bgs.forEach((bg, i) => {
-      const on = i === index;
-      bg.classList.toggle("on", on);
-      setBgActive(bg, on);
-    });
-    tits.forEach((tit, i) => {
-      const on = i === index;
-      tit.classList.toggle("on", on);
-      setTitActive(tit, on);
-    });
-  }
-
-  sections.forEach((section, i) => {
-    if (!section) return;
-    const start = i === 0 ? "top center" : "top center";
-    ScrollTrigger.create({
-      trigger: section,
-      start,
-      onEnter: () => updateElements(i),
-      onLeaveBack: () => updateElements(i),
-    });
-  });
-
-  initRoute();
-});
-
-// ---------------------------------------------
-// route: .route 내 sec1~3·tabs·subs·imgs 연동 (IntersectionObserver)
-// .route DOM이 있는 페이지에서만 동작 (현재 provided.html 마크업에는 미사용)
-// ---------------------------------------------
-function initRoute() {
-  const route = document.querySelector(".route");
-  if (!route) return;
-
-  const sections = route.querySelectorAll("#sec1, #sec2, #sec3");
-  const tabs = route.querySelectorAll(".tabs .tabs-li");
-  const subs = route.querySelectorAll(".subs li");
-  const imgs = route.querySelectorAll(".imgs li");
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries
-        .filter((e) => e.isIntersecting)
-        .forEach((e) => {
-          const id = e.target.id;
-          const index = id ? parseInt(id.replace("sec", ""), 10) - 1 : -1;
-          if (index < 0) return;
-          [tabs, subs, imgs].forEach((group) =>
-            group.forEach((el, i) => el.classList.toggle("on", i === index))
-          );
-        });
+  // ============================================
+  // Configuration
+  // ============================================
+  const CONFIG = {
+    SELECTORS: {
+      fixLeftTit: '.js-fixLeft-tit',
+      fixLeftBg: '.js-fixLeft-bg',
+      fixLeftSecs: '.js-fixLeft-secs',
+      route: '.route'
     },
-    { root: null, rootMargin: "0px", threshold: 0.5 }
-  );
+    ANIMATION: {
+      bgScale: 1.05,
+      titScale: 0.7,
+      titTranslate: '-47%',
+      duration: 0.5
+    }
+  };
 
-  sections.forEach((s) => observer.observe(s));
-}
+  // ============================================
+  // Utility Functions
+  // ============================================
+  const Utils = {
+    $(selector) {
+      return document.querySelector(selector);
+    },
+
+    $$(selector) {
+      return document.querySelectorAll(selector);
+    }
+  };
+
+  // ============================================
+  // Smooth Scroll Function
+  // ============================================
+  window.goto = function(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // ============================================
+  // FixLeft Controller (Scroll-based Animation)
+  // ============================================
+  const FixLeftController = {
+    titElements: null,
+    bgElements: null,
+    sections: null,
+
+    init() {
+      const titRoot = Utils.$(CONFIG.SELECTORS.fixLeftTit);
+      if (!titRoot) {
+        RouteController.init();
+        return;
+      }
+
+      // GSAP 및 ScrollTrigger 확인
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+        console.warn('[FixLeftController] GSAP or ScrollTrigger not loaded');
+        RouteController.init();
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      this.titElements = Utils.$$(CONFIG.SELECTORS.fixLeftTit);
+      this.bgElements = Utils.$$(CONFIG.SELECTORS.fixLeftBg);
+      this.sections = Utils.$$(`${CONFIG.SELECTORS.fixLeftSecs} > div, ${CONFIG.SELECTORS.fixLeftSecs} > section`);
+
+      this.setupScrollTriggers();
+    },
+
+    setupScrollTriggers() {
+      this.sections.forEach((section, index) => {
+        if (!section) return;
+
+        ScrollTrigger.create({
+          trigger: section,
+          start: 'top center',
+          onEnter: () => this.updateElements(index),
+          onLeaveBack: () => this.updateElements(index)
+        });
+      });
+    },
+
+    updateElements(activeIndex) {
+      // 배경 애니메이션
+      this.bgElements.forEach((bg, index) => {
+        const isActive = index === activeIndex;
+        bg.classList.toggle('on', isActive);
+        this.setBgActive(bg, isActive);
+      });
+
+      // 타이틀 애니메이션
+      this.titElements.forEach((tit, index) => {
+        const isActive = index === activeIndex;
+        tit.classList.toggle('on', isActive);
+        this.setTitActive(tit, isActive);
+      });
+    },
+
+    setBgActive(element, active) {
+      gsap.to(element, {
+        transform: active ? `scale(${CONFIG.ANIMATION.bgScale})` : 'scale(1)',
+        duration: CONFIG.ANIMATION.duration
+      });
+    },
+
+    setTitActive(element, active) {
+      gsap.to(element, {
+        opacity: active ? 1 : 0.5,
+        transform: active 
+          ? 'scale(1) translate(0%, 0%)' 
+          : `scale(${CONFIG.ANIMATION.titScale}) translate(${CONFIG.ANIMATION.titTranslate}, 0%)`,
+        duration: CONFIG.ANIMATION.duration
+      });
+    }
+  };
+
+  // ============================================
+  // Route Controller (Intersection Observer)
+  // ============================================
+  const RouteController = {
+    routeElement: null,
+    sections: null,
+    tabs: null,
+    subs: null,
+    imgs: null,
+    observer: null,
+
+    init() {
+      this.routeElement = Utils.$(CONFIG.SELECTORS.route);
+      if (!this.routeElement) return;
+
+      this.sections = this.routeElement.querySelectorAll('#sec1, #sec2, #sec3');
+      this.tabs = this.routeElement.querySelectorAll('.tabs .tabs-li');
+      this.subs = this.routeElement.querySelectorAll('.subs li');
+      this.imgs = this.routeElement.querySelectorAll('.imgs li');
+
+      if (this.sections.length === 0) return;
+
+      this.setupObserver();
+    },
+
+    setupObserver() {
+      this.observer = new IntersectionObserver(
+        this.handleIntersection.bind(this),
+        {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0.5
+        }
+      );
+
+      this.sections.forEach(section => {
+        this.observer.observe(section);
+      });
+    },
+
+    handleIntersection(entries) {
+      entries
+        .filter(entry => entry.isIntersecting)
+        .forEach(entry => {
+          const id = entry.target.id;
+          const index = id ? parseInt(id.replace('sec', ''), 10) - 1 : -1;
+          
+          if (index < 0) return;
+
+          // 모든 그룹에 동일한 인덱스 적용
+          [this.tabs, this.subs, this.imgs].forEach(group => {
+            group.forEach((el, i) => {
+              el.classList.toggle('on', i === index);
+            });
+          });
+        });
+    }
+  };
+
+  // ============================================
+  // Initialization
+  // ============================================
+  const init = () => {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        FixLeftController.init();
+      });
+    } else {
+      FixLeftController.init();
+    }
+  };
+
+  init();
+
+})();

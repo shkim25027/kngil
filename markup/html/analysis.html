@@ -15,37 +15,39 @@
               정확하게 매칭하여 신뢰도 높은 분석 결과 제공합니다</p>
           </div>
           </section>
+          
+          <!-- Content Section -->
           <section class="sub-content">
             <div class="sub-tit-box">
               <h3 class="sub-tit">
                 사업대상지역 내 데이터를 수집·분석·시각화하여<br>
-                <em>의사결정에 활용 가능한 정보</em>로 제공
+                <strong>의사결정에 활용 가능한 정보</strong>로 제공
               </h3>
             </div>
 
             <div class="condition">
-              <div class="diagram-wrap" data-aos="fade-up" data-aos-duration="1000">
+              <div class="diagram-wrap" data-aos="fade-up" data-aos-duration="1000" aria-label="데이터 분석 프로세스 다이어그램">
                 <div class="dia-element-top">
                   <div class="dia-element dia-element01">
-                    <i></i>
-                    <span class="dia-tit"><em>공간정보</em> 데이타</span>
-                    <div class="line"></div>
+                    <i aria-hidden="true"></i>
+                    <span class="dia-tit"><strong>공간정보</strong> 데이터</span>
+                    <div class="line" aria-hidden="true"></div>
                   </div>
                 </div>
   
                 <div class="dia-circles-wrap">
-                  <div class="circle-dash"></div>
-                  <div class="circle-belt"></div>
+                  <div class="circle-dash" aria-hidden="true"></div>
+                  <div class="circle-belt" aria-hidden="true"></div>
                   <div class="circle-core">
                     <span>신뢰도 높은</span>
                     <span>분석결과</span>
                   </div>
-                  <div class="circle-dots move">
+                  <div class="circle-dots move" aria-hidden="true">
                     <div class="dot"></div>
                     <div class="dot"></div>
                     <div class="dot"></div>
                   </div>
-                  <div class="circle-dots">
+                  <div class="circle-dots" aria-hidden="true">
                     <div class="dot"></div>
                     <div class="dot"></div>
                     <div class="dot"></div>
@@ -54,169 +56,306 @@
                 
                 <div class="dia-element-bottom">
                   <div class="dia-element dia-element02">
-                    <i></i>
-                    <span class="dia-tit"><em>통계정보</em><br>데이타</span>
-                    <div class="line"></div>
+                    <i aria-hidden="true"></i>
+                    <span class="dia-tit"><strong>통계정보</strong><br>데이터</span>
+                    <div class="line" aria-hidden="true"></div>
                   </div>
                   <div class="dia-element dia-element03">
-                    <i></i>
-                    <span class="dia-tit"><em>속성정보</em><br>데이타</span>
-                    <div class="line"></div>
+                    <i aria-hidden="true"></i>
+                    <span class="dia-tit"><strong>속성정보</strong><br>데이터</span>
+                    <div class="line" aria-hidden="true"></div>
                   </div>
                 </div>
               </div>
             </div>
           </section>
         
-        <section class="key spatial layout-fix-left">
-          <div class="left">
+        <!-- Spatial Analysis Section -->
+        <section class="key spatial layout-fix-left" aria-label="공간정보 데이터 분석">
+          <nav class="left" aria-label="공간정보 분석 네비게이션">
             <div class="mid-tit">
-              <span data-aos="fade-right" data-aos-duration="600">공간정보<br><em>데이터 분석</em></span>
+              <span data-aos="fade-right" data-aos-duration="600">
+                공간정보<br>
+                <strong>데이터 분석</strong>
+              </span>
             </div>
-            <ul data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300" class="js-fixLeft-tit">
-              <li class="on"><span><em>01</em>단면분석</span></li>
-              <li><span><em>02</em>지진발생</span></li>
-              <li><span><em>03</em>공공하수처리시설</span></li>
+            <ul 
+              data-aos="fade-right" 
+              data-aos-duration="1000" 
+              data-aos-delay="300" 
+              class="js-fixLeft-tit"
+              role="tablist"
+              aria-label="공간정보 분석 목록"
+            >
+              <li class="on" role="tab" aria-selected="true" tabindex="0">
+                <span><strong>01</strong>단면분석</span>
+              </li>
+              <li role="tab" aria-selected="false" tabindex="-1">
+                <span><strong>02</strong>지진발생</span>
+              </li>
+              <li role="tab" aria-selected="false" tabindex="-1">
+                <span><strong>03</strong>공공하수처리시설</span>
+              </li>
             </ul>
-          </div>
-          <div class="right js-fixLeft-secs">
-            <div class="spatial01">
-              <span class="sub-tit">단면분석</span>
+          </nav>
+          
+          <div class="right js-fixLeft-secs" role="tabpanel">
+            <article class="spatial01" id="spatial01" aria-labelledby="spatial01-title">
+              <h4 id="spatial01-title" class="sub-tit">단면분석</h4>
               <div class="sub-text">
-                사업대상 구역 내 <em>지정한 2개의 축 기준으로 지형의 높낮이</em>를 거리별로 분석하고, 그 결과를 선형 형태로 가시화 합니다.
+                사업대상 구역 내 <strong>지정한 2개의 축 기준으로 지형의 높낮이</strong>를 거리별로 분석하고, 그 결과를 선형 형태로 가시화 합니다.
               </div>
-              <div class="sub-figs">
-                <img src="./img/analysis/img_spatial_01.svg" alt="" >
+              <figure class="sub-figs" aria-label="단면분석 시각화">
+                <img 
+                  src="./img/analysis/img_spatial_01.svg" 
+                  alt="단면분석 결과 선형 그래프"
+                  width="auto"
+                  height="auto"
+                >
                 <div class="apx">
-                  <img data-src="./img/analysis/img_spatial_01_apx.svg" alt="">
+                  <img 
+                    data-src="./img/analysis/img_spatial_01_apx.svg" 
+                    alt="단면분석 상세 시각화"
+                    width="auto"
+                    height="auto"
+                  >
                 </div>
-              </div>
-            </div>
-            <div class="spatial02">
-              <span class="sub-tit">지진발생</span>
+              </figure>
+            </article>
+            
+            <article class="spatial02" id="spatial02" aria-labelledby="spatial02-title">
+              <h4 id="spatial02-title" class="sub-tit">지진발생</h4>
               <div class="sub-text">
-                사업대상구역을 포함한 주변 지역 내 <em>과거 지진 발생 이력 정보</em>를 분석하고, 그 결과를 위치도 형태로 시각화 합니다.  
+                사업대상구역을 포함한 주변 지역 내 <strong>과거 지진 발생 이력 정보</strong>를 분석하고, 그 결과를 위치도 형태로 시각화 합니다.
               </div>
-              <div class="sub-figs">
-                <img src="./img/analysis/img_spatial_02.png" alt="" >
+              <figure class="sub-figs" aria-label="지진발생 위치도 시각화">
+                <img 
+                  src="./img/analysis/img_spatial_02.png" 
+                  alt="지진발생 위치도"
+                  width="auto"
+                  height="auto"
+                >
                 <div class="apx">
-                  <img data-src="./img/analysis/img_spatial_02_apx.svg" alt="">
+                  <img 
+                    data-src="./img/analysis/img_spatial_02_apx.svg" 
+                    alt="지진발생 상세 위치도"
+                    width="auto"
+                    height="auto"
+                  >
                 </div>
-              </div>
-            </div>
-            <div class="spatial03">
-              <span class="sub-tit">공공하수처리시설</span>
+              </figure>
+            </article>
+            
+            <article class="spatial03" id="spatial03" aria-labelledby="spatial03-title">
+              <h4 id="spatial03-title" class="sub-tit">공공하수처리시설</h4>
               <div class="sub-text">
-                사업대상구역 내 <em>기반시설(공공하수처리시설 등)의 좌표 정보</em>를 분석하고, 그 결과를 위치도 형태로 시각화 합니다.
+                사업대상구역 내 <strong>기반시설(공공하수처리시설 등)의 좌표 정보</strong>를 분석하고, 그 결과를 위치도 형태로 시각화 합니다.
               </div>
-              <div class="sub-figs">
-                <img src="./img/analysis/img_spatial_03.png" alt="" >
+              <figure class="sub-figs" aria-label="공공하수처리시설 위치도 시각화">
+                <img 
+                  src="./img/analysis/img_spatial_03.png" 
+                  alt="공공하수처리시설 위치도"
+                  width="auto"
+                  height="auto"
+                >
                 <div class="apx">
-                  <img src="./img/analysis/img_spatial_03_apx.svg" alt="">
+                  <img 
+                    src="./img/analysis/img_spatial_03_apx.svg" 
+                    alt="공공하수처리시설 상세 위치도"
+                    width="auto"
+                    height="auto"
+                  >
                 </div>
-              </div>
-            </div>
+              </figure>
+            </article>
           </div>
         </section>
-        <section class="key statistics layout-fix-left">
-          <div class="left">
+        <!-- Statistics Analysis Section -->
+        <section class="key statistics layout-fix-left" aria-label="통계정보 데이터 분석">
+          <nav class="left" aria-label="통계정보 분석 네비게이션">
             <div class="mid-tit">
-              <span data-aos="fade-right" data-aos-duration="600">통계정보<br><em>데이터 분석</em></span>
+              <span data-aos="fade-right" data-aos-duration="600">
+                통계정보<br>
+                <strong>데이터 분석</strong>
+              </span>
             </div>
-            <ul data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300" class="js-fixLeft-tit">
-              <li class="on"><span><em>01</em>현상일수</span></li>
-              <li><span><em>02</em>과거인구</span></li>
-              <li><span><em>03</em>문화재</span></li>
+            <ul 
+              data-aos="fade-right" 
+              data-aos-duration="1000" 
+              data-aos-delay="300" 
+              class="js-fixLeft-tit"
+              role="tablist"
+              aria-label="통계정보 분석 목록"
+            >
+              <li class="on" role="tab" aria-selected="true" tabindex="0">
+                <span><strong>01</strong>현상일수</span>
+              </li>
+              <li role="tab" aria-selected="false" tabindex="-1">
+                <span><strong>02</strong>과거인구</span>
+              </li>
+              <li role="tab" aria-selected="false" tabindex="-1">
+                <span><strong>03</strong>문화재</span>
+              </li>
             </ul>
-          </div> 
-          <div class="right js-fixLeft-secs">
-            <div class="statistics01">
-              <h3 class="sub-tit">현상일수</h3>
+          </nav>
+          
+          <div class="right js-fixLeft-secs" role="tabpanel">
+            <article class="statistics01" id="statistics01" aria-labelledby="statistics01-title">
+              <h4 id="statistics01-title" class="sub-tit">현상일수</h4>
               <div class="sub-text">
                 사업대상 구역 내 기상 현상별(맑음, 강수, 눈, 폭풍 등)로 분석하고, 그 결과를 이미지&그래프 혼합 형태로 시각화 합니다.
               </div>
-              <div class="sub-figs">
-                <img src="./img/analysis/img_statistics_01.png" alt="">
+              <figure class="sub-figs" aria-label="현상일수 시각화">
+                <img 
+                  src="./img/analysis/img_statistics_01.png" 
+                  alt="기상 현상별 현상일수 그래프"
+                  width="auto"
+                  height="auto"
+                >
                 <div class="apx">
-                  <img data-src="./img/analysis/img_statistics_01_apx.svg" alt="">
+                  <img 
+                    data-src="./img/analysis/img_statistics_01_apx.svg" 
+                    alt="현상일수 상세 시각화"
+                    width="auto"
+                    height="auto"
+                  >
                 </div>
-              </div>
-            </div>
-            <div class="statistics02">
-              <span class="sub-tit">과거인구</span>
+              </figure>
+            </article>
+            
+            <article class="statistics02" id="statistics02" aria-labelledby="statistics02-title">
+              <h4 id="statistics02-title" class="sub-tit">과거인구</h4>
               <div class="sub-text">
                 사업대상구역 내 과거 연도별(인구, 세대수, 증감율 등) 추이를 분석하고, 그 결과를 그래프 형태로 시각화 합니다.
               </div>
-              <div class="sub-figs">
-                <img src="./img/analysis/img_statistics_02.svg" alt="">
+              <figure class="sub-figs" aria-label="과거인구 추이 그래프">
+                <img 
+                  src="./img/analysis/img_statistics_02.svg" 
+                  alt="과거인구 연도별 추이 그래프"
+                  width="auto"
+                  height="auto"
+                >
                 <div class="apx">
-                  <img data-src="./img/analysis/img_statistics_02_apx.svg" alt="">
+                  <img 
+                    data-src="./img/analysis/img_statistics_02_apx.svg" 
+                    alt="과거인구 상세 그래프"
+                    width="auto"
+                    height="auto"
+                  >
                 </div>
-              </div>
-            </div>
-            <div class="statistics03">
-              <span class="sub-tit">문화재</span>
+              </figure>
+            </article>
+            
+            <article class="statistics03" id="statistics03" aria-labelledby="statistics03-title">
+              <h4 id="statistics03-title" class="sub-tit">문화재</h4>
               <div class="sub-text">
                 사업대상구역 내 지정된 문화재(문화유산, 자연유산 등)로 분석하고, 그 결과를 그래프&테이블 형태로 시각화 합니다.
               </div>
-              <div class="sub-figs">
-                <img src="./img/analysis/img_statistics_03.png" alt="">
+              <figure class="sub-figs" aria-label="문화재 분석 시각화">
+                <img 
+                  src="./img/analysis/img_statistics_03.png" 
+                  alt="문화재 분석 그래프 및 테이블"
+                  width="auto"
+                  height="auto"
+                >
                 <div class="apx">
-                  <img data-src="./img/analysis/img_statistics_03_apx.svg" alt="">
+                  <img 
+                    data-src="./img/analysis/img_statistics_03_apx.svg" 
+                    alt="문화재 상세 분석 시각화"
+                    width="auto"
+                    height="auto"
+                  >
                 </div>
-              </div>
-            </div>
+              </figure>
+            </article>
           </div>
         </section>
-        <section class="key attribute layout-fix-left">
-          <div class="left">
+        <!-- Attribute Analysis Section -->
+        <section class="key attribute layout-fix-left" aria-label="속성정보 데이터 분석">
+          <nav class="left" aria-label="속성정보 분석 네비게이션">
             <div class="mid-tit">
-              <span data-aos="fade-right" data-aos-duration="600">속성정보<br> <em>데이터 분석</em></span>
+              <span data-aos="fade-right" data-aos-duration="600">
+                속성정보<br>
+                <strong>데이터 분석</strong>
+              </span>
             </div>
-            <ul data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300" class="js-fixLeft-tit">
-              <li class="on"><span><em>01</em>국토환경성평가</span></li>
-              <li><span><em>02</em>지목별</span></li>
-              <li><span><em>03</em>토지형상</span></li>
+            <ul 
+              data-aos="fade-right" 
+              data-aos-duration="1000" 
+              data-aos-delay="300" 
+              class="js-fixLeft-tit"
+              role="tablist"
+              aria-label="속성정보 분석 목록"
+            >
+              <li class="on" role="tab" aria-selected="true" tabindex="0">
+                <span><strong>01</strong>국토환경성평가</span>
+              </li>
+              <li role="tab" aria-selected="false" tabindex="-1">
+                <span><strong>02</strong>지목별</span>
+              </li>
+              <li role="tab" aria-selected="false" tabindex="-1">
+                <span><strong>03</strong>토지형상</span>
+              </li>
             </ul>
-          </div>
-          <div class="right js-fixLeft-secs">
-            <div class="attribute01">
-              <span class="sub-tit">국토환경성평가</span>
+          </nav>
+          
+          <div class="right js-fixLeft-secs" role="tabpanel">
+            <article class="attribute01" id="attribute01" aria-labelledby="attribute01-title">
+              <h4 id="attribute01-title" class="sub-tit">국토환경성평가</h4>
               <div class="sub-text">
                 사업대상 구역 내 국토환경성평가를 등급별(1등급~5등급)로 분석하고, 그 결과를 해치 형태로 시각화 합니다.
               </div>
-              <div class="sub-figs">
-                <img src="./img/analysis/img_attribute_01.png" alt="">
-              </div>
-            </div>
-            <div class="attribute02">
-              <span class="sub-tit">지목별</span>
+              <figure class="sub-figs" aria-label="국토환경성평가 해치 시각화">
+                <img 
+                  src="./img/analysis/img_attribute_01.png" 
+                  alt="국토환경성평가 등급별 해치 지도"
+                  width="auto"
+                  height="auto"
+                >
+              </figure>
+            </article>
+            
+            <article class="attribute02" id="attribute02" aria-labelledby="attribute02-title">
+              <h4 id="attribute02-title" class="sub-tit">지목별</h4>
               <div class="sub-text">
                 사업대상구역 내 토지 사용 목적에 따른 지목별(전, 답, 도로 등)로 분석하고, 그 결과를 해치 형태로 시각화 합니다.
               </div>
-              <div class="sub-figs">
+              <figure class="sub-figs" aria-label="지목별 해치 시각화">
                 <div class="imgs">
-                  <img src="./img/analysis/img_attribute_02.png" alt="">
+                  <img 
+                    src="./img/analysis/img_attribute_02.png" 
+                    alt="지목별 해치 지도"
+                    width="auto"
+                    height="auto"
+                  >
                 </div>
-              </div>
-            </div>
-            <div class="attribute03">
-              <span class="sub-tit">토지형상</span>
+              </figure>
+            </article>
+            
+            <article class="attribute03" id="attribute03" aria-labelledby="attribute03-title">
+              <h4 id="attribute03-title" class="sub-tit">토지형상</h4>
               <div class="sub-text">
                 사업대상구역 내 토지 모양에 따른 형상별(정방형, 장방형 등)로 분석하고, 그 결과를 해치 형태로 시각화 합니다.
               </div>
-              <div class="sub-figs">
+              <figure class="sub-figs" aria-label="토지형상 해치 시각화">
                 <div class="imgs">
-                  <img src="./img/analysis/img_attribute_03.png" alt="">
+                  <img 
+                    src="./img/analysis/img_attribute_03.png" 
+                    alt="토지형상별 해치 지도"
+                    width="auto"
+                    height="auto"
+                  >
                 </div>
-              </div>
-            </div>
+              </figure>
+            </article>
           </div>
         </section>
       </div>
-      <!-- // container -->
+      <!-- // Main Container -->
+      
       @@include("_include/_footer.html")
     </div>
+    
     <script src="./js/analysis.js"></script>
   </body>
 </html>

@@ -6,85 +6,98 @@
   <body>
     <div class="wrap">
       @@include("_include/_header.html")
-      <!-- container -->
+      
+      <!-- Main Container -->
       <div class="container value">
+        <!-- Visual Section -->
         <div class="visual">
           <section class="sub-header">
             <div class="page-title">
               <h2 data-aos="fade-down" data-aos-duration="1000">KNGIL 소개</h2>
             </div>
           </section>
+          
           <section class="sub-content">
-            <div class="sub-tit-box" data-aos="fade-up" data-aos-duration="1000" >
-              <h3 class="sub-tit" >
+            <div class="sub-tit-box" data-aos="fade-up" data-aos-duration="1000">
+              <p class="sub-tit">
                 설계 실무자를 위한 기초현황 보고서 자동생성으로<br>
-                <em>기초조사 업무의 효율성</em>을 높여줍니다.<br><br>
+                <strong>기초조사 업무의 효율성</strong>을 높여줍니다.<br><br>
                 KNGIL은 공공데이터 기반으로<br>
                 대상지역 내 지형, 인구, 기상, 기반시설 등 기초자료를<br>
-                <em>보고서 형태로 제공하는 서비스</em> 입니다.
-              </h3>
-              <div class="symbol-box"  >
-                <img src="./img/symbol.svg" alt="KNGIL Korea National Geographic Information Library">
+                <strong>보고서 형태로 제공하는 서비스</strong> 입니다.
+              </p>
+              <div class="symbol-box">
+                <img 
+                  src="./img/symbol.svg" 
+                  alt="KNGIL Korea National Geographic Information Library"
+                  width="627"
+                  height="auto"
+                >
               </div>
             </div>
 
-            <div class="service" >
-              <div class="step-list" >
+            <div class="service">
+              <div class="step-list">
                 <p class="step-desc">
-                  분야별 설계 업무는 일반적으로 <em>5단계의 프로세스</em>를 통하여 수행하며<br>
-                  <span class="bg-yellow">큰길서비스는 <em>1단계 (기초현황 조사)</em></span>
+                  분야별 설계 업무는 일반적으로 <strong>5단계의 프로세스</strong>를 통하여 수행하며<br>
+                  <span class="bg-yellow">큰길서비스는 <strong>1단계 (기초현황 조사)</strong></span>
                 </p>
-                <ul class="step-flow">
+                <ol class="step-flow" aria-label="설계 업무 프로세스 단계">
                   <li class="step-item active">
                     <div class="step-box">
                       <div class="step-title">큰길서비스</div>
-                      <div class="step-subtitle">1단계 <em>기초현황 조사</em></div>
+                      <div class="step-subtitle">1단계 <strong>기초현황 조사</strong></div>
                       <div class="step-icon">
-                        <img src="./img/value/img_document.png" alt=""> 
+                        <img 
+                          src="./img/value/img_document.png" 
+                          alt="기초현황 조사 문서 아이콘"
+                          width="auto"
+                          height="auto"
+                        > 
                       </div> 
                     </div>
                   </li>
                   <li class="step-item">
                     <div class="step-box">
-                      <div class="step-title">2단계 <em>현장조사</em></div>
+                      <div class="step-title">2단계 <strong>현장조사</strong></div>
                     </div>
                   </li>
                   <li class="step-item">
                     <div class="step-box">
-                      <div class="step-title">3단계 <em>지표 및 계획</em></div>
+                      <div class="step-title">3단계 <strong>지표 및 계획</strong></div>
                     </div>
                   </li>
                   <li class="step-item">
                     <div class="step-box">
-                      <div class="step-title">4단계 <em>기본 및 실시설계</em></div>
+                      <div class="step-title">4단계 <strong>기본 및 실시설계</strong></div>
                     </div>
                   </li>
                   <li class="step-item">
                     <div class="step-box">
-                      <div class="step-title">5단계 <em>성과품 작성</em></div>
+                      <div class="step-title">5단계 <strong>성과품 작성</strong></div>
                     </div>
                   </li>
-                </ul>
+                </ol>
               </div>
 
               <div class="data-comparison">
-                <div class="bg-line">
+                <div class="bg-line" aria-hidden="true">
                   <span class="ico-arrow"></span>
                 </div>
                 <div class="comparison-item">
                   <p class="comparison-label">
-                    <em class="data">데이터 수집 및 보관</em> 방식은 <br>
-                    <em class="fw-big">디지털 전환</em> 완료
+                    <strong class="data">데이터 수집 및 보관</strong> 방식은 <br>
+                    <strong class="fw-big">디지털 전환</strong> 완료
                   </p>
                   <div class="data-type-box analog">
-                    <div class="data-type-title"><em>아날로그</em>(문서)</div>
+                    <h4 class="data-type-title"><strong>아날로그</strong>(문서)</h4>
                     <ul class="data-type-list">
                       <li><span>데이터 문서 수집</span></li>
                       <li><span>데이터 문서 보관</span></li>
                     </ul>
                   </div>
                   <div class="data-type-box digital">
-                    <div class="data-type-title"><em>전산화</em>(파일)</div>
+                    <h4 class="data-type-title"><strong>전산화</strong>(파일)</h4>
                     <ul class="data-type-list">
                       <li><span>데이터 파일 다운로드</span></li>
                       <li><span>개인 PC 내 저장</span></li>
@@ -94,40 +107,60 @@
                 <div class="comparison-item">
                   <p class="comparison-label">
                     반면에,<br>
-                    <em class="report">데이터 정리 및 보고서 작성</em>은 <br>
-                    <em class="fw-big">엔지니어의 수작업</em> 진행
+                    <strong class="report">데이터 정리 및 보고서 작성</strong>은 <br>
+                    <strong class="fw-big">엔지니어의 수작업</strong> 진행
                   </p>
                   <div class="work-method-box manual">
-                    <div class="work-method-title"><em>기존 업무 방식</em>(수동화)</div>
+                    <h4 class="work-method-title"><strong>기존 업무 방식</strong>(수동화)</h4>
                     <ul class="work-method-list">
                       <li>
                         <div class="work-image">
-                          <img src="./img/value/img_manual_01.png" alt="">
+                          <img 
+                            src="./img/value/img_manual_01.png" 
+                            alt="데이터 정리 수작업 이미지"
+                            width="auto"
+                            height="auto"
+                          >
                         </div>
                         <span>데이터 정리 수작업</span>
                       </li>
                       <li>
                         <div class="work-image">
-                          <img src="./img/value/img_manual_02.png" alt="">
+                          <img 
+                            src="./img/value/img_manual_02.png" 
+                            alt="보고서 파일 작성 이미지"
+                            width="auto"
+                            height="auto"
+                          >
                         </div> 
                         <span>보고서 파일 작성</span>
                       </li>
                     </ul>
                   </div>
                   <div class="work-method-box automated">
-                    <div class="work-method-title"><em>큰길서비스</em>(자동화)</div>
+                    <h4 class="work-method-title"><strong>큰길서비스</strong>(자동화)</h4>
                     <ul class="work-method-list">
                       <li>
                         <div class="work-image">
-                          <img src="./img/value/img_automated_01.png" alt="">
+                          <img 
+                            src="./img/value/img_automated_01.png" 
+                            alt="데이터DB화 이미지"
+                            width="auto"
+                            height="auto"
+                          >
                         </div> 
-                        <span><em>데이터DB화</em></span>
+                        <span><strong>데이터DB화</strong></span>
                       </li>
                       <li>
                         <div class="work-image">
-                          <img src="./img/value/img_automated_02.png" alt="">
+                          <img 
+                            src="./img/value/img_automated_02.png" 
+                            alt="보고서 자동 생성 이미지"
+                            width="auto"
+                            height="auto"
+                          >
                         </div>
-                        <span><em>보고서 자동 생성</em></span>
+                        <span><strong>보고서 자동 생성</strong></span>
                       </li>
                     </ul>
                   </div>
@@ -139,57 +172,66 @@
         </div>
         
         
+        <!-- Summary Section -->
         <section class="summary">
           <dl>
             <dt class="big-tit" data-aos="fade-down" data-aos-duration="1000">
-              <i class="ico-logo">KNGIL</i> 특징
+              <span class="ico-logo" aria-label="KNGIL">KNGIL</span> 특징
             </dt>
             <dd data-aos="fade-up" data-aos-duration="1000">
               데이터 분석 및 보고서 생성을 위한 실무자 중심의 편리한 기능을 적용한<br>
-              <em>기초 현황 보고서 제공서비스</em> 입니다
+              <strong>기초 현황 보고서 제공서비스</strong> 입니다
             </dd>
           </dl>
 
-          <div class="line"></div>
-          <div class="dot"></div>
+          <div class="line" aria-hidden="true"></div>
+          <div class="dot" aria-hidden="true"></div>
         </section>
 
-        
-        <section class="value-features js-ani">
-          <!-- GIS 기반 지형 및 공간정보 분석 -->
-          <div class="card gis" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
+        <!-- Value Features Section -->
+        <section class="value-features js-ani" aria-label="KNGIL 주요 기능">
+          <article class="card gis" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
             <dl>
-              <dt class="sub-tit"><i></i>GIS 기반<br>지형 및 공간정보 분석</dt>
+              <dt class="sub-tit">
+                <i aria-hidden="true"></i>
+                GIS 기반<br>지형 및 공간정보 분석
+              </dt>
               <dd>자연조건 및 사회특성으로 분류된 항목별 데이터 정보를 면밀히 분석하여 정밀도를 높였습니다.</dd>
             </dl>
-          </div>
+          </article>
 
-          <!-- 기초 현황 데이터 항목 최다 제공 -->
-          <div class="card data" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+          <article class="card data" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
             <dl>
-              <dt class="sub-tit"><i></i>기초 현황 데이터<br>항목 최다 제공</dt>
+              <dt class="sub-tit">
+                <i aria-hidden="true"></i>
+                기초 현황 데이터<br>항목 최다 제공
+              </dt>
               <dd>도시계획, 상하수도분야 등 관련 현황데이터(99개)를 제공함으로써 활용범위의 확장성을 높였습니다.</dd>
             </dl>
-          </div>
-          <!-- 다양한 좌표계 지원 및 시각화 -->
-          <div class="card map" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+          </article>
+
+          <article class="card map" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
             <dl>
-              <dt class="sub-tit"><i></i>다양한 좌표계 지원 및<br>시각화</dt>
+              <dt class="sub-tit">
+                <i aria-hidden="true"></i>
+                다양한 좌표계 지원 및<br>시각화
+              </dt>
               <dd>Bessel(지리원 표준)및 GRS80(국토지리원정보 표준) 좌표계를 제공하며, 사용자가 원하는 좌표로 변환하기 쉽도록 선택 시 화면에 위치를 표출 하였습니다.</dd>
             </dl>
-          </div>
+          </article>
 
-          <!-- 기준값 설정 관련 커스터마이징 -->
-          <div class="card custom" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+          <article class="card custom" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
             <dl>
-              <dt class="sub-tit"><i></i>기준값 설정 관련<br>커스터마이징</dt>
+              <dt class="sub-tit">
+                <i aria-hidden="true"></i>
+                기준값 설정 관련<br>커스터마이징
+              </dt>
               <dd>개략사업비, 비작업일수 산정을 위해 관련법, 지침 및 기준 등 사용자가 쉽게 변경할 수 있도록 편의 기능을 강화하였습니다.</dd>
             </dl>
-          </div>
+          </article>
 
-
-          <!-- 라인 애니메이션 -->
-          <div class="lines">
+          <!-- Line Animation (Decorative) -->
+          <div class="lines" aria-hidden="true">
             <div class="v1"></div>
             <div class="v2"></div>
             <div class="v3"></div>
@@ -200,10 +242,11 @@
           </div>
         </section>
       </div>
-      <!-- // container -->
+      <!-- // Main Container -->
+      
       @@include("_include/_footer.html")
-
-      <script src="./js/value.js"></script>
     </div>
+    
+    <script src="./js/value.js"></script>
   </body>
 </html>

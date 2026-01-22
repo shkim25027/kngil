@@ -32,9 +32,10 @@
         font-size: 24px;
         font-weight: 400;
         margin-bottom: 46px;
-        text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.10), 1px -1px 0 rgba(0, 0, 0, 0.10), -1px 1px 0 rgba(0, 0, 0, 0.10), 1px 1px 0 rgba(0, 0, 0, 0.10);
-            
-
+        text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.10), 
+                     1px -1px 0 rgba(0, 0, 0, 0.10), 
+                     -1px 1px 0 rgba(0, 0, 0, 0.10), 
+                     1px 1px 0 rgba(0, 0, 0, 0.10);
       }
     }
   }
@@ -63,13 +64,15 @@
         font-size: 26px;
         color: #fff;
         line-height: 1.5;
-        text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.10), 1px -1px 0 rgba(0, 0, 0, 0.10), -1px 1px 0 rgba(0, 0, 0, 0.10), 1px 1px 0 rgba(0, 0, 0, 0.10);
-            
+        text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.10), 
+                     1px -1px 0 rgba(0, 0, 0, 0.10), 
+                     -1px 1px 0 rgba(0, 0, 0, 0.10), 
+                     1px 1px 0 rgba(0, 0, 0, 0.10);
+
         .bg-yellow {
-          padding: 0px 6px 4px 6px;
+          padding: 0 6px 4px;
           border-radius: 4px;
           background: linear-gradient(180deg, #CCA700 0%, rgba(254, 119, 1, 0.70) 100%);
-          
         }
       }
 
@@ -832,6 +835,7 @@
     scroll-snap-stop: always;
 
     .ico-logo {
+      display: inline-block;
       width: 220px;
       height: 54px;
       background-image: url(../img/loco_kngil_c.svg);
@@ -933,7 +937,7 @@
         gap: 12px;
 
         &.sub-tit {
-          // 서브 타이틀 스타일
+          // 서브 타이틀 스타일은 상위에서 상속
         }
 
         i {

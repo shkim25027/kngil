@@ -17,18 +17,19 @@
           </div>
         </section>
 
+        <!-- Content Section -->
         <section class="sub-content">
           <div class="sub-tit-box">
             <h3 class="sub-tit">
-              사업대상지역의 <em>환경·사회·사업비 요소를 분석하여 시각화</em>하고,<br>
+              사업대상지역의 <strong>환경·사회·사업비 요소를 분석하여 시각화</strong>하고,<br>
               이를 기초현황 보고서 형태로 제공
             </h3>
           </div>
           <div class="condition">
-            <div class="diagram-wrap" data-aos="fade-up" data-aos-duration="1000">
+            <div class="diagram-wrap" data-aos="fade-up" data-aos-duration="1000" aria-label="성과품 다이어그램">
               <div class="dia-circles-wrap">
-                <div class="circle-dash"></div>
-                <div class="circle-belt"></div>
+                <div class="circle-dash" aria-hidden="true"></div>
+                <div class="circle-belt" aria-hidden="true"></div>
                 <div class="circle-core">
                   <span>고품질의</span>
                   <span>성과품</span>
@@ -45,7 +46,7 @@
                   <div class="dot"></div>
                   <div class="dot"></div>
                 </div>
-                <div class="dia-element-ring">
+                <div class="dia-element-ring" aria-label="데이터 항목 링">
                   @@loop("_include/_results-dia-item.html", [
                     {"angle":"0deg","pos":"1","label":"토지"},
                     {"angle":"60deg","pos":"2","label":"인구"},
@@ -60,30 +61,50 @@
           </div>
         </section>
 
-        <!-- Category Tabs: 자연조건 / 사회특성 / 추정사업비 -->
-        <section class="results-wrap">
-          <ul class="tab-list" role="tablist">
-            <li class="on">
-              <a href="#key-natural" role="tab" aria-selected="true" aria-controls="key-natural">
-                <i class="ico-nature" aria-hidden="true"></i>
-                자연조건 데이터
-              </a>
-            </li>
-            <li>
-              <a href="#key-social" role="tab" aria-selected="false" aria-controls="key-social">
-                <i class="ico-social" aria-hidden="true"></i>
-                사회특성 데이터
-              </a>
-            </li>
-            <li>
-              <a href="#key-cost" role="tab" aria-selected="false" aria-controls="key-cost">
-                <i class="ico-cost" aria-hidden="true"></i>
-                추정사업비 데이터
-              </a>
-            </li>
-          </ul>
+        <!-- Category Tabs Section: 자연조건 / 사회특성 / 추정사업비 -->
+        <section class="results-wrap" aria-label="성과품 카테고리">
+          <nav aria-label="데이터 카테고리 네비게이션">
+            <ul class="tab-list" role="tablist" aria-label="데이터 카테고리 목록">
+              <li class="on">
+                <a 
+                  href="#key-natural" 
+                  role="tab" 
+                  aria-selected="true" 
+                  aria-controls="key-natural"
+                  tabindex="0"
+                >
+                  <i class="ico-nature" aria-hidden="true"></i>
+                  자연조건 데이터
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#key-social" 
+                  role="tab" 
+                  aria-selected="false" 
+                  aria-controls="key-social"
+                  tabindex="-1"
+                >
+                  <i class="ico-social" aria-hidden="true"></i>
+                  사회특성 데이터
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#key-cost" 
+                  role="tab" 
+                  aria-selected="false" 
+                  aria-controls="key-cost"
+                  tabindex="-1"
+                >
+                  <i class="ico-cost" aria-hidden="true"></i>
+                  추정사업비 데이터
+                </a>
+              </li>
+            </ul>
+          </nav>
 
-          <div class="tab-panels">
+          <div class="tab-panels" role="tabpanel">
             @@include("_include/_results-tab-panel.html", {
               "id": "key-natural",
               "tabClass": "natural",
@@ -132,7 +153,7 @@
           </div>
         </section>
       </div>
-      <!-- // container -->
+      <!-- // Main Container -->
 
       @@include("_include/_footer.html")
     </div>

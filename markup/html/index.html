@@ -7,40 +7,117 @@
     <div class="wrap main">
       <div class="main-mask">
         @@include("_include/_header.html")
-        <!-- container -->
+        
+        <!-- Main Container -->
         <div class="container">
-        
-          <section class="main-contents">
-              <div class="bg-video">
-                <a href="./value.html" class="main-link" id="main_video_link">
-                  <video id="video_play" autoplay muted>
-                    <source src="./assets/video/main_1.mp4" type="video/mp4" class="main-video-01">
-                  </video>
-                </a>
-              </div>        
-              <ul class="main-pagination">
-                <li><div class="page-01 page-on" data-page="1"><img src="./img/logo_kngil.svg" alt="KNGAL"></div><span>01</span></li>
-                <li><div class="page-02" data-page="2">제공데이터</div><span>02</span></li>
-                <li><div class="page-03" data-page="3">주요기능</div><span>03</span></li>
-                <li><div class="page-04" data-page="4">데이터분석</div><span>04</span></li>
-                <li><div class="page-05" data-page="5">성과품</div><span>05</span></li>
+          <main class="main-contents" role="main">
+            <!-- Background Video Section -->
+            <div class="bg-video" >
+              <a 
+                href="./value.html" 
+                class="main-link" 
+                id="main_video_link"
+                aria-label="메인 비디오 - 상세 페이지로 이동"
+              >
+                <video 
+                  id="video_play" 
+                  autoplay 
+                  muted 
+                  playsinline
+                  aria-label="메인 비디오 플레이어"
+                >
+                  <source src="./video/main_1.mp4" type="video/mp4">
+                  <p>비디오를 재생할 수 없습니다. 브라우저가 비디오 태그를 지원하지 않습니다.</p>
+                </video>
+              </a>
+            </div>
+            
+            <!-- Navigation Pagination -->
+            <nav class="main-pagination" aria-label="메인 페이지 네비게이션">
+              <ul>
+                <li>
+                  <button 
+                    type="button"
+                    class="page-01 page-on" 
+                    data-page="1"
+                    aria-label="페이지 1: 메인"
+                    aria-current="page"
+                  >
+                    <img src="./img/logo_kngil.svg" alt="KNGIL 로고" width="auto" height="auto">
+                  </button>
+                  <span class="page-number" aria-hidden="true">01</span>
+                </li>
+                <li>
+                  <button 
+                    type="button"
+                    class="page-02" 
+                    data-page="2"
+                    aria-label="페이지 2: 제공데이터"
+                  >
+                    제공데이터
+                  </button>
+                  <span class="page-number" aria-hidden="true">02</span>
+                </li>
+                <li>
+                  <button 
+                    type="button"
+                    class="page-03" 
+                    data-page="3"
+                    aria-label="페이지 3: 주요기능"
+                  >
+                    주요기능
+                  </button>
+                  <span class="page-number" aria-hidden="true">03</span>
+                </li>
+                <li>
+                  <button 
+                    type="button"
+                    class="page-04" 
+                    data-page="4"
+                    aria-label="페이지 4: 데이터분석"
+                  >
+                    데이터분석
+                  </button>
+                  <span class="page-number" aria-hidden="true">04</span>
+                </li>
+                <li>
+                  <button 
+                    type="button"
+                    class="page-05" 
+                    data-page="5"
+                    aria-label="페이지 5: 성과품"
+                  >
+                    성과품
+                  </button>
+                  <span class="page-number" aria-hidden="true">05</span>
+                </li>
               </ul>
-          </section>
-        
+            </nav>
+          </main>
         </div>
+        <!-- // Main Container -->
 
         @@include("_include/_footer.html")
-        <!-- // container -->
       </div>
-      <div class="intro-wrap">
+      
+      <!-- Intro Screen -->
+      <!-- div class="intro-wrap" aria-hidden="true">
         <div class="intro-mask"></div>
         <div class="intro-txt">
-          <div class="txt-mask"><span><b>디지털전환시대</b></span></div>
-          <div class="txt-mask"><span><font class="egbim k">EG-BIM_software</font></span></div>
-          <div class="txt-mask"><span><em>도면</em>과 <em>3차원 정보모델</em>을 <em>하나의</em> S/W로</span></div>
+          <div class="txt-mask">
+            <span><strong>디지털전환시대</strong></span>
+          </div>
+          <div class="txt-mask">
+            <span><span class="egbim k">EG-BIM_software</span></span>
+          </div>
+          <div class="txt-mask">
+            <span><em>도면</em>과 <em>3차원 정보모델</em>을 <em>하나의</em> S/W로</span>
+          </div>
         </div>
-      </div>
+      </div -->
+      <!-- // Intro Screen -->
     </div>
+    
     <script src="./js/index.js"></script>
   </body>
 </html>

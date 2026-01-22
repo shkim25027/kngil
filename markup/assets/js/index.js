@@ -1,6 +1,5 @@
 /**
  * Main Page Video Player & Navigation Controller
- * 모듈화된 구조로 리팩토링
  */
 (function() {
   'use strict';
@@ -24,7 +23,7 @@
       video: '#video_play',
       videoLink: '#main_video_link',
       pagination: '.main-pagination',
-      paginationItem: '.main-pagination div',
+      paginationItem: '.main-pagination button[data-page]',
       intro: '.intro-wrap',
       mainMask: '.main-mask',
       footer: 'footer',
@@ -43,50 +42,26 @@
   // Utility Functions
   // ============================================
   const Utils = {
-    /**
-     * DOM 요소 선택 (jQuery 대체)
-     */
     $(selector) {
       return document.querySelector(selector);
     },
 
-    /**
-     * DOM 요소들 선택 (jQuery 대체)
-     */
     $$(selector) {
       return document.querySelectorAll(selector);
     },
 
-    /**
-     * 숫자 유효성 검사
-     */
     isValidPageNum(pageNum) {
       return Number.isInteger(pageNum) && 
              pageNum >= 1 && 
              pageNum <= CONFIG.TOTAL_PAGES;
     },
 
-    /**
-     * 안전한 이벤트 리스너 추가
-     */
     safeAddEventListener(element, event, handler) {
       if (element && typeof handler === 'function') {
         element.addEventListener(event, handler);
         return true;
       }
       return false;
-    },
-
-    /**
-     * 클래스 토글 헬퍼
-     */
-    toggleClass(element, className, force) {
-      if (!element) return;
-      if (force === undefined) {
-        element.classList.toggle(className);
-      } else {
-        element.classList.toggle(className, force);
-      }
     }
   };
 
@@ -100,37 +75,41 @@
 
     init() {
       this.videoElement = Utils.$(CONFIG.SELECTORS.video);
-      
-      if (!this.videoElement) {
-        console.warn('[VideoPlayer] Video element not found');
-        return false;
-      }
+      if (!this.videoElement) return false;
 
       this.sourceElement = this.videoElement.querySelector('source');
-      if (!this.sourceElement) {
-        console.warn('[VideoPlayer] Source element not found');
-        return false;
-      }
+      if (!this.sourceElement) return false;
 
       this.setupEventListeners();
       return true;
     },
 
     setupEventListeners() {
-      // 영상 종료 후 다음 영상 실행
       Utils.safeAddEventListener(this.videoElement, 'ended', () => {
         this.playNext();
+      });
+
+      Utils.safeAddEventListener(this.videoElement, 'loadeddata', () => {
+        if (this.videoElement.paused) {
+          this.play().catch(() => {});
+        }
+      });
+
+      Utils.safeAddEventListener(this.videoElement, 'error', () => {
+        console.error('[VideoPlayer] Video load error');
       });
     },
 
     loadVideo(pageNum) {
-      if (!Utils.isValidPageNum(pageNum)) {
-        console.warn(`[VideoPlayer] Invalid page number: ${pageNum}`);
-        return false;
-      }
+      if (!Utils.isValidPageNum(pageNum)) return false;
 
       const videoSource = `${CONFIG.VIDEO_BASE_PATH}/main_${pageNum}.mp4`;
       
+      // 현재 소스와 동일하면 다시 로드하지 않음
+      if (this.sourceElement.src && this.sourceElement.src.includes(`main_${pageNum}.mp4`)) {
+        return true;
+      }
+
       try {
         this.sourceElement.src = videoSource;
         this.videoElement.load();
@@ -143,13 +122,9 @@
 
     play() {
       if (!this.videoElement) return false;
-
       return this.videoElement.play()
         .then(() => true)
-        .catch(err => {
-          console.warn('[VideoPlayer] Play failed:', err);
-          return false;
-        });
+        .catch(() => false);
     },
 
     pause() {
@@ -165,6 +140,7 @@
       
       if (this.loadVideo(this.currentPage)) {
         Pagination.updateState(this.currentPage);
+        Pagination.updateLink(this.currentPage);
         this.play();
       }
     }
@@ -179,18 +155,14 @@
 
     init() {
       this.paginationElement = Utils.$(CONFIG.SELECTORS.pagination);
-      
-      if (!this.paginationElement) {
-        console.warn('[Pagination] Pagination element not found');
-        return;
-      }
+      if (!this.paginationElement) return;
 
       this.items = Utils.$$(CONFIG.SELECTORS.paginationItem);
       this.setupClickHandlers();
+      this.show();
     },
 
     setupClickHandlers() {
-      // 이벤트 위임 사용
       Utils.safeAddEventListener(
         this.paginationElement, 
         'click', 
@@ -199,14 +171,12 @@
     },
 
     handleClick(e) {
-      // 클릭된 요소 또는 그 부모 요소에서 data-page 속성을 찾음
-      let target = e.target.closest('[data-page]');
+      let target = e.target.closest('button[data-page]');
       
-      // 만약 li 요소를 직접 클릭한 경우, 그 안의 div를 찾음
       if (!target) {
         const liElement = e.target.closest('li');
         if (liElement) {
-          target = liElement.querySelector('[data-page]');
+          target = liElement.querySelector('button[data-page]');
         }
       }
       
@@ -234,18 +204,18 @@
     updateState(pageNum) {
       if (!this.items || !Utils.isValidPageNum(pageNum)) return;
 
-      // 모든 아이템에서 활성 클래스 제거
       this.items.forEach(item => {
         item.classList.remove(CONFIG.CLASSES.pageOn);
+        item.removeAttribute('aria-current');
       });
 
-      // 해당 페이지 아이템에 활성 클래스 추가
       const targetItem = Array.from(this.items).find(item => 
         item.classList.contains(`page-0${pageNum}`)
       );
       
       if (targetItem) {
         targetItem.classList.add(CONFIG.CLASSES.pageOn);
+        targetItem.setAttribute('aria-current', 'page');
       }
     },
 
@@ -255,14 +225,17 @@
       const linkUrl = CONFIG.PAGE_LINKS[pageNum];
       const linkElement = Utils.$(CONFIG.SELECTORS.videoLink);
       
-      if (linkElement && linkUrl) {
-        linkElement.href = linkUrl;
-      }
+      if (!linkElement || !linkUrl) return;
+
+      linkElement.href = linkUrl;
+      linkElement.setAttribute('href', linkUrl);
     },
 
     show() {
       if (this.paginationElement) {
-        this.paginationElement.style.display = '';
+        this.paginationElement.style.display = 'block';
+        this.paginationElement.style.visibility = 'visible';
+        this.paginationElement.style.opacity = '1';
       }
     },
 
@@ -285,7 +258,6 @@
       if (visited) {
         this.hideIntro(intro, mainMask);
       } else {
-        // 첫 방문 시 세션 스토리지에 저장
         setTimeout(() => {
           try {
             sessionStorage.setItem(CONFIG.VISITED_STORAGE_KEY, 'true');
@@ -297,12 +269,8 @@
     },
 
     hideIntro(intro, mainMask) {
-      if (intro) {
-        intro.style.display = 'none';
-      }
-      if (mainMask) {
-        mainMask.classList.add(CONFIG.CLASSES.skip);
-      }
+      if (intro) intro.style.display = 'none';
+      if (mainMask) mainMask.classList.add(CONFIG.CLASSES.skip);
     }
   };
 
@@ -313,13 +281,9 @@
     cursorTextElement: null,
 
     init() {
-      // 메인 페이지인지 확인 (.wrap.main 클래스 존재 여부)
       const mainElement = Utils.$(CONFIG.SELECTORS.main);
-      if (!mainElement) {
-        return;
-      }
+      if (!mainElement) return;
 
-      // 커서 따라다니는 텍스트 요소 생성
       this.cursorTextElement = document.createElement('div');
       this.cursorTextElement.textContent = 'Click!';
       this.cursorTextElement.style.cssText = `
@@ -335,17 +299,14 @@
         opacity: 0;
       `;
       document.body.appendChild(this.cursorTextElement);
-
       this.setupEventListeners();
     },
 
     setupEventListeners() {
-      // 마우스 움직임 추적
       document.addEventListener('mousemove', (e) => {
         this.handleMouseMove(e);
       });
 
-      // 마우스가 페이지를 벗어나면 숨김
       document.addEventListener('mouseleave', () => {
         if (this.cursorTextElement) {
           this.cursorTextElement.style.opacity = '0';
@@ -362,23 +323,22 @@
     handleMouseMove(e) {
       if (!this.cursorTextElement) return;
 
-      // 마우스 위치의 요소 확인
       const elementUnderMouse = document.elementFromPoint(e.clientX, e.clientY);
-      
-      // 특정 영역인지 확인
-      const isInFooter = elementUnderMouse?.closest('footer');
-      const isInPopup = elementUnderMouse?.closest('.popup_wrap') || elementUnderMouse?.closest('.popup-wrap');
-      const isInFloating = elementUnderMouse?.closest('.floating_menu');
-      const isInPagination = elementUnderMouse?.closest('.main-pagination');
-      const isInHeader = elementUnderMouse?.closest('.header');
-      const isInSitemap = elementUnderMouse?.closest('.popup_sitemap') || elementUnderMouse?.closest('.sitemap');
+      const hideAreas = [
+        elementUnderMouse?.closest('footer'),
+        elementUnderMouse?.closest('.popup_wrap'),
+        elementUnderMouse?.closest('.popup-wrap'),
+        elementUnderMouse?.closest('.floating_menu'),
+        elementUnderMouse?.closest('.main-pagination'),
+        elementUnderMouse?.closest('.header'),
+        elementUnderMouse?.closest('.popup_sitemap'),
+        elementUnderMouse?.closest('.sitemap')
+      ];
 
-      // 특정 영역이면 숨김
-      if (isInFooter || isInPopup || isInFloating || isInPagination || isInHeader || isInSitemap) {
+      if (hideAreas.some(area => area)) {
         this.cursorTextElement.style.opacity = '0';
       } else {
         this.cursorTextElement.style.opacity = '1';
-        // 커서 오른쪽 아래에 위치
         this.cursorTextElement.style.left = (e.clientX + 15) + 'px';
         this.cursorTextElement.style.top = (e.clientY + 15) + 'px';
       }
@@ -398,17 +358,13 @@
       this.mainElement = Utils.$(CONFIG.SELECTORS.main);
       this.footerCloseElement = Utils.$(CONFIG.SELECTORS.footerClose);
 
-      if (!this.footerElement || !this.mainElement) {
-        console.warn('[FooterController] Required elements not found');
-        return;
-      }
+      if (!this.footerElement || !this.mainElement) return;
 
       this.setupMousewheelHandler();
       this.setupCloseHandler();
     },
 
     setupMousewheelHandler() {
-      // jQuery mousewheel 이벤트 대신 wheel 이벤트 사용
       Utils.safeAddEventListener(
         this.mainElement,
         'wheel',
@@ -418,8 +374,6 @@
     },
 
     handleWheel(e) {
-      // deltaY가 양수면 아래로 스크롤 (footer 표시 - on 클래스 추가)
-      // deltaY가 음수면 위로 스크롤 (footer 숨김 - on 클래스 제거)
       if (e.deltaY > 0) {
         this.show();
       } else if (e.deltaY < 0) {
@@ -442,7 +396,6 @@
       
       this.footerElement.classList.add(CONFIG.CLASSES.footerOn);
       
-      // footerOff가 유효한 클래스 이름인 경우에만 제거
       const footerOff = CONFIG.CLASSES.footerOff.trim();
       if (footerOff) {
         this.footerElement.classList.remove(footerOff);
@@ -452,7 +405,6 @@
     hide() {
       if (!this.footerElement) return;
       
-      // footerOff가 유효한 클래스 이름인 경우에만 추가
       const footerOff = CONFIG.CLASSES.footerOff.trim();
       if (footerOff) {
         this.footerElement.classList.add(footerOff);
@@ -467,7 +419,6 @@
   // ============================================
   const MainController = {
     init() {
-      // DOM이 준비되면 초기화
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => {
           this.start();
@@ -478,40 +429,64 @@
     },
 
     start() {
-      // Video Player 초기화
-      if (!VideoPlayer.init()) {
-        console.warn('[MainController] Video player initialization failed');
-        return;
-      }
-
-      // 초기 비디오 일시정지 및 페이지네이션 숨김
-      VideoPlayer.pause();
-      Pagination.hide();
-
-      // 방문 여부 확인 및 비디오 재생
-      const visited = sessionStorage.getItem(CONFIG.VISITED_STORAGE_KEY);
-      
-      if (visited) {
-        this.startVideoPlayback();
-      } else {
-        setTimeout(() => {
-          this.startVideoPlayback();
-        }, CONFIG.INTRO_DELAY);
-      }
+      if (!VideoPlayer.init()) return;
 
       // 모듈 초기화
       Pagination.init();
+      Pagination.updateLink(VideoPlayer.currentPage);
+      Pagination.updateState(VideoPlayer.currentPage);
       IntroController.init();
       FooterController.init();
       CursorTextController.init();
 
-      // 초기 링크 설정
-      Pagination.updateLink(VideoPlayer.currentPage);
+      // 비디오 재생 시작
+      this.startVideoPlayback();
     },
 
     startVideoPlayback() {
-      VideoPlayer.play();
-      Pagination.show();
+      const introElement = Utils.$(CONFIG.SELECTORS.intro);
+      const hasIntro = introElement && introElement.offsetParent !== null;
+      const visited = sessionStorage.getItem(CONFIG.VISITED_STORAGE_KEY);
+
+      const playVideo = () => {
+        if (!VideoPlayer.videoElement.paused) return;
+
+        const currentSrc = VideoPlayer.videoElement.currentSrc || VideoPlayer.videoElement.src;
+        if (!currentSrc || currentSrc === '') {
+          VideoPlayer.loadVideo(1);
+        }
+
+        VideoPlayer.play().catch(() => {
+          // 재생 실패 시 재시도
+          let retryCount = 0;
+          const maxRetries = 10;
+          const retry = () => {
+            if (retryCount >= maxRetries || !VideoPlayer.videoElement.paused) return;
+            retryCount++;
+            VideoPlayer.play().catch(() => {
+              setTimeout(retry, 500);
+            });
+          };
+          setTimeout(retry, 500);
+        });
+      };
+
+      const tryAutoPlay = () => {
+        if (VideoPlayer.videoElement.readyState >= 1) {
+          playVideo();
+        } else {
+          VideoPlayer.videoElement.addEventListener('loadedmetadata', playVideo, { once: true });
+        }
+      };
+
+      // Intro가 없으면 즉시 재생, 있으면 방문 여부에 따라 처리
+      if (!hasIntro) {
+        tryAutoPlay();
+      } else if (visited) {
+        tryAutoPlay();
+      } else {
+        setTimeout(tryAutoPlay, CONFIG.INTRO_DELAY);
+      }
     }
   };
 

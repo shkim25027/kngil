@@ -6,31 +6,42 @@
   <body>
     <div class="wrap">
       @@include("_include/_header.html")
-      <!-- container -->
+      
+      <!-- Main Container -->
       <div class="container primary">
+        <!-- Header Section -->
         <section class="sub-header">
           <div class="page-title js-dark">
             <h2 data-aos="fade-down" data-aos-duration="1000">주요기능</h2>
-            <p class="sub-txt">기초현황 보고서 설정 등에 대한 사용자 중심의 <br>
-              편의성, 직관성, 효율성 향상을 위해 다양한 기능을 제공합니다.</p>
+            <p class="sub-txt">
+              기초현황 보고서 설정 등에 대한 사용자 중심의 <br>
+              편의성, 직관성, 효율성 향상을 위해 다양한 기능을 제공합니다.
+            </p>
           </div>
         </section>
-        <section class="sub-content"> 
+        
+        <!-- Content Section -->
+        <section class="sub-content">
           <div class="sub-tit-box">
             <h3 class="sub-tit">
-              설계분야 및 대상구역 범위에 따른 <em>보고서 설정</em> 관련하여 <br>
-              <em>사용자 맞춤형 방식</em>으로 다양한 기능을 제공 
+              설계분야 및 대상구역 범위에 따른 <strong>보고서 설정</strong> 관련하여 <br>
+              <strong>사용자 맞춤형 방식</strong>으로 다양한 기능을 제공
             </h3>
           </div>
-          <div class="diagram-wrap aos-init aos-animate" data-aos="fade-up" data-aos-duration="1000">
+          <div class="diagram-wrap aos-init aos-animate" data-aos="fade-up" data-aos-duration="1000" aria-label="주요기능 다이어그램">
             <div class="dia-circles-wrap">
               <div class="circle-core">
                 <span>
-                  <img src="./img/logo_kngil.svg" alt="KNGIL">
+                  <img 
+                    src="./img/logo_kngil.svg" 
+                    alt="KNGIL 로고"
+                    width="auto"
+                    height="auto"
+                  >
                 </span>
-                <em>주요기능</em>
+                <strong>주요기능</strong>
               </div>
-              <div class="circle-dots">
+              <div class="circle-dots" aria-hidden="true">
                 <div class="dot"></div>
                 <div class="dot"></div>
                 <div class="dot"></div>
@@ -38,103 +49,133 @@
               </div>
             </div>
             <div class="dia-element e01">
-              <i></i>
+              <i aria-hidden="true"></i>
               <span class="dia-tit">다양한 사업대상구역<br> 입력방식 선택</span>
             </div>
             <div class="dia-element e02">
-              <i></i>
-              <span class="dia-tit">효율적인인 사용자 설정<br> 구성 및 시각화</span>
+              <i aria-hidden="true"></i>
+              <span class="dia-tit">효율적인 사용자 설정<br> 구성 및 시각화</span>
             </div>
             <div class="dia-element e03">
-              <i></i>
+              <i aria-hidden="true"></i>
               <span class="dia-tit">사용자가 신청한<br> 목록 및 진행단계 실시간 제공</span>
             </div>
           </div>
         </section>
         
-        <section class="key location layout-fix-left">
-          <div class="left">
+        <!-- Key Features Section -->
+        <section class="key location layout-fix-left" aria-label="주요 기능 상세">
+          <nav class="left" aria-label="기능 네비게이션">
             <div class="mid-tit">
               <span data-aos="fade-right" data-aos-duration="600">
-                다양하고 효율적인<br><em>사용자 중심의 설정<br>
-                기능 제공</em>
+                다양하고 효율적인<br>
+                <strong>사용자 중심의 설정<br>기능 제공</strong>
               </span>
             </div>
-            <ul data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300" class="js-fixLeft-tit">
-              <li class="on"><span><em>01</em>사업구역 입력</span></li>
-              <li><span><em>02</em>보고서 관련 설정</span></li>
-              <li><span><em>03</em>진행과정(4단계) 실시간 표시</span></li>
-              <li><span><em>04</em>사업비 및 작업일수 기준</span></li>
-              <li><span><em>05</em>데이터 항목 선택</span></li>
+            <ul 
+              data-aos="fade-right" 
+              data-aos-duration="1000" 
+              data-aos-delay="300" 
+              class="js-fixLeft-tit"
+              role="tablist"
+              aria-label="주요 기능 목록"
+            >
+              <li class="on" role="tab" aria-selected="true" tabindex="0">
+                <span><strong>01</strong>사업구역 입력</span>
+              </li>
+              <li role="tab" aria-selected="false" tabindex="-1">
+                <span><strong>02</strong>보고서 관련 설정</span>
+              </li>
+              <li role="tab" aria-selected="false" tabindex="-1">
+                <span><strong>03</strong>진행과정(4단계) 실시간 표시</span>
+              </li>
+              <li role="tab" aria-selected="false" tabindex="-1">
+                <span><strong>04</strong>사업비 및 작업일수 기준</span>
+              </li>
+              <li role="tab" aria-selected="false" tabindex="-1">
+                <span><strong>05</strong>데이터 항목 선택</span>
+              </li>
             </ul>
-          </div>
-          <div class="right js-fixLeft-secs">
-            <div class="sec-area-input">
-              <span class="sub-tit">사업구역 입력</span>
+          </nav>
+          
+          <div class="right js-fixLeft-secs" role="tabpanel">
+            <article class="sec-area-input" id="sec-area-input" aria-labelledby="area-input-title">
+              <h4 id="area-input-title" class="sub-tit">사업구역 입력</h4>
               <div class="sub-text">
                 사업의 규모 및 범위를 고려하여 실무자가 상황에 맞게 유연하게 활용할 수 있도록 <br>
-                 <em>4가지 입력 방식</em>을 제공합니다.
-              </div> 
-              <div class="sub-figs sub-figs-bg-slide">
-                <span class="bg-slide-layer" data-bg="1"></span>
-                <span class="bg-slide-layer" data-bg="2"></span>
-                <span class="bg-slide-layer" data-bg="3"></span>
+                <strong>4가지 입력 방식</strong>을 제공합니다.
               </div>
-            </div>
-            <div class="sec-report-config">
-              <span class="sub-tit">보고서 관련 설정</span>
+              <div class="sub-figs sub-figs-bg-slide" aria-label="사업구역 입력 방식 시각화">
+                <span class="bg-slide-layer" data-bg="1" aria-hidden="true"></span>
+                <span class="bg-slide-layer" data-bg="2" aria-hidden="true"></span>
+                <span class="bg-slide-layer" data-bg="3" aria-hidden="true"></span>
+              </div>
+            </article>
+            
+            <article class="sec-report-config" id="sec-report-config" aria-labelledby="report-config-title">
+              <h4 id="report-config-title" class="sub-tit">보고서 관련 설정</h4>
               <div class="sub-text">
-                사용자에게 제공되는 보고서에 영향을 미치는 <em>항목별 설정은 최소화</em>하고,<br>
-                직관적으로 쉽게선택할 수 있도록 <em>시각화</em>에 중점을 두었습니다.
+                사용자에게 제공되는 보고서에 영향을 미치는 <strong>항목별 설정은 최소화</strong>하고,<br>
+                직관적으로 쉽게 선택할 수 있도록 <strong>시각화</strong>에 중점을 두었습니다.
               </div>
               <div class="sub-figs">
-                <img src="./img/primary/img_report_01.png" alt="">
+                <img 
+                  src="./img/primary/img_report_01.png" 
+                  alt="보고서 관련 설정 화면"
+                  width="auto"
+                  height="auto"
+                >
               </div>
-            </div>
-            <div class="sec-progress-realtime">
-              <span class="sub-tit">진행과정(4단계) 실시간 표시</span>
+            </article>
+            
+            <article class="sec-progress-realtime" id="sec-progress-realtime" aria-labelledby="progress-title">
+              <h4 id="progress-title" class="sub-tit">진행과정(4단계) 실시간 표시</h4>
               <div class="sub-text">
-                사용자는 신청건의 처리과정을 4단계로 <em>실시간 확인 가능</em>하며, 기존 신청 이력에 대해서는 <br>
-                일정 기간 내 <em>재신청 및 다운로드를 반복적으로 수행</em> 할 수 있습니다.
+                사용자는 신청건의 처리과정을 4단계로 <strong>실시간 확인 가능</strong>하며, 기존 신청 이력에 대해서는 <br>
+                일정 기간 내 <strong>재신청 및 다운로드를 반복적으로 수행</strong> 할 수 있습니다.
               </div>
-              <div class="sub-figs sub-figs-bg-slide">
-                <span class="bg-slide-layer" data-bg="1"></span>
-                <span class="bg-slide-layer" data-bg="2"></span>
-                <span class="bg-slide-layer" data-bg="3"></span>
-                <span class="bg-slide-layer" data-bg="4"></span>
+              <div class="sub-figs sub-figs-bg-slide" aria-label="진행과정 4단계 시각화">
+                <span class="bg-slide-layer" data-bg="1" aria-hidden="true"></span>
+                <span class="bg-slide-layer" data-bg="2" aria-hidden="true"></span>
+                <span class="bg-slide-layer" data-bg="3" aria-hidden="true"></span>
+                <span class="bg-slide-layer" data-bg="4" aria-hidden="true"></span>
               </div>
-            </div>
-            <div class="sec-cost-criteria">
-              <span class="sub-tit">사업비 및 작업일수 기준</span>
+            </article>
+            
+            <article class="sec-cost-criteria" id="sec-cost-criteria" aria-labelledby="cost-title">
+              <h4 id="cost-title" class="sub-tit">사업비 및 작업일수 기준</h4>
               <div class="sub-text">
-                주요 지표, 추정사업비, 비작업일수 등 <em>항목별 최신 기준값</em>을 사용자가 손쉽게 수정·적용할 수 있으며, <br>
-                위치 정보 기반의 특정 데이터는 화면에 시각적으로 표시하여 <em>선택을 위한 가이드</em>를 제공합니다.
+                주요 지표, 추정사업비, 비작업일수 등 <strong>항목별 최신 기준값</strong>을 사용자가 손쉽게 수정·적용할 수 있으며, <br>
+                위치 정보 기반의 특정 데이터는 화면에 시각적으로 표시하여 <strong>선택을 위한 가이드</strong>를 제공합니다.
               </div>
-              <div class="sub-figs sub-figs-bg-slide">
-                <span class="bg-slide-layer" data-bg="1"></span>
-                <span class="bg-slide-layer" data-bg="2"></span>
-                <span class="bg-slide-layer" data-bg="3"></span>
-                <span class="bg-slide-layer" data-bg="4"></span>
+              <div class="sub-figs sub-figs-bg-slide" aria-label="사업비 및 작업일수 기준 시각화">
+                <span class="bg-slide-layer" data-bg="1" aria-hidden="true"></span>
+                <span class="bg-slide-layer" data-bg="2" aria-hidden="true"></span>
+                <span class="bg-slide-layer" data-bg="3" aria-hidden="true"></span>
+                <span class="bg-slide-layer" data-bg="4" aria-hidden="true"></span>
               </div>
-            </div>
-            <div class="sec-data-select">
-              <span class="sub-tit">데이터 항목 선택</span>
+            </article>
+            
+            <article class="sec-data-select" id="sec-data-select" aria-labelledby="data-select-title">
+              <h4 id="data-select-title" class="sub-tit">데이터 항목 선택</h4>
               <div class="sub-text">
                 업무 활용을 위해 개별 Row 데이터만 필요한 경우, <br>
-                정보의 유사성을 기준으로 그룹화된 항목 중 사용자가 <em>선택한 데이터를 제공</em> 받을 수 있습니다.
+                정보의 유사성을 기준으로 그룹화된 항목 중 사용자가 <strong>선택한 데이터를 제공</strong> 받을 수 있습니다.
               </div>
-              <div class="sub-figs sub-figs-bg-slide">
-                <span class="bg-slide-layer" data-bg="1"></span>
-                <span class="bg-slide-layer" data-bg="2"></span>
-                <span class="bg-slide-layer" data-bg="3"></span>
+              <div class="sub-figs sub-figs-bg-slide" aria-label="데이터 항목 선택 시각화">
+                <span class="bg-slide-layer" data-bg="1" aria-hidden="true"></span>
+                <span class="bg-slide-layer" data-bg="2" aria-hidden="true"></span>
+                <span class="bg-slide-layer" data-bg="3" aria-hidden="true"></span>
               </div>
-            </div>
+            </article>
           </div>
         </section>
       </div>
-      <!-- // container -->
+      <!-- // Main Container -->
+      
       @@include("_include/_footer.html")
     </div>
+    
     <script src="./js/primary.js"></script>
   </body>
 </html>
