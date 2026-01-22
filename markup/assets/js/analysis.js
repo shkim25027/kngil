@@ -135,4 +135,33 @@ document.addEventListener("DOMContentLoaded", () => {
   bindClicks(key1, key1Tits, key1Sections);
   bindClicks(key2, key2Tits, key2Sections);
   bindClicks(key3, key3Tits, key3Sections);
+
+  // ---------------------------------------------
+  // SVG 애니메이션: 각 sub-figs가 화면에 보일 때만 SVG 로드 (1번만)
+  // ---------------------------------------------
+  const subFigsElements = document.querySelectorAll(".sub-figs");
+  if (subFigsElements.length > 0) {
+    const loadedElements = new Set();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting && !loadedElements.has(entry.target)) {
+          const svgImg = entry.target.querySelector(".apx img[data-src]");
+          if (svgImg && svgImg.dataset.src) {
+            // data-src를 src로 변경하여 SVG 로드 (한 번만)
+            svgImg.src = svgImg.dataset.src;
+            svgImg.removeAttribute("data-src");
+            loadedElements.add(entry.target);
+            // SVG가 로드되면 애니메이션이 자동으로 시작됨
+            observer.unobserve(entry.target);
+          }
+        }
+      });
+    }, {
+      threshold: 0.3,
+      rootMargin: "0px"
+    });
+
+    subFigsElements.forEach((el) => observer.observe(el));
+  }
 });

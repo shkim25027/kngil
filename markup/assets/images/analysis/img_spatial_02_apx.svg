@@ -5,6 +5,11 @@
         opacity: 0;
         animation: marker-appear 0.6s ease-in forwards;
       }
+      .bounce-group circle {
+        transform-origin: 514px 170px;
+        animation: earthquake-bounce 2.5s ease-out forwards;
+        opacity: 0;
+      }
       .marker-group-01 {
         animation-delay: 0s;
       }
