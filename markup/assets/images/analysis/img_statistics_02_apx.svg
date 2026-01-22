@@ -48,51 +48,51 @@
         }
 
         /* 각 단계별 지연 시간 */
-        .step-1 .text-label { animation-delay: 0.1s; }
+        .step-1 .text-label { animation-delay: 0.04s; }
         .step-1 .line-draw,
         .step-1 .line-draw-fill { animation-delay: 0s; }
 
-        .step-2 .text-label { animation-delay: 0.9s; }
+        .step-2 .text-label { animation-delay: 0.2s; }
         .step-2 .line-draw,
-        .step-2 .line-draw-fill { animation-delay: 0.8s; }
+        .step-2 .line-draw-fill { animation-delay: 0.16s; }
 
-        .step-3 .text-label { animation-delay: 1.7s; }
+        .step-3 .text-label { animation-delay: 0.68s; }
         .step-3 .line-draw,
-        .step-3 .line-draw-fill { animation-delay: 1.6s; }
+        .step-3 .line-draw-fill { animation-delay: 0.64s; }
 
-        .step-4 .text-label { animation-delay: 2.5s; }
+        .step-4 .text-label { animation-delay: 1.0s; }
         .step-4 .line-draw,
-        .step-4 .line-draw-fill { animation-delay: 2.4s; }
+        .step-4 .line-draw-fill { animation-delay: 0.96s; }
 
-        .step-5 .text-label { animation-delay: 3.3s; }
+        .step-5 .text-label { animation-delay: 1.32s; }
         .step-5 .line-draw,
-        .step-5 .line-draw-fill { animation-delay: 3.2s; }
+        .step-5 .line-draw-fill { animation-delay: 1.28s; }
 
-        .step-6 .text-label { animation-delay: 4.1s; }
+        .step-6 .text-label { animation-delay: 1.64s; }
         .step-6 .line-draw,
-        .step-6 .line-draw-fill { animation-delay: 4.0s; }
+        .step-6 .line-draw-fill { animation-delay: 1.6s; }
 
-        .step-7 .text-label { animation-delay: 4.9s; }
+        .step-7 .text-label { animation-delay: 1.96s; }
         .step-7 .line-draw,
-        .step-7 .line-draw-fill { animation-delay: 4.8s; }
+        .step-7 .line-draw-fill { animation-delay: 1.92s; }
 
-        .step-8 .text-label { animation-delay: 5.7s; }
+        .step-8 .text-label { animation-delay: 2.28s; }
         .step-8 .line-draw,
-        .step-8 .line-draw-fill { animation-delay: 5.6s; }
+        .step-8 .line-draw-fill { animation-delay: 2.24s; }
 
-        .step-9 .text-label { animation-delay: 6.5s; }
+        .step-9 .text-label { animation-delay: 2.6s; }
         .step-9 .line-draw,
-        .step-9 .line-draw-fill { animation-delay: 6.4s; }
+        .step-9 .line-draw-fill { animation-delay: 2.56s; }
 
-        .step-10 .text-label { animation-delay: 7.3s; }
+        .step-10 .text-label { animation-delay: 2.92s; }
         .step-10 .line-draw,
-        .step-10 .line-draw-fill { animation-delay: 7.2s; }
+        .step-10 .line-draw-fill { animation-delay: 2.88s; }
 
         /* 바운스 효과 그룹 (step 애니메이션이 끝날 때까지) */
         .bounce-group {
             opacity: 0;
             animation: fadeIn 0.5s ease-out forwards, bounce 1.2s ease-in-out forwards;
-            animation-delay: 8s, 8s;
+            animation-delay: 3.2s, 3.2s;
             transform-origin: center;
         }
     </style>
