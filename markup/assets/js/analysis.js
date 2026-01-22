@@ -35,7 +35,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const scrollOffsetY = 100;
 
   function updateTit(tits, index) {
-    tits.forEach((tit, i) => tit.classList.toggle("on", i === index));
+    if (!tits || !tits.length) return;
+    tits.forEach((tit, i) => {
+      if (i === index) {
+        tit.classList.add("on");
+      } else {
+        tit.classList.remove("on");
+      }
+    });
   }
 
   // key1 (spatial): 3섹션
@@ -44,8 +51,19 @@ document.addEventListener("DOMContentLoaded", () => {
     ScrollTrigger.create({
       trigger: section,
       start: triggerLine,
-      onEnter: () => updateTit(key1Tits, i),
-      onLeaveBack: () => updateTit(key1Tits, i > 0 ? i - 1 : 0),
+      onEnter: () => {
+        updateTit(key1Tits, i);
+      },
+      onEnterBack: () => {
+        updateTit(key1Tits, i);
+      },
+      onLeaveBack: () => {
+        if (i > 0) {
+          updateTit(key1Tits, i - 1);
+        } else {
+          updateTit(key1Tits, 0);
+        }
+      },
     });
   });
 
@@ -55,8 +73,19 @@ document.addEventListener("DOMContentLoaded", () => {
     ScrollTrigger.create({
       trigger: section,
       start: triggerLine,
-      onEnter: () => updateTit(key2Tits, i),
-      onLeaveBack: () => updateTit(key2Tits, i > 0 ? i - 1 : 0),
+      onEnter: () => {
+        updateTit(key2Tits, i);
+      },
+      onEnterBack: () => {
+        updateTit(key2Tits, i);
+      },
+      onLeaveBack: () => {
+        if (i > 0) {
+          updateTit(key2Tits, i - 1);
+        } else {
+          updateTit(key2Tits, 0);
+        }
+      },
     });
   });
 
@@ -66,8 +95,19 @@ document.addEventListener("DOMContentLoaded", () => {
     ScrollTrigger.create({
       trigger: section,
       start: triggerLine,
-      onEnter: () => updateTit(key3Tits, i),
-      onLeaveBack: () => updateTit(key3Tits, i > 0 ? i - 1 : 0),
+      onEnter: () => {
+        updateTit(key3Tits, i);
+      },
+      onEnterBack: () => {
+        updateTit(key3Tits, i);
+      },
+      onLeaveBack: () => {
+        if (i > 0) {
+          updateTit(key3Tits, i - 1);
+        } else {
+          updateTit(key3Tits, 0);
+        }
+      },
     });
   });
 
@@ -84,10 +124,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     [key1Sections, key2Sections, key3Sections].forEach((sections, ki) => {
       const tits = [key1Tits, key2Tits, key3Tits][ki];
+      if (!tits || !sections) return;
+      
       let active = 0;
       sections.forEach((sec, i) => {
-        if (sec && sec.getBoundingClientRect().top <= scrollOffsetY) active = i;
+        if (sec) {
+          const rect = sec.getBoundingClientRect();
+          if (rect.top <= scrollOffsetY + 50) {
+            active = i;
+          }
+        }
       });
+      
       const last = sections[sections.length - 1];
       if (last) {
         const lastRect = last.getBoundingClientRect();
@@ -104,8 +152,13 @@ document.addEventListener("DOMContentLoaded", () => {
       updateTit(key3Tits, key3Tits.length - 1);
     }
   }
+  
+  // 초기화 및 리프레시
+  ScrollTrigger.addEventListener("refresh", () => {
+    setTimeout(setInitialTit, 100);
+  });
+  ScrollTrigger.refresh();
   setInitialTit();
-  ScrollTrigger.addEventListener("refresh", setInitialTit);
 
   window.addEventListener("scroll", () => {
     if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 30) {
@@ -115,10 +168,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 클릭: 해당 key의 해당 섹션으로 스크롤
   function bindClicks(keyEl, tits, sections) {
+    if (!tits || !sections) return;
     tits.forEach((li, index) => {
       li.addEventListener("click", () => {
         const section = sections[index];
         if (!section) return;
+        updateTit(tits, index);
         const cls = section.className.split(" ").find((c) => /^(spatial|statistics|attribute)\d+$/.test(c));
         if (typeof ScrollToPlugin !== "undefined" && cls) {
           gsap.to(window, {
@@ -128,7 +183,6 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           section.scrollIntoView({ behavior: "smooth", block: "start" });
         }
-        updateTit(tits, index);
       });
     });
   }

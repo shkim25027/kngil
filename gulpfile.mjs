@@ -51,6 +51,7 @@ const paths = {
       "!./markup/assets/js/index.js",
       "!./markup/assets/js/pop_temp.js",
       "!./markup/assets/js/provided.js",
+      "!./markup/assets/js/analysis.js",
     ],
     dest: "./dist/js",
   },
@@ -58,6 +59,7 @@ const paths = {
   jsindex: { src: "./markup/assets/js/index.js", dest: "./dist/js" },
   jspoptemp: { src: "./markup/assets/js/pop_temp.js", dest: "./dist/js" },
   jsprovided: { src: "./markup/assets/js/provided.js", dest: "./dist/js" },
+  jsanalysis: { src: "./markup/assets/js/analysis.js", dest: "./dist/js" },
   img: {
     src: "./markup/assets/images/**/*.{png,jpg,jpeg,svg}",
     dest: "./dist/img",
@@ -192,6 +194,11 @@ function jsprovided() {
   return src(paths.jsprovided.src).pipe(dest(paths.jsprovided.dest));
 }
 
+// JS analysis copy (analysis.html 전용, common.js에 포함하지 않음)
+function jsanalysis() {
+  return src(paths.jsanalysis.src).pipe(dest(paths.jsanalysis.dest));
+}
+
 // Coding List - coding_list.html 및 _coding_list 폴더 복사
 function codingListHtml() {
   return src(paths.codingList.html).pipe(dest(paths.codingList.dest));
@@ -239,6 +246,7 @@ function serve() {
   watch(paths.jsindex.src, jsindex);
   watch(paths.jspoptemp.src, jspoptemp);
   watch(paths.jsprovided.src, jsprovided);
+  watch(paths.jsanalysis.src, jsanalysis);
   // 개발 모드에서는 이미지 최적화 없이 빠르게 복사만
   watch(paths.img.src, images);
   watch(paths.fonts.src, fonts);
@@ -265,6 +273,7 @@ const build = series(
     jsindex,
     jspoptemp,
     jsprovided,
+    jsanalysis,
     html,
     codingListHtml,
     codingListFolder
@@ -285,6 +294,7 @@ const dev = series(
     jsindex,
     jspoptemp,
     jsprovided,
+    jsanalysis,
     html,
     codingListHtml,
     codingListFolder
@@ -306,6 +316,7 @@ const devClean = series(
     jsindex,
     jspoptemp,
     jsprovided,
+    jsanalysis,
     html,
     codingListHtml,
     codingListFolder
