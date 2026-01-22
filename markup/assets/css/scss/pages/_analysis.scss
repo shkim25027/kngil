@@ -362,6 +362,23 @@
       background-image: url(../img/analysis/bg_spatial_title.png);
     }
 
+    .spatial01 .sub-figs .apx {
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      overflow: hidden;
+      animation: apxWidthToggle 8s ease-in-out infinite;
+      img, svg {
+        position: absolute;
+        width: auto;
+        height: 100%;
+        max-width: max-content;
+        object-fit: contain;
+        object-position: left center;
+      }
+    }
+
      .spatial02 .sub-figs .apx,
      .spatial03 .sub-figs .apx {   
       top: 0;
@@ -498,6 +515,18 @@
 @keyframes marker-blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.35; }
+}
+
+@keyframes apxWidthToggle {
+  0%, 100% {
+    width: 0;
+  }
+  25%, 75% {
+    width: 100%;
+  }
+  50% {
+    width: 0;
+  }
 }
 
 // ---------------------------------
