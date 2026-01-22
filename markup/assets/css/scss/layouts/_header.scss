@@ -167,9 +167,12 @@ html {
   top: 0;
   left: 0;
   width: 100%;
-  height: var(--window-inner-height);
+  height: var(--window-inner-height) ;
   background-color: $sitemap-bg;
+  display: flex;
+  justify-content: center;
   overflow: hidden;
+  gap: 16px;
   padding: 20px;
   pointer-events: none;
   animation: enableHover 0.8s forwards;
@@ -177,198 +180,269 @@ html {
   display: none;
 
   &.open {
-    @include flex(center, center);
+    display: flex;
     ~ * { overflow: hidden !important; }
   }
 
   @include mq(desktop-small, max) {
-    gap: 16px;
     flex-direction: column;
   }
   
-  // 다른 li가 hover될 때 나머지 li는 축소
-  @include mq(desktop-small, min) {
-    &:has(li:hover) li:not(:hover) {
-      width: calc(40% / 4);
-    }
+  // 구분선 (bg-line)
+  div[class*="bg-line"] {
+    position: relative;
+    width: 1px;
+    height: 100%;
+    background-color: $sitemap-divider;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: both;
   }
   
-  li {
+  .bg-line.down {
+    animation-name: slideDown;
+  }
+  
+  .bg-line.up {
+    animation-name: slideup;
+  }
+  
+  // 메뉴 아이템
+  li:has(:not(.bg-line)) {
+    background-size: cover;
+    background-position: center;
     position: relative;
-    width: calc(100% / 5);
-    height: 100%;
-    cursor: pointer;
-    z-index: 1;
-    padding: 0 16px;
     overflow: hidden;
-    @include flex();
+    cursor: pointer;
+    transition: all 0.5s;
+    width: calc(100% / 5);
+    z-index: 1;
 
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: $sitemap-bg;
-      z-index: 1;
-      animation: slideRight 0.5s ease-in forwards;
-      animation-delay: 0.1s;
-    }
-    &:nth-child(1) {
+    // 각 메뉴별 배경 이미지 및 구분선 애니메이션
+    &.value {
       a {
         background-image: url(../img/img_sitemap_01.jpg);
         background-position: left 42% center;
         background-size: cover;
         &::before { background-color: rgba(0, 0, 0, 0.3); }
-        &::after { animation-name: slideDown; }
       }
     }
-    &:nth-child(2) {
-     
+    &.provided {
       a {
         background-image: url(../img/img_sitemap_02.jpg);
         background-position: left 32% center;
         background-size: cover;
         &::before { background-color: rgba(0, 0, 0, 0.2); }
-        &::after { animation-name: slideup; }
       }
     }
-    &:nth-child(3) {
-     
+    &.primary {
       a {
         background-image: url(../img/img_sitemap_03.jpg);
         background-position: left 58% center;
         background-size: cover;
-        &::after { animation-name: slideDown; }
       }
     }
-    &:nth-child(4) {
-     
+    &.analysis {
       a {
         background-image: url(../img/img_sitemap_04.jpg);
         background-position: left 38% center;
         background-size: cover;
         &::before { background-color: rgba(0, 0, 0, 0.4); }
-        &::after { animation-name: slideup; }
       }
     }
-    &:nth-child(5) {
+    &.results {
       a {
         background-image: url(../img/img_sitemap_05.jpg);
         background-position: left 2% center;
         background-size: cover;
-        &::after { animation-name: slideDown; }
       }
     }
-
-    &:not(:last-child) {
-      a{
-        &::after {
-          content: "";
-          position: absolute;
-          top: 0;
-          right: -16px;
-          width: 1px;
-          height: 100%;
-          background-color: $sitemap-divider;
-          animation-duration: 0.8s;
-          animation-timing-function: ease-out;
-          animation-fill-mode: both;
-        }
-      }
-      
-    }
-
+    
+    // 링크 스타일
     a {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 16px;
+      padding-left: 24px;
+      padding-top: 20px;
+      width: 100%;
+      height: 100%;
+      color: #fff;
+      white-space: nowrap;
+      transform-origin: left;
+      text-decoration: none;
       position: relative;
-      background-color: rgba(255, 255, 255, 0.5);
-      background-size: cover;
-      background-position: center;
-      &::before {
+      z-index: 2;
+
+      &::before,
+      &::after {
         content: "";
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: $sitemap-overlay;
-        pointer-events: none;
-        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        opacity: 1;
+      }
+      
+      &::before {
+        background-color: #00000077;
+        transition: 0.5s ease;
+        z-index: -1;
+      }
+      
+      &::after {
+        background-color: $sitemap-bg;
         z-index: 1;
+        animation: slideRight 0.5s ease-in forwards;
+        animation-delay: 0.1s;
+      }
+      // 제목 (span)
+      span {
+        position: relative;
+        font-size: 42px;
+        font-weight: 900;
+        line-height: 1.2;
+        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.80);
+        z-index: 2;
+        
+        &::before {
+          position: absolute;
+          top: -100px;
+          left: 0px;
+          width: 100%;
+          height: 100%;
+          opacity: 0.2;
+          font-weight: 900;
+          line-height: 80%;
+          font-size: 80px;
+          display: none;
+          z-index: -1;
+        }
+      }
+      
+      // 설명 (p)
+      p {
+        font-size: 20px;
+        font-weight: 400;
+        margin: 0;
+        color: #fff;
+        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.80);
+        
+        @include mq(desktop-small, max) {
+          display: none;
+        }
+      }
+      
+      // 강조 텍스트 (em)
+      em {
+        font-weight: 700;
+        color: #fff;
       }
     }
     
+    // 각 메뉴별 span::before 콘텐츠
+    &.value a span::before {
+      content: "\AValue of";
+      white-space: pre;
+    }
+    
+    &.provided a span::before {
+      content: "Provided\A Data";
+      white-space: pre;
+    }
+    
+    &.primary a span::before {
+      content: "Key \A Features";
+      white-space: pre;
+    }
+    
+    &.analysis a span::before {
+      content: "Data\A Analysis";
+      white-space: pre;
+    }
+    
+    &.results a span::before {
+      content: "Exploration\A Results";
+      white-space: pre;
+    }
+    
+    // Hover 효과
     @include mq(desktop-small, min) {
-      transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease;
       &:hover {
         width: 60%;
-        z-index: 2;
-        a::before { opacity: 0; }
-        span { font-size: 60px; }
-        p { font-size: 22px; }
-      }
-    }
-
-    @include mq(desktop-small, max) {
-      width: 100%;
-    }
-
-    a {
-      width: 100%;
-      height: 100%;
-      padding: 16px;
-      color: #fff;
-      flex-direction: column;
-      gap: 16px;
-      z-index: 2;
-      position: relative;
-      @include flex(flex-start, center);
-      @include mq(desktop-small, max) {
-        justify-content: center;
-        align-items: center;
+      
+        a {
+          opacity: 1;
+          transform: scale(1.3);
+          &::before {
+            display: none;
+          }
+        }
+        
+        a span::before {
+          display: initial;
+        }
+        
+        a em {
+          color: var(--color-yellow);
+        }
       }
     }
     
-    span {
-      font-size: 32px;
-      font-weight: 900;
-      line-height: 1.4;
-      transition: font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 1;
-      @include flex(flex-end, center);
-      @include mq(desktop-small, min) { height: 50%; }
-    }
-
-    p {
-      height: 50%;
-      transition: font-size 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      z-index: 1;
-      em { text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.8); }
-      @include mq(desktop-small, max) { display: none; }
+    @include mq(desktop-small, max) {
+      width: 100%;
     }
   }
 }
 
 // --- Keyframes ---
+@keyframes menuListShow {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
 @keyframes slideDown {
-  0% { top: -1000px; opacity: 80%; }
-  100% { top: 0; opacity: 20%; }
+  0% {
+    top: -1000px;
+    opacity: 80%;
+  }
+  100% {
+    top: 0;
+    opacity: 20%;
+  }
 }
 
 @keyframes slideup {
-  0% { bottom: -1000px; opacity: 80%; }
-  100% { bottom: 0; opacity: 20%; }
+  0% {
+    bottom: -1000px;
+    opacity: 80%;
+  }
+  100% {
+    bottom: 0;
+    opacity: 20%;
+  }
 }
 
 @keyframes slideRight {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
 }
 
 @keyframes enableHover {
-  to { pointer-events: auto; }
+  to {
+    pointer-events: auto;
+  }
 }
 
 // --- sitemap.open 시 스크롤·lenis 차단 ---
