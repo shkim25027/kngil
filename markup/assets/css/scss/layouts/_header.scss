@@ -77,7 +77,6 @@ html {
     position: absolute;
     left: 50%;
     top: 50px;
-    translate: -50% 0;
     padding: 4px;
     &.show {
       display: flex;
@@ -220,47 +219,45 @@ html {
 
     // 각 메뉴별 배경 이미지 및 구분선 애니메이션
     &.value {
+      background-image: url(../img/img_sitemap_01.jpg);
+      background-position: left 42% center;
+      background-size: cover;
+      background-repeat: no-repeat;
       a {
-        background-image: url(../img/img_sitemap_01.jpg);
-        background-position: left 42% center;
-        background-size: cover;
-        background-repeat: no-repeat;
         &::before { background-color: rgba(0, 0, 0, 0.3); }
       }
     }
     &.provided {
+      background-image: url(../img/img_sitemap_02.jpg);
+      background-position: left 32% center;
+      background-size: cover;
+      background-repeat: no-repeat;
       a {
-        background-image: url(../img/img_sitemap_02.jpg);
-        background-position: left 32% center;
-        background-size: cover;
-        background-repeat: no-repeat;
+
         &::before { background-color: rgba(0, 0, 0, 0.2); }
       }
     }
     &.primary {
-      a {
-        background-image: url(../img/img_sitemap_03.jpg);
-        background-position: left 58% center;
-        background-size: cover;
-        background-repeat: no-repeat;
-      }
+      background-image: url(../img/img_sitemap_03.jpg);
+      background-position: left 58% center;
+      background-size: cover;
+      background-repeat: no-repeat;
     }
     &.analysis {
+      background-image: url(../img/img_sitemap_04.jpg);
+      background-position: left 38% center;
+      background-size: cover;
+      background-repeat: no-repeat;
       a {
-        background-image: url(../img/img_sitemap_04.jpg);
-        background-position: left 38% center;
-        background-size: cover;
-        background-repeat: no-repeat;
+
         &::before { background-color: rgba(0, 0, 0, 0.4); }
       }
     }
     &.results {
-      a {
-        background-image: url(../img/img_sitemap_05.jpg);
+      background-image: url(../img/img_sitemap_05.jpg);
         background-position: left 2% center;
-        background-size: auto 102%;
+        background-size: cover;
         background-repeat: no-repeat;
-      }
     }
     
     // 링크 스타일
@@ -279,7 +276,6 @@ html {
       text-decoration: none;
       position: relative;
       z-index: 2;
-
       &::before,
       &::after {
         content: "";
@@ -332,7 +328,6 @@ html {
         font-weight: 400;
         margin: 0;
         color: #fff;
-        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.80);
         
         @include mq(desktop-small, max) {
           display: none;

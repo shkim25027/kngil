@@ -575,9 +575,18 @@
       left: calc(96px - 12px);
       width: calc(100vw - 96px);
     }
+    .spatial .spatial02 .sub-figs .apx,
+    .spatial .spatial03 .sub-figs .apx {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      img {
+        width: 100%;
+        height: 100%;
 
-    .spatial .spatial03 .sub-figs .spatial-03-move {
-      padding: 24px 0 16px;
+      }
     }
   }
 }
