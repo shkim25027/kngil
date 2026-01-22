@@ -614,6 +614,7 @@
       this.topButton = null;
       this.bottomSpace = 230;
       this.defaultBottom = '60px';
+      this.showThreshold = 300; // 버튼을 표시할 스크롤 위치 (px)
     }
 
     /**
@@ -631,16 +632,104 @@
         return;
       }
 
+      // 인라인 onclick 제거
+      this.topButton.removeAttribute('onclick');
+      
       this.setupEventListeners();
+      this.setupClickHandler();
       this.setupHeaderAnimation();
+      this.updateButtonVisibility(); // 초기 상태 설정
     }
 
     /**
      * 이벤트 리스너 설정
      */
     setupEventListeners() {
-      window.addEventListener('scroll', () => this.adjustButtonPosition());
-      window.addEventListener('load', () => this.adjustButtonPosition());
+      // 스크롤 이벤트 (throttle 적용)
+      let ticking = false;
+      const handleScroll = () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            this.adjustButtonPosition();
+            this.updateButtonVisibility();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      };
+      
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      window.addEventListener('load', () => {
+        this.adjustButtonPosition();
+        this.updateButtonVisibility();
+      });
+      
+      // Lenis 스크롤 이벤트도 감지
+      if (typeof window.lenis !== 'undefined' && window.lenis) {
+        window.lenis.on('scroll', () => {
+          this.adjustButtonPosition();
+          this.updateButtonVisibility();
+        });
+      }
+    }
+
+    /**
+     * 클릭 핸들러 설정
+     */
+    setupClickHandler() {
+      if (!this.topButton) return;
+      
+      this.topButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.scrollToTop();
+      });
+    }
+
+    /**
+     * 상단으로 스크롤
+     */
+    scrollToTop() {
+      // Lenis를 사용하는 경우
+      if (typeof window.lenis !== 'undefined' && window.lenis) {
+        window.lenis.scrollTo(0, {
+          duration: 1.0,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t))
+        });
+        return;
+      }
+      
+      // GSAP ScrollToPlugin을 사용하는 경우
+      if (typeof gsap !== 'undefined' && typeof ScrollToPlugin !== 'undefined') {
+        gsap.to(window, {
+          duration: 0.8,
+          scrollTo: { y: 0 },
+          ease: 'power2.out'
+        });
+        return;
+      }
+      
+      // 기본 스무스 스크롤
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    /**
+     * 버튼 표시/숨김 업데이트
+     */
+    updateButtonVisibility() {
+      if (!this.topButton) return;
+      
+      const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+      
+      if (scrollY > this.showThreshold) {
+        this.topButton.classList.remove('topbtn-off');
+        this.topButton.classList.add('topbtn-on');
+      } else {
+        this.topButton.classList.remove('topbtn-on');
+        this.topButton.classList.add('topbtn-off');
+      }
     }
 
     /**
@@ -649,7 +738,7 @@
     adjustButtonPosition() {
       if (!this.topButton) return;
 
-      const scrollY = window.scrollY;
+      const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
 

@@ -27,7 +27,7 @@
   cursor: pointer;
   border-radius: 50%;
   opacity: 0;
-
+  @include textBlind();
   &::before {
     content: "";
     background: #fff;
