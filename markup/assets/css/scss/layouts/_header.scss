@@ -224,6 +224,7 @@ html {
         background-image: url(../img/img_sitemap_01.jpg);
         background-position: left 42% center;
         background-size: cover;
+        background-repeat: no-repeat;
         &::before { background-color: rgba(0, 0, 0, 0.3); }
       }
     }
@@ -232,6 +233,7 @@ html {
         background-image: url(../img/img_sitemap_02.jpg);
         background-position: left 32% center;
         background-size: cover;
+        background-repeat: no-repeat;
         &::before { background-color: rgba(0, 0, 0, 0.2); }
       }
     }
@@ -240,6 +242,7 @@ html {
         background-image: url(../img/img_sitemap_03.jpg);
         background-position: left 58% center;
         background-size: cover;
+        background-repeat: no-repeat;
       }
     }
     &.analysis {
@@ -247,6 +250,7 @@ html {
         background-image: url(../img/img_sitemap_04.jpg);
         background-position: left 38% center;
         background-size: cover;
+        background-repeat: no-repeat;
         &::before { background-color: rgba(0, 0, 0, 0.4); }
       }
     }
@@ -254,7 +258,8 @@ html {
       a {
         background-image: url(../img/img_sitemap_05.jpg);
         background-position: left 2% center;
-        background-size: cover;
+        background-size: auto 102%;
+        background-repeat: no-repeat;
       }
     }
     
@@ -286,7 +291,7 @@ html {
       }
       
       &::before {
-        background-color: #00000077;
+        background-color: rgba(0, 0, 0, 0.5); 
         transition: 0.5s ease;
         z-index: -1;
       }
@@ -323,7 +328,7 @@ html {
       
       // 설명 (p)
       p {
-        font-size: 20px;
+        font-size: 16px;
         font-weight: 400;
         margin: 0;
         color: #fff;

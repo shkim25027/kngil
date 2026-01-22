@@ -1,74 +1,119 @@
+// =======================================
+// Footer Component
+// =======================================
+
 @use "../import/_mixin" as *;
+
+// =======================================
+// Variables
+// =======================================
+
+$footer-bg: #14100c;
+$footer-bg-overlay: #14100cdd;
+$footer-text-primary: #fff;
+$footer-text-secondary: #ffffff80;
+$footer-text-tertiary: #ffffffaa;
+$footer-text-gray: #777;
+$footer-text-divider: #aaa;
+$footer-bg-dark: #2c2121;
+$footer-border: #ddd;
+$footer-shadow: #00000022;
+
+// =======================================
+// Footer
+// =======================================
 
 .footer {
   position: relative;
   width: 100%;
-  background: #14100c;
+  background: $footer-bg;
   color: var(--text-white);
   padding: 16px 60px;
   z-index: 9;
+  
   @include mq(desktop-small, max) {
     padding: 16px 32px;
   }
+  
   @include mq(tablet-small, max) {
     padding: 40px 32px;
   }
   
+  // Footer Wrapper
   &-wrap {
     width: 100%;
     gap: 40px;
-    @include flex(flex-start,space-between);
+    @include flex(flex-start, space-between);
+    
     @include mq(desktop-small, max) {
-      gap:24px;
+      gap: 24px;
     }
+    
     @include mq(tablet-small, max) {
       flex-direction: column;
     }
   }
+  
+  // Footer Menu
   &-menu {
     gap: 32px;
     font-size: 20px;
     font-weight: 500;
-    color: #fff;
+    color: $footer-text-primary;
     white-space: nowrap;
     @include flex(center, space-between);
+    
     @include mq(desktop, max) {
       display: none;
     }
   }
-  .comp{
+  
+  // Footer Close Button
+  &-close {
+    display: none;
+  }
+  
+  // Company Info Section
+  .comp {
     &-info {
       min-width: 240px;
       flex-direction: column;
-      color: #ffffff80;
+      color: $footer-text-secondary;
       @include flex(flex-start, flex-start);
+      
       .logo {
         width: 200px;
         height: 45px;
         opacity: 0.8;
+        
         img {
           vertical-align: middle;
         }
       }
+      
       .ceo {
         font-size: 14px;
+        
         em {
           font-size: 18px;
           font-weight: 500;
           margin-left: 4px;
+          
           @include mq(tablet-small, max) {
             font-size: 14px;
           }
         }
       }
     }
-    &-inner {    
+    
+    &-inner {
       width: 100%;
       font-size: 16px;
-      color: #ffffff80;
+      color: $footer-text-secondary;
       gap: 8px;
       flex-wrap: wrap;
       @include flex(center, space-between);
+      
       @include mq(tablet-small, max) {
         display: grid;
         grid-template-columns: 100%;
@@ -76,78 +121,84 @@
         font-size: 14px;
       }
     }
-    &-contact{
+    
+    &-contact {
       width: max-content;
       gap: 56px;
       @include flex(center, space-between);
-
+      
       @include mq(desktop-small, max) {
-        
         justify-content: end;
       }
+      
       @include mq(tablet-small, max) {
         width: inherit;
         max-width: 400px;
         grid-row: 3;
       }
     }
-    
-    
   }
-  .footer-close {
-    display: none;
-  }
+  
+  // Privacy Box
   .privacy-box {
     font-size: 18px;
     font-weight: 500;
     gap: 40px;
-    @include flex( center, flex-start);
+    @include flex(center, flex-start);
+    
     @include mq(tablet-small, max) {
       font-size: 14px;
     }
+    
     .privacy {
       position: relative;
-      color: #ffffff;
+      color: $footer-text-primary;
       opacity: 0.9;
+      
       &::after {
         position: absolute;
         content: "|";
         font-weight: 300;
         font-size: 16px;
-        color: #aaa;
+        color: $footer-text-divider;
         top: 1px;
         right: -22px;
+        
         @include mq(tablet-small, max) {
           font-size: 12px;
         }
       }
     }
   }
+  
+  // Footer Family Site
   .footer-family {
     position: relative;
-     width: 160px;
-     @include mq(tablet-small, max) {
+    width: 160px;
+    
+    @include mq(tablet-small, max) {
       width: 100%;
       max-width: 400px;
     }
+    
     .btn-family {
       position: relative;
       min-width: 160px;
       width: 100%;
-      color: #fff;
+      color: $footer-text-primary;
       font-weight: 500;
-      position: relative;
-      background: #2c2121;
-      font-weight: 500;
+      background: $footer-bg-dark;
       padding: 8px 12px;
       @include flex(center, space-between);
+      
       &.open {
         &::after {
           transform: scaleY(1);
         }
       }
+      
       &::after {
-        content: " ";
+        content: "";
         width: 12px;
         aspect-ratio: 1 / 1;
         background-image: url(../img/ico/ico_angle.svg);
@@ -158,55 +209,70 @@
         transition: 0.2s;
       }
     }
+    
     .family-list {
       position: absolute;
       left: 0;
       bottom: 100%;
       width: 100%;
       padding: 0 10px;
-      background: #fff;
+      background: $footer-text-primary;
       border-radius: 4px 4px 0 0;
-      color: #777;
+      color: $footer-text-gray;
       font-size: 12px;
       box-sizing: border-box;
-      box-shadow: 0px -2px 10px #00000022;
+      box-shadow: 0px -2px 10px $footer-shadow;
       display: none;
+      
       &.open {
         display: block;
       }
+      
       li {
         padding: 8px 0;
-        border-bottom: 1px solid #ddd;
+        border-bottom: 1px solid $footer-border;
       }
     }
   }
+  
+  // Address
   .address {
-    color: #ffffffaa;
+    color: $footer-text-tertiary;
     display: flex;
     flex-wrap: wrap;
     gap: 2px 24px;
     min-width: 60%;
   }
+  
+  // Copyright
   .copyright {
     @include mq(desktop-small, max) {
       font-size: 13px;
     }
   }
 }
+
+// =======================================
+// Main Page Footer (Overlay)
+// =======================================
+
 .main {
   .footer {
     display: none;
     height: max-content;
-    background: #14100cdd;
+    background: $footer-bg-overlay;
+    
     @include mq(tablet-small, max) {
       display: none !important;
     }
+    
     &.on {
       position: absolute;
       bottom: 0;
       display: block;
       animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
     }
+    
     .footer-close {
       background: url(../img/ico/ico_footer_close.svg) no-repeat;
       background-size: cover;
@@ -220,8 +286,11 @@
       @include textBlind();
     }
   }
-  
 }
+
+// =======================================
+// Keyframe Animations
+// =======================================
 
 @keyframes slideUp {
   from {
