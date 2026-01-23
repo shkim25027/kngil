@@ -1,0 +1,7 @@
+// =======================================
+// Provided Page Layout Overrides
+// =======================================
+// .wrap { overflow: hidden } (layouts/_body)이 position:sticky를 막음 → provided에서만 visible
+.wrap:has(.container.provided) {
+  overflow: visible;
+}

@@ -1,0 +1,277 @@
+// =======================================
+// Results Page - Tabs Section
+// =======================================
+// 탭 네비게이션 및 탭 콘텐츠 영역 스타일
+
+@use "../../import/_mixin" as *;
+@use "variables" as *;
+
+.results-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-top: $results-padding-y;
+  min-height: var(--window-inner-height);
+
+  // 상단 그라데이션 오버레이
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 183px;
+    background: linear-gradient(0deg, $results-gradient-start 0%, $results-gradient-end 80%);
+    pointer-events: none;
+  }
+
+  .tab-panels {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    width: 100%;
+  }
+
+  // ---------------------------------------
+  // Tab Navigation
+  // ---------------------------------------
+  .tab-list {
+    display: flex;
+    justify-content: center;
+    gap: $results-tab-gap;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 60px;
+
+    li a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: $results-tab-padding;
+      min-width: 224px;
+      border-radius: 10px;
+      font-size: $results-tab-font;
+      font-weight: 600;
+      color: $results-text-muted;
+      border: 1px solid $results-tab-inactive;
+      background: $results-tab-inactive;
+      text-decoration: none;
+      transition: background 0.25s, color 0.25s;
+    }
+    
+    li.on a {
+      color: #FFF;
+      font-size: $results-tab-font;
+      border: 1px solid $results-tab-border;
+      background: $results-tab-active;
+      i {
+        opacity: 1;
+        background-color: #fff;
+      }
+    }
+    
+    // 탭 아이콘 스타일
+    .ico-nature {
+      width: 18px;
+      height: 18px;
+      opacity: 0.5;
+      @include svgIconMask('../img/results/ico_tab_natural.svg', #000);
+    }
+    .ico-social {
+      width: 16px;
+      height: 16px;
+      opacity: 0.5;
+      @include svgIconMask('../img/results/ico_tab_social.svg', #000);
+    }
+    .ico-cost {
+      width: 16px;
+      height: 10px;
+      opacity: 0.5;
+      @include svgIconMask('../img/results/ico_tab_cost.svg', #000);
+    }
+  }
+
+  // ---------------------------------------
+  // Tab Content Panels
+  // ---------------------------------------
+  .tab-content {
+    position: relative;
+    display: none;
+    width: 100%;
+    overflow: visible;
+    flex: 1;
+    background-repeat: no-repeat, no-repeat;
+    background-position: left bottom, right bottom;
+    background-image: $results-bg-natural, $results-bg-grid;
+    background-size: 70.5729% auto, 100% auto;
+
+    &.social {
+      background-image: $results-bg-social, $results-bg-grid;
+      background-size: 60.15625% auto, 100% auto;
+    }
+    
+    &.cost {
+      background-image: $results-bg-cost, $results-bg-grid;
+      background-size: 31.9270% auto, 100% auto;
+    }
+
+    &.on {
+      display: flex;
+      flex-direction: column;
+
+      .report-page {
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+    }
+  }
+
+  // ---------------------------------------
+  // Section Hero (타이틀 + 보고서 스택)
+  // ---------------------------------------
+  .section-hero {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    min-height: 0;
+    @include flex(center, center);
+    align-items: center;
+    gap: $results-section-hero-gap;
+    max-width: 1500px;
+    margin: 0 auto;
+
+    @include mq(desktop, max) {
+      flex-direction: column;
+     align-items: flex-start;
+      gap: 64px;
+    }
+  }
+
+  .section-hero-left {
+    @include mq(desktop, min) {
+      padding-bottom: 160px;
+    }
+    
+    .section-title-large {
+      position: relative;
+      font-size: $results-title-large;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: $results-text-primary;
+
+      .watermark {
+        position: absolute;
+        bottom: 20px;
+        left: -10px;
+        display: block;
+        font-size: $results-title-watermark;
+        font-weight: 900;
+        line-height: 1;
+        opacity: 0.08;
+        color: $results-watermark;
+        margin-bottom: 4px;
+      }
+    }
+    
+    .section-desc {
+      font-size: $results-desc;
+      font-weight: 400;
+      color: $results-text-secondary;
+    }
+  }
+
+  // ---------------------------------------
+  // Report Stack (보고서 이미지 스택)
+  // ---------------------------------------
+  .section-hero-right {
+    position: relative;
+    min-height: 330px;
+
+    .report-stack {
+      position: relative;
+      width: 100%;
+      display: flex;
+    }
+
+    .report-page {
+      position: relative;
+      flex-shrink: 0;
+      width: $results-report-page-width;
+      height: $results-report-page-height;
+      overflow: hidden;
+      z-index: var(--index);
+      opacity: 0;
+      transform: translateY(120px);
+
+      // 첫 번째 카드 배경 효과
+      &:first-child {
+        overflow: visible;
+        &::before {
+          content: '';
+          position: absolute;
+          z-index: -1;
+          left: -12px;
+          top: -10px;
+          width: 270px;
+          height: 350px;
+          border-radius: 6px;
+          background: linear-gradient(170deg, rgba(227, 227, 227, 0.24) 4.48%, rgba(0, 0, 0, 0.40) 92.19%), #242D2B;
+        }
+      }
+
+      // 겹침 효과
+      &:not(:first-child) {
+        margin-left: $results-report-page-shadow;
+        box-shadow: -5px 0 4px 0 rgba(0, 0, 0, 0.20);
+      }
+
+      // 보고서 상단 핸들
+      .report-pick {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 1;
+        width: $results-report-pick-width;
+        height: $results-report-pick-height;
+        border-radius: 2px;
+        background: #D9D9D9;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25);
+        
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 6px;
+          border-radius: 2px 2px 0 0;
+          opacity: 0.6;
+          background: linear-gradient(180deg, #D9D9D9 0%, #BCBCBC 50.96%, #D9D9D9 98.56%);
+        }
+        
+        &::after {
+          content: '';
+          position: absolute;
+          top: 2px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 76px;
+          height: 1px;
+          opacity: 0.42;
+          background: linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, #FFF 45.67%, rgba(255, 255, 255, 0.00) 100%);
+        }
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+    }
+
+  }
+}

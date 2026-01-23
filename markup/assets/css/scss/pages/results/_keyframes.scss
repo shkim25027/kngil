@@ -1,0 +1,16 @@
+// =======================================
+// Results Page - Keyframes
+// =======================================
+// results 페이지 전용 애니메이션 키프레임
+// 공통 애니메이션은 common/_animations.scss 참조
+
+@keyframes reportPageUp {
+  from {
+    opacity: 0;
+    transform: translateY(120px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

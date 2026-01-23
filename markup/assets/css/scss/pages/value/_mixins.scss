@@ -1,0 +1,92 @@
+@use "../../import/_mixin" as *;
+@use "variables" as *;
+
+// =======================================
+// Value Page Mixins
+// =======================================
+
+@mixin value-text-shadow {
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.10), 
+               1px -1px 0 rgba(0, 0, 0, 0.10), 
+               -1px 1px 0 rgba(0, 0, 0, 0.10), 
+               1px 1px 0 rgba(0, 0, 0, 0.10);
+}
+
+@mixin value-bg-cover($url) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+@mixin value-bg-center($url) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
+@mixin value-box-gradient($direction: 90deg, $color1, $color2) {
+  background: linear-gradient($direction, $color1 0%, $color2 100%);
+}
+
+@mixin value-box-shadow($x: 18.559px, $y: 0, $blur: 9.368px, $spread: 0, $color: rgba(0, 0, 0, 0.25)) {
+  box-shadow: $x $y $blur $spread $color;
+}
+
+@mixin value-arrow-after($url, $right: -38px, $width: 38px, $height: 64px) {
+  &::after {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    right: $right;
+    width: $width;
+    height: $height;
+    background: url($url) no-repeat center center;
+    translate: 0 -50%;
+  }
+}
+
+@mixin value-box-overlay($side: right, $opacity: 0.2) {
+  &::after {
+    position: absolute;
+    top: 0;
+    #{$side}: -5px;
+    content: "";
+    width: 30px;
+    height: 100%;
+    border-radius: 0 20px 20px 0;
+    opacity: $opacity;
+    background: linear-gradient(90deg, rgba(115, 115, 115, 0.00) 0%, map-get($value-colors, gray-light) 100%);
+    mix-blend-mode: multiply;
+    pointer-events: none;
+  }
+}
+
+@mixin value-box-mask-gradient($color1, $color2, $color3) {
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3;
+    background: linear-gradient(180deg, $color1 0%, $color2 34%, $color2 68%, $color3 100%);
+    box-sizing: border-box;
+    @include maskContents();
+    padding: 2px;
+  }
+}
+
+@mixin value-list-bullet($padding-left: 20px, $opacity: 0.6) {
+  position: relative;
+  padding-left: $padding-left;
+  &::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: map-get($value-colors, white);
+    opacity: $opacity;
+  }
+}

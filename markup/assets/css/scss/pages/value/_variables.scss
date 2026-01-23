@@ -1,0 +1,53 @@
+// =======================================
+// Value Page Variables
+// =======================================
+
+$value-colors: (
+  white: #fff,
+  black: #000,
+  text-dark: #151515,
+  text-gray: #3c3631,
+  yellow: #CCA700,
+  orange: #FF7700,
+  orange-light: #FFA23A,
+  gold: #EADD83,
+  brown-dark: #583C1C,
+  brown-light: #7D5412,
+  green-dark: #00583E,
+  green-light: #119D49,
+  green-system: #296B55,
+  orange-dark: #BB5F09,
+  orange-system: #EB5F00,
+  gray-dark: #352D1D,
+  gray-light: #737373,
+  gray-line: #aaa,
+  gray-dot: #555
+);
+
+$value-sizes: (
+  border-radius-sm: 4px,
+  border-radius-md: 10px,
+  border-radius-lg: 20px,
+  border-radius-xl: 21px,
+  border-radius-full: 50px,
+  gap-sm: 3px,
+  gap-md: 12px,
+  gap-lg: 24px,
+  gap-xl: 40px,
+  gap-xxl: 50px,
+  padding-sm: 6px,
+  padding-md: 20px,
+  padding-lg: 30px,
+  padding-xl: 50px
+);
+
+$value-font-sizes: (
+  xs: 16px,
+  sm: 18px,
+  md: 20px,
+  lg: 24px,
+  xl: 26px,
+  xxl: 28px,
+  xxxl: 32px,
+  huge: 88px
+);

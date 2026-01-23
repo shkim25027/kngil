@@ -1,0 +1,82 @@
+@use "../../import/_mixin" as *;
+@use "mixins" as *;
+@use "variables" as *;
+
+// =======================================
+// Visual Section
+// =======================================
+.value {
+  .visual {
+    @include value-bg-cover("../img/value/bg_value_visual.jpg");
+    color: map-get($value-colors, white);
+    text-align: center;
+  }
+
+  .sub-header {
+    background: none;
+  }
+
+  .sub-content {
+    padding: 190px 24px 150px 24px;
+    
+    @include mq(desktop, max) {
+      padding: 120px 24px 100px 24px;
+    }
+    
+    @include mq(tablet-small, max) {
+      padding: 80px 16px 60px 16px;
+    }
+    
+    .sub-tit-box {
+      margin-bottom: 160px;
+      
+      @include mq(desktop, max) {
+        margin-bottom: 80px;
+      }
+      
+      @include mq(tablet-small, max) {
+        margin-bottom: 40px;
+      }
+      
+      &::before {
+        background: url(../img/ico_title_obj_w.svg) no-repeat center center;
+        @include mq(tablet-small, max) {
+          background-size: contain;
+        }
+      }
+      
+      .sub-tit {
+        font-size: map-get($value-font-sizes, lg);
+        margin-bottom: 46px;
+        @include value-text-shadow;
+        
+        @include mq(desktop, max) {
+          font-size: 2rem;
+          margin-bottom: 32px;
+        }
+        
+        @include mq(tablet-small, max) {
+          font-size: 1.6rem;
+          line-height: 1.6;
+          margin-bottom: 24px;
+        }
+      }
+    }
+  }
+
+  .symbol-box {
+    max-width: 627px;
+    margin: 0 auto;
+    
+    @include mq(tablet-small, max) {
+      max-width: 100%;
+      padding: 0 16px;
+    }
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}

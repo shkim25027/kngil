@@ -1,0 +1,331 @@
+// =======================================
+// Primary Page - Responsive Styles
+// =======================================
+// 반응형 미디어 쿼리 스타일
+
+@media (max-width: 1600px) {
+  .primary {
+    .key .left {
+      padding-left: 120px;
+      min-width: 520px;
+
+      .mid-tit {
+        width: calc(100vw - 120px);
+
+        span {
+          left: 120px;
+        }
+      }
+    }
+
+    .key .right {
+      padding-right: 120px;
+    }
+  }
+}
+
+@media (max-width: 1400px) {
+  .primary {
+    .key .left {
+      padding-left: 80px;
+      min-width: 450px;
+
+      .mid-tit {
+        width: calc(100vw - 80px);
+        height: 360px;
+        transform: translateY(-200px);
+
+        span {
+          left: 80px;
+          bottom: -66px;
+          font-size: 48px;
+        }
+      }
+
+      ul {
+        padding-top: 160px;
+      }
+    }
+
+    .key .right {
+      padding-right: 100px;
+      padding-top: 255px;
+
+      .sub-figs {
+        grid-template-columns: initial;
+      }
+
+      .sub-text br {
+        display: none;
+      }
+
+      .sub-figs .text br {
+        display: none;
+      }
+
+      .sub-figs .line {
+        width: 88%;
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .primary {
+    .key {
+      margin-bottom: 40px;
+
+      .left {
+        min-width: 350px;
+        padding-left: 64px;
+
+        .mid-tit {
+          width: calc(100vw - 64px);
+
+          span {
+            font-size: 40px;
+            line-height: 52px;
+            bottom: -50px;
+            left: 64px;
+          }
+        }
+
+        ul {
+          padding-top: 140px;
+          gap: 16px;
+        }
+
+        ul li {
+          font-size: 16px;
+
+          &.on {
+            font-size: 18px;
+          }
+        }
+      }
+
+      .right {
+        padding-right: 76px;
+        padding-top: 240px;
+
+        .sub-figs {
+          grid-template-columns: initial;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .primary {
+    .sub-content {
+      &::before {
+        font-size: 90px;
+        bottom: 16px;
+      }
+
+      .diagram-wrap {
+        margin: 150px 0;
+        width: 400px;
+      }
+
+      .dia-element {
+        i {
+          width: 36px;
+        }
+
+        font-size: 14px;
+
+        &.e01 {
+          left: -12%;
+        }
+
+        &.e02 {
+          bottom: 25%;
+          left: -48%;
+        }
+
+        &.e03 {
+          bottom: 31%;
+          right: -55%;
+        }
+      }
+    }
+
+    .key {
+      flex-direction: column;
+      padding: 0;
+      margin-bottom: 120px;
+
+      .left {
+        width: 100%;
+        height: 100px;
+        padding: 0;
+        box-shadow: 0 8px 8px #00000011;
+
+        .mid-tit {
+          transform: initial;
+          width: 100%;
+          height: 100%;
+          left: initial;
+          background: #fff !important;
+          color: #000;
+
+          span {
+            left: 48px;
+            font-size: 34px;
+            bottom: 8px;
+
+            strong {
+              color: #000;
+            }
+
+            br {
+              display: none;
+            }
+          }
+        }
+
+        ul {
+          display: none;
+        }
+      }
+
+      .right {
+        padding: 0 48px 48px;
+
+        .sub-figs {
+          grid-template-columns: 2.5fr 1fr;
+
+          .text {
+            padding: 24px 0;
+            font-size: 16px;
+
+            br {
+              display: initial;
+            }
+
+            br.brk {
+              display: none;
+            }
+          }
+
+          .line {
+            width: 40%;
+          }
+
+          .bottom img {
+            width: 30px;
+          }
+
+          img:not(.apx) {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .primary {
+    .sub-content::before {
+      font-size: 72px;
+      left: 4px;
+    }
+
+    .key .right {
+      .sub-tit {
+        font-size: 22px;
+        margin-bottom: 12px;
+      }
+
+      .sub-figs {
+        grid-template-columns: initial;
+
+        .text {
+          min-width: initial;
+
+          br {
+            display: none;
+          }
+        }
+
+        .line {
+          width: 80%;
+        }
+
+        img:not(.apx) {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .primary {
+    .sub-content {
+      &::before {
+        font-size: 52px;
+      }
+
+      .diagram-wrap {
+        margin: 100px 0;
+        width: 300px;
+      }
+
+      .dia-element {
+        i {
+          width: 30px;
+        }
+
+        font-size: 12px;
+
+        &.e01 {
+          left: -10%;
+        }
+
+        &.e02 {
+          bottom: 23%;
+          left: -44%;
+        }
+
+        &.e03 {
+          bottom: 29%;
+          right: -51%;
+        }
+      }
+
+      .diagram-wrap .dia-circles-wrap {
+        .circle-core {
+          span {
+            font-size: 20px;
+          }
+
+          span:first-child {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+
+    .key .left .mid-tit {
+      height: 100px;
+
+      span {
+        left: 24px;
+        font-size: 26px;
+        bottom: 0;
+      }
+    }
+
+    .key .right {
+      padding: 0 24px;
+
+      .sub-tit {
+        font-size: 20px;
+      }
+    }
+  }
+}

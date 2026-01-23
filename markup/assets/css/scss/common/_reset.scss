@@ -1,0 +1,48 @@
+// =======================================
+// Common - Base Reset & Settings
+// =======================================
+// 기본 리셋 및 전역 설정
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  letter-spacing: -0.04em;
+  scroll-behavior: smooth;
+  user-select: auto;
+}
+
+// =======================================
+// Form Elements
+// =======================================
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-transition: background-color 9999s ease-out;
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff00 inset !important;
+}
+
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+// =======================================
+// Scrollbar
+// =======================================
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #bbb;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+  border-radius: 10px;
+}
+
+// ::-webkit-scrollbar-track {
+//   background-color: #000;
+// }

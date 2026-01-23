@@ -1,0 +1,36 @@
+// =======================================
+// Common - Utility Classes
+// =======================================
+// 공통 유틸리티 클래스
+
+// Clearfix
+.clearfix {
+  /* IE 지원 방식 : *zoom: 1; */
+  &:before,
+  &:after {
+    content: "";
+    display: block;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+// Screen Reader Only / Hidden
+.blind {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.d-none {
+  display: none !important;
+}

@@ -1,0 +1,20 @@
+// =======================================
+// Value Page - Main Entry Point
+// =======================================
+// 모든 섹션과 유틸리티를 통합 관리
+
+// Variables & Mixins (먼저 로드)
+@forward "variables";
+@forward "mixins";
+
+// Animations (다른 파일에서 사용 가능하도록)
+@forward "animations";
+
+// Sections
+@forward "visual";
+@forward "service";
+@forward "data-comparison";
+@forward "intro";
+@forward "summary";
+@forward "value-features";
+@forward "system";

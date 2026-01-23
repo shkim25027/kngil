@@ -1,6 +1,6 @@
 /**
  * Results Page Controller
- * 탭 전환 및 스크롤 기반 타이틀 전환 (3개 key 섹션)
+ * 탭 전환 및 리포트 페이지 순차 애니메이션
  */
 (function() {
   'use strict';
@@ -14,22 +14,13 @@
       tabList: '.tab-list',
       tabLinks: '.tab-list li a',
       tabContents: '.tab-content',
-      key1: '.key.natural',
-      key2: '.key.social',
-      key3: '.key.cost',
-      titles: '.js-fixLeft-tit > li',
-      sections: '.js-fixLeft-secs > article, .js-fixLeft-secs > div',
-      topTabs: '.results-tabs ul li'
+      reportPages: '.report-page',
+      sectionHero: '.section-hero'
     },
     TAB_IDS: ['key-natural', 'key-social', 'key-cost'],
-    SCROLL: {
-      triggerLine: 'top 100px',
-      offsetY: 100,
-      bottomThreshold: 30,
-      tabUpdateThreshold: 0.3
-    },
     ANIMATION: {
-      duration: 0.6
+      reportPageDelay: 100, // 각 report-page 간 지연 시간 (ms)
+      reportPageDuration: 600 // 애니메이션 지속 시간 (ms)
     }
   };
 
@@ -91,11 +82,23 @@
 
       // 탭 컨텐츠 전환
       this.tabContents.forEach((content) => {
+        // 이전 탭의 report-page를 초기 상태로 리셋
+        if (content.classList.contains('on') && typeof ReportPageAnimation !== 'undefined') {
+          ReportPageAnimation.resetPagesInTab(content);
+        }
         content.classList.remove('on');
       });
+      
       const targetContent = document.getElementById(targetId);
       if (targetContent) {
         targetContent.classList.add('on');
+        // 탭 전환 시 report-page 애니메이션 실행
+        if (typeof ReportPageAnimation !== 'undefined') {
+          // 탭 전환 시에는 항상 애니메이션 실행
+          setTimeout(() => {
+            ReportPageAnimation.animateOnTabSwitch(targetContent);
+          }, 50);
+        }
       }
 
       // 탭 링크 상태 업데이트
@@ -113,252 +116,254 @@
   };
 
   // ============================================
-  // Key Section Controller
+  // Report Page Animation Controller
   // ============================================
-  const KeySectionController = {
-    keys: [],
-    keyData: [],
+  const ReportPageAnimation = {
+    animatedTabs: new Set(), // 애니메이션이 실행된 탭 추적
+    resultsWrap: null,
+    observers: new Map(), // 각 탭별 Observer 저장
 
     init() {
-      const key1 = Utils.$(CONFIG.SELECTORS.key1);
-      const key2 = Utils.$(CONFIG.SELECTORS.key2);
-      const key3 = Utils.$(CONFIG.SELECTORS.key3);
-
-      if (!key1 || !key2 || !key3) return;
-
-      this.keys = [key1, key2, key3];
-      this.setupKeyData();
-      this.initScrollTriggers();
-      this.initClickHandlers();
-      this.initTopTabSync();
-    },
-
-    setupKeyData() {
-      this.keyData = this.keys.map((keyEl) => {
-        const titles = keyEl.querySelectorAll(CONFIG.SELECTORS.titles);
-        const sections = keyEl.querySelectorAll(CONFIG.SELECTORS.sections);
-        return { keyEl, titles, sections };
-      });
-
-      // 유효성 검사
-      const isValid = this.keyData.every(
-        (data) => data.titles.length > 0 && data.sections.length > 0
-      );
-      if (!isValid) return;
+      this.resultsWrap = Utils.$(CONFIG.SELECTORS.resultsWrap);
+      if (!this.resultsWrap) return;
 
       // GSAP 및 ScrollTrigger 확인
       if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-        console.warn('[KeySectionController] GSAP or ScrollTrigger not loaded');
+        console.warn('[ReportPageAnimation] GSAP or ScrollTrigger not loaded');
+        // GSAP이 없어도 IntersectionObserver로 대체 가능
+        this.initWithObserver();
         return;
       }
 
       gsap.registerPlugin(ScrollTrigger);
-      if (typeof ScrollToPlugin !== 'undefined') {
-        gsap.registerPlugin(ScrollToPlugin);
-      }
-    },
-
-    initScrollTriggers() {
-      this.keyData.forEach(({ titles, sections }, keyIndex) => {
-        if (!titles || !sections) return;
-
-        // 각 섹션에 대한 스크롤 트리거 설정
-        sections.forEach((section, sectionIndex) => {
-          if (!section) return;
-
-          ScrollTrigger.create({
-            trigger: section,
-            start: CONFIG.SCROLL.triggerLine,
-            onEnter: () => this.updateTitle(titles, sectionIndex),
-            onLeaveBack: () => {
-              const prevIndex = sectionIndex > 0 ? sectionIndex - 1 : 0;
-              this.updateTitle(titles, prevIndex);
-            }
-          });
-        });
-
-        // 마지막 섹션: 페이지 하단 도달 시 활성화 (key3만)
-        if (keyIndex === 2 && sections.length > 0) {
-          ScrollTrigger.create({
-            trigger: sections[sections.length - 1],
-            start: 'bottom bottom',
-            onEnter: () => this.updateTitle(titles, titles.length - 1)
-          });
-        }
-      });
-
-      // 초기 상태 설정
+      this.initWithScrollTrigger();
+      
+      // ScrollTrigger 초기화 후 초기 상태 확인
       ScrollTrigger.addEventListener('refresh', () => {
-        this.setInitialState();
-      });
-      ScrollTrigger.refresh();
-      this.setInitialState();
-
-      // 스크롤 이벤트로 하단 감지
-      window.addEventListener('scroll', () => {
-        if (this.isAtBottom() && this.keyData[2]) {
-          this.updateTitle(this.keyData[2].titles, this.keyData[2].titles.length - 1);
-        }
-      }, { passive: true });
-    },
-
-    initClickHandlers() {
-      this.keyData.forEach(({ keyEl, titles, sections }) => {
-        if (!titles || !sections) return;
-
-        titles.forEach((title, index) => {
-          title.addEventListener('click', () => {
-            this.scrollToSection(sections, titles, index);
-          });
-
-          // 키보드 접근성
-          title.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              this.scrollToSection(sections, titles, index);
-            }
-          });
-        });
+        this.checkInitialState();
       });
     },
 
-    updateTitle(titles, activeIndex) {
-      if (!titles || !titles.length) return;
-      titles.forEach((title, index) => {
-        const isActive = index === activeIndex;
-        title.classList.toggle('on', isActive);
-        title.setAttribute('aria-selected', isActive ? 'true' : 'false');
-        title.setAttribute('tabindex', isActive ? '0' : '-1');
-      });
-    },
+    /**
+     * ScrollTrigger를 사용한 애니메이션 초기화
+     */
+    initWithScrollTrigger() {
+      // 각 탭의 .section-hero를 개별적으로 관찰
+      const tabContents = this.resultsWrap.querySelectorAll(CONFIG.SELECTORS.tabContents);
+      
+      tabContents.forEach((tab) => {
+        const sectionHero = tab.querySelector(CONFIG.SELECTORS.sectionHero);
+        if (!sectionHero) return;
 
-    scrollToSection(sections, titles, index) {
-      const section = sections[index];
-      if (!section) return;
-
-      // 클래스명에서 섹션 식별자 찾기
-      const sectionClass = Array.from(section.classList).find((c) =>
-        /^(natural|social|cost)\d+$/.test(c)
-      );
-
-      if (typeof ScrollToPlugin !== 'undefined' && sectionClass) {
-        gsap.to(window, {
-          duration: CONFIG.ANIMATION.duration,
-          scrollTo: {
-            y: '.' + sectionClass,
-            offsetY: CONFIG.SCROLL.offsetY
-          }
-        });
-      } else {
-        section.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
-
-      this.updateTitle(titles, index);
-    },
-
-    setInitialState() {
-      const atBottom = this.isAtBottom();
-
-      this.keyData.forEach(({ titles, sections }) => {
-        if (!titles || !sections) return;
-
-        let activeIndex = 0;
-
-        if (atBottom && this.keyData.indexOf({ titles, sections }) === 2) {
-          activeIndex = titles.length - 1;
-        } else {
-          // 현재 보이는 섹션 찾기
-          sections.forEach((section, index) => {
-            if (section) {
-              const rect = section.getBoundingClientRect();
-              if (rect.top <= CONFIG.SCROLL.offsetY) {
-                activeIndex = index;
+        const tabId = tab.id;
+        
+        ScrollTrigger.create({
+          trigger: sectionHero,
+          start: 'top center', // .section-hero의 top이 화면 중앙에 도달할 때
+          onEnter: () => {
+            // 활성화된 탭일 때만 실행
+            if (tab.classList.contains('on')) {
+              this.animatePagesInTab(tab);
+              if (!this.animatedTabs.has(tabId)) {
+                this.animatedTabs.add(tabId);
               }
             }
-          });
-
-          // 마지막 섹션 체크
-          const lastSection = sections[sections.length - 1];
-          if (lastSection) {
-            const lastRect = lastSection.getBoundingClientRect();
-            const prevSection =
-              sections.length > 1 ? sections[sections.length - 2] : null;
-            const prevRect = prevSection ? prevSection.getBoundingClientRect() : null;
-
-            if (
-              lastRect.top < window.innerHeight &&
-              lastRect.bottom > 0 &&
-              prevRect &&
-              prevRect.top < 0
-            ) {
-              activeIndex = sections.length - 1;
+          },
+          onEnterBack: () => {
+            // 위로 스크롤해서 다시 중앙에 올 때도 실행 (활성화된 탭일 때만)
+            if (tab.classList.contains('on')) {
+              this.animatePagesInTab(tab);
+              if (!this.animatedTabs.has(tabId)) {
+                this.animatedTabs.add(tabId);
+              }
             }
+          },
+          once: false // 탭 전환 시 다시 실행될 수 있도록
+        });
+      });
+
+      // 초기 로드 시 활성화된 탭이 이미 화면 중앙에 있는지 확인
+      this.checkInitialState();
+    },
+
+    /**
+     * 초기 로드 시 활성화된 탭의 .section-hero의 top이 화면 중앙보다 위에 있는지 확인
+     */
+    checkInitialState() {
+      const activeTab = this.resultsWrap.querySelector('.tab-content.on');
+      if (!activeTab) return;
+
+      const sectionHero = activeTab.querySelector(CONFIG.SELECTORS.sectionHero);
+      if (!sectionHero) return;
+
+      const rect = sectionHero.getBoundingClientRect();
+      const viewportCenter = window.innerHeight / 2;
+      
+      // .section-hero의 top이 화면 중앙보다 위에 있으면 애니메이션 실행
+      if (rect.top <= viewportCenter) {
+        const tabId = activeTab.id;
+        if (!this.animatedTabs.has(tabId)) {
+          this.animatePagesInTab(activeTab);
+          this.animatedTabs.add(tabId);
+        }
+      }
+    },
+
+    /**
+     * IntersectionObserver를 사용한 애니메이션 초기화 (GSAP 없을 때)
+     */
+    initWithObserver() {
+      // 각 탭의 .section-hero를 개별적으로 관찰
+      const tabContents = this.resultsWrap.querySelectorAll(CONFIG.SELECTORS.tabContents);
+      
+      tabContents.forEach((tab) => {
+        const sectionHero = tab.querySelector(CONFIG.SELECTORS.sectionHero);
+        if (!sectionHero) return;
+
+        const tabId = tab.id;
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting && !this.animatedTabs.has(tabId)) {
+                const rect = entry.boundingClientRect;
+                const viewportCenter = window.innerHeight / 2;
+                
+                // .section-hero의 top이 화면 중앙보다 위에 있으면 애니메이션 실행
+                if (rect.top <= viewportCenter) {
+                  this.animatePagesInTab(tab);
+                  this.animatedTabs.add(tabId);
+                  observer.unobserve(entry.target);
+                }
+              }
+            });
+          },
+          {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.3
+          }
+        );
+
+        observer.observe(sectionHero);
+        this.observers.set(tabId, observer);
+      });
+
+      // 초기 로드 시 활성화된 탭이 이미 화면 중앙에 있는지 확인
+      this.checkInitialState();
+    },
+
+
+    /**
+     * 특정 탭 내의 report-page 애니메이션
+     */
+    animatePagesInTab(tab) {
+      const reportPages = tab.querySelectorAll(CONFIG.SELECTORS.reportPages);
+      if (reportPages.length === 0) return;
+
+      // GSAP이 있으면 GSAP 사용, 없으면 CSS transition 사용
+      if (typeof gsap !== 'undefined') {
+        // 초기 상태 설정 (강제로 리셋)
+        gsap.set(reportPages, {
+          opacity: 0,
+          y: 120,
+          clearProps: 'all' // 이전 애니메이션 속성 제거
+        });
+
+        // 순차적으로 애니메이션
+        gsap.to(reportPages, {
+          opacity: 1,
+          y: 0,
+          duration: CONFIG.ANIMATION.reportPageDuration / 1000,
+          stagger: CONFIG.ANIMATION.reportPageDelay / 1000,
+          ease: 'power2.out'
+        });
+      } else {
+        // CSS transition 사용
+        reportPages.forEach((page, index) => {
+          // 초기 상태로 리셋 (transition 없이)
+          page.style.transition = 'none';
+          page.style.opacity = '0';
+          page.style.transform = 'translateY(120px)';
+
+          // 다음 프레임에서 transition 설정 후 애니메이션 시작
+          requestAnimationFrame(() => {
+            // CSS의 transition이 적용되도록 클래스 확인
+            if (tab.classList.contains('on')) {
+              setTimeout(() => {
+                page.style.opacity = '1';
+                page.style.transform = 'translateY(0)';
+              }, index * CONFIG.ANIMATION.reportPageDelay);
+            }
+          });
+        });
+      }
+    },
+
+    /**
+     * 탭의 report-page를 초기 상태로 리셋
+     */
+    resetPagesInTab(tab) {
+      const reportPages = tab.querySelectorAll(CONFIG.SELECTORS.reportPages);
+      if (reportPages.length === 0) return;
+
+      if (typeof gsap !== 'undefined') {
+        // GSAP으로 즉시 초기 상태로 리셋
+        gsap.set(reportPages, {
+          opacity: 0,
+          y: 120,
+          clearProps: 'all'
+        });
+      } else {
+        // CSS로 초기 상태로 리셋 (transition 없이 즉시)
+        reportPages.forEach((page) => {
+          page.style.transition = 'none'; // 먼저 transition 제거
+          page.style.opacity = '0';
+          page.style.transform = 'translateY(120px)';
+          
+          // 다음 프레임에서 transition 복원 (애니메이션을 위해)
+          requestAnimationFrame(() => {
+            page.style.transition = '';
+          });
+        });
+      }
+    },
+
+    /**
+     * 탭 전환 후 해당 탭의 .section-hero의 top이 화면 중앙보다 위에 있는지 확인
+     */
+    checkTabAfterSwitch(tab) {
+      const sectionHero = tab.querySelector(CONFIG.SELECTORS.sectionHero);
+      if (!sectionHero) return;
+
+      const tabId = tab.id;
+      
+      // 약간의 지연 후 위치 확인 (DOM 업데이트 대기)
+      setTimeout(() => {
+        const rect = sectionHero.getBoundingClientRect();
+        const viewportCenter = window.innerHeight / 2;
+        
+        // .section-hero의 top이 화면 중앙보다 위에 있으면 애니메이션 실행
+        // 탭 전환 시에는 항상 실행 (animatedTabs 체크 제거)
+        if (rect.top <= viewportCenter) {
+          this.animatePagesInTab(tab);
+          // 스크롤 트리거용 추적은 유지 (중복 방지)
+          if (!this.animatedTabs.has(tabId)) {
+            this.animatedTabs.add(tabId);
           }
         }
-
-        this.updateTitle(titles, activeIndex);
-      });
+      }, 100);
     },
 
-    isAtBottom() {
-      return (
-        window.scrollY + window.innerHeight >=
-        document.documentElement.scrollHeight - CONFIG.SCROLL.bottomThreshold
-      );
-    },
-
-    // ============================================
-    // Top Tab Sync (상단 탭과 스크롤 동기화)
-    // ============================================
-    initTopTabSync() {
-      const topTabs = Utils.$$(CONFIG.SELECTORS.topTabs);
-      if (topTabs.length < 3) return;
-
-      // 상단 탭 클릭 시 해당 key 섹션으로 스크롤
-      topTabs.forEach((tab, index) => {
-        const link = tab.querySelector('a');
-        if (!link) return;
-
-        link.addEventListener('click', (e) => {
-          e.preventDefault();
-          const targetKey = this.keys[index];
-          if (!targetKey) return;
-
-          targetKey.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
-
-          // 탭 상태 업데이트
-          topTabs.forEach((t, i) => t.classList.toggle('on', i === index));
-        });
-      });
-
-      // 스크롤에 따라 상단 탭 상태 업데이트
-      const updateTopTabs = () => {
-        const viewportY = window.scrollY + window.innerHeight * CONFIG.SCROLL.tabUpdateThreshold;
-        let activeIndex = 0;
-
-        this.keys.forEach((key, index) => {
-          if (key) {
-            const rect = key.getBoundingClientRect();
-            const keyTop = rect.top + window.scrollY;
-            if (viewportY >= keyTop) {
-              activeIndex = index;
-            }
-          }
-        });
-
-        topTabs.forEach((tab, index) => {
-          tab.classList.toggle('on', index === activeIndex);
-        });
-      };
-
-      window.addEventListener('scroll', updateTopTabs, { passive: true });
-      updateTopTabs();
+    /**
+     * 탭 전환 시 즉시 애니메이션 실행 (화면 중앙 체크 없이)
+     */
+    animateOnTabSwitch(tab) {
+      // 탭 전환 시에는 항상 애니메이션 실행
+      this.animatePagesInTab(tab);
+      const tabId = tab.id;
+      if (!this.animatedTabs.has(tabId)) {
+        this.animatedTabs.add(tabId);
+      }
     }
   };
 
@@ -369,11 +374,11 @@
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', () => {
         TabController.init();
-        KeySectionController.init();
+        ReportPageAnimation.init();
       });
     } else {
       TabController.init();
-      KeySectionController.init();
+      ReportPageAnimation.init();
     }
   };
 

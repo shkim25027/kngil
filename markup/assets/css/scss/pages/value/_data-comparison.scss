@@ -1,0 +1,361 @@
+@use "../../import/_mixin" as *;
+@use "mixins" as *;
+@use "variables" as *;
+
+// =======================================
+// Data Comparison Section
+// =======================================
+.value {
+  .service {
+    .data-comparison {
+      position: relative;
+      padding-top: 80px;
+      display: flex;
+      flex-direction: column;
+      gap: map-get($value-sizes, gap-lg);
+      
+      @include mq(desktop, max) {
+        padding-top: 60px;
+        gap: map-get($value-sizes, gap-xxl);
+      }
+      
+      @include mq(tablet-small, max) {
+        padding-top: 40px;
+        gap: map-get($value-sizes, gap-xxl);
+      }
+
+      // bg_line.svg: linearGradient로 위(opaque) → 아래(transparent) 서서히 사라짐. 화살표 opacity를 동일 구간에 맞춤
+      @keyframes icoArrowMove {
+        0% { top: 0; opacity: 1; }
+        100% { top: 565px; opacity: 0.4; }
+      }
+      
+      .bg-line {
+        position: absolute;
+        top: 0;
+        @include mq(desktop, min) {
+          left: 136px;
+          width: 2px;
+          height: 619px;
+          background: url(../img/value/bg_line.svg) no-repeat center center;
+          
+          &::before {
+            content: " ";
+            position: absolute;
+            top: 113px;
+            left: -8px;
+            width: 16px;
+            height: 66px;
+            background: #4A5022;
+            pointer-events: none; 
+            z-index: 1;
+          }
+
+          &::after {
+            content: " ";
+            position: absolute;
+            top: 360px;
+            left: -8px;
+            width: 16px;
+            height: 66px;
+            background: #52461D;
+            pointer-events: none; 
+            z-index: 1;
+          }
+        }
+
+        .ico-arrow {
+          width: 16px;
+          height: 14px;
+          aspect-ratio: 8/7;
+          background: url(../img/value/ico_move_arrow.svg) no-repeat center center;
+          background-size: contain;
+          position: absolute;
+          top: 0px;
+          left: 50%;
+          translate: -50% 0;
+          animation: icoArrowMove 4s ease-in-out infinite;
+          
+          @include mq(tablet-small, max) {
+            display: none;
+          }
+        }
+      }
+      
+      .comparison-item {
+        display: grid;
+        width: 100%;
+        grid-template-columns: 360px 522px 522px;
+        align-items: center;
+        z-index: 1;
+        
+        @include mq(desktop, max) {
+          grid-template-columns: 1fr 1fr;
+          row-gap: 24px;
+        }
+        
+        @include mq(tablet, max) {
+          display: flex;
+          flex-direction: column;
+          align-items: stretch;
+          justify-content: center;
+          gap: 0px;
+        }
+
+        .data {
+          color: map-get($value-colors, gold);
+        }
+
+        .report {
+          color: map-get($value-colors, orange-light);
+        }
+
+        .fw-big {
+          font-weight: 900;
+        }
+
+        .comparison-label {
+          position: relative;
+          font-size: map-get($value-font-sizes, xl);
+          line-height: 1.26;
+          margin-bottom: 0;
+          color: map-get($value-colors, white);
+          text-align: left;
+          @include value-text-shadow;
+          
+          @include mq(desktop, max) {
+            grid-column: span 2;
+            font-size: 2rem;
+            line-height: 1.4;
+          }
+          
+          @include mq(tablet-small, max) {
+            margin-bottom: 24px;
+            font-size: 2rem;
+            line-height: 1.5; 
+            padding: 0 16px;
+          }
+        }
+
+        .data-type-box {
+          position: relative;
+          border-radius: map-get($value-sizes, border-radius-lg);
+          padding: map-get($value-sizes, padding-md) map-get($value-sizes, padding-xl);
+          margin-bottom: 0;
+          height: 100%;
+          
+          @include mq(desktop, max) {
+            padding: map-get($value-sizes, padding-md) map-get($value-sizes, padding-md);
+          }
+          @include mq(tablet-small, max) {
+            padding: map-get($value-sizes, padding-md) map-get($value-sizes, padding-md);
+            width: 100%;
+          }
+
+          &.analog {
+            @include value-box-gradient(90deg, #5E5C20, #60591D);
+            @include value-box-overlay(right, 0.2);
+            
+            .data-type-list {
+              color: #CFCDBB;
+            }
+          }
+
+          &.digital {
+            @include value-box-gradient(90deg, #6E6421, #77691E);
+            @include value-box-mask-gradient(#EDA831, rgba(237, 168, 49, 0), #EDA831);
+            
+            &::after {
+              content: " ";
+              position: absolute;
+              top: 0;
+              left: -8px;
+              width: 50px;
+              height: 100%;
+              opacity: 0.3;
+              background: url(../img/value/ico_data_arrow.svg) no-repeat center center;
+              background-blend-mode: multiply;
+              mix-blend-mode: multiply;
+              
+              @include mq(tablet-small, max) {
+                display: none;
+              }
+            }
+
+            .data-type-list {
+              span {
+                &:before {
+                  opacity: 1;
+                }
+              }
+            }
+          }
+
+          .data-type-title {
+            font-size: map-get($value-font-sizes, xxl);
+            font-weight: 400;
+            margin-bottom: 12px;
+            color: map-get($value-colors, white);
+            @include value-text-shadow;
+            
+            @include mq(tablet-small, max) {
+              font-size: 1.8rem;
+              margin-bottom: 10px;
+            }
+          }
+
+          .data-type-list {            
+            @include flex(center, center);
+                      
+            li {
+              min-width: 50%;
+              font-size: map-get($value-font-sizes, md);
+              line-height: 1.8;
+              
+              @include mq(tablet-small, max) {
+                font-size: 1.4rem;
+              }
+             
+              span {
+                @include value-list-bullet;
+              }
+            }
+          }
+        }
+
+        .work-method-box {
+          position: relative;
+          border-radius: map-get($value-sizes, border-radius-lg);
+          padding: map-get($value-sizes, padding-lg) map-get($value-sizes, padding-xl);
+          text-align: center;
+          height: 100%;
+          @include mq(desktop, max) {
+            padding: map-get($value-sizes, padding-lg) map-get($value-sizes, padding-md);
+          }
+          @include mq(tablet-small, max) {
+            padding: map-get($value-sizes, padding-md);
+            width: 100%;
+          }
+
+          &.manual {
+            @include value-box-gradient(90deg, #7D5412, #7C5212);
+            @include value-box-overlay(right, 0.2);
+            
+            span {
+              color: #E6DDD0;
+            }
+          }
+
+          &.automated {
+            @include value-box-gradient(90deg, #A35E0B, #BC6405);
+            @include value-box-mask-gradient(#F3D7B1, rgba(243, 215, 177, 0), #F3D7B1);
+            
+            &::after {
+              content: " ";
+              position: absolute;
+              top: 0;
+              left: -8px;
+              width: 50px;
+              height: 100%;
+              opacity: 0.3;
+              background: url(../img/value/ico_report_arrow.svg) no-repeat center center;
+              background-blend-mode: multiply;
+              mix-blend-mode: multiply;
+              
+              @include mq(tablet-small, max) {
+                display: none;
+              }
+            }
+
+            .work-method-list {
+              span {
+                &:before {
+                  opacity: 1;
+                }
+              }
+            }
+          }
+
+          .work-method-title {
+            font-size: map-get($value-font-sizes, xxl);
+            font-weight: 400;
+            margin-bottom: map-get($value-sizes, padding-md);
+            color: map-get($value-colors, white);
+            @include value-text-shadow;
+            
+            @include mq(tablet-small, max) {
+              font-size: 1.8rem;
+              margin-bottom: 16px;
+            }
+          }
+
+          .work-method-list {
+            width: 100%;
+            gap: map-get($value-sizes, gap-sm);
+            @include flex(flex-start, center);
+            
+            @include mq(desktop, max) {
+              justify-content: space-around;
+            }
+                        
+            li {
+              display: flex;
+              flex-direction: column;
+              width: 100%;
+              gap: map-get($value-sizes, gap-md);
+              font-size: map-get($value-font-sizes, xs);
+              line-height: 1.6;
+              color: rgba(255, 255, 255, 0.9);
+              margin-bottom: 10px;
+              @include mq(desktop, max) {
+                max-width: max-content;
+              }
+              @include mq(tablet-small, max) {
+                width: 100%;
+                margin-bottom: 0;
+                align-items: center;
+              }
+              
+              &:last-child {
+                margin-bottom: 0;
+              }
+
+              .work-image {
+                flex-shrink: 0;
+                font-size: map-get($value-font-sizes, xxxl);
+                width: auto;
+                height: 115px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                @include mq(desktop, max) {
+                  max-width: max-content;
+                }
+                @include mq(tablet-small, max) {
+                  height: 80px;
+                  
+                  img {
+                    max-width: 100%;
+                    height: auto;
+                  }
+                }
+              }
+
+              span {
+                @include value-list-bullet;
+                flex: 1;
+                text-align: left;
+                font-size: map-get($value-font-sizes, md);
+                
+                @include mq(tablet-small, max) {
+                  text-align: center;
+                  font-size: 1.4rem;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

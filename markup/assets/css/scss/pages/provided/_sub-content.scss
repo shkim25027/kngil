@@ -1,0 +1,79 @@
+@use "../../import/_mixin" as *;
+
+// =======================================
+// Sub Content Section
+// =======================================
+.provided {
+  section {
+    max-width: 1920px;
+    margin: 0 auto;
+  }
+  
+  .sub-content {
+    min-height: 966px;
+    overflow: hidden;
+        
+    @include mq(tablet-small, max) {
+      min-height: auto;
+      padding: 60px 24px;
+    }
+    
+    &::before {
+      content: "Provided Data";
+      font-size: 140px;
+      font-weight: 900;
+      line-height: 120px;
+      opacity: 0.05;
+      position: absolute;
+      left: 0;
+      bottom: 34px;
+      letter-spacing: -0.06em;
+      
+      @include mq(desktop, max) {
+        font-size: 80px;
+        line-height: 70px;
+        bottom: 20px;
+      }
+      
+      @include mq(tablet-small, max) {
+        font-size: 40px;
+        line-height: 35px;
+        bottom: 10px;
+        opacity: 0.03;
+      }
+    }
+    
+    .sub-tit-box {
+      text-align: center;
+      margin-bottom: 100px;
+      
+      @include mq(desktop, max) {
+        margin-bottom: 60px;
+      }
+      
+      @include mq(tablet-small, max) {
+        margin-bottom: 40px;
+      }
+      
+      .sub-tit {
+        @include mq(desktop, max) {
+          font-size: 2.4rem;
+        }
+        
+        @include mq(tablet-small, max) {
+          font-size: 1.8rem;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+  
+  .sub-text {
+    line-height: 1.4em;
+    
+    @include mq(tablet-small, max) {
+      font-size: 1.4rem;
+      line-height: 1.6;
+    }
+  }
+}

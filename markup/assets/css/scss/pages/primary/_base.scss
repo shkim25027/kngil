@@ -1,0 +1,215 @@
+@use "../../import/_mixin" as *;
+
+// =======================================
+// Primary Page - Base Styles
+// =======================================
+// 기본 스타일: wrap, sub-header, sub-content, diagram
+
+.wrap:has(.container.primary) {
+  overflow: visible;
+}
+
+.primary {
+  .sub-header {
+    background-image: url(../img/primary/bg_primary_title.jpg);
+  }
+
+  .sub-content {
+    margin: 0 auto;
+    text-align: center;
+    min-height: 966px;
+    overflow: visible;
+    
+    &::before {
+      position: absolute;
+      bottom: 0px;
+      left: 32px;
+      content: "Key\A Features";
+      font-size: 120px;
+      opacity: 0.03;
+      text-align: left;
+      font-weight: 900;
+      white-space: pre;
+      line-height: 0.8em;
+      letter-spacing: -0.04em;
+    }
+
+    .sub-tit-box {
+      text-align: center;
+      margin-bottom: 100px;
+    }
+
+    .diagram-wrap {
+      width: 480px;
+      aspect-ratio: 1 / 1;
+      margin: 30px auto 60px auto;
+      position: relative;
+      overflow: visible;
+      background-image: url(../img/bg_atom_obj.svg);
+      background-repeat: no-repeat;
+      background-position: top center;
+      background-size: contain;
+      
+      &::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        top: 0;
+        left: 0;
+        background-image: url(../img/bg_atom_line.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+      }
+
+      .dia-circles-wrap {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        
+        &::after {
+          display: none;
+        }
+      }
+
+      .circle-core {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 52%;
+        aspect-ratio: 1 / 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(0deg, #1A543D 0%, #00832A 100%);
+        line-height: 95%;
+        
+        span {
+          font-size: 28px;
+          width: 100%;
+          font-weight: 700;
+        }
+        
+        span:first-child {
+          font-size: 20px;
+          font-weight: 400;
+        }
+      }
+
+      .circle-dots {
+        .dot {
+          position: absolute;
+          width: 12px;
+          height: 12px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: #116436;
+          
+          &:nth-child(1) {
+            color: #afd7ca;
+            top: 5.41666%;
+            left: 38.3333%;
+            transform: translateY(-50%);
+          }
+          
+          &:nth-child(2) {
+            background: rgba(100, 83, 60, 0.2);
+            color: #eaddce;
+            top: 24.25%;
+            left: 92.5%;
+            transform: translateY(-50%) rotate(240deg);
+          }
+          
+          &:nth-child(3) {
+            color: #f1d1c1;
+            top: 67.70833%;
+            left: 16px;
+            transform: translateY(-50%) rotate(120deg);
+          }
+          
+          &:nth-child(4) {
+            color: var(--color-han-br);
+            top: 62.5%;
+            right: 24px;
+            transform: translateY(-50%) rotate(240deg);
+          }
+          
+          &::before {
+            content: "";
+            width: inherit;
+            height: inherit;
+            border-radius: inherit;
+            position: absolute;
+            z-index: -10;
+            opacity: 0;
+            animation: 2s expand-primary cubic-bezier(0.29, 0, 0, 1) infinite;
+            border: 2px solid;
+          }
+        }
+        
+        &.move {
+          animation-name: dot-rotate3;
+        }
+      }
+
+      .dia-element {
+        position: absolute;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        gap: 16px;
+        text-align: right;
+        font-size: 16px;
+
+        i {
+          width: 40px;
+          aspect-ratio: 1 / 1;
+          flex-shrink: 0;
+          background-position: center;
+          background-size: contain;
+          background-repeat: no-repeat;
+        }
+
+        &.e01 {
+          top: 0;
+          left: -14%;
+        }
+
+        &.e02 {
+          bottom: 27%;
+          left: -52%;
+        }
+
+        &.e03 {
+          bottom: 33%;
+          right: -59%;
+          flex-direction: row;
+          text-align: left;
+        }
+
+        &.e01 i {
+          background-image: url(../img/ico/ico_zone.svg);
+        }
+
+        &.e02 i {
+          background-image: url(../img/ico/ico_setting.svg);
+        }
+
+        &.e03 i {
+          background-image: url(../img/ico/ico_check_list.svg);
+        }
+
+        .dia-tit {
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+}

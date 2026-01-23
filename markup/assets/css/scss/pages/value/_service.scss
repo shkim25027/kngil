@@ -1,0 +1,272 @@
+@use "../../import/_mixin" as *;
+@use "mixins" as *;
+@use "variables" as *;
+
+// =======================================
+// Service Section
+// =======================================
+.value {
+  .service {
+    max-width: 1400px;
+    margin: 0 auto;
+    
+    @include mq(tablet-small, max) {
+      padding: 0 16px;
+    }
+
+    // data-aos의 transform이 stacking context를 만들어 .step-flow::before의 mix-blend-mode가 깨짐 → 애니 종료 후 제거
+    &.aos-animate {
+      transform: none;
+    }
+
+    .step-list {
+      @include mq(tablet-small, max) {
+        margin-bottom: 40px;
+      }
+        .step-desc {
+          font-size: map-get($value-font-sizes, xl);
+          color: map-get($value-colors, white);
+          line-height: 1.5;
+          @include value-text-shadow;
+          
+          @include mq(desktop, max) {
+            margin-bottom: 36px;
+            font-size: 2rem;
+          }
+          
+          @include mq(tablet-small, max) {
+            text-wrap: balance;
+            font-size: 1.6rem;
+            line-height: 1.6;
+            padding: 0 16px;
+          }
+
+        .bg-yellow {
+          padding: 0 map-get($value-sizes, padding-sm) 4px;
+          border-radius: map-get($value-sizes, border-radius-sm);
+          background: linear-gradient(180deg, map-get($value-colors, yellow) 0%, rgba(254, 119, 1, 0.70) 100%);
+        }
+      }
+
+      .step-flow {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 38px;
+        flex-wrap: wrap;
+        list-style: none;
+        padding-right: 38px;
+        margin: 0;
+
+        @include mq(desktop, max) {
+          gap: 24px;
+          padding-right: 0;
+          justify-content: center;
+        }
+        
+        @include mq(tablet-small, max) {
+          flex-direction: column;
+          gap: 16px;
+          padding-right: 0;
+        }
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 1164px;
+          height: 100%;
+          background: linear-gradient(to left, 
+              rgba(217, 217, 217, 0.5) 0%, 
+              rgba(115, 115, 115, 0.7) 100%);
+          opacity: 0.9;
+          mix-blend-mode: multiply;
+          border-radius: 0 map-get($value-sizes, border-radius-lg) map-get($value-sizes, border-radius-lg) 0;
+          clip-path: path('M155.018 31.6207C75.8577 31.6207 61 29.1207 18 0L0 242C55.5 227.129 46.5 208 155.018 208L939.5 208.002H941.358H1154.72C1160.24 208.002 1164.72 203.525 1164.72 198.002V41.6208C1164.72 36.0979 1160.24 31.6207 1154.72 31.6208L939.5 31.6224C674.455 31.6224 234.178 31.6207 155.018 31.6207Z');
+          
+          @include mq(desktop, max) {
+            display: none;
+          }
+        }
+
+        .step-item {
+          position: relative;
+          min-width: 232px;
+          flex: 0 0 auto;
+          z-index: 1;
+          
+          @include mq(desktop, max) {
+            min-width: 200px;
+            flex: 1 1 auto;
+          }
+          
+          @include mq(tablet-small, max) {
+            width: 100%;
+            min-width: auto;
+          }
+
+          &.active {
+            border-radius: map-get($value-sizes, border-radius-xl);
+            @include value-box-gradient(180deg, #C9AF00, map-get($value-colors, orange));
+            padding: map-get($value-sizes, padding-sm);
+            @include value-box-shadow;
+            
+            &::after {
+              right: -38px;
+              background: url(../img/value/ico_step_arrow.svg) no-repeat center center;
+            }
+
+            .step-box {
+              width: 270px;
+              height: 232px;
+              border-radius: map-get($value-sizes, border-radius-xl);
+              background: #FFFDF5;
+              flex-direction: column;
+              @include flex(center, space-between);
+              
+              @include mq(desktop, max) {
+                width: 100%;
+                height: auto;
+                min-height: 200px;
+              }
+              
+              @include mq(tablet-small, max) {
+                width: 100%;
+                max-width: 100%;
+                min-height: 180px;
+              }
+              
+              .step-title { 
+                display: flex;
+                align-items: center; 
+                justify-content: center;
+                width: 184px;
+                height: 48px;
+                margin-bottom: 0;
+                color: map-get($value-colors, white);
+                font-size: map-get($value-font-sizes, xl);
+                font-weight: 700;
+                background: url(../img/value/bg_step_tit.svg);
+                background-position: top center;
+                background-repeat: no-repeat;
+                
+                @include mq(tablet-small, max) {
+                  width: 160px;
+                  height: 40px;
+                  font-size: 1.8rem;
+                  background-size: contain;
+                }
+              }
+            }
+          }
+
+          &:not(:last-child) {
+            &::after {
+              content: " ";
+            }
+            &:nth-child(4) {
+              &::after {
+                right: -48px;
+              }
+            }
+          }
+
+          @include mq(tablet-small, max) {
+            &:not(:last-child)::after {
+              display: none;
+            }
+          }
+
+          @include value-arrow-after("../img/value/ico_step_arrow_sub.svg");
+          
+          @include mq(tablet-small, max) {
+            &::after {
+              display: none;
+            }
+          }
+
+          .step-box {
+            text-align: center;
+            transition: all 0.3s;
+            
+            @include mq(tablet-small, max) {
+              width: 100%;
+              padding: 16px;
+            }
+
+            .step-icon {  
+              max-width: 121px;
+              
+              @include mq(desktop, max) {
+                max-width: 100px;
+              }
+              
+              @include mq(tablet-small, max) {
+                max-width: 80px;
+                margin: 0 auto 12px;
+              }
+              
+              img {
+                width: 100%;
+                height: auto;
+                object-fit: contain;
+              }
+            }
+
+            .step-title {
+              font-size: map-get($value-font-sizes, md);
+              font-weight: 600;
+              margin-bottom: 8px;
+              color: rgba(255, 255, 255, 0.5);
+              @include value-text-shadow;
+              
+              @include mq(tablet-small, max) {
+                font-size: 1.4rem;
+                margin-bottom: 6px;
+              }
+            
+              em {
+                display: block;
+                font-size: 22px;
+                color: rgba(255, 255, 255, 0.86);
+                
+                @include mq(tablet-small, max) {
+                  font-size: 1.8rem;
+                }
+              }
+            }
+
+            .step-subtitle { 
+              font-size: map-get($value-font-sizes, xxl);
+              color: rgba(21, 21, 21, 0.8);
+              
+              @include mq(tablet-small, max) {
+                font-size: 1.8rem;
+              }
+              
+              em {
+                display: block;
+                font-size: map-get($value-font-sizes, xxxl);
+                font-weight: 900;
+                color: map-get($value-colors, text-dark);
+                
+                @include mq(tablet-small, max) {
+                  font-size: 2.2rem;
+                }
+              }
+            }
+          }
+        }
+
+        .step-arrow {
+          color: #4ade80;
+          font-size: map-get($value-font-sizes, lg);
+          font-weight: bold;
+          flex: 0 0 auto;
+        }
+      }
+    }
+  }
+}

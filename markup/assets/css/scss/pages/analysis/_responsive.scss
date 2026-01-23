@@ -1,0 +1,396 @@
+// =======================================
+// Analysis Page - Responsive Styles
+// =======================================
+// 반응형 미디어 쿼리 스타일
+
+@media (max-width: 1600px) {
+  .analysis {
+    .key .left {
+      padding-left: 120px;
+      min-width: 520px;
+
+      .mid-tit {
+        width: calc(100vw - 120px);
+
+        span {
+          left: 120px;
+        }
+      }
+    }
+
+    .key .right {
+      padding-right: 120px;
+    }
+
+    .statistics .left .mid-tit {
+      left: calc(96px - 12px);
+      width: calc(100vw - 96px);
+    }
+  }
+}
+
+@media (max-width: 1400px) {
+  .analysis {
+    .key .left {
+      padding-left: 80px;
+      min-width: 450px;
+
+      .mid-tit {
+        width: calc(100vw - 80px);
+        height: 360px;
+        transform: translateY(-200px);
+
+        span {
+          left: 80px;
+          bottom: -66px;
+          font-size: 48px;
+        }
+      }
+
+      ul {
+        padding-top: 160px;
+      }
+    }
+
+    .key .right {
+      padding-right: 100px;
+      padding-top: 255px;
+
+      .sub-figs {
+        grid-template-columns: initial;
+      }
+
+      .sub-text br {
+        display: none;
+      }
+
+      .sub-figs .text br {
+        display: none;
+      }
+
+      .sub-figs .line {
+        width: 88%;
+      }
+    }
+
+    .statistics .left .mid-tit {
+      left: calc(56px - 12px);
+      width: calc(100vw - 56px);
+
+      span {
+        left: 56px;
+      }
+    }
+
+    .spatial .spatial03 .sub-figs .spatial-03-move {
+      padding: 24px 0 16px;
+    }
+
+    .attribute .right .sub-figs .imgs img {
+      object-fit: cover;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .analysis {
+    .key {
+      margin-bottom: 40px;
+
+      .left {
+        min-width: 350px;
+        padding-left: 64px;
+
+        .mid-tit {
+          width: calc(100vw - 64px);
+
+          span {
+            font-size: 40px;
+            line-height: 52px;
+            bottom: -50px;
+            left: 64px;
+          }
+        }
+
+        ul {
+          padding-top: 140px;
+          gap: 16px;
+        }
+
+        ul li {
+          font-size: 16px;
+
+          &.on {
+            font-size: 18px;
+          }
+        }
+      }
+
+      .right {
+        padding-right: 76px;
+        padding-top: 240px;
+
+        .attribute02 .sub-figs .text br.brk {
+          display: block !important;
+        }
+      }
+    }
+
+    .statistics .left .mid-tit {
+      left: calc(64px - 12px);
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .analysis {
+    .sub-content {
+      &::before {
+        font-size: 90px;
+        bottom: 16px;
+      }
+
+      .diagram-wrap {
+        margin: 150px 0;
+      }
+
+      .dia-element {
+        i {
+          width: 40px;
+        }
+
+        .dia-tit {
+          font-size: 16px;
+        }
+
+        &.dia-element01 {
+          top: -45%;
+        }
+
+        &.dia-element02 {
+          bottom: -9%;
+          left: -24%;
+        }
+
+        &.dia-element03 {
+          bottom: -9%;
+          right: -24%;
+        }
+      }
+    }
+
+    .key {
+      flex-direction: column;
+      padding: 0;
+      margin-bottom: 120px;
+
+      .left {
+        width: 100%;
+        min-width: initial;
+        height: 100px;
+        padding: 0;
+        box-shadow: 0 8px 8px #00000011;
+
+        .mid-tit {
+          transform: initial;
+          width: 100%;
+          height: 100%;
+          left: initial;
+          background: #fff !important;
+          color: #000;
+
+          span {
+            left: 48px;
+            font-size: 34px;
+            bottom: 8px;
+
+            strong {
+              color: #000;
+            }
+
+            br {
+              display: none;
+            }
+          }
+        }
+
+        ul {
+          display: none;
+        }
+      }
+
+      .right {
+        padding: 0 48px 48px;
+
+        .sub-figs {
+          grid-template-columns: 2.5fr 1fr;
+
+          .text {
+            padding: 24px 0;
+            font-size: 16px;
+
+            br {
+              display: initial;
+            }
+
+            br.brk {
+              display: none;
+            }
+          }
+
+          .line {
+            width: 40%;
+          }
+
+          .bottom img {
+            width: 30px;
+          }
+        }
+      }
+    }
+
+    .statistics .left .mid-tit span {
+      left: 48px !important;
+    }
+
+    .attribute {
+      margin-bottom: 40px;
+    }
+
+    .key .right .attribute02 .sub-figs .text br.brk {
+      display: none !important;
+    }
+
+    .spatial .spatial03 .sub-figs .spatial-03-move img:nth-child(2) {
+      margin-bottom: 4%;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .analysis {
+    .sub-content::before {
+      font-size: 72px;
+      left: 4px;
+    }
+
+    .sub-content .keyword br.brk {
+      display: initial;
+    }
+
+    .key .right {
+      .sub-tit {
+        font-size: 22px;
+        margin-bottom: 12px;
+      }
+
+      .sub-figs {
+        grid-template-columns: initial;
+
+        .text {
+          min-width: initial;
+
+          br {
+            display: none;
+          }
+        }
+
+        .line {
+          width: 80%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .analysis {
+    .sub-content {
+      &::before {
+        font-size: 52px;
+      }
+
+      .keyword {
+        padding: 0 32px;
+
+        br {
+          display: none !important;
+        }
+      }
+
+      .diagram-wrap {
+        margin: 100px 0;
+      }
+
+      .dia-element {
+        i {
+          width: 30px;
+        }
+
+        .dia-tit {
+          font-size: 14px;
+        }
+
+        .line {
+          width: 32px;
+        }
+
+        &.dia-element01 {
+          top: -56%;
+        }
+
+        &.dia-element02 {
+          bottom: -18%;
+          left: -32%;
+        }
+
+        &.dia-element03 {
+          bottom: -18%;
+          right: -32%;
+        }
+      }
+
+      .diagram-wrap .dia-circles-wrap {
+        width: 200px;
+
+        .circle-core {
+          font-size: 24px;
+
+          span:first-child {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+
+    .key .left .mid-tit {
+      height: 100px;
+
+      span {
+        left: 24px;
+        font-size: 26px;
+        bottom: 0;
+      }
+    }
+
+    .key .right {
+      padding: 0 24px;
+
+      .sub-tit {
+        font-size: 20px;
+      }
+    }
+
+    .statistics .left .mid-tit span {
+      left: 24px !important;
+    }
+
+    .key .right .statistics01 .sub-figs .text .bottom br {
+      display: initial;
+    }
+
+    .key .right .attribute02 .sub-figs .text br.brk {
+      display: initial !important;
+    }
+  }
+}

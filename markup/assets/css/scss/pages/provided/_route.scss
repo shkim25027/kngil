@@ -1,0 +1,369 @@
+@use "../../import/_mixin" as *;
+
+// =======================================
+// Route Section
+// =======================================
+.provided {
+  .route {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    margin-bottom: 120px;
+    
+    @include mq(desktop, max) {
+      margin-bottom: 80px;
+    }
+    
+    @include mq(tablet-small, max) {
+      margin-bottom: 60px;
+    }
+
+    div {
+      width: 100%;
+      height: 100vh;
+      font-size: 30px;
+      
+      @include mq(tablet-small, max) {
+        height: auto;
+        font-size: 24px;
+      }
+    }
+
+    #sec1 {
+      position: absolute;
+      top: 0;
+    }
+
+    .fix {
+      position: sticky;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 50px 210px;
+      background: url(../img/primary_route_bg.png);
+      background-size: 100%;
+      background-position: 0 top;
+      background-repeat: no-repeat;
+      gap: 40px;
+      
+      @include mq(desktop, max) {
+        padding: 40px 100px;
+        gap: 32px;
+      }
+      
+      @include mq(tablet-small, max) {
+        position: relative;
+        padding: 30px 16px;
+        flex-direction: column;
+        gap: 24px;
+      }
+    }
+
+    .subs {
+      width: 100%;
+      margin-left: 150px;
+      
+      @include mq(desktop, max) {
+        margin-left: 80px;
+      }
+      
+      @include mq(tablet-small, max) {
+        margin-left: 0;
+        width: 100%;
+      }
+
+      li {
+        display: none;
+
+        &.on {
+          display: initial;
+        }
+
+        .sub-tit {
+          font-size: 28px;
+          font-weight: 500;
+          color: #00832A;
+          margin-bottom: 20px;
+          
+          @include mq(desktop, max) {
+            font-size: 24px;
+          }
+          
+          @include mq(tablet-small, max) {
+            font-size: 20px;
+            margin-bottom: 16px;
+          }
+        }
+
+        .mid-tit {
+          font-size: 72px;
+          color: var(--color-green);
+          display: inline-block;
+          margin-right: 32px;
+          
+          @include mq(desktop, max) {
+            font-size: 56px;
+            margin-right: 24px;
+          }
+          
+          @include mq(tablet-small, max) {
+            font-size: 36px;
+            margin-right: 16px;
+            display: block;
+            margin-bottom: 8px;
+          }
+        }
+
+        .sub-text {
+          font-size: 20px;
+          display: inline-block;
+          line-height: 160%;
+          
+          @include mq(desktop, max) {
+            font-size: 18px;
+          }
+          
+          @include mq(tablet-small, max) {
+            font-size: 16px;
+            display: block;
+            line-height: 1.6;
+          }
+        }
+      }
+    }
+
+    .content {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      height: 80%;
+      min-height: 680px;
+      
+      @include mq(desktop, max) {
+        min-height: 500px;
+      }
+      
+      @include mq(tablet-small, max) {
+        flex-direction: column;
+        height: auto;
+        min-height: auto;
+      }
+    }
+
+    .tabs {
+      width: 150px;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      align-self: flex-end;
+      gap: 4px;
+      background: url(../img/primary_menu_bg.png);
+      background-size: cover;
+      background-repeat: no-repeat;
+      padding: 40px 0;
+      margin-right: -2px;
+      
+      @include mq(desktop, max) {
+        width: 120px;
+        padding: 30px 0;
+      }
+      
+      @include mq(tablet-small, max) {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        align-self: auto;
+        padding: 16px;
+        margin-right: 0;
+        overflow-x: auto;
+        gap: 8px;
+      }
+
+      li {
+        width: 100%;
+        padding: 4px 0 8px 14px;
+        border-radius: 8px 0 0 8px;
+        cursor: pointer;
+        
+        @include mq(tablet-small, max) {
+          width: auto;
+          min-width: 100px;
+          padding: 8px 12px;
+          border-radius: 8px;
+        }
+
+        &.on {
+          background: #FF7F1C1a;
+          border: 3px solid #ff7f1c;
+          border-right: none;
+          position: relative;
+          
+          @include mq(tablet-small, max) {
+            border-right: 3px solid #ff7f1c;
+          }
+
+          &::before {
+            content: "";
+            height: 35px;
+            width: 2px;
+            background: linear-gradient(-180deg, #FF7F1C00 0%, #FF7F1C 100%);
+            display: block;
+            position: absolute;
+            top: -35px;
+            right: 0;
+            
+            @include mq(tablet-small, max) {
+              display: none;
+            }
+          }
+
+          &::after {
+            content: "";
+            height: 35px;
+            width: 2px;
+            background: linear-gradient(180deg, #FF7F1C 0%, #FF7F1C00 100%);
+            display: block;
+            position: absolute;
+            bottom: -35px;
+            right: 0;
+            
+            @include mq(tablet-small, max) {
+              display: none;
+            }
+          }
+        }
+
+        a {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: left;
+          gap: 4px;
+          color: #fff;
+          border-radius: 4px;
+          font-size: 16px;
+          
+          @include mq(tablet-small, max) {
+            font-size: 14px;
+            align-items: center;
+          }
+
+          b {
+            border-bottom: 1px solid #261F10dd;
+            position: relative;
+            font-size: 14px;
+            
+            @include mq(tablet-small, max) {
+              font-size: 12px;
+            }
+
+            &::after {
+              content: "";
+              background: #ffffff29;
+              width: 100%;
+              height: 1px;
+              position: absolute;
+              left: 0;
+              bottom: -2px;
+            }
+          }
+        }
+      }
+    }
+
+    .tabs-li {
+      li {
+        color: #D7D2B0;
+        font-size: 12px;
+        padding: 0;
+        font-weight: 500;
+        border-radius: 4px 0 0 4px;
+        text-indent: 12px;
+        margin-bottom: 4px;
+        
+        @include mq(tablet-small, max) {
+          border-radius: 4px;
+          text-indent: 0;
+          padding: 4px 8px;
+        }
+      }
+
+      &.on li:first-child {
+        background: linear-gradient(180deg, #0C271E 0%, #0C271E 100%), linear-gradient(90deg, #68593f 0%, #debd7e 16%, #68593f00 100%);
+        background-origin: border-box;
+        background-clip: content-box, border-box;
+        border: 2px solid transparent;
+        color: var(--color-yellow);
+        font-size: 14px;
+        box-sizing: content-box;
+        box-shadow: 0px 0px 10px #000000cc inset;
+        
+        @include mq(tablet-small, max) {
+          font-size: 12px;
+        }
+      }
+    }
+
+    .imgs {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      min-width: 1334px;
+      background: #0c271e;
+      border-radius: 16px;
+      box-sizing: border-box;
+      overflow: hidden;
+      
+      @include mq(desktop, max) {
+        min-width: 100%;
+      }
+      
+      @include mq(tablet-small, max) {
+        min-width: 100%;
+        border-radius: 8px;
+      }
+
+      li {
+        width: 100%;
+        height: 100%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        border-radius: 8px;
+        opacity: 1;
+        display: none;
+
+        &.on {
+          width: 100%;
+          opacity: 1;
+          display: block;
+        }
+
+        a {
+          display: block;
+          width: 100%;
+          height: 100%;
+          padding: 32px;
+          
+          @include mq(desktop, max) {
+            padding: 24px;
+          }
+          
+          @include mq(tablet-small, max) {
+            padding: 16px;
+          }
+
+          img {
+            width: 100%;
+            max-height: 100%;
+          }
+        }
+      }
+    }
+  }
+}

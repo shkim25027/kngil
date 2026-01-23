@@ -1,0 +1,151 @@
+@use "../../import/_mixin" as *;
+
+// =======================================
+// Analysis Page - Key Section (Base)
+// =======================================
+// key 섹션의 기본 스타일
+
+.analysis {
+  // ---------------------------------
+  // Key (base)
+  // ---------------------------------
+  .key {
+    padding-bottom: 160px;
+    padding-top: 320px;
+    gap: 48px;
+    max-width: 1920px;
+    margin: 0 auto;
+
+    .left {
+      overflow: initial;
+      z-index: 10;
+      min-width: 600px;
+
+      .mid-tit {
+        width: calc(100vw - 200px);
+        max-width: 1720px;
+        height: 500px;
+        transform: translateY(-320px);
+        opacity: 1;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        span {
+          position: absolute;
+          bottom: -70px;
+          left: 200px;
+
+          strong {
+            color: #000;
+          }
+        }
+      }
+
+      ul {
+        padding-top: 200px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      ul li {
+        font-size: 20px;
+        font-weight: 300;
+        white-space: nowrap;
+        cursor: pointer;
+
+        &:hover,
+        &.on {
+          font-size: 24px;
+          color: var(--color-green);
+          font-weight: 700;
+        }
+
+        strong {
+          margin-right: 12px;
+          color: inherit;
+          font-weight: inherit;
+        }
+      }
+    }
+
+    .right {
+      padding: 300px 200px 80px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 100px;
+
+      .sub-tit {
+        margin-bottom: 20px;
+        color: var(--color-green);
+      }
+
+      .sub-text {
+        text-align: justify;
+        margin-bottom: 32px;
+      }
+
+      .sub-figs {
+        position: relative;
+        background: var(--color-han_bgbr);
+        width: 100%;
+        max-width: max-content;
+        border-radius: 4px;
+
+        .apx {
+          position: absolute;
+          
+          img, svg {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .text {
+          position: relative;
+          width: 100%;
+          min-width: 280px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: 20px;
+          font-size: 18px;
+          padding: 24px 0;
+        }
+
+        .top {
+          text-align: center;
+        }
+
+        .line {
+          width: 40%;
+          border-top: 1px solid #000;
+          font-size: 0;
+          box-sizing: border-box;
+
+          img {
+            margin: -1px auto 0;
+            display: block;
+          }
+        }
+
+        .bottom {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 8px;
+          color: var(--color-green);
+
+          img {
+            width: 40px;
+            object-fit: contain;
+          }
+        }
+      }
+    }
+  }
+}

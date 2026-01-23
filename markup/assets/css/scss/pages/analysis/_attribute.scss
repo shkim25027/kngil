@@ -1,0 +1,20 @@
+// =======================================
+// Analysis Page - Attribute Section
+// =======================================
+// attribute 관련 스타일
+
+.analysis {
+  // ---------------------------------
+  // Key.attribute
+  // ---------------------------------
+  .attribute {
+    .left .mid-tit {
+      background-image: url(../img/analysis/bg_attribute_title.png);
+    }
+
+    .right .attribute02 .sub-figs .imgs img,
+    .right .attribute03 .sub-figs .imgs img {
+      object-fit: cover;
+    }
+  }
+}

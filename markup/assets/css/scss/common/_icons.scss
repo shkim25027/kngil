@@ -1,0 +1,33 @@
+// =======================================
+// Common - Icons
+// =======================================
+// 공통 아이콘 스타일
+
+i {
+  display: block;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+i.egbim.k,
+font.egbim.k {
+  background-image: url(../img/egbim_k.svg);
+}
+
+i.egbim.w,
+font.egbim.w {
+  background-image: url(../img/egbim_w.svg);
+}
+
+i.egbim-obj.w {
+  background-image: url(../img/egbim_obj_w.svg);
+  width: 77px;
+  min-height: 12px;
+}
+
+i.egbim-obj.k {
+  background-image: url(../img/egbim_obj_k.svg);
+  width: 77px;
+  min-height: 12px;
+}

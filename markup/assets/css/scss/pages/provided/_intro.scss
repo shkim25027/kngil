@@ -1,0 +1,305 @@
+@use "../../import/_mixin" as *;
+
+// =======================================
+// Intro Section
+// =======================================
+.provided {
+  .intro {
+    .top {
+      background-image: url(../img/primary_intro_bg.png);
+    }
+
+    .condition {
+      margin: 0 auto;
+      text-align: center;
+      width: 100%;
+      max-width: 416px;
+      position: relative;
+
+      &::before {
+        position: absolute;
+        bottom: 3px;
+        right: 200px;
+        content: "Key\A Features";
+        font-size: 120px;
+        opacity: 0.03;
+        text-align: right;
+        font-weight: 900;
+        white-space: pre;
+        line-height: 0.8em;
+        letter-spacing: -0.04em;
+        
+        @include mq(desktop, max) {
+          font-size: 80px;
+          right: 100px;
+        }
+        
+        @include mq(tablet-small, max) {
+          font-size: 40px;
+          right: 20px;
+          opacity: 0.02;
+        }
+      }
+
+      .diagram-wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 40px;
+        margin: 0 0 0px 0;
+        
+        @include mq(tablet-small, max) {
+          gap: 24px;
+        }
+
+        .dia-element-top {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          
+          @include mq(tablet-small, max) {
+            position: relative;
+            width: auto;
+            height: auto;
+          }
+
+          .dia-element01 {
+            position: absolute;
+            left: -50px;
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            gap: 16px;
+            
+            @include mq(tablet-small, max) {
+              position: relative;
+              left: auto;
+            }
+
+            .dia-tit {
+              text-align: right;
+              font-size: 16px;
+              
+              @include mq(tablet-small, max) {
+                font-size: 14px;
+              }
+            }
+
+            i {
+              background-image: url(../img/ico_pripary_my.svg);
+            }
+          }
+
+          .dia-element02 {
+            position: absolute;
+            top: calc(100% - 75px);
+            left: -162px;
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            gap: 16px;
+            
+            @include mq(tablet-small, max) {
+              position: relative;
+              top: auto;
+              left: auto;
+            }
+
+            .dia-tit {
+              text-align: right;
+              font-size: 16px;
+              
+              @include mq(tablet-small, max) {
+                font-size: 14px;
+              }
+            }
+
+            i {
+              background-image: url(../img/ico_pripary_command.svg);
+            }
+          }
+
+          .dia-element03 {
+            position: absolute;
+            top: calc(100% - 200px);
+            right: -140px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-content: center;
+            align-items: center;
+            gap: 16px;
+            
+            @include mq(tablet-small, max) {
+              position: relative;
+              top: auto;
+              right: auto;
+            }
+
+            .dia-tit {
+              text-align: left;
+              font-size: 16px;
+              
+              @include mq(tablet-small, max) {
+                font-size: 14px;
+              }
+            }
+
+            i {
+              background-image: url(../img/ico_pripary_civil.svg);
+            }
+          }
+        }
+
+        .dia-element {
+          i {
+            width: 40px;
+            height: 40px;
+            background-position: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            
+            @include mq(tablet-small, max) {
+              width: 32px;
+              height: 32px;
+            }
+          }
+        }
+
+        .dia-circles-wrap {
+          position: absolute;
+          background: none;
+          width: 100%;
+          height: 100%;
+          
+          @include mq(tablet-small, max) {
+            position: relative;
+            width: auto;
+            height: auto;
+          }
+
+          &::after {
+            display: none;
+          }
+
+          .circle-core {
+            width: 240px;
+            height: 240px;
+            line-height: 95%;
+            
+            @include mq(desktop, max) {
+              width: 180px;
+              height: 180px;
+            }
+            
+            @include mq(tablet-small, max) {
+              width: 150px;
+              height: 150px;
+            }
+
+            span {
+              font-size: 30px;
+              line-height: 36px;
+              width: 100%;
+              font-weight: 700;
+              
+              @include mq(desktop, max) {
+                font-size: 24px;
+                line-height: 28px;
+              }
+              
+              @include mq(tablet-small, max) {
+                font-size: 20px;
+                line-height: 24px;
+              }
+            }
+          }
+
+          .circle-dots {
+            .dot {
+              background: #b8afd2;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              &::before {
+                content: "";
+                width: inherit;
+                height: inherit;
+                border-radius: inherit;
+                position: absolute;
+                z-index: -10;
+                opacity: 0;
+                animation: 2s expand cubic-bezier(0.29, 0, 0, 1) infinite;
+              }
+
+              &:nth-child(1) {
+                background: #AFD7CA;
+                top: 32px;
+                left: calc(50% - 52px);
+                transform: translateY(-50%);
+
+                &::before {
+                  border: 5px solid #AFD7CA;
+                }
+              }
+
+              &:nth-child(2) {
+                background: #EADDCE;
+                top: calc(100% - 92px);
+                left: 68px;
+                transform: translateY(-50%) rotate(120deg);
+
+                &::before {
+                  border: 5px solid #EADDCE;
+                }
+              }
+
+              &:nth-child(3) {
+                background: #F1D1C1;
+                top: calc(100% - 175px);
+                right: 6px;
+                transform: translateY(-50%) rotate(240deg);
+
+                &::before {
+                  border: 5px solid #F1D1C1;
+                }
+              }
+            }
+          }
+        }
+
+        .quantum-wrap {
+          width: 100%;
+        }
+
+        .quantum {
+          position: relative;
+          width: 100%;
+
+          &:after {
+            content: "";
+            position: absolute;
+            width: 105%;
+            height: 105%;
+            right: -4%;
+            top: -4px;
+            background: url(../img/atom_line.svg) 0 0 / contain no-repeat;
+            background-size: 100%;
+            z-index: 9;
+            mix-blend-mode: soft-light;
+            
+            @include mq(tablet-small, max) {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

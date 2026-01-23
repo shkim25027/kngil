@@ -60,6 +60,7 @@ const paths = {
   jspoptemp: { src: "./markup/assets/js/pop_temp.js", dest: "./dist/js" },
   jsprovided: { src: "./markup/assets/js/provided.js", dest: "./dist/js" },
   jsanalysis: { src: "./markup/assets/js/analysis.js", dest: "./dist/js" },
+  jslayoutfix: { src: "./markup/assets/js/layout-fix.js", dest: "./dist/js" },
   img: {
     src: "./markup/assets/images/**/*.{png,jpg,jpeg,svg}",
     dest: "./dist/img",
@@ -199,6 +200,11 @@ function jsanalysis() {
   return src(paths.jsanalysis.src).pipe(dest(paths.jsanalysis.dest));
 }
 
+// JS layout-fix copy (layout-fix-left 공통 모듈)
+function jslayoutfix() {
+  return src(paths.jslayoutfix.src).pipe(dest(paths.jslayoutfix.dest));
+}
+
 // Coding List - coding_list.html 및 _coding_list 폴더 복사
 function codingListHtml() {
   return src(paths.codingList.html).pipe(dest(paths.codingList.dest));
@@ -244,9 +250,10 @@ function serve() {
   watch(paths.js.src, scripts);
   watch(paths.jscopy.src, jscopy);
   watch(paths.jsindex.src, jsindex);
-  watch(paths.jspoptemp.src, jspoptemp);
-  watch(paths.jsprovided.src, jsprovided);
-  watch(paths.jsanalysis.src, jsanalysis);
+    watch(paths.jspoptemp.src, jspoptemp);
+    watch(paths.jsprovided.src, jsprovided);
+    watch(paths.jsanalysis.src, jsanalysis);
+    watch(paths.jslayoutfix.src, jslayoutfix);
   // 개발 모드에서는 이미지 최적화 없이 빠르게 복사만
   watch(paths.img.src, images);
   watch(paths.fonts.src, fonts);
@@ -274,6 +281,7 @@ const build = series(
     jspoptemp,
     jsprovided,
     jsanalysis,
+    jslayoutfix,
     html,
     codingListHtml,
     codingListFolder
@@ -295,6 +303,7 @@ const dev = series(
     jspoptemp,
     jsprovided,
     jsanalysis,
+    jslayoutfix,
     html,
     codingListHtml,
     codingListFolder
@@ -317,6 +326,7 @@ const devClean = series(
     jspoptemp,
     jsprovided,
     jsanalysis,
+    jslayoutfix,
     html,
     codingListHtml,
     codingListFolder

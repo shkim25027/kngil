@@ -612,7 +612,7 @@
   class TopButtonController {
     constructor() {
       this.topButton = null;
-      this.bottomSpace = 230;
+      this.bottomSpace = 120;
       this.defaultBottom = '60px';
       this.showThreshold = 300; // 버튼을 표시할 스크롤 위치 (px)
     }

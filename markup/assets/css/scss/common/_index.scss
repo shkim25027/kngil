@@ -1,0 +1,41 @@
+// =======================================
+// Common Styles - Main Entry Point
+// =======================================
+// 공통 스타일 통합 관리
+//
+// 파일 구조:
+// - _reset.scss        : 기본 리셋 및 전역 설정
+// - _typography.scss   : 타이포그래피 스타일
+// - _page-styles.scss  : 페이지별 공통 스타일
+// - _icons.scss        : 공통 아이콘 스타일
+// - _utilities.scss    : 유틸리티 클래스
+// - _modal.scss        : 모달 관련 스타일
+// - _animations.scss   : 공통 애니메이션 키프레임
+// - _responsive.scss   : 반응형 타이포그래피
+//
+// 로드 순서:
+// 1. Reset → 2. Typography → 3. Page Styles → 4. Icons → 5. Utilities → 6. Modal → 7. Animations → 8. Responsive
+
+// 1. Reset (기본 리셋)
+@forward "reset";
+
+// 2. Typography (타이포그래피)
+@forward "typography";
+
+// 3. Page Styles (페이지 공통 스타일)
+@forward "page-styles";
+
+// 4. Icons (아이콘)
+@forward "icons";
+
+// 5. Utilities (유틸리티)
+@forward "utilities";
+
+// 6. Modal (모달)
+@forward "modal";
+
+// 7. Animations (공통 애니메이션)
+@forward "animations";
+
+// 8. Responsive (반응형)
+@forward "responsive";

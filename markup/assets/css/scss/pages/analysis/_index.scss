@@ -1,0 +1,33 @@
+// =======================================
+// Analysis Page - Main Entry Point
+// =======================================
+// analysis 페이지의 모든 스타일을 통합 관리하는 메인 파일
+//
+// 파일 구조:
+// - _base.scss       : 기본 스타일 (wrap, sub-header, sub-content, diagram)
+// - _key.scss        : key 섹션 기본 스타일
+// - _spatial.scss    : spatial 관련 스타일
+// - _statistics.scss : statistics 관련 스타일
+// - _attribute.scss  : attribute 관련 스타일
+// - _keyframes.scss  : 애니메이션 키프레임 정의
+// - _responsive.scss : 반응형 미디어 쿼리 스타일
+//
+// 로드 순서:
+// 1. Base → 2. Key → 3. Sections → 4. Keyframes → 5. Responsive
+
+// 1. Base (기본 스타일)
+@forward "base";
+
+// 2. Key (key 섹션 기본)
+@forward "key";
+
+// 3. Sections (세부 섹션)
+@forward "spatial";
+@forward "statistics";
+@forward "attribute";
+
+// 4. Keyframes (애니메이션)
+@forward "keyframes";
+
+// 5. Responsive (반응형)
+@forward "responsive";

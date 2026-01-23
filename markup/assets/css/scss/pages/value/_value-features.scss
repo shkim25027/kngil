@@ -1,0 +1,312 @@
+@use "../../import/_mixin" as *;
+@use "mixins" as *;
+@use "variables" as *;
+
+// =======================================
+// Value Features Section
+// =======================================
+.value {
+  .value-features {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: stretch;
+    gap: map-get($value-sizes, gap-xl);
+    padding: map-get($value-sizes, padding-md);
+    position: relative;
+    margin-top: 30px;
+    margin-bottom: 60px;
+    z-index: 1;
+
+    @include mq(desktop, max) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      height: auto;
+      min-height: auto;
+      gap: map-get($value-sizes, gap-lg);
+      padding: map-get($value-sizes, padding-md) 24px;
+      margin-top: 20px;
+      margin-bottom: 40px;
+      
+      .bg-line {
+        display: none;
+      }
+    }
+
+    @include mq(tablet-small, max) {
+      display: flex;
+      flex-direction: column;
+      height: auto;
+      min-height: auto;
+      gap: map-get($value-sizes, gap-md);
+      padding: map-get($value-sizes, padding-md) 16px;
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+    
+    @include mq(desktop, max) {
+      gap: map-get($value-sizes, gap-lg);
+    }
+
+    .feature-card {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      border-radius: map-get($value-sizes, border-radius-sm);
+      overflow: hidden;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-color: map-get($value-colors, black);
+      animation: bg_zoom_in 1s ease forwards;
+      backdrop-filter: blur(10px);
+      transition: all 1s;
+      padding: 200px map-get($value-sizes, padding-lg) 0 map-get($value-sizes, padding-lg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: calc(var(--window-inner-height) * 0.5);
+      @include mq(desktop, max) {
+        border-radius: map-get($value-sizes, border-radius-lg);
+      }
+
+      @include mq(tablet-small, max) {
+        padding: 40px 16px 20px 16px;
+        min-height: auto;
+        height: auto;
+      }
+
+      &::after {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: linear-gradient(#00000033 0%, #000000ee 100%);
+      }
+
+      &:hover {
+        @include mq(desktop, min) {
+          padding-top: 100px;
+          transform: scale(1.03);
+        }
+        @include mq(desktop, max) {
+          transform: scale(1.03);
+        }
+      }
+
+      dl {
+        display: flex;
+        flex-direction: column;
+        gap: map-get($value-sizes, gap-lg);
+        @include mq(tablet-small, max) {
+          gap: 20px;
+        }
+      }
+
+      dt {
+        color: map-get($value-colors, white);
+        gap: map-get($value-sizes, gap-md);
+        word-break: keep-all;
+        text-wrap: balance;
+        flex-direction: column;
+        @include flex(flex-start, center);
+        
+        @include mq(tablet-small, min) {
+          padding-right: map-get($value-sizes, padding-lg);
+        }
+        
+        @include mq(tablet-small, max) {
+          font-size: 1.6rem;
+          gap: 20px;
+        }
+
+        i {
+          display: block;
+          width: 48px;
+          height: 48px;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center;
+          @include clearfix();
+          @include mq(tablet-small, max) {
+            width: 3.2rem;
+            height: 3.2rem;
+          }
+        }
+      }
+
+      dd {
+        width: 100%;
+        min-height: 240px;
+        flex: 1;
+        color: #ffffff55;
+        font-weight: normal;
+        line-height: 32px;
+        transition: all 1s;
+        text-wrap: balance;
+        display: flex;
+        align-items: flex-start;
+        @include mq(tablet, max) {
+          min-height: auto;
+          font-size: 1.4rem;
+          color: #ffffff;
+        }
+      }
+
+      &:hover dd {
+        color: map-get($value-colors, white);
+      }
+    }
+
+    .feature-card-wrap {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: map-get($value-sizes, gap-xl);
+
+      .feature-card {
+        height: calc(50% - 20px);
+      }
+    }
+
+    .feature-gis {
+      background-image: url(../img/value/bg_value_gis.jpg);
+      dt i {
+        width: 54px;
+        height: 32px;
+        background-image: url(../img/ico/ico_value_gis.svg);
+      }
+    }
+
+    .feature-data {
+      background-image: url(../img/value/bg_value_data.png);
+      dt i {
+        width: 42px;
+        height: 42px;
+        background-image: url(../img/ico/ico_value_data.svg);
+      }
+    }
+
+    .feature-map {
+      background-image: url(../img/value/bg_value_map.jpg);
+      dt i {
+        width: 48px;
+        height: 48px;
+        background-image: url(../img/ico/ico_value_map.svg);
+      }
+    }
+
+    .feature-custom {
+      background-image: url(../img/value/bg_value_custom.jpg);
+      dt i {
+        width: 48px;
+        height: 48px;
+        background-image: url(../img/ico/ico_value_filter.svg);
+      }
+    }
+
+    .lines {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+
+      @include mq(tablet-small, max) {
+        display: none;
+      }
+
+      &.move-ani {
+        * {
+          animation-duration: 1s;
+          animation-fill-mode: both;
+          position: absolute;
+        }
+
+        div[class^="v"] {
+          top: 0px;
+          border-left: 1px solid map-get($value-colors, gray-line);
+          width: 1px;
+          height: 0;
+          
+          @include mq(desktop, max) {
+            &.v2 {
+              border: 1px solid map-get($value-colors, gray-line);
+              top: 50%;
+              left: 50%;
+              transform: translateX(-50%);
+              width: 0;
+              height: 100%;
+              border-left: 0;
+              border-right: 0;
+              animation-name: h-draw;
+            }
+          }
+        }
+
+        div[class^="d"] {
+          width: 6px;
+          height: 6px;
+          border-radius: map-get($value-sizes, border-radius-full);
+          background-color: map-get($value-colors, gray-dot);
+        }
+
+        .h {
+          border: 1px solid map-get($value-colors, gray-line);
+          top: 0px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 0;
+          height: 100%;
+          border-left: 0;
+          border-right: 0;
+          animation-name: h-draw;
+        }
+
+        .v1 {
+          left: calc(50% - 1px);
+          animation-name: v-center;
+        }
+
+        .v2 {
+          left: 25%;
+          animation-name: v-side;
+        }
+
+        .v3 {
+          left: 75%;
+          animation-name: v-side;
+          
+          @include mq(desktop, max) {
+            display: none;
+          }
+        }
+
+        .d1 {
+          animation-name: dot-center;
+        }
+
+        .d2 {
+          animation-name: dot-side-left;
+          
+          @include mq(desktop, max) {
+            display: none;
+          }
+        }
+
+        .d3 {
+          animation-name: dot-side-right;
+          
+          @include mq(desktop, max) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

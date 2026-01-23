@@ -1,0 +1,64 @@
+// =======================================
+// Results Page - Variables
+// =======================================
+// results 페이지에서 사용하는 모든 변수 정의
+
+// ---------------------------------------
+// Colors
+// ---------------------------------------
+$results-dot: #046A50;
+$results-belt: #F0F7F5;
+$results-dash: #B6D0C9;
+$results-tab-inactive: #E5E5E5;
+$results-tab-active: #BCA17B;
+$results-tab-border: rgba(114, 80, 31, 0.50);
+$results-text-primary: #1a1a1a;
+$results-text-secondary: rgba(0, 0, 0, 0.8);
+$results-text-muted: rgba(0, 0, 0, 0.5);
+$results-watermark: #666;
+$results-gradient-start: rgba(247, 247, 246, 0.00);
+$results-gradient-end: #F7F7F6;
+
+// ---------------------------------------
+// Sizes
+// ---------------------------------------
+$results-diagram-base-radius: 210px;
+$results-diagram-base-size: 500px;
+$results-watermark-base-size: 120px;
+$results-report-page-width: 246px;
+$results-report-page-height: 330px;
+$results-report-page-shadow: -84px;
+$results-report-pick-width: 80px;
+$results-report-pick-height: 16px;
+
+// ---------------------------------------
+// Spacing
+// ---------------------------------------
+$results-section-gap: 100px;
+$results-padding-y: 120px;
+$results-tab-gap: 12px;
+$results-tab-padding: 14px 28px;
+$results-section-hero-gap: 60px;
+
+// ---------------------------------------
+// Typography
+// ---------------------------------------
+$results-title-large: 52px;
+$results-title-watermark: 120px;
+$results-desc: 20px;
+$results-tab-font: 18px;
+
+// ---------------------------------------
+// Background Images
+// ---------------------------------------
+$results-bg-title: url(../img/results/bg_results_title.jpg);
+$results-bg-natural: url(../img/results/bg_natural_left.png);
+$results-bg-social: url(../img/results/bg_social_left.png);
+$results-bg-cost: url(../img/results/bg_cost_left.png);
+$results-bg-grid: url(../img/results/bg_grid.png);
+
+// ---------------------------------------
+// Reference (참고용)
+// ---------------------------------------
+// 다이어그램 아이콘 크기: pos-1: 26px, pos-2: 30px, pos-3: 32px, pos-4: 25px, pos-5: 36px, pos-6: 33px
+// 탭 아이콘 크기: nature: 18x18px, social: 16x16px, cost: 16x10px

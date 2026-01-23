@@ -1,0 +1,50 @@
+// =======================================
+// Analysis Page - Statistics Section
+// =======================================
+// statistics 관련 스타일
+
+.analysis {
+  // ---------------------------------
+  // Key.statistics
+  // ---------------------------------
+  .statistics {
+    .left .mid-tit {
+      background-image: url(../img/analysis/bg_statistics_title.png);
+      left: calc(176px - 12px);
+      width: calc(100vw - 176px);
+      max-width: 1744px;
+
+      span {
+        left: 24px !important;
+      }
+    }
+
+    .statistics01 .sub-figs .apx {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      
+      img, svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .statistics02 .sub-figs .apx {
+      position: absolute;
+      top: 10.0840%;
+      left: 11.4674%;
+      width: 83.8678%;
+    }
+
+    .statistics03 .sub-figs .apx {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

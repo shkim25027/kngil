@@ -1,0 +1,80 @@
+// =======================================
+// Analysis Page - Spatial Section
+// =======================================
+// spatial 관련 스타일
+
+.analysis {
+  // ---------------------------------
+  // Key.spatial
+  // ---------------------------------
+  .spatial {
+    .sub-figs {
+      position: relative;
+    }
+
+    .left .mid-tit {
+      background-image: url(../img/analysis/bg_spatial_title.png);
+    }
+
+    .spatial01 .sub-figs .apx {
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      overflow: hidden;
+      animation: apxWidthToggle 8s ease-in-out infinite;
+      
+      img, svg {
+        position: absolute;
+        width: auto;
+        height: 100%;
+        max-width: max-content;
+        object-fit: contain;
+        object-position: left center;
+      }
+    }
+
+    .spatial02 .sub-figs .apx,
+    .spatial03 .sub-figs .apx {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .spatial03 .sub-figs .spatial-03-move {
+      width: 100%;
+      display: flex;
+      flex-wrap: nowrap;
+      align-items: center;
+      justify-content: space-between;
+      padding: 48px 0 24px;
+
+      img {
+        &:nth-child(1) {
+          width: 14%;
+          margin-bottom: 15%;
+        }
+
+        &:nth-child(2) {
+          width: 40%;
+          margin-bottom: 10%;
+        }
+
+        &:nth-child(3) {
+          width: 80%;
+          transform: translateX(-44%);
+        }
+      }
+
+      .element {
+        animation: spatial-03-ani 2.5s ease-in infinite;
+      }
+    }
+  }
+}

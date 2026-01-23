@@ -1,0 +1,40 @@
+// =======================================
+// Analysis Page - Keyframes
+// =======================================
+// analysis 페이지 전용 애니메이션 키프레임
+// 공통 애니메이션은 common/_animations.scss 참조
+
+@keyframes spatial-03-ani {
+  0% {
+    transform: translate(-40px, -28px) scale(100%);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translate(100px, -28px) scale(150%);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes marker-blink {
+  0%, 100% { 
+    opacity: 1; 
+  }
+  50% { 
+    opacity: 0.35; 
+  }
+}
+
+@keyframes apxWidthToggle {
+  0%, 100% {
+    width: 0;
+  }
+  25%, 75% {
+    width: 100%;
+  }
+  50% {
+    width: 0;
+  }
+}

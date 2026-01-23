@@ -1,0 +1,26 @@
+// =======================================
+// Results Page - Main Entry Point
+// =======================================
+// results 페이지의 모든 스타일을 통합 관리하는 메인 파일
+//
+// 파일 구조:
+// - _variables.scss  : 색상, 크기, 간격, 폰트 등 변수 정의
+// - _keyframes.scss  : 애니메이션 키프레임 정의
+// - _content.scss    : 헤더(.sub-header), 다이어그램(.sub-content), 유틸리티(.txt-line)
+// - _tabs.scss       : 탭 네비게이션(.tab-list) 및 탭 콘텐츠(.tab-content)
+// - _responsive.scss : 반응형 미디어 쿼리 스타일
+//
+// 로드 순서:
+// 1. Variables → 2. Keyframes → 3. Sections → 4. Responsive
+
+// 1. Variables (먼저 로드 - 다른 파일에서 사용)
+@forward "variables";
+
+// 2. Keyframes (애니메이션)
+@forward "keyframes";
+
+// 3. Sections
+@forward "content"; // 헤더, 다이어그램, 유틸리티 포함
+@forward "tabs";    // 탭 네비게이션 및 탭 콘텐츠
+
+

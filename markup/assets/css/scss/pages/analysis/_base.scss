@@ -1,0 +1,206 @@
+@use "../../import/_mixin" as *;
+
+// =======================================
+// Analysis Page - Base Styles
+// =======================================
+// 기본 스타일: wrap, sub-header, sub-content, diagram
+
+.wrap:has(.container.analysis) {
+  overflow: visible;
+}
+
+.analysis {
+  .sub-header {
+    background-image: url(../img/analysis/bg_analysis_title.jpg);
+  }
+
+  .sub-content {
+    flex-direction: column;
+    gap: 100px;
+    margin: 0 auto;
+    text-align: center;
+    max-width: 1920px;
+    margin: 0 auto;
+    @include flex(center, center);
+    
+    &::before {
+      position: absolute;
+      bottom: 0;
+      left: 0px;
+      content: "Data Analysis";
+      font-size: 120px;
+      opacity: 0.03;
+      text-align: left;
+      font-weight: 900;
+      white-space: pre;
+      line-height: 0.8em;
+      letter-spacing: -0.04em;
+    }
+
+    .sub-tit-box {
+    }
+
+    .diagram-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      position: relative;
+    }
+
+    .condition {
+      padding: 120px 0;
+    }
+
+    .dia-element {
+      width: max-content;
+      gap: 12px;
+      position: absolute;
+
+      .line {
+        width: 32px;
+        height: 1px;
+        // background:#046A50;
+        border: 1px dashed #046A50;
+      }
+
+      .dia-tit {
+        font-size: 18px;
+        line-height: 128%;
+        white-space: nowrap;
+      }
+
+      i {
+        width: 48px;
+        aspect-ratio: 1 / 1;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+
+      &.dia-element01 {
+        top: -136px;
+        left: 50%;
+        translate: -50% 0;
+        
+        i {
+          background-image: url(../img/ico/ico_statistic.svg);
+        }
+
+        .line {
+          margin-top: 12px;
+          transform: rotate(90deg);
+          top: calc(100% + 20px);
+        }
+      }
+
+      &.dia-element02 {
+        bottom: 6.5%;
+        left: -46%;
+        flex-direction: row-reverse;
+        text-align: right;
+        @include flex(flex-end, flex-start);
+        
+        i {
+          background-image: url(../img/ico/ico_graph_box.svg);
+        }
+
+        .line {
+          transform: rotate(-30deg);
+          bottom: 100%;
+          left: 100%;
+          z-index: 1;
+          margin-left: 12px;
+        }
+      }
+
+      &.dia-element03 {
+        bottom: 6.5%;
+        right: -46%;
+        flex-direction: row;
+        text-align: left;
+        @include flex(flex-end, flex-start);
+        
+        i {
+          background-image: url(../img/ico/ico_mind_map.svg);
+        }
+
+        .line {
+          transform: rotate(30deg);
+          bottom: 100%;
+          right: 100%;
+          margin-right: 12px;
+        }
+      }
+    }
+
+    .dia-circles-wrap {
+      .circle-belt {
+        background: #F0F7F5;
+        border: 1px solid #B6D0C9;
+      }
+
+      .circle-dash {
+        border: 1px dashed #B6D0C9;
+      }
+
+      .circle-dots {
+        &.move {
+          .dot {
+            background: #046A50;
+          }
+        }
+
+        .dot {
+          background: #046A50;
+
+          &:nth-child(1) {
+            top: 0%;
+            left: calc(50% - 4px);
+            transform: translateY(-50%);
+          }
+
+          &:nth-child(2) {
+            top: 75%;
+            left: 5.5%;
+            transform: translateY(-50%) rotate(120deg);
+          }
+
+          &:nth-child(3) {
+            top: 75%;
+            right: 5.5%;
+            transform: translateY(-50%) rotate(240deg);
+          }
+        }
+
+        &.move {
+          animation-name: dot-rotate3;
+        }
+      }
+
+      .circle-core {
+        position: relative;
+        line-height: 95%;
+        
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          box-sizing: border-box;
+          background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 100%);
+          @include maskContents();
+          padding: 4px;
+        }
+        
+        span:first-child {
+          font-size: 20px;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+@use "../../import/_mixin" as *;
+
+// =======================================
+// Sub Header Section
+// =======================================
+.provided {
+  .sub-header {
+    background: url(../img/provided/bg_provided_title.jpg) no-repeat center center;
+    background-size: cover;
+    
+    @include mq(tablet-small, max) {
+      background-size: cover;
+      background-position: center;
+    }
+  }
+}

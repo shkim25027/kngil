@@ -1,0 +1,77 @@
+// =======================================
+// Primary Page - Keyframes
+// =======================================
+// primary 페이지 전용 애니메이션 키프레임
+// 공통 애니메이션은 common/_animations.scss 참조
+
+@keyframes expand-primary {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  99% {
+    width: 500%;
+    height: 500%;
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    border-color: transparent;
+  }
+}
+
+@keyframes areaSubImgIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 배경 이미지 순환 (3장, 4s each) — 바로 전환
+@keyframes bgSlideLayer1 {
+  0%, 29% { opacity: 1; }
+  33%, 97% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes bgSlideLayer2 {
+  0%, 29% { opacity: 0; }
+  33%, 62% { opacity: 1; }
+  67%, 100% { opacity: 0; }
+}
+
+@keyframes bgSlideLayer3 {
+  0%, 62% { opacity: 0; }
+  67%, 97% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+// 배경 이미지 순환 (4장)
+@keyframes bgSlide4Layer1 {
+  0%, 22% { opacity: 1; }
+  25%, 97% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes bgSlide4Layer2 {
+  0%, 22% { opacity: 0; }
+  25%, 47% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes bgSlide4Layer3 {
+  0%, 47% { opacity: 0; }
+  50%, 72% { opacity: 1; }
+  75%, 100% { opacity: 0; }
+}
+
+@keyframes bgSlide4Layer4 {
+  0%, 72% { opacity: 0; }
+  75%, 97% { opacity: 1; }
+  100% { opacity: 0; }
+}

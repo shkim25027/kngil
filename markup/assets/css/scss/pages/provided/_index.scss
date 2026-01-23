@@ -1,0 +1,21 @@
+// =======================================
+// Provided Page - Main Entry Point
+// =======================================
+// 모든 섹션과 유틸리티를 통합 관리
+
+// Layout Overrides
+@forward "layout";
+
+// Variables (먼저 로드)
+@forward "variables";
+
+// Animations (다른 파일에서 사용 가능하도록)
+@forward "animations";
+
+// Sections
+@forward "sub-header";
+@forward "sub-content";
+@forward "intro";
+@forward "route";
+@forward "process";
+@forward "data-provision";
