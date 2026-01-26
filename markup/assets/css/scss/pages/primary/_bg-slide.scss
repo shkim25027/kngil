@@ -15,6 +15,9 @@
         width: 100%;
         max-width: 100% !important;
         flex-direction: initial !important;
+        will-change: contents;
+        transform: translateZ(0);
+        -webkit-font-smoothing: antialiased; 
 
         .bg-slide-layer {
           position: absolute;
@@ -23,6 +26,10 @@
           background-position: center;
           background-repeat: no-repeat;
           border-radius: inherit;
+          will-change: opacity; // 성능 최적화
+          backface-visibility: hidden; // 렌더링 최적화
+          transition: opacity 0.8s ease-in-out;// 부드러운 전환
+           transition: none; 
         }
       }
 

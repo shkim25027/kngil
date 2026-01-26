@@ -84,9 +84,11 @@
 
           span {
             font-size: 40px;
-            line-height: 52px;
             bottom: -50px;
             left: 64px;
+          }
+          strong {
+            display: block;
           }
         }
 
@@ -125,7 +127,7 @@
       }
 
       .diagram-wrap {
-        margin: 150px 0;
+        margin: 150px auto;
         width: 400px;
       }
 

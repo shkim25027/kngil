@@ -1,11 +1,13 @@
 {
   "name": "kngil_egbim_guide_gulp",
   "version": "1.0.0",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "start": "gulp dev",
     "dev": "gulp dev",
     "build": "gulp build",
+    "optimize-svg": "node extract-base64-images.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

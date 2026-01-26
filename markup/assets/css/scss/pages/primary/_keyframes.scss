@@ -20,58 +20,348 @@
     border-color: transparent;
   }
 }
+// =======================================
+// Primary Page - Key Section Animations
+// =======================================
 
-@keyframes areaSubImgIn {
+// 공통 애니메이션 정의
+@keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(12px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
-// 배경 이미지 순환 (3장, 4s each) — 바로 전환
-@keyframes bgSlideLayer1 {
-  0%, 29% { opacity: 1; }
-  33%, 97% { opacity: 0; }
-  100% { opacity: 1; }
+@keyframes pulseCircle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
 }
 
-@keyframes bgSlideLayer2 {
-  0%, 29% { opacity: 0; }
-  33%, 62% { opacity: 1; }
-  67%, 100% { opacity: 0; }
+// Area 애니메이션 (총 10초 주기 - 반복)
+@keyframes areaDimLayer {
+  0%, 5.99% {
+    opacity: 0;
+  }
+  6%, 100% {
+    opacity: 1;
+  }
 }
 
-@keyframes bgSlideLayer3 {
-  0%, 62% { opacity: 0; }
-  67%, 97% { opacity: 1; }
-  100% { opacity: 0; }
+@keyframes areaApx01 {
+  0%, 5.99% {
+    opacity: 0;
+  }
+  6%, 100% {
+    opacity: 1;
+  }
 }
 
-// 배경 이미지 순환 (4장)
-@keyframes bgSlide4Layer1 {
-  0%, 22% { opacity: 1; }
-  25%, 97% { opacity: 0; }
-  100% { opacity: 1; }
+@keyframes areaApx02 {
+  0%, 24.99% {
+    opacity: 0;
+  }
+  25%, 100% {
+    opacity: 1;
+  }
 }
 
-@keyframes bgSlide4Layer2 {
-  0%, 22% { opacity: 0; }
-  25%, 47% { opacity: 1; }
-  50%, 100% { opacity: 0; }
+@keyframes areaRectBox {
+  0%, 11.99% {
+    opacity: 0;
+  }
+  12%, 100% {
+    opacity: 1;
+  }
 }
 
-@keyframes bgSlide4Layer3 {
-  0%, 47% { opacity: 0; }
-  50%, 72% { opacity: 1; }
-  75%, 100% { opacity: 0; }
+@keyframes areaKeyPoint {
+  0%, 14.99% {
+    opacity: 0;
+  }
+  15%, 100% {
+    opacity: 1;
+  }
 }
 
-@keyframes bgSlide4Layer4 {
-  0%, 72% { opacity: 0; }
-  75%, 97% { opacity: 1; }
-  100% { opacity: 0; }
+// Report 애니메이션 (총 15초 주기 - 반복)
+@keyframes reportDimLayer {
+  0%, 5.99% {
+    opacity: 0;
+  }
+  6%, 39.99% {
+    opacity: 1;
+  }
+  40%, 59.99% {
+    opacity: 0;
+  }
+  60%, 93.99% {
+    opacity: 1;
+  }
+  94%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes reportApx01 {
+  0%, 5.99% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  6% {
+    opacity: 1;
+    transform: scale(0);
+  }
+  9% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  26.99% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  27%, 59.99% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(0);
+  }
+  63% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  80.99% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  81%, 100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+@keyframes reportApx02 {
+  0%, 26.99% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  27% {
+    opacity: 1;
+    transform: scale(0);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  39.99% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  40%, 80.99% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  81% {
+    opacity: 1;
+    transform: scale(0);
+  }
+  84% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  93.99% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  94%, 100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+// Progress 애니메이션
+@keyframes progressDimLayer {
+  0%, 100% {
+    opacity: 1;
+  }
+}
+
+@keyframes progressApx01 {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  0.01%, 5% {
+    opacity: 1;
+    transform: scale(0);
+  }
+  8% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  29.99% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  30%, 100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+@keyframes progressApx02 {
+  0%, 29.99% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  30%, 33% {
+    opacity: 1;
+    transform: scale(0);
+  }
+  36% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes progressApx03 {
+  0%, 59.99% {
+    opacity: 0;
+  }
+  60%, 100% {
+    opacity: 1;
+  }
+}
+
+@keyframes progressKeyPoint {
+  0%, 54.99% {
+    opacity: 0;
+  }
+  55% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// Cost 애니메이션 (총 10초 주기)
+@keyframes costDimLayer {
+  0%, 100% {
+    opacity: 1;
+  }
+}
+
+@keyframes costApx01 {
+  0%, 32.99% {
+    opacity: 1;
+  }
+  33%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes costZoomBox01 {
+  0%, 8% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  32.99% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  33%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+}
+
+@keyframes costApx02 {
+  0%, 32.99% {
+    opacity: 0;
+  }
+  33%, 65.99% {
+    opacity: 1;
+  }
+  66%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes costZoomBox02 {
+  0%, 32.99% {
+    opacity: 0;
+  }
+  33%, 65.99% {
+    opacity: 1;
+  }
+  66%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes costApx03 {
+  0%, 65.99% {
+    opacity: 0;
+  }
+  66%, 99.99% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes costZoomBox03 {
+  0%, 65.99% {
+    opacity: 0;
+  }
+  66%, 99.99% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+// Data 애니메이션
+@keyframes dataDimLayer {
+  0%, 100% {
+    opacity: 1;
+  }
+}
+
+@keyframes dataApx01 {
+  0%, 30% {
+    opacity: 0;
+  }
+  35%, 100% {
+    opacity: 1;
+  }
+}
+
+@keyframes dataApx02 {
+  0%, 65% {
+    opacity: 0;
+  }
+  70%, 100% {
+    opacity: 1;
+  }
 }
