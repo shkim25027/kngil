@@ -32,15 +32,10 @@
       gap: map-get($value-sizes, gap-lg);
     }
 
-    .ico-logo {
+    .logo-c {
       display: inline-block;
       width: 220px;
       height: 54px;
-      background-image: url(../img/loco_kngil_c.svg);
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      @include textBlind();
       
       @include mq(tablet-small, max) {
         width: 160px;

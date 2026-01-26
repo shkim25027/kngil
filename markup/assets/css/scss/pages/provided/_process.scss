@@ -28,7 +28,6 @@
       @include mq(desktop, max) {
         min-width: 400px;
         padding-left: 100px;
-        min-height: auto;
       }
       
       @include mq(tablet-small, max) {
