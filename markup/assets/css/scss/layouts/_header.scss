@@ -316,7 +316,9 @@ html {
         font-weight: 900;
         line-height: 1.2;
         z-index: 2;
-        
+        @include mq(tablet-wide, max) {
+          font-size: 2.8rem;
+        }
         &::before {
           position: absolute;
           top: -100px;
@@ -329,6 +331,21 @@ html {
           font-size: 80px;
           display: none;
           z-index: -1;
+
+          @include mq(desktop-small, max) {
+            display: block;
+            top: -50%;
+            left: 0;
+            width: max-content;
+            line-height: 1;
+            font-size: 60px;
+          }
+          @include mq(tablet, max) {
+            font-size: 3.8rem;
+          }
+          @include mq(phone-wide, max) {
+            display: none;
+          }
         }
       }
       
@@ -355,26 +372,41 @@ html {
     &.value a span::before {
       content: "\AValue of";
       white-space: pre;
+      @include mq(desktop-small, max) {
+        content: "Value of";
+      }
     }
     
     &.provided a span::before {
       content: "Provided\A Data";
       white-space: pre;
+      @include mq(desktop-small, max) {
+        content: "Provided Data";
+      }
     }
     
     &.primary a span::before {
       content: "Key \A Features";
       white-space: pre;
+      @include mq(desktop-small, max) {
+        content:"Key Features";
+      }
     }
     
     &.analysis a span::before {
       content: "Data\A Analysis";
       white-space: pre;
+      @include mq(desktop-small, max) {
+        content:"Data Analysis";
+      }
     }
     
     &.results a span::before {
       content: "Exploration\A Results";
       white-space: pre;
+      @include mq(desktop-small, max) {
+        content:"Exploration Results";
+      }
     }
     
     // Hover 효과 (PC & 모바일 공통)
