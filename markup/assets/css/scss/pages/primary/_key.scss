@@ -80,7 +80,7 @@
 
       .sub-text {
         text-align: justify;
-        margin-bottom: 32px;
+        margin-bottom: 42px;
       }
 
       .sub-figs {
@@ -366,6 +366,7 @@
               box-sizing: border-box;
               min-width: 1px;
               min-height: 1px;
+              transform: scale(0.95);
             }
           }
 
