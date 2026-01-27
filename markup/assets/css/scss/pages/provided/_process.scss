@@ -8,6 +8,10 @@
   .process {
     overflow: visible; /* 조상 overflow:hidden이면 position:sticky 비동작 */
 
+    @include mq(tablet-small, max) {
+      flex-direction: column; /* 모바일에서 .left가 min-width:100%면 .right에 공간이 남지 않음 → 세로 배치로 .right 노출 */
+    }
+
     .left {
       align-self: flex-start; /* flex stretch 시 sticky 무효화 방지 */
       display: flex;
