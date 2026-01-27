@@ -1,3 +1,5 @@
+@use "../import/_mixin" as *;
+
 // =======================================
 // Components Index
 // =======================================
@@ -6,7 +8,6 @@
 @forward "buttons";      // 버튼 컴포넌트
 @forward "popup";        // 팝업 컴포넌트
 @forward "diagram";      // 다이어그램
-@forward "intro";         // 인트로
 @forward "layout-fix";    // 레이아웃 수정
 @forward "mouse-mark";    // 마우스 마크
  

@@ -28,39 +28,30 @@
     flex-direction: column;
     gap: $results-section-gap;
     margin: 0 auto;
+    padding-bottom: 250px;
     text-align: center;
-    max-width: 1920px;
     @include flex(center, center);
+    @include mq(tablet-wide, max) {
+      padding-bottom: 180px;
+    }
     
     // 워터마크 텍스트
     &::before {
-      position: absolute;
-      bottom: 0;
-      left: 0;
       content: "Exploration\A Results";
-      font-size: $results-watermark-base-size;
-      opacity: 0.03;
       text-align: left;
-      font-weight: 900;
-      white-space: pre;
       line-height: 0.8em;
       letter-spacing: -0.04em;
+      @include mq(tablet-wide, max) {
+        bottom: 20px;
+        text-align: right;
+        left: auto;
+        right: 1.4rem;
+      }
     }
 
     // ---------------------------------------
     // Diagram Wrapper
     // ---------------------------------------
-    .diagram-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      position: relative;
-      width: 100%;
-      max-width: 100%;
-    }
-
     .condition {
       padding: $results-padding-y 0;
       width: 100%;
@@ -134,10 +125,7 @@
           @include maskContents();
           padding: 4px;
         }
-        span:first-child {
-          font-size: 20px;
-          font-weight: 400;
-        }
+        
       }
 
       // 원형 배치 요소 링 (6개 항목)
@@ -160,6 +148,14 @@
           align-items: center;
           gap: 8px;
           pointer-events: auto;
+
+          @include mq(tablet-small, max) {
+            transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateY(-170px) rotate(calc(-1 * var(--angle, 0deg)));
+          }
+          @include mq(phone-wide, max) {
+            transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateY(-140px) rotate(calc(-1 * var(--angle, 0deg)));
+            gap: 0;
+          }
 
           .dia-tit {
             font-size: 16px;
@@ -186,32 +182,51 @@
             transform: rotate(var(--angle, 0deg));
             transform-origin: center top;
           }
-
+          @include mq(phone-wide, max) {
+            &.dia-pos-1 {
+              gap: 4px;
+            }
+          }
           // 위치별 스타일 조정
           &.dia-pos-2 {
             margin-left: 24px;
             flex-direction: row-reverse;
+            @include mq(phone-wide, max) {
+              margin-left: 6px;
+            }
             .dia-tit {
               flex-direction: row;
             }
             .dot {
               top: 24px;
+              @include mq(phone-wide, max) {
+                top: 20px;
+              }
             }
           }
           
           &.dia-pos-3 {
             margin-left: 44px;
             flex-direction: row-reverse;
+            @include mq(phone-wide, max) {
+              margin-left: 20px;
+            }
             .dia-tit {
               flex-direction: row;
             }
             .dot {
               top: 10px;
+              @include mq(phone-wide, max) {
+                top: 12px;
+              }
             }
           }
           
           &.dia-pos-4 {
             flex-direction: column-reverse;
+            @include mq(phone-wide, max) {
+              gap: 4px;
+            }
             .dot {
               transform: rotate(0);
             }
@@ -220,22 +235,46 @@
           &.dia-pos-5 {
             margin-left: -50px;
             flex-direction: row;
+            @include mq(phone-wide, max) {
+              margin-left: -24px;
+            }
             .dia-tit {
               flex-direction: row;
             }
             .dot {
               top: 10px;
+              @include mq(phone-wide, max) {
+                top: 12px;
+              }
             }
           }
           
           &.dia-pos-6 {
             margin-left: -30px;
             flex-direction: row;
+            @include mq(phone-wide, max) {
+              margin-left: -8px;
+            }
             .dia-tit {
               flex-direction: row-reverse;
             }
             .dot {
               top: 22px;
+              @include mq(phone-wide, max) {
+                top: 20px;
+              }
+            }
+
+          }
+          &.dia-pos-2,
+          &.dia-pos-3 ,
+          &.dia-pos-5,
+          &.dia-pos-6 {
+            .dia-tit {
+              @include mq(phone-wide, max) {
+                flex-direction: column;
+                gap: 4px;
+              }
             }
           }
           

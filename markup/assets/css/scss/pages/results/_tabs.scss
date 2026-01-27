@@ -13,6 +13,11 @@
   padding-top: $results-padding-y;
   min-height: var(--window-inner-height);
 
+  @include mq(tablet-wide, max) {
+    padding-top: 60px;
+    min-height: auto;
+  }
+
   // 상단 그라데이션 오버레이
   &::before {
     content: "";
@@ -36,6 +41,9 @@
   // ---------------------------------------
   // Tab Navigation
   // ---------------------------------------
+  nav {
+    z-index: 1;
+  }
   .tab-list {
     display: flex;
     justify-content: center;
@@ -44,6 +52,13 @@
     list-style: none;
     padding: 0;
     margin: 0 0 60px;
+    @include mq(tablet-small, max) {
+      margin: 0;
+    }
+    @include mq(phone-wide, max) {
+      padding: 0 2.4rem;
+      justify-content: flex-start;
+    }
 
     li a {
       display: flex;
@@ -60,11 +75,26 @@
       background: $results-tab-inactive;
       text-decoration: none;
       transition: background 0.25s, color 0.25s;
+
+      @include mq(tablet-wide, max) {
+        padding: 10px 20px;
+        min-width: auto;
+        font-size: 1.2rem;
+      }
+      @include mq(phone-wide, max) {
+        width: 3.2rem;
+        height: 3.2rem;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        @include textBlind;
+      }
     }
     
     li.on a {
       color: #FFF;
-      font-size: $results-tab-font;
       border: 1px solid $results-tab-border;
       background: $results-tab-active;
       i {
@@ -107,7 +137,9 @@
     background-position: left bottom, right bottom;
     background-image: $results-bg-natural, $results-bg-grid;
     background-size: 70.5729% auto, 100% auto;
-
+    @include mq(tablet-wide, max) {
+      padding-bottom: 60px;
+    }
     &.social {
       background-image: $results-bg-social, $results-bg-grid;
       background-size: 60.15625% auto, 100% auto;
@@ -147,6 +179,15 @@
      align-items: flex-start;
       gap: 64px;
     }
+    @include mq(tablet-wide, max) {
+      padding: 60px 2.4rem;
+      max-width: 100%;
+      gap: 100px;
+      overflow: hidden;
+    }
+    @include mq(phone-wide, max) {
+      width: 100%;
+    }
   }
 
   .section-hero-left {
@@ -160,6 +201,11 @@
       font-weight: 700;
       margin-bottom: 24px;
       color: $results-text-primary;
+      @include mq(tablet-wide, max) {
+        margin-bottom: 14px;
+        font-size: 2rem;
+        color: #013C42;
+      }
 
       .watermark {
         position: absolute;
@@ -172,6 +218,9 @@
         opacity: 0.08;
         color: $results-watermark;
         margin-bottom: 4px;
+        @include mq(tablet-wide, max) {
+          display: none;
+        }
       }
     }
     
@@ -179,6 +228,9 @@
       font-size: $results-desc;
       font-weight: 400;
       color: $results-text-secondary;
+      @include mq(tablet-wide, max) {
+        font-size: 1.4rem;
+      }
     }
   }
 
@@ -188,6 +240,11 @@
   .section-hero-right {
     position: relative;
     min-height: 330px;
+    @include mq(tablet-wide, max) {
+      padding-left: 38px;
+      min-height: auto;
+    }
+
 
     .report-stack {
       position: relative;
@@ -205,6 +262,20 @@
       opacity: 0;
       transform: translateY(120px);
 
+      @include mq(tablet-wide, max) {
+        width:226px;
+        height: 310px;
+      }
+      @include mq(tablet, max) {
+        width:195px;
+        height: 260px;
+      }
+
+      @include mq(phone-wide, max) {
+        width:175px;
+        height: 234px;
+      }
+
       // 첫 번째 카드 배경 효과
       &:first-child {
         overflow: visible;
@@ -218,6 +289,20 @@
           height: 350px;
           border-radius: 6px;
           background: linear-gradient(170deg, rgba(227, 227, 227, 0.24) 4.48%, rgba(0, 0, 0, 0.40) 92.19%), #242D2B;
+          
+          @include mq(tablet-wide, max) {
+            width:250px;
+            height: 334px;
+          }
+          @include mq(tablet, max) {
+            width:219px;
+            height: 284px;
+          }
+    
+          @include mq(phone-wide, max) {
+            width:199px;
+            height: 258px;
+          }
         }
       }
 
@@ -225,6 +310,14 @@
       &:not(:first-child) {
         margin-left: $results-report-page-shadow;
         box-shadow: -5px 0 4px 0 rgba(0, 0, 0, 0.20);
+        @include mq(desktop, max) {
+          margin-left:-120px;
+        }
+        @include mq(tablet-wide, max) {
+          margin-left:-140px;
+        }
+
+
       }
 
       // 보고서 상단 핸들

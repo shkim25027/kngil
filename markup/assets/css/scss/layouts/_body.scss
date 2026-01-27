@@ -27,6 +27,11 @@
     position: relative;
     width: 100%;
     flex-grow: 1;
+    section {
+      max-width: 1920px;
+      margin: 0 auto;
+    }
   }
+  
 
   
