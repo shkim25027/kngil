@@ -25,28 +25,10 @@
   // Sub Content Section
   // ---------------------------------------
   .sub-content {
-    flex-direction: column;
-    gap: $results-section-gap;
-    margin: 0 auto;
-    padding-bottom: 250px;
-    text-align: center;
-    @include flex(center, center);
-    @include mq(tablet-wide, max) {
-      padding-bottom: 180px;
-    }
-    
+
     // 워터마크 텍스트
     &::before {
       content: "Exploration\A Results";
-      text-align: left;
-      line-height: 0.8em;
-      letter-spacing: -0.04em;
-      @include mq(tablet-wide, max) {
-        bottom: 20px;
-        text-align: right;
-        left: auto;
-        right: 1.4rem;
-      }
     }
 
     // ---------------------------------------
