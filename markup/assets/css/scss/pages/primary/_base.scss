@@ -13,34 +13,17 @@
   .sub-header {
     background-image: url(../img/primary/bg_primary_title.jpg);
   }
-
   .sub-content {
-    margin: 0 auto;
-    text-align: center;
-    min-height: 966px;
-    overflow: visible;
-    
     &::before {
-      position: absolute;
-      bottom: 0px;
-      left: 32px;
       content: "Key\A Features";
-      font-size: 120px;
-      opacity: 0.03;
-      text-align: left;
-      font-weight: 900;
-      white-space: pre;
-      line-height: 0.8em;
-      letter-spacing: -0.04em;
     }
-
     .sub-tit-box {
       text-align: center;
-      margin-bottom: 100px;
     }
 
     .diagram-wrap {
-      width: 480px;
+      width: 59.7222%;
+      max-width: 480px;
       aspect-ratio: 1 / 1;
       margin: 30px auto 60px auto;
       position: relative;
@@ -166,7 +149,10 @@
         align-items: center;
         gap: 16px;
         text-align: right;
-        font-size: 16px;
+        font-size: 16px;  
+        @include mq(tablet-wide, max) {
+          gap: 8px;
+        }
 
         i {
           width: 40px;
@@ -175,16 +161,43 @@
           background-position: center;
           background-size: contain;
           background-repeat: no-repeat;
+          @include mq(tablet-wide, max) {
+            width: 3rem;
+          }
         }
 
         &.e01 {
           top: 0;
           left: -14%;
+          @include mq(tablet-wide, max) {
+            top: -16%;
+            left: 24%;
+            flex-direction: column-reverse;
+            align-items: flex-start;
+            .dia-tit {
+              text-align: left;
+            }
+          }
+
         }
 
         &.e02 {
           bottom: 27%;
           left: -52%;
+          @include mq(desktop-small, max) {
+            bottom: 13%;
+            left: -38%;
+            flex-direction: column;
+            align-items: flex-end;
+          }
+          @include mq(tablet-wide, max) {
+            bottom: 8%;
+            left: -8%;
+            align-items: flex-start;
+            .dia-tit {
+              text-align: left;
+            }
+          }
         }
 
         &.e03 {
@@ -192,6 +205,20 @@
           right: -59%;
           flex-direction: row;
           text-align: left;
+          @include mq(desktop-small, max) {
+            bottom: 20%;
+            right: -50%;
+            flex-direction: column;
+            align-items: flex-start;
+          }
+          @include mq(tablet-wide, max) {
+            bottom: 14%;
+            right: -8%;
+            align-items: flex-end;
+            .dia-tit {
+              text-align: right;
+            }
+          }
         }
 
         &.e01 i {
@@ -208,6 +235,9 @@
 
         .dia-tit {
           opacity: 0.9;
+          @include mq(tablet,max){
+            font-size: 1.4rem;
+          }
         }
       }
     }

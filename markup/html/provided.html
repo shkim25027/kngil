@@ -28,39 +28,68 @@
               항목별 기초현황 데이터를 다양하게 제공
             </h3>
           </div>
-
-          <div class="data-provision">
-            <div class="data-bullet" aria-hidden="true"></div>
-            <div class="data-bullet bullet-2" aria-hidden="true"></div>
+          <div class="data-wrap">
             <div class="data-core">
               <div class="core-oval">공공데이터 기반의 <strong>제공데이터</strong></div>
             </div>
-
-            <div class="data-categories">
-              <!-- 공간정보 -->
-              <article class="category-item spatial" aria-labelledby="spatial-title">
-                <div class="category-images">
-                  <div class="image-item">
-                    <img 
-                      src="./img/provided/img_provided_spatial.png" 
-                      alt="공간정보 데이터 시각화"
-                      width="auto"
-                      height="auto"
-                    >
+            <div class="data-provision">
+              <div class="data-bullet" aria-hidden="true"></div>
+              <div class="data-bullet bullet-2" aria-hidden="true"></div>
+              
+              <div class="data-categories">
+                <!-- 공간정보 -->
+                <div class="category-item spatial" aria-labelledby="spatial-title">
+                  <div class="category-images">
+                    <div class="image-item">
+                      <img 
+                        src="./img/provided/img_provided_spatial.png" 
+                        alt="공간정보 데이터 시각화"
+                        width="auto"
+                        height="auto"
+                      >
+                    </div>
+                  </div>
+                  <div class="category-circle">
+                    <div class="category-icon">
+                      <img 
+                        src="./img/ico/ico_map_marker.svg" 
+                        alt="지도 마커 아이콘"
+                        width="auto"
+                        height="auto"
+                      >
+                    </div>
+                    <h3 id="spatial-title" class="category-title">공간정보</h3>
+                  </div>
+                  
+                </div>
+  
+                <!-- 통계자료 -->
+                <div class="category-item statistical" aria-labelledby="statistical-title">
+                  <div class="category-images">
+                    <div class="image-item">
+                      <img 
+                        src="./img/provided/img_provided_stat.png" 
+                        alt="통계자료 데이터 시각화"
+                        width="auto"
+                        height="auto"
+                      >
+                    </div>
+                  </div>
+                  <div class="category-circle">
+                    <div class="category-icon">
+                      <img 
+                        src="./img/ico/ico_chart_3d.svg" 
+                        alt="차트 아이콘"
+                        width="auto"
+                        height="auto"
+                      >
+                    </div>
+                    <h3 id="statistical-title" class="category-title">통계자료</h3>
                   </div>
                 </div>
-                <div class="category-circle">
-                  <div class="category-icon">
-                    <img 
-                      src="./img/ico/ico_map_marker.svg" 
-                      alt="지도 마커 아이콘"
-                      width="auto"
-                      height="auto"
-                    >
-                  </div>
-                  <h3 id="spatial-title" class="category-title">공간정보</h3>
-                </div>
-                <ul class="fix" aria-label="공간정보 데이터 항목">
+              </div>
+              <article class="data-categories-list">
+                <ul class="fix spatial" aria-label="공간정보 데이터 항목">
                   <li>
                     <div class="fix-01"><p>행정경계</p></div>
                     <div class="dot f-01" aria-hidden="true"></div>
@@ -78,32 +107,7 @@
                     <div class="dot f-04" aria-hidden="true"></div>
                   </li>
                 </ul>
-              </article>
-
-              <!-- 통계자료 -->
-              <article class="category-item statistical" aria-labelledby="statistical-title">
-                <div class="category-images">
-                  <div class="image-item">
-                    <img 
-                      src="./img/provided/img_provided_stat.png" 
-                      alt="통계자료 데이터 시각화"
-                      width="auto"
-                      height="auto"
-                    >
-                  </div>
-                </div>
-                <div class="category-circle">
-                  <div class="category-icon">
-                    <img 
-                      src="./img/ico/ico_chart_3d.svg" 
-                      alt="차트 아이콘"
-                      width="auto"
-                      height="auto"
-                    >
-                  </div>
-                  <h3 id="statistical-title" class="category-title">통계자료</h3>
-                </div>
-                <ul class="fix" aria-label="통계자료 데이터 항목">
+                <ul class="fix statistical" aria-label="통계자료 데이터 항목">
                   <li>
                     <div class="fix-01"><p>인구</p></div>
                     <div class="dot f-01" aria-hidden="true"></div>
@@ -124,7 +128,6 @@
               </article>
             </div>
           </div>
-
         </section>
 
         <!-- Process Section -->
@@ -145,7 +148,7 @@
             <section class="natural" aria-labelledby="natural-tit">
               <h2 id="natural-tit" class="sub-tit">
                 <i class="ico-natural" aria-hidden="true"></i>
-                자연적 환경 요소인 <strong>지형, 기후, 생태자연, 도시주거</strong> 항목을<br>
+                자연적 환경 요소인 <strong>지형, 기후, 생태자연, 도시주거</strong> 항목을<br class="pc-only">
                 <strong>자연조건</strong>으로 분류하여 제공
               </h2>
               <ul class="cont-list">
@@ -260,7 +263,7 @@
             <section class="social" aria-labelledby="social-tit">
               <h2 id="social-tit" class="sub-tit">
                 <i class="ico-social" aria-hidden="true"></i>
-                사회적 구조 요소인 <strong>인구, 토지, 건축물, 사회기반시설</strong> 항목을<br>
+                사회적 구조 요소인 <strong>인구, 토지, 건축물, 사회기반시설</strong> 항목을<br class="pc-only">
                 <strong>사회특성</strong>으로 분류하여 제공
               </h2>
               <ul class="cont-list">

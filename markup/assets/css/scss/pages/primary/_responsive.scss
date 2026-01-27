@@ -120,39 +120,6 @@
 
 @media (max-width: 992px) {
   .primary {
-    .sub-content {
-      &::before {
-        font-size: 90px;
-        bottom: 16px;
-      }
-
-      .diagram-wrap {
-        margin: 150px auto;
-        width: 400px;
-      }
-
-      .dia-element {
-        i {
-          width: 36px;
-        }
-
-        font-size: 14px;
-
-        &.e01 {
-          left: -12%;
-        }
-
-        &.e02 {
-          bottom: 25%;
-          left: -48%;
-        }
-
-        &.e03 {
-          bottom: 31%;
-          right: -55%;
-        }
-      }
-    }
 
     .key {
       flex-direction: column;
@@ -267,50 +234,6 @@
 
 @media (max-width: 576px) {
   .primary {
-    .sub-content {
-      &::before {
-        font-size: 52px;
-      }
-
-      .diagram-wrap {
-        margin: 100px 0;
-        width: 300px;
-      }
-
-      .dia-element {
-        i {
-          width: 30px;
-        }
-
-        font-size: 12px;
-
-        &.e01 {
-          left: -10%;
-        }
-
-        &.e02 {
-          bottom: 23%;
-          left: -44%;
-        }
-
-        &.e03 {
-          bottom: 29%;
-          right: -51%;
-        }
-      }
-
-      .diagram-wrap .dia-circles-wrap {
-        .circle-core {
-          span {
-            font-size: 20px;
-          }
-
-          span:first-child {
-            font-size: 14px;
-          }
-        }
-      }
-    }
 
     .key .left .mid-tit {
       height: 100px;
