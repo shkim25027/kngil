@@ -1,5 +1,13 @@
 @use "../import/_mixin" as *;
 
+// ---------------------------------------
+// Diagram Wrapper
+// ---------------------------------------
+.condition {
+  padding: 120px 0;
+  width: 100%;
+  max-width: 100%;
+}
 // =======================================
 // Diagram Component
 // =======================================
@@ -26,6 +34,10 @@
     .dia-tit {
       font-size: 20px;
       font-weight: 500;
+      white-space: nowrap;
+      flex-direction: column;
+      gap: 8px;
+      @include flex(center, center);
     }
 
     .dia-text {

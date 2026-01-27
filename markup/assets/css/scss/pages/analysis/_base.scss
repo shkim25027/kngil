@@ -17,36 +17,63 @@
   .sub-content {
     &::before {
       content: "Data Analysis";
+      @include mq(tablet-wide, max) {
+        content: "Data\A Analysis";
+      }
     }
-    .diagram-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-      position: relative;
-    }
-
-    .condition {
-      padding: 120px 0;
-    }
+      // 원형 배치 요소 링 (6개 항목)
+      .dia-element-ring {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        z-index: 2;
+        pointer-events: none;
 
     .dia-element {
       width: max-content;
       gap: 12px;
       position: absolute;
+      left: 0;
+      top: 0;
+      transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateY(-210px) rotate(calc(-1 * var(--angle, 0deg)));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      pointer-events: auto;
+
+      @include mq(tablet-small, max) {
+        transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateY(-170px) rotate(calc(-1 * var(--angle, 0deg)));
+      }
+      @include mq(phone-wide, max) {
+        transform: translate(-50%, -50%) rotate(var(--angle, 0deg)) translateY(-140px) rotate(calc(-1 * var(--angle, 0deg)));
+      }
+
 
       .line {
-        width: 32px;
-        height: 1px;
-        // background:#046A50;
-        border: 1px dashed #046A50;
+          width: 0;
+          height: 38px;
+          border-left: 1px dashed #046A50;
+          position: relative;
+          flex-shrink: 0;
+          transform: rotate(var(--angle, 0deg));
+          transform-origin: center top;
+          @include mq(tablet-small, max) {
+            height: 32px;
+          }
+
       }
 
       .dia-tit {
         font-size: 18px;
-        line-height: 128%;
+        line-height: 1.25;
         white-space: nowrap;
+        @include mq(tablet-small, max) {
+          font-size: 1.2rem;
+        }
+
+
       }
 
       i {
@@ -55,62 +82,81 @@
         background-position: center;
         background-size: contain;
         background-repeat: no-repeat;
+        @include mq(tablet-small, max) {
+          width: 3.2rem;
+        }
       }
 
       &.dia-element01 {
-        top: -136px;
-        left: 50%;
-        translate: -50% 0;
-        
+        top: -20px;
+        @include mq(tablet-small, max) {
+          top: -16px;
+          .dia-tit { 
+            flex-direction: column-reverse;
+          }
+        }
         i {
           background-image: url(../img/ico/ico_statistic.svg);
-        }
-
-        .line {
-          margin-top: 12px;
-          transform: rotate(90deg);
-          top: calc(100% + 20px);
         }
       }
 
       &.dia-element02 {
-        bottom: 6.5%;
-        left: -46%;
+        top: 10px;
+        margin-left: 60px;
         flex-direction: row-reverse;
-        text-align: right;
+       
         @include flex(flex-end, flex-start);
-        
-        i {
-          background-image: url(../img/ico/ico_graph_box.svg);
+        @include mq(tablet-small, max) {
+          top: -14px;
+          margin-left: 20px;
         }
-
-        .line {
-          transform: rotate(-30deg);
-          bottom: 100%;
-          left: 100%;
-          z-index: 1;
-          margin-left: 12px;
-        }
-      }
-
-      &.dia-element03 {
-        bottom: 6.5%;
-        right: -46%;
-        flex-direction: row;
-        text-align: left;
-        @include flex(flex-end, flex-start);
         
+        .dia-tit {
+          flex-direction: row;
+
+          @include mq(tablet-small, max) {
+            flex-direction: column;
+            align-items: flex-start;
+          }   
+          span {
+            text-align: left;
+          }  
+          
+        }
         i {
           background-image: url(../img/ico/ico_mind_map.svg);
         }
 
-        .line {
-          transform: rotate(30deg);
-          bottom: 100%;
-          right: 100%;
-          margin-right: 12px;
-        }
       }
+
+      &.dia-element03 {
+        top: 10px;
+        margin-left: -60px;
+        flex-direction: row;
+        
+        @include flex(flex-end, flex-start);
+        @include mq(tablet-small, max) {
+          top: -14px;
+          margin-left: -20px;
+        }
+        .dia-tit {
+          flex-direction: row-reverse;
+          text-align: left;
+          @include mq(tablet-small, max) {
+            flex-direction: column;
+            align-items: flex-end;
+            
+          }   
+          span {
+            text-align: right;
+          }  
+        }
+        i {
+          background-image: url(../img/ico/ico_graph_box.svg);
+        }
+
+      }
+    }
     }
 
     .dia-circles-wrap {

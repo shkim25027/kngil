@@ -32,16 +32,6 @@
     }
 
     // ---------------------------------------
-    // Diagram Wrapper
-    // ---------------------------------------
-    .condition {
-      padding: $results-padding-y 0;
-      width: 100%;
-      max-width: 100%;
-      overflow: hidden;
-    }
-
-    // ---------------------------------------
     // Diagram Circles (원형 다이어그램)
     // ---------------------------------------
     .dia-circles-wrap {
@@ -141,10 +131,7 @@
 
           .dia-tit {
             font-size: 16px;
-            white-space: nowrap;
-            flex-direction: column;
-            gap: 8px;
-            @include flex(center, center);
+
           }
 
           i {

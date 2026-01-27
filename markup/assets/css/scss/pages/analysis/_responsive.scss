@@ -144,41 +144,6 @@
 
 @media (max-width: 992px) {
   .analysis {
-    .sub-content {
-      &::before {
-        font-size: 90px;
-        bottom: 16px;
-      }
-
-      .diagram-wrap {
-        margin: 150px 0;
-      }
-
-      .dia-element {
-        i {
-          width: 40px;
-        }
-
-        .dia-tit {
-          font-size: 16px;
-        }
-
-        &.dia-element01 {
-          top: -45%;
-        }
-
-        &.dia-element02 {
-          bottom: -9%;
-          left: -24%;
-        }
-
-        &.dia-element03 {
-          bottom: -9%;
-          right: -24%;
-        }
-      }
-    }
-
     .key {
       flex-direction: column;
       padding: 0;
@@ -269,11 +234,6 @@
 
 @media (max-width: 768px) {
   .analysis {
-    .sub-content::before {
-      font-size: 72px;
-      left: 4px;
-    }
-
     .sub-content .keyword br.brk {
       display: initial;
     }
@@ -305,64 +265,6 @@
 
 @media (max-width: 576px) {
   .analysis {
-    .sub-content {
-      &::before {
-        font-size: 52px;
-      }
-
-      .keyword {
-        padding: 0 32px;
-
-        br {
-          display: none !important;
-        }
-      }
-
-      .diagram-wrap {
-        margin: 100px 0;
-      }
-
-      .dia-element {
-        i {
-          width: 30px;
-        }
-
-        .dia-tit {
-          font-size: 14px;
-        }
-
-        .line {
-          width: 32px;
-        }
-
-        &.dia-element01 {
-          top: -56%;
-        }
-
-        &.dia-element02 {
-          bottom: -18%;
-          left: -32%;
-        }
-
-        &.dia-element03 {
-          bottom: -18%;
-          right: -32%;
-        }
-      }
-
-      .diagram-wrap .dia-circles-wrap {
-        width: 200px;
-
-        .circle-core {
-          font-size: 24px;
-
-          span:first-child {
-            font-size: 16px;
-          }
-        }
-      }
-    }
-
     .key .left .mid-tit {
       height: 100px;
 
