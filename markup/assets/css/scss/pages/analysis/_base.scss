@@ -69,7 +69,7 @@
         font-size: 18px;
         line-height: 1.25;
         white-space: nowrap;
-        @include mq(tablet-small, max) {
+        @include mq(phone-wide, max) {
           font-size: 1.2rem;
         }
 
@@ -95,6 +95,9 @@
             flex-direction: column-reverse;
           }
         }
+        @include mq(tablet-small, max) {
+          top: -10px;
+        }
         i {
           background-image: url(../img/ico/ico_statistic.svg);
         }
@@ -107,8 +110,12 @@
        
         @include flex(flex-end, flex-start);
         @include mq(tablet-small, max) {
+          top: -24px;
+          margin-left: 24px;
+        }
+        @include mq(phone-wide, max) {
           top: -14px;
-          margin-left: 20px;
+          margin-left: 24px;
         }
         
         .dia-tit {
@@ -136,8 +143,12 @@
         
         @include flex(flex-end, flex-start);
         @include mq(tablet-small, max) {
+          top: -24px;
+          margin-left: -24px;
+        }
+        @include mq(phone-wide, max) {
           top: -14px;
-          margin-left: -20px;
+          margin-left: -24px;
         }
         .dia-tit {
           flex-direction: row-reverse;
