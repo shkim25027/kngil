@@ -83,8 +83,9 @@
         color: var(--color-green);
       }
 
-      .sub-text {
-        text-align: justify;
+      .sub-text { 
+        word-break: keep-all;
+        text-align: left;
         margin-bottom: 32px;
       }
 
