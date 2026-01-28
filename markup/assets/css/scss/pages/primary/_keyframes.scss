@@ -210,64 +210,52 @@
   }
 }
 
-// apx-01: 0~33.33%, apx-02: 33.33~66.66%, apx-03: 66.66~100% 순차 표시 (opacity만, 확대 없음)
+// apx-01: 0~50%(2배), apx-02: 50~75%, apx-03: 75~100% 순차 표시 (apx-01 유지가 02·03보다 2배)
 @keyframes progressApx01 {
-  0%, 33.32% {
+  0%, 49.99% {
     opacity: 1;
   }
-  33.33%, 100% {
+  50%, 100% {
     opacity: 0;
   }
 }
 
 @keyframes progressApx02 {
-  0%, 33.32% {
+  0%, 49.99% {
     opacity: 0;
   }
-  33.33%, 66.65% {
+  50%, 62.99% {
     opacity: 1;
   }
-  66.66%, 100% {
+  63%, 100% {
     opacity: 0;
   }
 }
 
 @keyframes progressApx03 {
-  0%, 66.65% {
+  0%, 62.99% {
     opacity: 0;
   }
-  66.66%, 100% {
+  63%, 100% {
     opacity: 1;
   }
 }
 
-// apx-01 구간(0~33.33%)에서 sub-apx-slide-item 순차 표시 (dataApx 방식)
+// apx-01 구간(0~50%)에서 sub-apx-slide-item 순차 표시 (4등분)
 @keyframes progressSlideItem1 {
-  0%, 8.32% {
+  0%, 12.49% {
     opacity: 1;
   }
-  8.33%, 100% {
+  12.5%, 100% {
     opacity: 0;
   }
 }
 
 @keyframes progressSlideItem2 {
-  0%, 8.32% {
+  0%, 12.49% {
     opacity: 0;
   }
-  8.33%, 16.65% {
-    opacity: 1;
-  }
-  16.66%, 100% {
-    opacity: 0;
-  }
-}
-
-@keyframes progressSlideItem3 {
-  0%, 16.65% {
-    opacity: 0;
-  }
-  16.66%, 24.99% {
+  12.5%, 24.99% {
     opacity: 1;
   }
   25%, 100% {
@@ -275,14 +263,26 @@
   }
 }
 
-@keyframes progressSlideItem4 {
+@keyframes progressSlideItem3 {
   0%, 24.99% {
     opacity: 0;
   }
-  25%, 33.32% {
+  25%, 37.49% {
     opacity: 1;
   }
-  33.33%, 100% {
+  37.5%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes progressSlideItem4 {
+  0%, 37.49% {
+    opacity: 0;
+  }
+  37.5%, 49.99% {
+    opacity: 1;
+  }
+  50%, 100% {
     opacity: 0;
   }
 }

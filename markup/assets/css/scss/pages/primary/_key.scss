@@ -128,7 +128,7 @@
             will-change: opacity;
             backface-visibility: hidden;
             transform: translateZ(0);
-            animation: areaDimLayer 8s ease-in-out infinite;
+            animation: areaDimLayer 4s ease-in-out infinite;
           }
 
           .apx-01 {
@@ -142,7 +142,7 @@
             will-change: opacity;
             backface-visibility: hidden;
             transform: translateZ(0);
-            animation: areaApx01 8s ease-in-out infinite;
+            animation: areaApx01 4s ease-in-out infinite;
 
             .rect-box {
               position: absolute;
@@ -158,7 +158,7 @@
               will-change: opacity;
               backface-visibility: hidden;
               transform: translateZ(0);
-              animation: areaRectBox 8s ease-in-out infinite;
+              animation: areaRectBox 4s ease-in-out infinite;
               box-sizing: border-box;
               min-width: 1px;
               min-height: 1px;
@@ -175,7 +175,7 @@
               will-change: opacity, transform;
               backface-visibility: hidden;
               transform: translateZ(0);
-              animation: areaKeyPoint 8s ease-in-out infinite;
+              animation: areaKeyPoint 4s ease-in-out infinite;
   
               img {
                 will-change: transform;
@@ -203,7 +203,7 @@
             will-change: opacity;
             backface-visibility: hidden;
             transform: translateZ(0);
-            animation: areaApx02 8s ease-in-out infinite;
+            animation: areaApx02 4s ease-in-out infinite;
           }
         }
 
@@ -216,7 +216,7 @@
             left:0;
             width: 100%;
             height: 100%;
-            animation: dataApx01 10s ease-in-out infinite;
+            animation: dataApx01 6s ease-in-out infinite;
             
           }
 
@@ -225,12 +225,12 @@
             left:0;
             width: 100%;
             height: 100%;
-            animation: dataApx02 10s ease-in-out infinite;
+            animation: dataApx02 6s ease-in-out infinite;
             
           }
         }
 
-        // Progress 섹션
+        // Progress 섹션 (apx-01 유지 2배, 전체 6초)
         &.progress {
           aspect-ratio: 1030/357;
           .apx-01 { 
@@ -238,14 +238,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            animation: progressApx01 10s ease-in-out infinite;
+            animation: progressApx01 6s ease-in-out infinite;
           }
           .apx-02 { 
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            animation: progressApx02 10s ease-in-out infinite;
+            animation: progressApx02 6s ease-in-out infinite;
           }
           .apx-03 { 
             top: 0;
@@ -253,7 +253,7 @@
             width: 100%;
             height: 100%;
             opacity: 0;
-            animation: progressApx03 10s ease-in-out infinite;
+            animation: progressApx03 6s ease-in-out infinite;
           }
           .sub-apx-slide {
             position: absolute;
@@ -271,7 +271,7 @@
             height: 100%;
             opacity: 0;
             box-shadow: -5.363px -5.363px 16.089px 0 rgba(0, 0, 0, 0.25);
-            animation-duration: 10s;
+            animation-duration: 6s;
             animation-timing-function: ease-in-out;
             animation-iteration-count: infinite;
 
@@ -373,7 +373,7 @@
             width:100%;
             height: 100%;
             opacity: 0;
-            animation: dataApx01 10s ease-in-out infinite;
+            animation: dataApx01 6s ease-in-out infinite;
           }
 
           .apx-02 {
@@ -382,7 +382,7 @@
             width: 100%;
             height:100%;
             opacity: 0;
-            animation: dataApx02 10s ease-in-out infinite;
+            animation: dataApx02 6s ease-in-out infinite;
           }
         }
 
