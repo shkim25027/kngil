@@ -28,13 +28,10 @@
 }
 
 @keyframes apxWidthToggle {
-  0%, 100% {
+  0% {
     width: 0;
   }
-  25%, 75% {
+  100% {
     width: 100%;
-  }
-  50% {
-    width: 0;
   }
 }

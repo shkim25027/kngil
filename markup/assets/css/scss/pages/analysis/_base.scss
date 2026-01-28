@@ -214,10 +214,7 @@
         }
       }
 
-      .circle-core {
-        position: relative;
-        line-height: 95%;
-        
+      .circle-core {        
         &::before {
           content: "";
           position: absolute;
@@ -230,7 +227,9 @@
           @include maskContents();
           padding: 4px;
         }
-        
+        span{
+          line-height: 1.2;
+        }
         span:first-child {
           font-size: 20px;
           font-weight: 400;
