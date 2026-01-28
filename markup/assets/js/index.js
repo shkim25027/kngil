@@ -328,10 +328,9 @@
         elementUnderMouse?.closest('footer'),
         elementUnderMouse?.closest('.popup_wrap'),
         elementUnderMouse?.closest('.popup-wrap'),
-        elementUnderMouse?.closest('.floating_menu'),
+        elementUnderMouse?.closest('.floating-menu'),
         elementUnderMouse?.closest('.main-pagination'),
         elementUnderMouse?.closest('.header'),
-        elementUnderMouse?.closest('.popup_sitemap'),
         elementUnderMouse?.closest('.sitemap')
       ];
 
