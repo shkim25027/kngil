@@ -171,16 +171,14 @@
                 right: -48px;
               }
             }
+            @include value-arrow-after("../img/value/ico_step_arrow_sub.svg");
           }
 
           @include mq(tablet-small, max) {
             &:not(:last-child)::after {
               display: none;
             }
-          }
-
-          @include value-arrow-after("../img/value/ico_step_arrow_sub.svg");
-          
+          }          
           @include mq(tablet-small, max) {
             &::after {
               display: none;
@@ -227,7 +225,7 @@
                 margin-bottom: 6px;
               }
             
-              em {
+              strong {
                 display: block;
                 font-size: 22px;
                 color: rgba(255, 255, 255, 0.86);

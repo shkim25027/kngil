@@ -36,7 +36,7 @@
     h2 {
       color: var(--text-white);
       font-size: 70px;
-      text-shadow: 2px 2px 6px #2c2b2b;
+      text-shadow: 0 0 12px rgba(0, 44, 30, 0.25);
       
       @include mq(tablet-wide, max) {
         font-size: 3.6rem;
