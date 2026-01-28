@@ -21,6 +21,11 @@
     ANIMATION: {
       reportPageDelay: 100, // 각 report-page 간 지연 시간 (ms)
       reportPageDuration: 600 // 애니메이션 지속 시간 (ms)
+    },
+    // 스크롤 구간별 탭 전환: results-wrap이 pin 되는 동안 스크롤 진행도로 탭 인덱스 결정
+    SCROLL_TAB: {
+      enabled: true,
+      pinDistance: '120%' // 뷰포트 기준 핀 유지 거리 (3탭 × 구간)
     }
   };
 
@@ -64,6 +69,9 @@
         link.addEventListener('click', (e) => {
           e.preventDefault();
           this.switchTab(index);
+          if (typeof ScrollTabController !== 'undefined') {
+            ScrollTabController.currentIndex = index;
+          }
         });
 
         // 키보드 접근성
@@ -71,6 +79,9 @@
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
             this.switchTab(index);
+            if (typeof ScrollTabController !== 'undefined') {
+              ScrollTabController.currentIndex = index;
+            }
           }
         });
       });
@@ -368,17 +379,74 @@
   };
 
   // ============================================
+  // Scroll-driven Tab Controller (GSAP ScrollTrigger)
+  // 스크롤 진행도에 따라 탭 전환
+  // ============================================
+  const ScrollTabController = {
+    wrap: null,
+    currentIndex: -1,
+    scrollTrigger: null,
+
+    init() {
+      if (!CONFIG.SCROLL_TAB.enabled) return;
+
+      this.wrap = Utils.$(CONFIG.SELECTORS.resultsWrap);
+      if (!this.wrap) return;
+
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      const tabCount = CONFIG.TAB_IDS.length;
+      const pinDistance = CONFIG.SCROLL_TAB.pinDistance || '200%';
+
+      this.scrollTrigger = ScrollTrigger.create({
+        trigger: this.wrap,
+        start: 'top top',
+        end: `+=${pinDistance}`,
+        pin: true,
+        pinSpacing: true,
+        onUpdate: (self) => {
+          const progress = self.progress;
+          const index = Math.min(
+            Math.floor(progress * tabCount),
+            tabCount - 1
+          );
+          if (index !== this.currentIndex && index >= 0) {
+            this.currentIndex = index;
+            TabController.switchTab(index);
+          }
+        },
+        onLeave: () => {
+          this.currentIndex = tabCount - 1;
+        },
+        onEnterBack: () => {
+          // 위로 스크롤 시 진행도에 맞춰 탭 갱신
+          this.currentIndex = -1;
+        }
+      });
+
+      // 초기 진입 시 0번 탭으로 맞춤
+      this.currentIndex = -1;
+    }
+  };
+
+  // ============================================
   // Initialization
   // ============================================
   const init = () => {
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', () => {
-        TabController.init();
-        ReportPageAnimation.init();
-      });
-    } else {
+    const run = () => {
       TabController.init();
       ReportPageAnimation.init();
+      ScrollTabController.init();
+    };
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', run);
+    } else {
+      run();
     }
   };
 
