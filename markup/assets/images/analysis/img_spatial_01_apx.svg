@@ -4,11 +4,11 @@
     .line {
       stroke-dasharray: 1;
       stroke-dashoffset: 1;
-      animation: spatial01LineDraw 4s ease-in-out 1 forwards;
+      animation: spatial01LineDraw 2s ease-in-out 1 forwards;
     }
     .text-label {
       opacity: 0;
-      animation: spatial01TextFadeIn 4s ease-in-out 1 forwards;
+      animation: spatial01TextFadeIn 2.5s ease-in-out 1 forwards;
     }
     @keyframes spatial01LineDraw {
       0% { stroke-dashoffset: 1; }
