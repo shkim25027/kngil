@@ -23,9 +23,9 @@
 
   // ---------------------------------------
   // Sub Content Section
+  // (z-index, margin-bottom는 _pin-overlap.scss에서 겹침 방지용으로 설정)
   // ---------------------------------------
   .sub-content {
-
     // 워터마크 텍스트
     &::before {
       content: "Exploration\A Results";

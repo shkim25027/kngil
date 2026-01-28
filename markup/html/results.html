@@ -64,94 +64,96 @@
         </section>
 
         <!-- Category Tabs Section: 자연조건 / 사회특성 / 추정사업비 -->
-        <section class="results-wrap" aria-label="성과품 카테고리">
-          <nav aria-label="데이터 카테고리 네비게이션">
-            <ul class="tab-list" role="tablist" aria-label="데이터 카테고리 목록">
-              <li class="on">
-                <a 
-                  href="#key-natural" 
-                  role="tab" 
-                  aria-selected="true" 
-                  aria-controls="key-natural"
-                  tabindex="0"
-                >
-                  <i class="ico-nature" aria-hidden="true"></i>
-                  자연조건 데이터
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="#key-social" 
-                  role="tab" 
-                  aria-selected="false" 
-                  aria-controls="key-social"
-                  tabindex="-1"
-                >
-                  <i class="ico-social" aria-hidden="true"></i>
-                  사회특성 데이터
-                </a>
-              </li>
-              <li>
-                <a 
-                  href="#key-cost" 
-                  role="tab" 
-                  aria-selected="false" 
-                  aria-controls="key-cost"
-                  tabindex="-1"
-                >
-                  <i class="ico-cost" aria-hidden="true"></i>
-                  추정사업비 데이터
-                </a>
-              </li>
-            </ul>
-          </nav>
-
-          <div class="tab-panels" role="tabpanel">
-            @@include("_include/_results-tab-panel.html", {
-              "id": "key-natural",
-              "tabClass": "natural",
-              "isActive": " on",
-              "title": "자연조건 데이터",
-              "titleId": "title-natural",
-              "desc": "지역의 개황, 기상 및 자연재해,<br>생태 및 자연환경, 도시 및 주거환경<br>관련 데이터를 제공합니다.",
-              "imgPrefix": "natural",
-              "alt1": "지역의 개황",
-              "alt2": "기상 및 자연재해",
-              "alt3": "지역의 개황",
-              "alt4": "기상 및 자연재해",
-              "alt5": "생태 및 자연환경",
-              "alt6": "도시 및 주거환경"
-            })
-            @@include("_include/_results-tab-panel.html", {
-              "id": "key-social",
-              "tabClass": "social",
-              "isActive": "",
-              "title": "사회특성 데이터",
-              "titleId": "title-social",
-              "desc": "인구, 토지, 건축물, 사회기반시설 관련<br>데이터를 제공합니다.",
-              "imgPrefix": "social",
-              "alt1": "지역의 개황",
-              "alt2": "기상 및 자연재해",
-              "alt3": "지역의 개황",
-              "alt4": "기상 및 자연재해",
-              "alt5": "생태 및 자연환경",
-              "alt6": "도시 및 주거환경"
-            })
-            @@include("_include/_results-tab-panel.html", {
-              "id": "key-cost",
-              "tabClass": "cost",
-              "isActive": "",
-              "title": "추정사업비 데이터",
-              "titleId": "title-cost",
-              "desc": "산정기준, 총사업비, 보상비,<br>공사비, 설계비, 부대비<br>관련 데이터를 제공합니다.",
-              "imgPrefix": "cost",
-              "alt1": "지역의 개황",
-              "alt2": "기상 및 자연재해",
-              "alt3": "지역의 개황",
-              "alt4": "기상 및 자연재해",
-              "alt5": "생태 및 자연환경",
-              "alt6": "도시 및 주거환경"
-            })
+        <section class="sub-category" aria-label="성과품 카테고리">
+          <div class="results-wrap">
+            <nav aria-label="데이터 카테고리 네비게이션">
+              <ul class="tab-list" role="tablist" aria-label="데이터 카테고리 목록">
+                <li class="on">
+                  <a 
+                    href="#key-natural" 
+                    role="tab" 
+                    aria-selected="true" 
+                    aria-controls="key-natural"
+                    tabindex="0"
+                  >
+                    <i class="ico-nature" aria-hidden="true"></i>
+                    자연조건 데이터
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="#key-social" 
+                    role="tab" 
+                    aria-selected="false" 
+                    aria-controls="key-social"
+                    tabindex="-1"
+                  >
+                    <i class="ico-social" aria-hidden="true"></i>
+                    사회특성 데이터
+                  </a>
+                </li>
+                <li>
+                  <a 
+                    href="#key-cost" 
+                    role="tab" 
+                    aria-selected="false" 
+                    aria-controls="key-cost"
+                    tabindex="-1"
+                  >
+                    <i class="ico-cost" aria-hidden="true"></i>
+                    추정사업비 데이터
+                  </a>
+                </li>
+              </ul>
+            </nav>
+  
+            <div class="tab-panels" role="tabpanel">
+              @@include("_include/_results-tab-panel.html", {
+                "id": "key-natural",
+                "tabClass": "natural",
+                "isActive": " on",
+                "title": "자연조건 데이터",
+                "titleId": "title-natural",
+                "desc": "지역의 개황, 기상 및 자연재해,<br>생태 및 자연환경, 도시 및 주거환경<br>관련 데이터를 제공합니다.",
+                "imgPrefix": "natural",
+                "alt1": "지역의 개황",
+                "alt2": "기상 및 자연재해",
+                "alt3": "지역의 개황",
+                "alt4": "기상 및 자연재해",
+                "alt5": "생태 및 자연환경",
+                "alt6": "도시 및 주거환경"
+              })
+              @@include("_include/_results-tab-panel.html", {
+                "id": "key-social",
+                "tabClass": "social",
+                "isActive": "",
+                "title": "사회특성 데이터",
+                "titleId": "title-social",
+                "desc": "인구, 토지, 건축물, 사회기반시설 관련<br>데이터를 제공합니다.",
+                "imgPrefix": "social",
+                "alt1": "지역의 개황",
+                "alt2": "기상 및 자연재해",
+                "alt3": "지역의 개황",
+                "alt4": "기상 및 자연재해",
+                "alt5": "생태 및 자연환경",
+                "alt6": "도시 및 주거환경"
+              })
+              @@include("_include/_results-tab-panel.html", {
+                "id": "key-cost",
+                "tabClass": "cost",
+                "isActive": "",
+                "title": "추정사업비 데이터",
+                "titleId": "title-cost",
+                "desc": "산정기준, 총사업비, 보상비,<br>공사비, 설계비, 부대비<br>관련 데이터를 제공합니다.",
+                "imgPrefix": "cost",
+                "alt1": "지역의 개황",
+                "alt2": "기상 및 자연재해",
+                "alt3": "지역의 개황",
+                "alt4": "기상 및 자연재해",
+                "alt5": "생태 및 자연환경",
+                "alt6": "도시 및 주거환경"
+              })
+            </div>
           </div>
         </section>
       </div>

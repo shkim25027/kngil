@@ -20,7 +20,8 @@
 @forward "keyframes";
 
 // 3. Sections
-@forward "content"; // 헤더, 다이어그램, 유틸리티 포함
-@forward "tabs";    // 탭 네비게이션 및 탭 콘텐츠
+@forward "content";    // 헤더, 다이어그램, 유틸리티 포함
+@forward "tabs";       // 탭 네비게이션 및 탭 콘텐츠
+@forward "pin-overlap"; // Pin 겹침 방지 (loading/loaded, spacer, 간격)
 
 
