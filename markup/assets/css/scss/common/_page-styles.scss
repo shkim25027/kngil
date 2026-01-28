@@ -100,13 +100,17 @@
   }
 
   .sub-tit {
-    display: block;
-    font-size: 32px; 
     font-weight: 400;
-    text-wrap: balance;
-    word-break: keep-all;
-    @include mq(tablet-wide, max) {
-      font-size: 2rem;
-    }
+  }
+}
+
+.sub-tit {
+  display: block;
+  font-size: 32px; 
+  font-weight: 700;
+  text-wrap: balance;
+  word-break: keep-all;
+  @include mq(tablet-wide, max) {
+    font-size: 2rem;
   }
 }
