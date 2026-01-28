@@ -5,30 +5,31 @@
         opacity: 0;
         animation: marker-appear 0.6s ease-in forwards, marker-blink 1.8s ease-in-out infinite;
       }
+      /* transform-origin: viewBox(0 0 1027 357) 기준 각 마커 원형 path 중심 */
       .marker-01 {
-        transform-origin: 686px 28px;
+        transform-origin: 686.008px 28px;
         animation-delay: 0s, 0.6s;
       }
       .marker-02 {
-        transform-origin: 437px 139px;
+        transform-origin: 437.008px 139px;
         animation-delay: 0.3s, 0.9s;
       }
       .marker-03 {
-        transform-origin: 262px 186px;
+        transform-origin: 262.008px 186px;
         animation-delay: 0.6s, 1.2s;
       }
       .marker-04 {
-        transform-origin: 309px 258px;
+        transform-origin: 309.008px 258px;
         animation-delay: 0.9s, 1.5s;
       }
       .marker-05 {
-        transform-origin: 151px 280px;
+        transform-origin: 151.008px 280px;
         animation-delay: 1.2s, 1.8s;
       }
       @keyframes marker-appear {
         0% {
           opacity: 0;
-          ransform: scale(1);
+          transform: scale(1);
         }
         100% {
           opacity: 1;
