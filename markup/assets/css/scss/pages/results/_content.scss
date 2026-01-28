@@ -83,8 +83,6 @@
 
       // 중앙 원형 코어
       .circle-core {
-        position: relative;
-        line-height: 95%;
         &::before {
           content: "";
           position: absolute;
@@ -97,7 +95,9 @@
           @include maskContents();
           padding: 4px;
         }
-        
+        span{
+          line-height: 95%;
+        }
       }
 
       // 원형 배치 요소 링 (6개 항목)
