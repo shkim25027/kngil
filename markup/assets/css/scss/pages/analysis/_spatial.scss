@@ -34,10 +34,20 @@
       }
     }
 
-    .spatial02 .sub-figs .apx,
-    .spatial03 .sub-figs .apx {
+    .spatial02 .sub-figs .apx{
       top: 0;
       left: 0;
+      width: 100%;
+      height: 100%;
+      
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .spatial03 .sub-figs .apx{
+      top: 0;
+      left: 0.12%;
       width: 100%;
       height: 100%;
       
