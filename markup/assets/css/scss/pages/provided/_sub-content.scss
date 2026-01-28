@@ -7,7 +7,7 @@
   .sub-content {
     &::before {
       content: "Provided Data";
-      bottom: 34px;
+      bottom: 6px;
       letter-spacing: -0.06em;
       @include mq(tablet-wide, max) {
         content: "Provided\A Data";

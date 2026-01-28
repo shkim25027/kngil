@@ -16,7 +16,7 @@
       route: '.route'
     },
     ANIMATION: {
-      bgScale: 1.05,
+      bgScale: 1,
       titScale: 0.7,
       titTranslate: '-47%',
       duration: 0.5
