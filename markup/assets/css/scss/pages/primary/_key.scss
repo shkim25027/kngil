@@ -128,7 +128,7 @@
             will-change: opacity;
             backface-visibility: hidden;
             transform: translateZ(0);
-            animation: areaDimLayer 4s ease-in-out infinite;
+            animation: areaDimLayer 3s ease-in-out infinite;
           }
 
           .apx-01 {
@@ -142,7 +142,7 @@
             will-change: opacity;
             backface-visibility: hidden;
             transform: translateZ(0);
-            animation: areaApx01 4s ease-in-out infinite;
+            animation: areaApx01 3s ease-in-out infinite;
 
             .rect-box {
               position: absolute;
@@ -158,7 +158,7 @@
               will-change: opacity;
               backface-visibility: hidden;
               transform: translateZ(0);
-              animation: areaRectBox 4s ease-in-out infinite;
+              animation: areaRectBox 3s ease-in-out infinite;
               box-sizing: border-box;
               min-width: 1px;
               min-height: 1px;
@@ -175,7 +175,7 @@
               will-change: opacity, transform;
               backface-visibility: hidden;
               transform: translateZ(0);
-              animation: areaKeyPoint 4s ease-in-out infinite;
+              animation: areaKeyPoint 3s ease-in-out infinite;
   
               img {
                 will-change: transform;
@@ -203,7 +203,7 @@
             will-change: opacity;
             backface-visibility: hidden;
             transform: translateZ(0);
-            animation: areaApx02 4s ease-in-out infinite;
+            animation: areaApx02 3s ease-in-out infinite;
           }
         }
 
