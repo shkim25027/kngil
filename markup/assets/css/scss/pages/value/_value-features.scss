@@ -8,7 +8,7 @@
 .value {
   .value-features {
     width: 100%;
-    height: 100vh;
+    height: calc(var(--window-inner-height) - 80px);
     display: flex;
     align-items: stretch;
     gap: map-get($value-sizes, gap-xl);
