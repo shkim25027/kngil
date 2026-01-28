@@ -50,8 +50,11 @@
   0%, 5.99% {
     opacity: 0;
   }
-  6%, 100% {
+  6%, 74.99% {
     opacity: 1;
+  }
+  75%, 100% {
+    opacity: 0;
   }
 }
 
@@ -59,8 +62,11 @@
   0%, 5.99% {
     opacity: 0;
   }
-  6%, 100% {
+  6%, 74.99% {
     opacity: 1;
+  }
+  75%, 100% {
+    opacity: 0;
   }
 }
 
@@ -68,26 +74,35 @@
   0%, 24.99% {
     opacity: 0;
   }
-  25%, 100% {
+  25%, 74.99% {
     opacity: 1;
+  }
+  75%, 100% {
+    opacity: 0;
   }
 }
 
 @keyframes areaRectBox {
-  0%, 11.99% {
+  0%, 24.99% {
     opacity: 0;
   }
-  12%, 100% {
+  25%, 74.99% {
     opacity: 1;
+  }
+  75%, 100% {
+    opacity: 0;
   }
 }
 
 @keyframes areaKeyPoint {
-  0%, 14.99% {
+  0%, 24.99% {
     opacity: 0;
   }
-  15%, 100% {
+  25%, 74.99% {
     opacity: 1;
+  }
+  75%, 100% {
+    opacity: 0;
   }
 }
 
@@ -195,54 +210,80 @@
   }
 }
 
+// apx-01: 0~33.33%, apx-02: 33.33~66.66%, apx-03: 66.66~100% 순차 표시 (opacity만, 확대 없음)
 @keyframes progressApx01 {
-  0% {
+  0%, 33.32% {
+    opacity: 1;
+  }
+  33.33%, 100% {
     opacity: 0;
-    transform: scale(0);
-  }
-  0.01%, 5% {
-    opacity: 1;
-    transform: scale(0);
-  }
-  8% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  29.99% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  30%, 100% {
-    opacity: 0;
-    transform: scale(1);
   }
 }
 
 @keyframes progressApx02 {
-  0%, 29.99% {
+  0%, 33.32% {
     opacity: 0;
-    transform: scale(0);
   }
-  30%, 33% {
+  33.33%, 66.65% {
     opacity: 1;
-    transform: scale(0);
   }
-  36% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
+  66.66%, 100% {
+    opacity: 0;
   }
 }
 
 @keyframes progressApx03 {
-  0%, 59.99% {
+  0%, 66.65% {
     opacity: 0;
   }
-  60%, 100% {
+  66.66%, 100% {
     opacity: 1;
+  }
+}
+
+// apx-01 구간(0~33.33%)에서 sub-apx-slide-item 순차 표시 (dataApx 방식)
+@keyframes progressSlideItem1 {
+  0%, 8.32% {
+    opacity: 1;
+  }
+  8.33%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes progressSlideItem2 {
+  0%, 8.32% {
+    opacity: 0;
+  }
+  8.33%, 16.65% {
+    opacity: 1;
+  }
+  16.66%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes progressSlideItem3 {
+  0%, 16.65% {
+    opacity: 0;
+  }
+  16.66%, 24.99% {
+    opacity: 1;
+  }
+  25%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes progressSlideItem4 {
+  0%, 24.99% {
+    opacity: 0;
+  }
+  25%, 33.32% {
+    opacity: 1;
+  }
+  33.33%, 100% {
+    opacity: 0;
   }
 }
 
