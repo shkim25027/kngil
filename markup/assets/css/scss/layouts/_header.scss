@@ -444,6 +444,8 @@ html {
 }
 
 // --- Keyframes ---
+// 공통 애니메이션(slideDown, slideup, slideRight, enableHover)은 common/_animations.scss 참조
+
 @keyframes menuListShow {
   0% {
     opacity: 0;
@@ -452,43 +454,6 @@ html {
   100% {
     opacity: 1;
     transform: translateX(-50%) translateY(0);
-  }
-}
-
-@keyframes slideDown {
-  0% {
-    top: -1000px;
-    opacity: 80%;
-  }
-  100% {
-    top: 0;
-    opacity: 20%;
-  }
-}
-
-@keyframes slideup {
-  0% {
-    bottom: -1000px;
-    opacity: 80%;
-  }
-  100% {
-    bottom: 0;
-    opacity: 20%;
-  }
-}
-
-@keyframes slideRight {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-@keyframes enableHover {
-  to {
-    pointer-events: auto;
   }
 }
 

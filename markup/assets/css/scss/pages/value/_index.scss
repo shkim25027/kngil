@@ -1,20 +1,31 @@
 // =======================================
 // Value Page - Main Entry Point
 // =======================================
-// 모든 섹션과 유틸리티를 통합 관리
+// value 페이지의 모든 스타일을 통합 관리하는 메인 파일
+//
+// 파일 구조:
+// - _variables.scss  : 변수 정의 (색상, 크기, 폰트)
+// - _mixins.scss     : Mixin 정의
+// - _keyframes.scss  : 애니메이션 키프레임 정의
+// - _base.scss       : 기본 스타일 (visual, summary)
+// - _sections.scss   : 섹션별 스타일 (service, data-comparison, value-features)
+// - _responsive.scss : 반응형 미디어 쿼리 스타일
+//
+// 로드 순서:
+// 1. Variables → 2. Mixins → 3. Keyframes → 4. Base → 5. Sections → 6. Responsive
 
-// Variables & Mixins (먼저 로드)
+// 1. Variables & Mixins (먼저 로드)
 @forward "variables";
 @forward "mixins";
 
-// Animations (다른 파일에서 사용 가능하도록)
-@forward "animations";
+// 2. Keyframes (애니메이션 - 먼저 로드)
+@forward "keyframes";
 
-// Sections
-@forward "visual";
-@forward "service";
-@forward "data-comparison";
-@forward "intro";
-@forward "summary";
-@forward "value-features";
-@forward "system";
+// 3. Base (기본 스타일)
+@forward "base";
+
+// 4. Sections (섹션별 스타일)
+@forward "sections";
+
+// 5. Responsive (반응형)
+@forward "responsive";

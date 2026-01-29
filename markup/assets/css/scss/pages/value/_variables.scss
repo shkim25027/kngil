@@ -2,6 +2,7 @@
 // Value Page Variables
 // =======================================
 
+// 색상 변수
 $value-colors: (
   white: #fff,
   black: #000,
@@ -11,19 +12,12 @@ $value-colors: (
   orange: #FF7700,
   orange-light: #FFA23A,
   gold: #EADD83,
-  brown-dark: #583C1C,
-  brown-light: #7D5412,
-  green-dark: #00583E,
-  green-light: #119D49,
-  green-system: #296B55,
-  orange-dark: #BB5F09,
-  orange-system: #EB5F00,
-  gray-dark: #352D1D,
   gray-light: #737373,
   gray-line: #aaa,
   gray-dot: #555
 );
 
+// 간격 및 크기 변수
 $value-sizes: (
   border-radius-sm: 4px,
   border-radius-md: 10px,
@@ -41,6 +35,7 @@ $value-sizes: (
   padding-xl: 50px
 );
 
+// 폰트 크기 변수
 $value-font-sizes: (
   xs: 16px,
   sm: 18px,
@@ -48,6 +43,5 @@ $value-font-sizes: (
   lg: 24px,
   xl: 26px,
   xxl: 28px,
-  xxxl: 32px,
-  huge: 88px
+  xxxl: 32px
 );

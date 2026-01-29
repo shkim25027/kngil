@@ -5,6 +5,8 @@
 // =======================================
 // Service Section
 // =======================================
+// 서비스 소개 영역: 단계별 프로세스 및 데이터 비교
+
 .value {
   .service {
     max-width: 1400px;
@@ -14,32 +16,34 @@
       padding: 0 16px;
     }
 
-    // data-aos의 transform이 stacking context를 만들어 .step-flow::before의 mix-blend-mode가 깨짐 → 애니 종료 후 제거
+    // AOS 애니메이션 종료 후 transform 제거 (mix-blend-mode 이슈 해결)
     &.aos-animate {
       transform: none;
     }
 
+    // 단계별 프로세스 리스트
     .step-list {
       @include mq(tablet-small, max) {
         margin-bottom: 40px;
       }
-        .step-desc {
-          font-size: map-get($value-font-sizes, xl);
-          color: map-get($value-colors, white);
-          line-height: 1.5;
-          @include value-text-shadow;
-          
-          @include mq(desktop, max) {
-            margin-bottom: 36px;
-            font-size: 2rem;
-          }
-          
-          @include mq(tablet-small, max) {
-            text-wrap: balance;
-            font-size: 1.6rem;
-            line-height: 1.6;
-            padding: 0 16px;
-          }
+      
+      .step-desc {
+        font-size: map-get($value-font-sizes, xl);
+        color: map-get($value-colors, white);
+        line-height: 1.5;
+        @include value-text-shadow;
+        
+        @include mq(desktop, max) {
+          margin-bottom: 36px;
+          font-size: 2rem;
+        }
+        
+        @include mq(tablet-small, max) {
+          text-wrap: balance;
+          font-size: 1.6rem;
+          line-height: 1.6;
+          padding: 0 16px;
+        }
 
         .bg-yellow {
           padding: 0 map-get($value-sizes, padding-sm) 4px;
@@ -48,6 +52,7 @@
         }
       }
 
+      // 단계 플로우 리스트
       .step-flow {
         position: relative;
         display: flex;
@@ -71,6 +76,7 @@
           padding-right: 0;
         }
 
+        // 배경 그라디언트 효과
         &:before {
           content: "";
           position: absolute;
@@ -91,6 +97,7 @@
           }
         }
 
+        // 각 단계 아이템
         .step-item {
           position: relative;
           min-width: 232px;
@@ -107,6 +114,7 @@
             min-width: auto;
           }
 
+          // 활성화된 단계 (큰길서비스)
           &.active {
             border-radius: map-get($value-sizes, border-radius-xl);
             @include value-box-gradient(180deg, #C9AF00, map-get($value-colors, orange));
@@ -162,6 +170,7 @@
             }
           }
 
+          // 단계 간 화살표
           &:not(:last-child) {
             &::after {
               content: " ";
@@ -175,16 +184,13 @@
           }
 
           @include mq(tablet-small, max) {
-            &:not(:last-child)::after {
-              display: none;
-            }
-          }          
-          @include mq(tablet-small, max) {
+            &:not(:last-child)::after,
             &::after {
               display: none;
             }
           }
 
+          // 단계 박스
           .step-box {
             text-align: center;
             transition: all 0.3s;
@@ -256,13 +262,6 @@
               }
             }
           }
-        }
-
-        .step-arrow {
-          color: #4ade80;
-          font-size: map-get($value-font-sizes, lg);
-          font-weight: bold;
-          flex: 0 0 auto;
         }
       }
     }

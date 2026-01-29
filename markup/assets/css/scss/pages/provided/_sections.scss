@@ -1,0 +1,12 @@
+@use "../../import/_mixin" as *;
+@use "variables" as *;
+
+// =======================================
+// Provided Page - Sections Styles
+// =======================================
+// 섹션별 스타일: intro, route, process, data-provision
+
+@forward "intro";
+@forward "route";
+@forward "process";
+@forward "data-provision";

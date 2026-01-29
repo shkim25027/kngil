@@ -1,8 +1,15 @@
 @use "../../import/_mixin" as *;
 
 // =======================================
-// Sub Header Section
+// Provided Page - Base Styles
 // =======================================
+// 기본 스타일: layout, sub-header, sub-content
+
+// Layout Overrides
+.wrap:has(.container.provided) {
+  overflow: visible;
+}
+
 .provided {
   .sub-header {
     background: url(../img/provided/bg_provided_title.jpg) no-repeat center center;
@@ -11,6 +18,17 @@
     @include mq(tablet-small, max) {
       background-size: cover;
       background-position: center;
+    }
+  }
+
+  .sub-content {
+    &::before {
+      content: "Provided Data";
+      bottom: 6px;
+      letter-spacing: -0.06em;
+      @include mq(tablet-wide, max) {
+        content: "Provided\A Data";
+      }
     }
   }
 }

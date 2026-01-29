@@ -1,0 +1,10 @@
+@use "../../import/_mixin" as *;
+
+// =======================================
+// Analysis Page - Sections Styles
+// =======================================
+// 섹션별 스타일: spatial, statistics, attribute
+
+@forward "spatial";
+@forward "statistics";
+@forward "attribute";

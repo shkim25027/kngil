@@ -5,6 +5,8 @@
 // =======================================
 // Value Features Section
 // =======================================
+// 주요 기능 소개 섹션: GIS, 데이터, 지도, 커스터마이징
+
 .value {
   .value-features {
     width: 100%;
@@ -27,10 +29,6 @@
       padding: map-get($value-sizes, padding-md) 24px;
       margin-top: 20px;
       margin-bottom: 40px;
-      
-      .bg-line {
-        display: none;
-      }
     }
 
     @include mq(tablet-small, max) {
@@ -43,11 +41,8 @@
       margin-top: 20px;
       margin-bottom: 30px;
     }
-    
-    @include mq(desktop, max) {
-      gap: map-get($value-sizes, gap-lg);
-    }
 
+    // 기능 카드
     .feature-card {
       width: 100%;
       height: 100%;
@@ -62,6 +57,7 @@
       flex-direction: column;
       justify-content: center;
       min-height: calc(var(--window-inner-height) * 0.5);
+      
       @include mq(desktop, max) {
         border-radius: map-get($value-sizes, border-radius-lg);
       }
@@ -72,6 +68,7 @@
         height: auto;
       }
 
+      // 배경 이미지
       &::before {
         position: absolute;
         content: "";
@@ -86,19 +83,7 @@
         transition: transform 1s ease;
       }
 
-      /*
-      &::after {
-        position: absolute;
-        content: "";
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        background: rgba(0, 0, 0, 0.2);
-      }
-        */
-
+      // 호버 효과
       &:hover {
         @include mq(desktop, min) {
           padding-top: 100px;
@@ -124,7 +109,7 @@
         word-break: keep-all;
         text-wrap: balance;
         flex-direction: column;
-        font-size:32px;
+        font-size: 32px;
         font-weight: 700;
         @include flex(flex-start, center);
                 
@@ -171,18 +156,7 @@
       }
     }
 
-    .feature-card-wrap {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: map-get($value-sizes, gap-xl);
-
-      .feature-card {
-        height: calc(50% - 20px);
-      }
-    }
-
+    // 각 기능별 배경 이미지 및 아이콘
     .feature-gis {
       &::before {
         background-image: url(../img/value/bg_value_gis.jpg);
@@ -227,6 +201,7 @@
       }
     }
 
+    // 장식용 라인 애니메이션
     .lines {
       position: absolute;
       top: 0;
@@ -306,11 +281,11 @@
         }
 
         .d1 {
-          animation-name: dot-center;
+          animation-name: value-dot-center;
         }
 
         .d2 {
-          animation-name: dot-side-left;
+          animation-name: value-dot-side-left;
           
           @include mq(desktop, max) {
             display: none;
@@ -318,7 +293,7 @@
         }
 
         .d3 {
-          animation-name: dot-side-right;
+          animation-name: value-dot-side-right;
           
           @include mq(desktop, max) {
             display: none;

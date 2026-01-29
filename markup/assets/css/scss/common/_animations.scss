@@ -41,74 +41,6 @@
   }
 }
 
-@keyframes dot-rotate-road1 {
-  0% {
-    transform: rotate(90deg);
-  }
-  33% {
-    transform: rotate(180deg);
-  }
-  66% {
-    transform: rotate(270deg);
-  }
-  100% {
-    transform: rotate(450deg);
-  }
-}
-
-@keyframes dot-rotate-road2 {
-  0% {
-    transform: rotate(180deg);
-  }
-  33% {
-    transform: rotate(270deg);
-  }
-  66% {
-    transform: rotate(450deg);
-  }
-  100% {
-    transform: rotate(540deg);
-  }
-}
-
-@keyframes dot-rotate-road3 {
-  0% {
-    transform: rotate(270deg);
-  }
-  33% {
-    transform: rotate(450deg);
-  }
-  66% {
-    transform: rotate(540deg);
-  }
-  100% {
-    transform: rotate(630deg);
-  }
-}
-
-@keyframes dot-rotate-modal {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(180deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes dot-rotate-algo {
-  0% {
-    transform: rotate(-180deg);
-  }
-  50% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(180deg);
-  }
-}
 
 // =======================================
 // Expand & Scale Animations
@@ -132,17 +64,6 @@
 // =======================================
 // Slide & Move Animations
 // =======================================
-
-@keyframes scrollUp {
-  0% {
-    transform: translateY(40px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0px);
-    opacity: 1;
-  }
-}
 
 @keyframes slideDown {
   0% {
@@ -200,82 +121,6 @@
   100% {
     top: 0px;
     opacity: 1;
-  }
-}
-
-// =======================================
-// Footer Animations
-// =======================================
-
-@keyframes footer_up {
-  0% {
-    bottom: -80px;
-    opacity: 0.8;
-  }
-  100% {
-    bottom: 0px;
-    opacity: 1;
-  }
-}
-
-@keyframes footer_down {
-  0% {
-    bottom: 0px;
-    opacity: 1;
-  }
-  100% {
-    bottom: -100px;
-    opacity: 0;
-    display: none;
-  }
-}
-
-// =======================================
-// Card Animations
-// =======================================
-
-@keyframes card1 {
-  20% {
-    transform: rotateY(0deg);
-  }
-  70% {
-    transform: rotateY(180deg);
-  }
-  100% {
-    transform: rotateY(180deg);
-  }
-}
-
-@keyframes card2 {
-  40% {
-    transform: rotateY(180deg);
-  }
-  90% {
-    transform: rotateY(0deg);
-  }
-  100% {
-    transform: rotateY(0deg);
-  }
-}
-
-@keyframes card3 {
-  30% {
-    transform: rotateY(0deg);
-  }
-  80% {
-    transform: rotateY(180deg);
-  }
-  100% {
-    transform: rotateY(180deg);
-  }
-}
-
-@keyframes card4 {
-  50% {
-    transform: rotateY(180deg);
-  }
-  100% {
-    transform: rotateY(0deg);
   }
 }
 
@@ -397,14 +242,47 @@
 }
 
 // =======================================
-// Utility Animations
+// Fade Animations
 // =======================================
 
-@keyframes noPoints {
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
   to {
-    pointer-events: initial;
+    opacity: 1;
   }
 }
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+// =======================================
+// Pulse & Scale Animations
+// =======================================
+
+@keyframes pulseCircle {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.7;
+  }
+}
+
+// =======================================
+// Utility Animations
+// =======================================
 
 @keyframes enableHover {
   to {

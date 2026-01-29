@@ -1,21 +1,29 @@
 // =======================================
 // Provided Page - Main Entry Point
 // =======================================
-// 모든 섹션과 유틸리티를 통합 관리
+// provided 페이지의 모든 스타일을 통합 관리하는 메인 파일
+//
+// 파일 구조:
+// - _variables.scss  : 변수 정의 (색상, 그라디언트)
+// - _keyframes.scss  : 애니메이션 키프레임 정의
+// - _base.scss       : 기본 스타일 (layout, sub-header, sub-content)
+// - _sections.scss   : 섹션별 스타일 (intro, route, process, data-provision)
+// - _responsive.scss : 반응형 미디어 쿼리 스타일
+//
+// 로드 순서:
+// 1. Variables → 2. Keyframes → 3. Base → 4. Sections → 5. Responsive
 
-// Layout Overrides
-@forward "layout";
-
-// Variables (먼저 로드)
+// 1. Variables (먼저 로드)
 @forward "variables";
 
-// Animations (다른 파일에서 사용 가능하도록)
-@forward "animations";
+// 2. Keyframes (애니메이션)
+@forward "keyframes";
 
-// Sections
-@forward "sub-header";
-@forward "sub-content";
-@forward "intro";
-@forward "route";
-@forward "process";
-@forward "data-provision";
+// 3. Base (기본 스타일)
+@forward "base";
+
+// 4. Sections (섹션별 스타일)
+@forward "sections";
+
+// 5. Responsive (반응형)
+@forward "responsive";

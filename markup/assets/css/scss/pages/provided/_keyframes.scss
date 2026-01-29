@@ -1,0 +1,11 @@
+// =======================================
+// Provided Page - Keyframes
+// =======================================
+// provided 페이지 전용 애니메이션 키프레임
+// 공통 애니메이션은 common/_animations.scss 참조
+
+@keyframes moveBullet {
+  to { offset-distance: 100%; }
+}
+
+// fadeInRight는 common/_animations.scss 참조

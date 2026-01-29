@@ -292,3 +292,54 @@ $breakpoints: (
   border-radius: inherit;
   padding: 1px;
 }
+
+// =======================================
+// Common Background Mixins
+// =======================================
+
+/**
+ * 배경 이미지 커버
+ * @param {string} $url - 배경 이미지 경로
+ */
+@mixin bg-cover($url) {
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+// =======================================
+// Common Gradient Mixins
+// =======================================
+
+/**
+ * 그라디언트 박스
+ * @param {number|string} $direction - 그라디언트 방향 (기본값: 90deg)
+ * @param {color} $color1 - 시작 색상
+ * @param {color} $color2 - 끝 색상
+ */
+@mixin box-gradient($direction: 90deg, $color1, $color2) {
+  background: linear-gradient($direction, $color1 0%, $color2 100%);
+}
+
+// =======================================
+// Common List Mixins
+// =======================================
+
+/**
+ * 리스트 불릿 스타일
+ * @param {number} $padding-left - 왼쪽 패딩 (기본값: 20px)
+ * @param {color} $color - 불릿 색상 (기본값: #fff)
+ * @param {number} $opacity - 불릿 투명도 (기본값: 0.6)
+ */
+@mixin list-bullet($padding-left: 20px, $color: #fff, $opacity: 0.6) {
+  position: relative;
+  padding-left: $padding-left;
+  &::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: $color;
+    opacity: $opacity;
+  }
+}

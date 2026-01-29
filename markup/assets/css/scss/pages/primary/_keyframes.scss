@@ -23,27 +23,7 @@
 // =======================================
 // Primary Page - Key Section Animations
 // =======================================
-
-// 공통 애니메이션 정의
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes pulseCircle {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.2);
-    opacity: 0.7;
-  }
-}
+// fadeIn, pulseCircle은 common/_animations.scss 참조
 
 // Area 애니메이션 (apx-01 빠른 시작, 전체 3초 주기)
 @keyframes areaDimLayer {
@@ -106,109 +86,7 @@
   }
 }
 
-// Report 애니메이션 (총 15초 주기 - 반복)
-@keyframes reportDimLayer {
-  0%, 5.99% {
-    opacity: 0;
-  }
-  6%, 39.99% {
-    opacity: 1;
-  }
-  40%, 59.99% {
-    opacity: 0;
-  }
-  60%, 93.99% {
-    opacity: 1;
-  }
-  94%, 100% {
-    opacity: 0;
-  }
-}
-
-@keyframes reportApx01 {
-  0%, 5.99% {
-    opacity: 0;
-    transform: scale(0);
-  }
-  6% {
-    opacity: 1;
-    transform: scale(0);
-  }
-  9% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  26.99% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  27%, 59.99% {
-    opacity: 0;
-    transform: scale(1);
-  }
-  60% {
-    opacity: 1;
-    transform: scale(0);
-  }
-  63% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  80.99% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  81%, 100% {
-    opacity: 0;
-    transform: scale(1);
-  }
-}
-
-@keyframes reportApx02 {
-  0%, 26.99% {
-    opacity: 0;
-    transform: scale(0);
-  }
-  27% {
-    opacity: 1;
-    transform: scale(0);
-  }
-  30% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  39.99% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  40%, 80.99% {
-    opacity: 0;
-    transform: scale(1);
-  }
-  81% {
-    opacity: 1;
-    transform: scale(0);
-  }
-  84% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  93.99% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  94%, 100% {
-    opacity: 0;
-    transform: scale(1);
-  }
-}
-
 // Progress 애니메이션
-@keyframes progressDimLayer {
-  0%, 100% {
-    opacity: 1;
-  }
-}
 
 // apx-01: 0~50%(2배), apx-02: 50~75%, apx-03: 75~100% 순차 표시 (apx-01 유지가 02·03보다 2배)
 @keyframes progressApx01 {
@@ -383,12 +261,6 @@
 }
 
 // Data 애니메이션
-@keyframes dataDimLayer {
-  0%, 100% {
-    opacity: 1;
-  }
-}
-
 @keyframes dataApx01 {
   0%, 30% {
     opacity: 0;

@@ -31,24 +31,7 @@ $intro-animation-delay: 0.1s;
   }
 }
 
-@keyframes clip_play {
-  0% {
-    clip-path: inset(50% 50% round 10px 10px 10px 10px);
-    top: -150px;
-  }
-  30% {
-    clip-path: inset(49.5% 45% round 10px 10px 10px 10px);
-    top: -150px;
-  }
-  60% {
-    clip-path: inset(45% 45% round 10px 10px 10px 10px);
-    top: -193px;
-  }
-  100% {
-    clip-path: inset(0% 0% round 0px 0px 0px 0px);
-    top: 0;
-  }
-}
+// 공통 애니메이션(clip_play)은 common/_animations.scss 참조
 
 // Body & HTML Reset for Main Page
 body:has(.wrap.main),
@@ -300,14 +283,4 @@ html:has(.wrap.main) {
   }
 }
 
-// Intro Text Animation
-@keyframes txt_mask {
-  0% {
-    top: 80px;
-    opacity: 0;
-  }
-  100% {
-    top: 0;
-    opacity: 1;
-  }
-}
+// 공통 애니메이션(txt_mask)은 common/_animations.scss 참조

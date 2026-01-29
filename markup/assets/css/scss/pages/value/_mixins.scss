@@ -5,6 +5,7 @@
 // Value Page Mixins
 // =======================================
 
+// 텍스트 그림자 효과
 @mixin value-text-shadow {
   text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.10), 
                1px -1px 0 rgba(0, 0, 0, 0.10), 
@@ -12,6 +13,7 @@
                1px 1px 0 rgba(0, 0, 0, 0.10);
 }
 
+// 배경 이미지 커버
 @mixin value-bg-cover($url) {
   background-image: url($url);
   background-repeat: no-repeat;
@@ -19,21 +21,17 @@
   background-size: cover;
 }
 
-@mixin value-bg-center($url) {
-  background-image: url($url);
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain;
-}
-
+// 그라디언트 박스
 @mixin value-box-gradient($direction: 90deg, $color1, $color2) {
   background: linear-gradient($direction, $color1 0%, $color2 100%);
 }
 
+// 박스 그림자
 @mixin value-box-shadow($x: 18.559px, $y: 0, $blur: 9.368px, $spread: 0, $color: rgba(0, 0, 0, 0.25)) {
   box-shadow: $x $y $blur $spread $color;
 }
 
+// 화살표 after 요소
 @mixin value-arrow-after($url, $right: -38px, $width: 38px, $height: 64px) {
   &::after {
     content: " ";
@@ -47,6 +45,7 @@
   }
 }
 
+// 박스 오버레이 효과
 @mixin value-box-overlay($side: right, $opacity: 0.2) {
   &::after {
     position: absolute;
@@ -63,6 +62,7 @@
   }
 }
 
+// 마스크 그라디언트
 @mixin value-box-mask-gradient($color1, $color2, $color3) {
   &::before {
     content: "";
@@ -79,6 +79,7 @@
   }
 }
 
+// 리스트 불릿 스타일
 @mixin value-list-bullet($padding-left: 20px, $opacity: 0.6) {
   position: relative;
   padding-left: $padding-left;
