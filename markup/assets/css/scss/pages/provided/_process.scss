@@ -130,7 +130,7 @@
     }
 
     .right {
-      padding: 200px 170px 100px 135px;
+      padding: 200px clamp(24px, 8.8541vw, 170px) 100px clamp(24px, 7.03125vw, 135px);
       display: flex;
       flex-direction: column;
       gap: 450px;
@@ -217,6 +217,10 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         gap: 12px;
+        @include mq(1860px, max) {
+          grid-template-columns: 1fr 1fr;
+          gap: 16px;
+        }
         
         @include mq(desktop, max) {
           grid-template-columns: 1fr 1fr;
@@ -286,6 +290,11 @@
           gap: 18px;
           flex-direction: column;
           @include flex(center, center);
+          @include mq(1860px, max) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+          }
           
           @include mq(tablet-small, max) {
             padding: 20px 12px;
@@ -295,7 +304,10 @@
           dt {
             font-size: 22px;
             font-weight: 700;
-            
+            @include mq(1860px, max) {
+              grid-column: span 2;
+              text-align: center;
+            }
             @include mq(desktop, max) {
               font-size: 20px;
             }

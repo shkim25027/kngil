@@ -11,10 +11,7 @@
   .service {
     max-width: 1400px;
     margin: 0 auto;
-    
-    @include mq(tablet-small, max) {
-      padding: 0 16px;
-    }
+    width: 100%;
 
     // AOS 애니메이션 종료 후 transform 제거 (mix-blend-mode 이슈 해결)
     &.aos-animate {

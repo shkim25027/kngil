@@ -11,374 +11,191 @@
         <section class="sub-header">
           <div class="page-title">
             <h2 data-aos="fade-down" data-aos-duration="1000">FAQ</h2>
-            <span>KNGIL 관련 문의하기</span>
+            <p class="sub-txt">KNGIL 관련 문의하기</p>
           </div>
           <ul class="sub-tab">
             <li><a href="faq.html">자주하는 질문</a></li>
             <li class="on"><a href="Q&A_list.html">1:1 문의하기</a></li>
+            <li>
+                <a href="https://939.co.kr/saman/" target="_blank">원격지원</a>
+            </li>
           </ul>
         </section>
         <section class="sub-content">
             <h3 class="sub-tit">1:1 문의하기</h3>
             <div class="search-wrap">
-                <div class="category-group">
-                    <!-- <strong>구분</strong> -->
-                    <label><input type="checkbox" name="cat[]" value="all" checked=""> 전체</label>
-                    <label><input type="checkbox" name="cat[]" value="general"> 일반</label>
-                    <label><input type="checkbox" name="cat[]" value="improvement"> 개선</label>
-                    <label><input type="checkbox" name="cat[]" value="error"> 오류</label>
-                </div>
-                <form name="faq_search_form" method="get">
-                    <fieldset id="faq_sch" class="search-box">
-                      <legend>FAQ 검색</legend>
-                      <input type="hidden" name="fm_id" value="1">
-                      <label for="stx" class="sound-only">검색어<strong> 필수</strong></label>
-                      <input type="text" name="stx" value="" required="" id="stx" class="frm-input" size="15" maxlength="15">
-                      <button type="submit" value="검색" class="btn-submit">
-                        <i class="fa fa-search" aria-hidden="true"></i> 검색
-                      </button>
+                <div class="filters">
+                    <div class="check-group">
+                        <!-- <strong>구분</strong> -->
+                        <label><input type="checkbox" name="cat[]" value="all" checked=""> 전체</label>
+                        <label><input type="checkbox" name="cat[]" value="general"> 일반</label>
+                        <label><input type="checkbox" name="cat[]" value="improvement"> 개선</label>
+                        <label><input type="checkbox" name="cat[]" value="error"> 오류</label>
+                    </div>
+                    <fieldset class="check-box">
+                        <legend>작성자</legend>
+                        <label><input type="checkbox" name="writer" value="me"> 내가 작성한 글</label>
                     </fieldset>
-                </form>
+                </div>
+                
+                <fieldset id="faq_sch" class="search-box">
+                    <legend>FAQ 검색</legend>
+                    <input type="hidden" name="fm_id" value="1">
+                    <label for="stx" class="sound-only">검색어<strong> 필수</strong></label>
+                    <input type="text" name="stx" value="" required="" id="stx" class="frm-input" placeholder="제목+내용 검색어를 입력하세요">
+                    <button type="submit" value="검색" class="btn-submit">
+                      <i class="ico-search" aria-hidden="true"></i> 검색
+                    </button>
+                </fieldset>
             </div>
 
             <div class="board-list">
                 <table>
                     <caption> 목록</caption>
                     <colgroup>
-                        <col style="width:5%">
+                        <col style="width:5%"><col style="width:7%"><col style="width:12%"><col style="width:12%">
                         <col style="width:7%"><col style="width:auto"><col style="width:9%"><col style="width:9%">
                       </colgroup>
                     <thead>
                         <tr>
-                            <th scope="col">
-                                <div class="check-box check-all">
-                                    <input type="checkbox" id="chkall" onclick="if (this.checked) all_checked(true); else all_checked(false);" class="selec-chk">
-                                    <label for="chkall">
-                                        <span></span>
-                                        <b class="sound-only">현재 페이지 게시물  전체선택</b>
-                                    </label>
-                                </div>
-                            </th>
-                            <th scope="col" width="5%">번호</th>
-                            <th scope="col" width="auto">제목</th>
-                            <th scope="col" width="10%">글쓴이</th>
-                            <th scope="col" width="10%">등록일</th>
-                            <th scope="col" width="10%">상태</th>
+                            <th>번호</th><th>구분</th><th>회사</th><th>부서</th>
+                            <th>작성자</th><th>제목</th><th>등록일</th><th>상태</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="even">
-                            <td>
-                                <div class="check-box">
-                                    <input type="checkbox" name="chk_qa_id[]" value="16" id="chk_qa_id_0" class="selec-chk">
-                                    <label for="chk_qa_id_0">
-                                        <span></span>
-                                        <b class="sound-only">3333</b>
-                                    </label>
-                                </div>
-                            </td>
-                            <td class="num">16</td>
-                            <td class="subject">
-                                <span class="cate">회원</span>
-                                <a href="./Q&A_reply.html">
-                                    3333                                    </a>
-                            </td>
+                        <tr class="row-notice">
+                            <td>공지</td>
+                            <td>공지사항</td>
+                            <td>한맥기술</td>
                             <td >ERP기획</td>
-                            <td >24-08-05</td>
-                            <td class="status"><span class=" txt-done">답변완료</span></td>
-                        </tr>
-                        <tr class="">
+                            <td >관리자5</td>
+                            <td class="left"><span class="title-text">공지사항</span></td>
+                            <td>2025-11-12</td>
                             <td>
-                                <div class="check-box">
-                                    <input type="checkbox" name="chk_qa_id[]" value="15" id="chk_qa_id_1" class="selec-chk">
-                                    <label for="chk_qa_id_1">
-                                        <span></span>
-                                        <b class="sound-only">1111</b>
-                                    </label>
-                                </div>
+                                <span></span>
                             </td>
-                            <td class="num">15</td>
-                            <td class="subject">
-                                <span class="cate">회원</span>
-                                <a href="./Q&A_reply.html">
-                                    1111                                    </a>
-                            </td>
+                        </tr>
+                        <tr class="row-notice">
+                            <td>공지</td>
+                            <td>공지사항</td>
+                            <td>한맥기술</td>
                             <td >ERP기획</td>
-                            <td >24-08-05</td>
-                            <td class="status"><span class=" txt-rdy">답변대기</span></td>
-                        </tr>
-                        <tr class="even">
+                            <td >관리자5</td>
+                            <td class="left"><span class="title-text">공지사항</span></td>
+                            <td>2025-11-12</td>
                             <td>
-                                <div class="check-box">
-                                    <input type="checkbox" name="chk_qa_id[]" value="14" id="chk_qa_id_2" class="selec-chk">
-                                    <label for="chk_qa_id_2">
-                                        <span></span>
-                                        <b class="sound-only">111</b>
-                                    </label>
-                                </div>
+                                <span></span>
                             </td>
-                                    <td class="num">14</td>
-                        <td class="subject">
-                            <span class="cate">회원</span>
-                            <a href="./Q&A_reply.html">
-                                111                                    </a>
-                        </td>
-                        <td >ERP기획</td>
-                        <td >24-08-05</td>
-                            <td class="status"><span class=" txt-rdy">답변대기</span></td>
                         </tr>
-                        <tr class="">
+                        <tr class="row-notice">
+                            <td>공지</td>
+                            <td>공지사항</td>
+                            <td>한맥기술</td>
+                            <td >ERP기획</td>
+                            <td >관리자5</td>
+                            <td class="left"><span class="title-text">공지사항</span></td>
+                            <td>2025-11-12</td>
                             <td>
-                                <div class="check-box">
-                                    <input type="checkbox" name="chk_qa_id[]" value="13" id="chk_qa_id_3" class="selec-chk">
-                                    <label for="chk_qa_id_3">
-                                        <span></span>
-                                        <b class="sound-only">ㅋㅌㅊㅋㅌㅊ</b>
-                                    </label>
-                                </div>
+                                <span></span>
                             </td>
-                                    <td class="num">13</td>
-                        <td class="subject">
-                            <span class="cate">회원</span>
-                            <a href="./Q&A_reply.html">
-                                ㅋㅌㅊㅋㅌㅊ                                    </a>
-                        </td>
-                        <td >ERP기획</td>
-                        <td >24-08-05</td>
-                            <td class="status"><span class=" txt-rdy">답변대기</span></td>
                         </tr>
-                        <tr class="even">
+                        <tr class="row-notice">
+                            <td>공지</td>
+                            <td>공지사항</td>
+                            <td>한맥기술</td>
+                            <td >ERP기획</td>
+                            <td >관리자5</td>
+                            <td class="left"><span class="title-text">공지사항</span></td>
+                            <td>2025-11-12</td>
                             <td>
-                                <div class="check-box">
-                                    <input type="checkbox" name="chk_qa_id[]" value="12" id="chk_qa_id_4" class="selec-chk">
-                                    <label for="chk_qa_id_4">
-                                        <span></span>
-                                        <b class="sound-only">111</b>
-                                    </label>
-                                </div>
+                                <span></span>
                             </td>
-                                    <td class="num">12</td>
-                        <td class="subject">
-                            <span class="cate">회원</span>
-                            <a href="./Q&A_reply.html">
-                                111                                    </a>
-                        </td>
-                        <td >ERP기획</td>
-                        <td >24-08-05</td>
-                            <td class="status"><span class=" txt-done">답변완료</span></td>
-                       </tr>
-                        <tr class="">
-                            <td>
-                                <div class="check-box">
-                                    <input type="checkbox" name="chk_qa_id[]" value="11" id="chk_qa_id_5" class="selec-chk">
-                                    <label for="chk_qa_id_5">
-                                        <span></span>
-                                        <b class="sound-only">123ㅁㅁㄴㄷ</b>
-                                    </label>
-                                </div>
-                            </td>
-                                    <td class="num">11</td>
-                        <td class="subject">
-                            <span class="cate">회원</span>
-                            <a href="./Q&A_reply.html">
-                                123ㅁㅁㄴㄷ                                    </a>
-                        </td>
-                        <td >ERP기획</td>
-                        <td >24-08-05</td>
-                            <td class="status"><span class=" txt-done">답변완료</span></td>
                         </tr>
-                        <tr class="even">
+                        <tr >
+                            <td>10</td>
+                            <td>일반문의</td>
+                            <td>한맥기술</td>
+                            <td >ERP기획</td>
+                            <td >관리자5</td>
+                            <td class="left"><span class="title-text">일반 문의</span></td>
+                            <td>2025-11-12</td>
                             <td>
-                                <div class="check-box">
-                                    <input type="checkbox" name="chk_qa_id[]" value="10" id="chk_qa_id_6" class="selec-chk">
-                                    <label for="chk_qa_id_6">
-                                        <span></span>
-                                        <b class="sound-only">111</b>
-                                    </label>
-                                </div>
+                                <span class="status-patch">패치예정</span>
                             </td>
-                                    <td class="num">10</td>
-                        <td class="subject">
-                            <span class="cate">회원</span>
-                            <a href="./Q&A_reply.html">
-                                111                                    </a>
-                        </td>
-                        <td >ERP기획</td>
-                        <td >24-08-05</td>
-                            <td class="status"><span class=" txt-rdy">답변대기</span></td>
                         </tr>
-                        <tr class="">
+                        <tr >
+                            <td>10</td>
+                            <td>일반문의</td>
+                            <td>한맥기술</td>
+                            <td >ERP기획</td>
+                            <td >관리자5</td>
+                            <td class="left"><span class="title-text">일반 문의</span></td>
+                            <td>2025-11-12</td>
                             <td>
-                                <div class="check-box">
-                                    <input type="checkbox" name="chk_qa_id[]" value="9" id="chk_qa_id_7" class="selec-chk">
-                                    <label for="chk_qa_id_7">
-                                        <span></span>
-                                        <b class="sound-only">1231</b>
-                                    </label>
-                                </div>
+                                <span class="status-done">답변완료</span>
                             </td>
-                                    <td class="num">9</td>
-                        <td class="subject">
-                            <span class="cate">회원</span>
-                            <a href="./Q&A_reply.html">
-                                1231                                    </a>
-                        </td>
-                        <td >ERP기획</td>
-                        <td >24-08-05</td>
-                            <td class="status"><span class=" txt-rdy">답변대기</span></td>
                         </tr>
-                        <tr class="even">
+                        <tr >
+                            <td>10</td>
+                            <td>일반문의</td>
+                            <td>한맥기술</td>
+                            <td >ERP기획</td>
+                            <td >관리자5</td>
+                            <td class="left"><span class="title-text">일반 문의</span></td>
+                            <td>2025-11-12</td>
                             <td>
-                                <div class="check-box">
-                                    <input type="checkbox" name="chk_qa_id[]" value="8" id="chk_qa_id_8" class="selec-chk">
-                                    <label for="chk_qa_id_8">
-                                        <span></span>
-                                        <b class="sound-only">223123</b>
-                                    </label>
-                                </div>
+                                <span class="status-new">문의접수</span>
                             </td>
-                                    <td class="num">8</td>
-                        <td class="subject">
-                            <span class="cate">회원</span>
-                            <a href="./Q&A_reply.html">
-                                223123                                    </a>
-                        </td>
-                        <td >ERP기획</td>
-                        <td >24-08-05</td>
-                            <td class="status"><span class=" txt-rdy">답변대기</span></td>
                         </tr>
-                        <tr class="">
+                        <tr >
+                            <td>10</td>
+                            <td>일반문의</td>
+                            <td>한맥기술</td>
+                            <td >ERP기획</td>
+                            <td >관리자5</td>
+                            <td class="left"><span class="title-text">일반 문의</span></td>
+                            <td>2025-11-12</td>
                             <td>
-                                <div class="check-box">
-                                    <input type="checkbox" name="chk_qa_id[]" value="7" id="chk_qa_id_9" class="selec-chk">
-                                    <label for="chk_qa_id_9">
-                                        <span></span>
-                                        <b class="sound-only">ㅌㅌㅌ</b>
-                                    </label>
-                                </div>
+                                <span class="status-review">문의검토</span>
                             </td>
-                                    <td class="num">7</td>
-                        <td class="subject">
-                            <span class="cate">회원</span>
-                            <a href="./Q&A_reply.html">
-                                ㅌㅌㅌ                                    </a>
-                        </td>
-                        <td >ERP기획</td>
-                        <td >24-08-05</td>
-                            <td class="status"><span class=" txt-rdy">답변대기</span></td>
                         </tr>
-                        <tr class="even">
+                        <tr >
+                            <td>10</td>
+                            <td>일반문의</td>
+                            <td>한맥기술</td>
+                            <td >ERP기획</td>
+                            <td >관리자5</td>
+                            <td class="left"><span class="title-text">일반 문의</span></td>
+                            <td>2025-11-12</td>
                             <td>
-                                <div class="check-box">
-                                    <input type="checkbox" name="chk_qa_id[]" value="6" id="chk_qa_id_10" class="selec-chk">
-                                    <label for="chk_qa_id_10">
-                                        <span></span>
-                                        <b class="sound-only">ㅂㅈㄷㄴㄴㄴ</b>
-                                    </label>
-                                </div>
+                                <span class="status-inspect">정밀검토</span>
                             </td>
-                                    <td class="num">6</td>
-                        <td class="subject">
-                            <span class="cate">회원</span>
-                            <a href="./Q&A_reply.html">
-                                ㅂㅈㄷㄴㄴㄴ                                    </a>
-                        </td>
-                        <td >ERP기획</td>
-                        <td >24-08-05</td>
-                            <td class="status"><span class=" txt-rdy">답변대기</span></td>
                         </tr>
-                        <tr class="">
+                        <tr >
+                            <td>10</td>
+                            <td>일반문의</td>
+                            <td>한맥기술</td>
+                            <td >ERP기획</td>
+                            <td >관리자5</td>
+                            <td class="left"><span class="title-text">일반 문의</span></td>
+                            <td>2025-11-12</td>
                             <td>
-                                <div class="check-box">
-                                    <input type="checkbox" name="chk_qa_id[]" value="5" id="chk_qa_id_11" class="selec-chk">
-                                    <label for="chk_qa_id_11">
-                                        <span></span>
-                                        <b class="sound-only">14ㅂㅈㄴㄷㅂ</b>
-                                    </label>
-                                </div>
+                                <span class="status-inspect">정밀검토</span>
                             </td>
-                                    <td class="num">5</td>
-                        <td class="subject">
-                            <span class="cate">회원</span>
-                            <a href="./Q&A_reply.html">
-                                14ㅂㅈㄴㄷㅂ                                    </a>
-                        </td>
-                        <td >ERP기획</td>
-                        <td >24-08-05</td>
-                            <td class="status"><span class=" txt-rdy">답변대기</span></td>
                         </tr>
-                        <tr class="even">
-                            <td>
-                                <div class="check-box">
-                                    <input type="checkbox" name="chk_qa_id[]" value="4" id="chk_qa_id_12" class="selec-chk">
-                                    <label for="chk_qa_id_12">
-                                        <span></span>
-                                        <b class="sound-only">123123123</b>
-                                    </label>
-                                </div>
-                            </td>
-                                    <td class="num">4</td>
-                        <td class="subject">
-                            <span class="cate">회원</span>
-                            <a href="./Q&A_reply.html">
-                                123123123                                    </a>
-                        </td>
-                        <td >ERP기획</td>
-                        <td >24-08-05</td>
-                            <td class="status"><span class=" txt-rdy">답변대기</span></td>
-                        </tr>
-                        <tr class="">
-                            <td>
-                                <div class="check-box">
-                                    <input type="checkbox" name="chk_qa_id[]" value="3" id="chk_qa_id_13" class="selec-chk">
-                                    <label for="chk_qa_id_13">
-                                        <span></span>
-                                        <b class="sound-only">12</b>
-                                    </label>
-                                </div>
-                            </td>
-                                    <td class="num">3</td>
-                        <td class="subject">
-                            <span class="cate">포인트</span>
-                            <a href="./Q&A_reply.html">
-                                12                                    </a>
-                        </td>
-                        <td >ERP기획</td>
-                        <td >24-08-05</td>
-                            <td class="status"><span class=" txt-rdy">답변대기</span></td>
-                        </tr>
-                        <tr class="even">
-                            <td>
-                                <div class="check-box">
-                                    <input type="checkbox" name="chk_qa_id[]" value="2" id="chk_qa_id_14" class="selec-chk">
-                                    <label for="chk_qa_id_14">
-                                        <span></span>
-                                        <b class="sound-only">123</b>
-                                    </label>
-                                </div>
-                            </td>
-                                    <td class="num">2</td>
-                        <td class="subject">
-                            <span class="cate">회원</span>
-                            <a href="./Q&A_reply.html">
-                                123                                    </a>
-                        </td>
-                        <td >ERP기획</td>
-                        <td >24-08-05</td>
-                            <td class="status"><span class=" txt-rdy">답변대기</span></td>
-                        </tr>
+
                     </tbody>
                 </table>
 
                 <!-- 페이지 -->
                 <div class="pagination">
                     <a href="./Q&A_list.html?page=2" class="prev">맨처음</a>
-                    <strong class="pg-current">1</strong>
-                    <a href="./Q&A_list.html?page=2" class="pg-page">2</a>
+                    <span class="current">1</span>
+                    <a href="./Q&A_list.html?page=2">2</a>
                     <a href="./Q&A_list.html?page=2" class="next">맨끝</a>
                 </div>
                 <!-- 페이지 -->
-                <div class="btn-area">
+                <div class="btn-wrap right">
                     <button type="button" class="btn-write" onclick="location.href='./Q&A_write.html'">
                       <i class="fa fa-pencil" aria-hidden="true"></i> 문의등록
                     </button>

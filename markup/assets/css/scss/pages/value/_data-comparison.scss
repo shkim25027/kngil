@@ -125,13 +125,13 @@
           @include value-text-shadow;
           
           @include mq(desktop, max) {
+            margin-bottom: 24px;
             grid-column: span 2;
             font-size: 2rem;
             line-height: 1.4;
           }
           
           @include mq(tablet-small, max) {
-            margin-bottom: 24px;
             font-size: 2rem;
             line-height: 1.5; 
             padding: 0 16px;
@@ -156,7 +156,9 @@
 
           &.analog {
             @include value-box-gradient(90deg, #5E5C20, #60591D);
-            @include value-box-overlay(right, 0.2);
+            @include mq(tablet, min) {
+              @include value-box-overlay(right, 0.2);
+            }
             
             .data-type-list {
               color: #CFCDBB;
@@ -166,7 +168,7 @@
           &.digital {
             @include value-box-gradient(90deg, #6E6421, #77691E);
             @include value-box-mask-gradient(#EDA831, rgba(237, 168, 49, 0), #EDA831);
-            
+
             &::after {
               content: " ";
               position: absolute;
@@ -238,11 +240,17 @@
           @include mq(tablet-small, max) {
             padding: map-get($value-sizes, padding-md);
             width: 100%;
+            gap: 24px;
+            display: flex;
+            flex-direction: column;
           }
 
           &.manual {
             @include value-box-gradient(90deg, #7D5412, #7C5212);
-            @include value-box-overlay(right, 0.2);
+            @include mq(tablet, min) {
+              @include value-box-overlay(right, 0.2);
+            }
+            
             
             span {
               color: #E6DDD0;
@@ -282,13 +290,11 @@
           .work-method-title {
             font-size: map-get($value-font-sizes, xxl);
             font-weight: 400;
-            margin-bottom: map-get($value-sizes, padding-md);
             color: map-get($value-colors, white);
             @include value-text-shadow;
             
             @include mq(tablet-small, max) {
-              font-size: 1.8rem;
-              margin-bottom: 16px;
+              font-size: 2rem;
             }
           }
 
@@ -335,7 +341,8 @@
                   max-width: max-content;
                 }
                 @include mq(tablet-small, max) {
-                  height: 80px;
+                  width: 100%;
+                  height: auto;
                   
                   img {
                     max-width: 100%;
