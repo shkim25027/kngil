@@ -201,13 +201,21 @@
         margin-bottom: 32px;
       }
 
+      .natural {
+        .cont-list {
+          grid-template-columns: 1fr 1fr 1fr;
+          .cont-item {
+            gap: 28px;
+          }
+        }
+      }
       .cont-list {
         list-style: none;
         padding: 0;
         margin: 0;
         position: relative;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
         gap: 12px;
         
         @include mq(desktop, max) {
@@ -247,7 +255,7 @@
           position: relative;
           z-index: 1; /* cont-list::before( wave ) 위에 보이도록 */
           flex-direction: column;
-          gap: 28px;
+          gap: 68px;
           @include flex(center, space-between);
           border: 2px solid transparent;
           border-radius: 6px;
@@ -342,6 +350,7 @@
             padding: 16px 12px;
             background-color: #fff;
             border-radius: 4px;
+            word-break: keep-all;
             
             @include mq(desktop, max) {
               height: auto;

@@ -78,7 +78,7 @@ html:has(.wrap.main) {
     position: absolute;
     bottom: $pagination-bottom-ratio;
     right: $pagination-right;
-    z-index: 1; // main-mask(z-index: 100) 위에 표시
+    z-index: 1;
     text-indent: 0;
     transition: bottom 0.2s ease;
     display: block !important; // 강제로 표시
