@@ -4,11 +4,14 @@
 // =======================================
 // Process Section
 // =======================================
+// 데이터 분류 네비(.left) 전환 포인트
+$process-left-breakpoint: 999px; // max-width: 998px
+
 .provided {
   .process {
     overflow: visible; /* 조상 overflow:hidden이면 position:sticky 비동작 */
 
-    @include mq(tablet-small, max) {
+    @include mq($process-left-breakpoint, max) {
       flex-direction: column; /* 모바일에서 .left가 min-width:100%면 .right에 공간이 남지 않음 → 세로 배치로 .right 노출 */
     }
 
@@ -26,7 +29,7 @@
       position: sticky;
       top: 0;
       left: 0;
-      z-index: 1;
+      z-index: 10;
       overflow: visible; /* _layout-fix overflow: hidden 오버라이드 (hidden이면 sticky 비동작) */
       
       @include mq(desktop, max) {
@@ -34,12 +37,13 @@
         padding-left: 100px;
       }
       
-      @include mq(tablet-small, max) {
-        position: relative;
+      @include mq($process-left-breakpoint, max) {
         min-width: 100%;
         padding: 20px 16px;
         min-height: auto;
         gap: 16px;
+        background: #fff;
+        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.07);
       }
 
       .bg {
@@ -47,37 +51,76 @@
           background: $provided-bg-overlay, url(../img/provided/bg_provided_natural.png);
           background-size: cover;
           background-position: bottom center;
+          @include mq($process-left-breakpoint, max) {
+            background: $provided-bg-overlay, url(../img/provided/bg_provided_natural_m.png);
+            background-size: cover;
+            background-position: center center;
+          }
         }
         &:nth-child(2) {
           background: $provided-bg-overlay, url(../img/provided/bg_provided_social.png);
           background-size: cover;
           background-position: bottom center;
+          @include mq($process-left-breakpoint, max) {
+            background: $provided-bg-overlay, url(../img/provided/bg_provided_social_m.png);
+          background-size: cover;
+          background-position: center center;
+          }
         }
         &.on {
           transform: scale(1);
+          
         }
       }
 
-      .mid-tit {
+      .js-fixLeft-tit {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        @include mq($process-left-breakpoint, max) {
+          gap: 0;
+          height: 8rem;
+          font-weight: 700;
+        }
+      }
+
+      .js-fixLeft-tit li {
         transform: scale(0.7) translate(-47%, 0%);
         position: relative;
         display: block;
         font-size: 42px;
+        color: #fff;
         
         @include mq(desktop, max) {
           font-size: 36px;
         }
         
-        @include mq(tablet-small, max) {
-          font-size: 28px;
+        @include mq($process-left-breakpoint, max) {
+          font-size: 1.8rem;
           transform: none;
           text-indent: 0;
+          cursor: pointer;
+          padding: 12px 0;
+          color: #000;
+          display: none;
+
+          &.on {
+            display: flex;
+            align-items: end;
+            height: 100%;
+          }
         }
 
-        .num {
-          display: none;
+        strong {
           font-weight: 300;
           margin-right: 8px;
+          @include mq($process-left-breakpoint, max) {
+           display: none;
+          }
         }
 
         &::after {
@@ -104,26 +147,39 @@
           transform: initial;
           text-indent: -66px;
           
-          @include mq(tablet-small, max) {
-            text-indent: 0;
+          @include mq($process-left-breakpoint, max) {
+            font-size: 34px;
           }
-
+          @include mq($process-left-breakpoint, max) {
+            text-indent: 0;
+            font-size: 26px;
+          }
+          span {
+            color: var(--color-yellow);
+          }
           strong {
             font-weight: 700;
             color: var(--color-yellow);
-          }
-
-          .num {
-            display: initial;
+            
+            @include mq($process-left-breakpoint, max) {
+              color: #000;
+            }
           }
 
           &::after,
           &::before {
             display: initial;
             
-            @include mq(tablet-small, max) {
+            @include mq($process-left-breakpoint, max) {
               display: none;
             }
+          }
+        }
+
+        @include mq($process-left-breakpoint, max) {
+          &::after,
+          &::before {
+            display: none;
           }
         }
       }
@@ -204,6 +260,15 @@
       .natural {
         .cont-list {
           grid-template-columns: 1fr 1fr 1fr;
+          grid-auto-rows: 1fr;
+          @include mq(1860px, max) {
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+          }  
+          @include mq(desktop-small, max) {
+            grid-template-columns: 1fr;
+            gap: 20px;
+          }
           .cont-item {
             gap: 28px;
           }
@@ -216,42 +281,30 @@
         position: relative;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-auto-rows: 1fr;
         gap: 12px;
         @include mq(1860px, max) {
           grid-template-columns: 1fr 1fr;
           gap: 16px;
-        }
-        
-        @include mq(desktop, max) {
-          grid-template-columns: 1fr 1fr;
-          gap: 16px;
-        }
-        
-        @include mq(tablet-small, max) {
+        }        
+        @include mq(desktop-small, max) {
           grid-template-columns: 1fr;
           gap: 20px;
         }
 
-        &::before {
-          content: '';
-          position: absolute;
-          left: 50%;
-          bottom: 34%;
-          width: 437px;
-          height: 89px;
-          translate: -50% 0;
-          background: url(../img/provided/img_arrow_natural.svg) no-repeat center bottom;
-          background-size: 100% auto;
-          pointer-events: none;
-          z-index: 2;
-          
-          @include mq(desktop, max) {
-            width: 300px;
-            height: 60px;
-          }
-          
-          @include mq(tablet-small, max) {
-            display: none;
+        @include mq(1860px, min) {
+          &::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 38%;
+            width: 437px;
+            height: 89px;
+            translate: -50% 0;
+            background: url(../img/provided/img_arrow_natural.svg) no-repeat center bottom;
+            background-size: 100% auto;
+            pointer-events: none;
+            z-index: 2;
           }
         }
 
@@ -293,12 +346,17 @@
           @include mq(1860px, max) {
             display: grid;
             grid-template-columns: 1fr 1fr;
-
+            grid-template-rows: 80px auto;
+            height: 100%;
+            row-gap: 20px;
+            column-gap: 0;
           }
           
           @include mq(tablet-small, max) {
+            grid-template-rows: 40px auto;
             padding: 20px 12px;
-            gap: 16px;
+            row-gap: 16px;
+            column-gap: 0;
           }
           
           dt {
@@ -310,10 +368,12 @@
             }
             @include mq(desktop, max) {
               font-size: 20px;
+              gap: 0.8rem;
+              @include flex(center, center);
             }
             
             @include mq(tablet-small, max) {
-              font-size: 18px;
+              font-size: 1.6rem;
             }
             
             i {
@@ -323,34 +383,49 @@
               margin-left: auto ;
               margin-right: auto;
               margin-bottom: 4px;
-              
-              @include mq(tablet-small, max) {
+              @include mq(desktop, max) {
+                display: inline-block;
+                margin: 0;
                 width: 40px;
                 height: 40px;
               }
+              @include mq(tablet-small, max) {
+               
+                width: 2.8rem;
+                height: 2.8rem;
+                
+              }
               &.ico-location {
-                background: url(../img/ico/ico_location.svg) no-repeat center center;
+                background: url(../img/ico/ico_location.svg) no-repeat center center ;
+                background-size: contain;
               }
               &.ico-weather {
                 background: url(../img/ico/ico_weather.svg) no-repeat center center;
+                background-size: contain;
               }
               &.ico-eco {
                 background: url(../img/ico/ico_eco.svg) no-repeat center center;
+                background-size: contain;
               }
               &.ico-city {
                 background: url(../img/ico/ico_city.svg) no-repeat center center;
+                background-size: contain;
               }
               &.ico-population {
                 background: url(../img/ico/ico_population.svg) no-repeat center center;
+                background-size: contain;
               }
               &.ico-land {
                 background: url(../img/ico/ico_land.svg) no-repeat center center;
+                background-size: contain;
               }
               &.ico-building {
                 background: url(../img/ico/ico_building.svg) no-repeat center center;
+                background-size: contain;
               }
               &.ico-society {
                 background: url(../img/ico/ico_society.svg) no-repeat center center;
+                background-size: contain;
               }
             }
           }
@@ -358,14 +433,24 @@
           dd {
             position: relative;
             width: 100%;
-            height: 196px;
-            padding: 16px 12px;
+            height: 216px;
            
             border-radius: 4px;
             word-break: keep-all;
             &:has(ul) {
               background-color: #fff;
-              margin-bottom: 68px;
+              padding: 16px 12px;
+              @include mq(1860px, min) {
+                margin-bottom: 68px;
+                &::before { 
+                  background: linear-gradient(180deg, #DADADA 0%, rgba(218, 218, 218, 0.00) 100%);
+                }
+              }
+              @include mq(1860px, max) {
+                &::before { 
+                  background: linear-gradient(90deg, #DADADA 0%, #DADADA 40%, rgba(218, 218, 218, 0.00) 100%);
+                }
+              }
               &::before { 
                 content: " ";
                 position: absolute;
@@ -373,22 +458,31 @@
                 left: 0;
                 width: 100%;
                 height: 100%;
-                background: linear-gradient(180deg, #DADADA 0%, rgba(218, 218, 218, 0.00) 100%);
-                box-sizing: border-box;
+
                 @include maskContents();
               }
+              @include mq(1860px, max) {
+                &::after{
+                  content: " ";
+                  position: absolute;
+                  top: 0;
+                  right: 4px;
+                  width: 13.1578%;
+                  height: 100%;
+                  background: url(../img/provided/img_arrow_natural_m.svg);
+                  background-size: 100% auto;
+                  background-position: center center;
+                  background-repeat: no-repeat;
+                }
+              }
+            
+             
             }
             
-            @include mq(desktop, max) {
-              height: auto;
-              min-height: 150px;
+            @include mq(1860px, max) {
+              height: 100%;
             }
             
-            @include mq(tablet-small, max) {
-              height: auto;
-              min-height: 120px;
-              padding: 12px;
-            }
             
             
             
@@ -406,7 +500,7 @@
               
               @include mq(tablet-small, max) {
                 margin: 8px 0;
-                font-size: 14px;
+                font-size: 1.4rem;
               }
             }
           }
@@ -421,9 +515,14 @@
       .social {
         .sub-tit { color: $provided-social-color; }
         .cont-list {
-          &::before {
-            background-image: url(../img/provided/img_arrow_social.svg);
+
+          @include mq(1860px, min) {
+            &::before {
+              background-image: url(../img/provided/img_arrow_social.svg);
+            }
           }
+
+          
           .cont-item{
             &::before{ 
               border-color: $provided-social-color;
@@ -432,6 +531,16 @@
           dl {
             background: $provided-social-dl-bg;
             dt { color: $provided-social-color; }
+            dd{
+              &:has(ul) {
+                &::after{
+                  background: url(../img/provided/img_arrow_social_m.svg);
+                  background-size: 100% auto;
+                  background-position: center center;
+                  background-repeat: no-repeat;
+                }
+              }
+            }
           }
         } 
         .sub-figs .fig-caption {
@@ -444,6 +553,24 @@
         width: 100%;
         border-radius: 4px;
         overflow: hidden;
+        @include mq(1860px, max) {
+          position: relative;
+          height: 100%;
+          img {
+            position: absolute;
+            height: auto;
+            top: 50%;
+            left: 50%;
+            translate: -50% -50%;
+          }
+          .fig-caption {
+            position: absolute;
+            width: 100%;
+            left: 0;
+            bottom: 0;
+          }
+        }
+          
         
         .imgs {
           width: 100%;

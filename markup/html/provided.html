@@ -134,18 +134,22 @@
 
         <!-- Process Section -->
         <section class="layout-fix-left process">
-          <div class="left" data-aos="fade-right" data-aos-duration="1000" aria-label="데이터 분류 네비게이션">
+          <nav class="left" data-aos="fade-right" data-aos-duration="1000" aria-label="데이터 분류 네비게이션">
             <div class="bg js-fixLeft-bg on" aria-hidden="true"></div>
             <div class="bg js-fixLeft-bg" aria-hidden="true"></div>
-            <span class="mid-tit js-fixLeft-tit on">
-              <span class="num" aria-hidden="true">01. </span>
-              <strong>자연조건</strong>
-            </span>
-            <span class="mid-tit js-fixLeft-tit">
-              <span class="num" aria-hidden="true">02. </span>
-              <strong>사회특성</strong>
-            </span>
-          </div>
+            <ul
+              class="js-fixLeft-tit"
+              role="tablist"
+              aria-label="데이터 분류 목록"
+            >
+              <li class="on" role="tab" aria-selected="true" tabindex="0">
+                <span><strong>01</strong>자연조건</span>
+              </li>
+              <li role="tab" aria-selected="false" tabindex="-1">
+                <span><strong>02</strong>사회특성</span>
+              </li>
+            </ul>
+          </nav>
           <div class="right js-fixLeft-secs">
             <section class="natural" aria-labelledby="natural-tit">
               <h2 id="natural-tit" class="sub-tit">

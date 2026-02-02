@@ -336,6 +336,7 @@ $popup-answer-bg: #ffdd0022;
       }
         .my-history  {
           padding: 0;
+          width: 100%;
           margin-top: 40px;
           h5 {
             font-size: 24px;
@@ -352,6 +353,7 @@ $popup-answer-bg: #ffdd0022;
             @include flex(center, space-between);
           }
           table {
+            min-width: 100%;
             border: none;
             border-top: 2px solid #000;
             border-bottom: 2px solid rgba(0, 0, 0, 0.20);
@@ -453,6 +455,7 @@ $popup-answer-bg: #ffdd0022;
       gap: 30px;
       font-size: 18px;
       font-weight: 500;
+      margin: 0;
       @include flex(center, center);
 
       .btn-prev,
@@ -914,7 +917,6 @@ $popup-answer-bg: #ffdd0022;
         border-radius: 2px;
         position: relative;
         cursor: pointer;
-        border: 1px solid rgba(0, 0, 0, 0.2);
         background-color: $popup-bg-white-alpha; 
         box-shadow: inset 0px 0px 1px #00000022;
         padding: 0;

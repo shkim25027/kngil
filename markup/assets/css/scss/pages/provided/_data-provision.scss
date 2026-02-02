@@ -81,7 +81,7 @@
           @include maskContents();
         }
 
-        // ----- .data-bullet: SVG path 기반 블렛 애니메이션 -----
+        // ----- .data-bullet: SVG path 기반 블렛 애니메이션 (반응형 개선) -----
         .data-bullet {
           position: absolute;
           top: 0;
@@ -91,12 +91,19 @@
           background: #357863;
           border-radius: 50%;
           box-shadow: 0 0 8px rgba(38, 140, 100, 0.6);
+          // JavaScript로 동적 업데이트되므로 기본값 설정
           offset-path: path('M 135,0 L 585,0 A 135 135 0 0 1 720 135 A 135 135 0 0 1 585 270 L 135,270 A 135 135 0 0 1 0 135 A 135 135 0 0 1 135 0 Z');
           offset-rotate: 0deg;
           animation: moveBullet 10s linear infinite;
           z-index: 20;
           pointer-events: none;
           opacity: 0.5;
+          
+          // 모바일에서 크기 조정
+          @include mq(tablet-wide, max) {
+            width: 8px;
+            height: 8px;
+          }
 
           &.bullet-2 {
             background: #886018;
@@ -129,8 +136,19 @@
               .category-circle {
                 background: linear-gradient(90deg, rgba(0, 0, 0, 0.00) 13.19%, rgba(0, 0, 0, 0.30) 87.92%), linear-gradient(0deg, rgba(26, 84, 61, 0.00) 15%, #1A543D 100%), linear-gradient(0deg, #1A543D 0%, #1A543D 100%);
               }
+
               .category-images {
                 left: -60%;
+                @include mq(tablet-wide, max) {
+                  left: -46%;
+                }
+                @include mq(desktop-small, max) {
+                  &::before {
+                    left: -8px;
+                    border-top:none;
+                    border-right: none;
+                  }
+                }
               }
             }
 
@@ -140,7 +158,26 @@
                 box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
               }
               .category-images {
-                right: -60%;
+                right: -56%;
+                @include mq(tablet-wide, max) {
+                  right: -46%;
+                }
+                @include mq(desktop-small, max) {
+                  &::before {
+                    left: auto;
+                    right: -8px;
+                    border-top:none;
+                    border-left: none;
+                    border-color: #8D6318;
+                  }
+                  &:after {
+                    left: auto;
+                    right: -8px;
+                    width: 8px;
+                    height: 1px;
+                    border-top: 1.5px dashed #8D6318;
+                  }
+                }
               }
             }
 
@@ -225,6 +262,44 @@
               translate: 0 -50%;
               z-index: -1;
 
+              @include mq(desktop-small, max) {
+                &::before {
+                  content: " ";
+                  position: absolute;
+                  top: 50%;
+                  left: -16px;
+                  width: 65%;
+                  height: 96%;
+                  border: 1.5px dashed #268C64;
+                  z-index: 1;
+                  @include mq(tablet-wide, max) {
+                    width: 50%;
+                    height: 100%;
+                  }
+                  @include mq(tablet, max) {
+                    height: 100%;
+                  }
+                  @include mq(tablet-small, max) {
+                    left: -8px;
+                    width: 48%;
+                    height: 93.5%;
+                  }
+                  @include mq(phone-wide, max) {
+                    height: 18rem;
+                  }
+                }
+                &:after {
+                  content: " ";
+                  position: absolute;
+                  top: 50%;
+                  left: -8px;
+                  width: 8px;
+                  height: 1px;
+                  border-top: 1.5px dashed #268C64;
+                  z-index: 1;
+                }
+              }
+
               .image-item {
                 width: auto;
                 overflow: hidden;
@@ -277,21 +352,45 @@
       @include mq(desktop-small, max) {
         position: relative;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         margin-top: 2.4rem;
+        padding: 0 2rem;
         .fix {
+          position: relative;
           display: flex;
           flex-direction: column;
           gap: 4px;
+          &::before {
+            content: " ";
+            position: absolute;
+            top: 50%;
+            width: 1.4rem;
+            height: 1.4rem;
+            border-radius: 50%;
+            background-color: #164734;
+          }
           &.spatial {
+            &::before {
+              left: 0%;
+              background-color: #164734;
+              translate: -50% -50%;
+            }
             li {
+              color: #164734;
               background: rgba(22, 71, 52, 0.10);
+              font-weight: 500;
             }
           }
           &.statistical {
+            &::before {
+              right: 0%;
+              background-color: #8D6318;
+              translate: 50% -50%;
+            }
             li {
-              
+              color: #8D6318;
               background: rgba(141, 99, 24, 0.10);
+              font-weight: 500;
             }
           }
 
@@ -320,7 +419,7 @@
           padding: 0;
           margin: 0;
           top: 50%;
-          left: -192px;
+          left: -232px;
           display: flex;
           flex-direction: column;
           gap: 15px;
@@ -458,7 +557,7 @@
         flex-direction: column;
         gap: 15px;
         position: absolute;
-        right: -80px;
+        right: -110px;
         left: auto;
         top: 50%;
         width: 0;
@@ -591,5 +690,23 @@
         }
       }
     }
+  }
+}
+
+// ----- 애니메이션 키프레임 -----
+@keyframes moveBullet {
+  to {
+    offset-distance: 100%;
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

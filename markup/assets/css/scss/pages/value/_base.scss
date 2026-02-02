@@ -117,7 +117,7 @@
       height: 54px;
       
       @include mq(tablet-small, max) {
-        width: 160px;
+        width: 110px;
         height: 40px;
       }
     }
@@ -131,6 +131,7 @@
       @include mq(tablet-small, max) {
         gap: map-get($value-sizes, gap-lg);
       }
+
     }
 
     dt {
@@ -146,11 +147,6 @@
     dd {
       font-size: map-get($value-font-sizes, lg);
       line-height: 160%;
-      
-      @include mq(desktop, max) {
-        font-size: 2rem;
-      }
-      
       @include mq(tablet-small, max) {
         font-size: 1.6rem;
         line-height: 1.6;

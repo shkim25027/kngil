@@ -63,7 +63,7 @@
       }
 
       @include mq(tablet-small, max) {
-        padding: 40px 16px 20px 16px;
+        padding: 94px 16px 2rem 16px;
         min-height: auto;
         height: auto;
       }
@@ -141,6 +141,7 @@
         font-weight: normal;
         transition: all 1s;
         text-wrap: balance;
+        word-break: keep-all;
         display: flex;
         align-items: flex-start;
         font-size: 20px;
