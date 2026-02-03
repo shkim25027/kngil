@@ -441,7 +441,7 @@ $process-left-breakpoint: 999px; // max-width: 998px
             &:has(ul) {
               width: calc(100% - 24px);
               background-color: #fff;
-              padding: 16px 12px;
+              padding: 16px 8px;
               @include mq(1860px, min) {
                 margin-bottom: 48px;
                 &::before { 
