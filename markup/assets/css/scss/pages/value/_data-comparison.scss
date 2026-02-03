@@ -138,6 +138,18 @@
             font-size: 2rem;
             line-height: 1.5; 
             padding: 0 16px;
+            &::before {
+              content: " ";
+              position: absolute;
+              top: 50%;
+              left: 0;
+              width: 60%;
+              height: 120%;
+              background: linear-gradient(to right, #425E24 0%, #3D5625 100%);
+              filter: blur(10px);
+              translate: 0 -50%;
+              z-index: -1;
+            }
           }
         }
 

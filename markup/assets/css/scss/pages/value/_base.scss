@@ -13,6 +13,10 @@
     @include value-bg-cover("../img/value/bg_value_visual.jpg");
     color: map-get($value-colors, white);
     text-align: center;
+
+    @include mq(tablet-small, max) {
+      @include value-bg-cover("../img/value/bg_value_visual_m.jpg");
+    }
   }
 
   .sub-header {

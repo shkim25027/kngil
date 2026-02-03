@@ -75,18 +75,16 @@
       // 첫 번째 단계 (큰길서비스) — div.step-flow-item.active
       .step-flow-item {
         position: relative;
-        min-width: 232px;
+        min-width: 270px;
         flex: 0 0 auto;
         z-index: 1;
 
         @include mq(desktop, max) {
-          min-width: 200px;
           flex: 1 1 auto;
         }
 
         @include mq(tablet-small, max) {
-          width: 100%;
-          min-width: auto;
+          min-width: clamp(174px, 48.3333%, 260px);
         }
 
         &.active {
@@ -109,7 +107,6 @@
 
             @include mq(tablet-small, max) {
               width: 100%;
-              max-width: 100%;
               min-height: 180px;
             }
 
@@ -279,7 +276,9 @@
 
           @include mq(tablet, max) {
             width: 200px;
-            max-width: 100%;
+          }
+          @include mq(tablet-small, max) {
+            width: 14rem;
           }
 
           // 단계 간 화살표
@@ -313,8 +312,8 @@
                 position: absolute;
                 top: 100%;
                 left:40%;
-                width: 16px;
-                height: 9px;
+                width: 1.6rem;
+                height: 0.9rem;
                 background: url(../img/value/ico_step_arrow_sub_m.svg) no-repeat center center;
                 background-size: 100% auto;
                 background-position: center center;
