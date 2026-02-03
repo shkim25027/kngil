@@ -468,6 +468,11 @@
       }, 16);
       
       document.body.setAttribute('data-scroll-lock-interval', this.scrollLockInterval);
+
+      // 사이트맵 열림 시 헤더 위로 올라가는 동작 비활성화
+      if (window.topButtonController && typeof window.topButtonController.setHeaderAnimationEnabled === 'function') {
+        window.topButtonController.setHeaderAnimationEnabled(false);
+      }
     }
 
     /**
@@ -553,7 +558,12 @@
       }
       
       document.body.removeAttribute('data-scroll-y');
-      
+
+      // 헤더 스크롤 애니메이션 다시 활성화
+      if (window.topButtonController && typeof window.topButtonController.setHeaderAnimationEnabled === 'function') {
+        window.topButtonController.setHeaderAnimationEnabled(true);
+      }
+
       // Lenis 재생성
       lenisManager.init();
     }
@@ -615,6 +625,8 @@
       this.bottomSpace = 120;
       this.defaultBottom = '60px';
       this.showThreshold = 300; // 버튼을 표시할 스크롤 위치 (px)
+      this.headerScrollTrigger = null;
+      this.headerShowNav = null;
     }
 
     /**
@@ -762,19 +774,33 @@
         return;
       }
 
-      const showNav = gsap.from('.header', {
+      this.headerShowNav = gsap.from('.header', {
         yPercent: -200,
         paused: true,
         duration: 0.2
       }).progress(1);
 
-      ScrollTrigger.create({
+      this.headerScrollTrigger = ScrollTrigger.create({
         start: 'top top',
         end: 99999,
         onUpdate: (self) => {
-          self.direction === -1 ? showNav.play() : showNav.reverse();
+          if (window.sitemapManager && window.sitemapManager.isOpen) return;
+          self.direction === -1 ? this.headerShowNav.play() : this.headerShowNav.reverse();
         }
       });
+    }
+
+    /**
+     * 사이트맵 열림 시 헤더 애니메이션 비활성화 / 닫힘 시 활성화
+     */
+    setHeaderAnimationEnabled(enabled) {
+      if (!this.headerScrollTrigger || !this.headerShowNav) return;
+      if (enabled) {
+        this.headerScrollTrigger.enable();
+      } else {
+        this.headerScrollTrigger.disable();
+        this.headerShowNav.progress(1); // 헤더를 항상 보이도록
+      }
     }
   }
 
