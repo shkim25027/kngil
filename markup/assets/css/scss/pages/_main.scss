@@ -102,7 +102,7 @@ html:has(.wrap.main) {
     }
 
     // Page Button
-    button {
+    [class*="page-"] {
       width: max-content;
       cursor: pointer;
       position: relative;

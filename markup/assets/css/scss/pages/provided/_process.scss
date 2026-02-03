@@ -576,6 +576,8 @@ $process-left-breakpoint: 999px; // max-width: 998px
           width: 100%;
           img {
             width: 100%;
+            max-width: auto;
+            height: 100%;
           }
         }
 

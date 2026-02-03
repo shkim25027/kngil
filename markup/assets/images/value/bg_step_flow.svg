@@ -1,11 +1,3 @@
-<svg width="1165" height="242" viewBox="0 0 1165 242" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g style="mix-blend-mode:multiply" opacity="0.9">
-<path d="M155.018 31.6207C75.8577 31.6207 61 29.1207 18 0L0 242C55.5 227.129 46.5 208 155.018 208L939.5 208.002H941.358H1154.72C1160.24 208.002 1164.72 203.525 1164.72 198.002V41.6208C1164.72 36.0979 1160.24 31.6207 1154.72 31.6208L939.5 31.6224C674.455 31.6224 234.178 31.6207 155.018 31.6207Z" fill="url(#paint0_linear_984_16674)"/>
-</g>
-<defs>
-<linearGradient id="paint0_linear_984_16674" x1="1400" y1="50.5" x2="49.0008" y2="50.5" gradientUnits="userSpaceOnUse">
-<stop stop-color="#D9D9D9" stop-opacity="0.5"/>
-<stop offset="1" stop-color="#737373" stop-opacity="0.7"/>
-</linearGradient>
-</defs>
+<svg width="143" height="242" viewBox="0 0 143 242" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M137.018 31.6207C57.8577 31.6207 43 29.1207 0 0V242C18 228.5 31.5 209 137.018 208H143V31.6207H137.018Z" fill="black"/>
 </svg>
