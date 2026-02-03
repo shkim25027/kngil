@@ -15,11 +15,11 @@
     VISITED_STORAGE_KEY: 'visited',
     VIDEO_BASE_PATH: './video',
     PAGE_LINKS: {
-      1: './value.html',
-      2: './provided.html',
-      3: './primary.html',
-      4: './analysis.html',
-      5: './results.html'
+      1: './value.php',
+      2: './provided.php',
+      3: './primary.php',
+      4: './analysis.php',
+      5: './results.php'
     },
     SELECTORS: {
       video: '#video_play',
@@ -337,7 +337,8 @@
         elementUnderMouse?.closest('.floating-menu'),
         elementUnderMouse?.closest('.main-pagination'),
         elementUnderMouse?.closest('.header'),
-        elementUnderMouse?.closest('.sitemap')
+        elementUnderMouse?.closest('.sitemap'),
+        elementUnderMouse?.closest('.intro-wrap')
       ];
 
       if (hideAreas.some(area => area)) {

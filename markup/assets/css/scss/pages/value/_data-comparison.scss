@@ -350,7 +350,7 @@
               gap: map-get($value-sizes, gap-md);
               font-size: map-get($value-font-sizes, xs);
               line-height: 1.6;
-              color: rgba(255, 255, 255, 0.9);
+              color: #ffffff;
               margin-bottom: 10px;
               @include mq(desktop, max) {
                 max-width: max-content;
