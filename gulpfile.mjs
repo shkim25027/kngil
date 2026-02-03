@@ -52,8 +52,6 @@ const paths = {
       "!./markup/assets/js/pop_temp.js",
       "!./markup/assets/js/provided.js",
       "!./markup/assets/js/analysis.js",
-      "!./markup/assets/js/results.js",
-      "!./markup/assets/js/results.js",
     ],
     dest: "./dist/js",
   },
