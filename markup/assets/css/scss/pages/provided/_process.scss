@@ -298,11 +298,11 @@ $process-left-breakpoint: 999px; // max-width: 998px
             position: absolute;
             left: 50%;
             bottom: 38%;
-            width: 437px;
-            height: 89px;
+            width: 947px;
+            height: 70px;
             translate: -50% 0;
             background: url(../img/provided/img_arrow_natural.svg) no-repeat center bottom;
-            background-size: 100% auto;
+            background-size: contain;
             pointer-events: none;
             z-index: 2;
           }
@@ -337,7 +337,7 @@ $process-left-breakpoint: 999px; // max-width: 998px
         }
         
         dl {
-          padding: 24px 12px;
+          padding: 24px 0px;
           width: 100%;
           background: $provided-natural-dl-bg;
           gap: 18px;
@@ -438,10 +438,11 @@ $process-left-breakpoint: 999px; // max-width: 998px
             border-radius: 4px;
             word-break: keep-all;
             &:has(ul) {
+              width: calc(100% - 24px);
               background-color: #fff;
               padding: 16px 12px;
               @include mq(1860px, min) {
-                margin-bottom: 68px;
+                margin-bottom: 48px;
                 &::before { 
                   background: linear-gradient(180deg, #DADADA 0%, rgba(218, 218, 218, 0.00) 100%);
                 }
