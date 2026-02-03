@@ -350,6 +350,7 @@ $process-left-breakpoint: 999px; // max-width: 998px
             height: 100%;
             row-gap: 20px;
             column-gap: 0;
+            padding: 24px 8px;
           }
           
           @include mq(tablet-small, max) {
@@ -510,7 +511,20 @@ $process-left-breakpoint: 999px; // max-width: 998px
 
       .natural {
         .sub-tit { color: $provided-natural-color; }
-        .cont-list dl dt { color: $provided-natural-color; }
+        .cont-list {
+          &::before {
+            bottom: 40%;
+          }
+         
+          dl {
+            dt { color: $provided-natural-color; }
+            @include mq(1860px, min) {
+              dd:has(ul) {
+                margin-bottom: 28px;             
+              }
+            }
+          }
+        }
       } 
 
       .social {
