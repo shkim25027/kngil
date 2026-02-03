@@ -115,13 +115,13 @@
       this.keyData.forEach(({ titles, sections }, keyIndex) => {
         if (!titles || !sections) return;
 
-        // 각 섹션에 대한 스크롤 트리거 설정
+        // 각 섹션: 화면 중앙에 올 때(center center) 해당 li.on
         sections.forEach((section, sectionIndex) => {
           if (!section) return;
 
           ScrollTrigger.create({
             trigger: section,
-            start: this.config.SCROLL.triggerLine,
+            start: this.config.SCROLL.triggerLine, // 'center center' = 섹션 중앙이 뷰포트 중앙에 올 때
             onEnter: () => this.updateTitle(titles, sectionIndex),
             onEnterBack: () => this.updateTitle(titles, sectionIndex),
             onLeaveBack: () => {
@@ -148,12 +148,35 @@
       });
       ScrollTrigger.refresh();
 
-      // 스크롤 이벤트로 하단 감지
+      // 스크롤 시: right(.js-fixLeft-secs) 내 섹션이 화면 중앙에 가장 가까울 때 해당 li.on
+      const updateActiveByCenter = () => {
+        const viewportCenter = window.innerHeight / 2;
+        const atBottom = this.isAtBottom();
+        this.keyData.forEach(({ titles, sections }, keyIndex) => {
+          if (!titles || !sections.length) return;
+          let activeIndex = 0;
+          const isLastKey = keyIndex === this.keyData.length - 1;
+          if (atBottom && isLastKey) {
+            activeIndex = titles.length - 1;
+          } else {
+            let closestDistance = Infinity;
+            sections.forEach((section, index) => {
+              if (!section) return;
+              const rect = section.getBoundingClientRect();
+              const sectionCenter = rect.top + rect.height / 2;
+              const distance = Math.abs(sectionCenter - viewportCenter);
+              if (distance < closestDistance) {
+                closestDistance = distance;
+                activeIndex = index;
+              }
+            });
+          }
+          this.updateTitle(titles, activeIndex);
+        });
+      };
+
       window.addEventListener('scroll', () => {
-        if (this.isAtBottom() && this.keyData.length > 0) {
-          const lastKeyData = this.keyData[this.keyData.length - 1];
-          this.updateTitle(lastKeyData.titles, lastKeyData.titles.length - 1);
-        }
+        updateActiveByCenter();
       }, { passive: true });
     }
 
