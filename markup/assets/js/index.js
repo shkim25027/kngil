@@ -10,6 +10,8 @@
   const CONFIG = {
     TOTAL_PAGES: 5,
     INTRO_DELAY: 2800,
+    /** clip_play 1s delay + 2.5s duration 후 인트로 숨김 */
+    INTRO_HIDE_AFTER: 3500,
     VISITED_STORAGE_KEY: 'visited',
     VIDEO_BASE_PATH: './video',
     PAGE_LINKS: {
@@ -265,6 +267,10 @@
             console.warn('[IntroController] Failed to set sessionStorage:', error);
           }
         }, 1000);
+        // clip_play 종료 후 인트로 숨김 (레이아웃/접근성)
+        setTimeout(() => {
+          this.hideIntro(intro, mainMask);
+        }, CONFIG.INTRO_HIDE_AFTER);
       }
     },
 

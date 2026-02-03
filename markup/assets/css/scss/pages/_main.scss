@@ -259,16 +259,24 @@ html:has(.wrap.main) {
     display: flex;
     flex-direction: column;
     gap: 24px;
+    color: var(--text-base);
+  }
+
+  .slogan-c {
+    img {
+      width: 298px;
+      height: auto;
+    }
   }
 
   .txt-mask {
     overflow: hidden;
 
-    // Staggered animation for each text element
+    // Staggered animation for each text element (delay 단위 이미 포함되어 뒤에 s 붙이지 않음)
     @for $i from 1 through 3 {
       &:nth-child(#{$i}) {
         span {
-          animation: txt_mask 1.2s cubic-bezier(0.16, 1, 0.3, 1) #{$i * $intro-animation-delay - $intro-animation-delay}s forwards;
+          animation: txt_mask 1.2s cubic-bezier(0.16, 1, 0.3, 1) #{$i * $intro-animation-delay - $intro-animation-delay} both;
         }
       }
     }
@@ -279,6 +287,7 @@ html:has(.wrap.main) {
       text-align: center;
       position: relative;
       top: 80px;
+      opacity: 0; /* 애니메이션 시작 전 숨김, keyframes 0%와 동일 */
     }
   }
 }
