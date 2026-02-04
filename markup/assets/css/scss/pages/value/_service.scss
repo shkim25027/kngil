@@ -260,8 +260,8 @@
             height: 176px;
           }
           @include mq(desktop-small, max) {
-            width: calc(100% - 56.5px);
-            height: 199px;
+            width: calc(100% - 63px);
+            height: 198px;
           }
         }
         // 2~5단계 각 아이템 (li.step-item)
