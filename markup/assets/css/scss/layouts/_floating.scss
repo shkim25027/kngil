@@ -54,6 +54,14 @@
       pointer-events: auto;
       border-radius: 120px 40px;
       @include flex(center, center);
+      &:hover{
+        span{
+          color:#FFD700;  
+        }
+        .ico-logo {
+          background-color: #FFD700;
+        }
+      }
     }
     .ico-logo{
       width: 48px;
@@ -69,6 +77,7 @@
       letter-spacing: 0.5px;
       text-wrap: balance;
       word-break: keep-all;
+      line-height: 1.2;
       @include mq(desktop, max) {
         font-size: 12px;
       }
