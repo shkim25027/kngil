@@ -19,8 +19,13 @@
   overflow: hidden;
 
   @include mq(desktop, max) {
+    top: 56px;
    width: 64px;
    padding: 52px 0 52px 6px;
+  }
+  @include mq(tablet-wide, max) {
+    width: 46px;
+    padding: 40px 0 40px 4px;
   }
   ul {
     width: 100%;
@@ -41,6 +46,10 @@
       width: 60px;
       height: 62px;
     }
+    @include mq(tablet-wide, max) {
+      width: 44px;
+      height: 42px;
+    }
 
     a {
       width: 100%;
@@ -53,6 +62,9 @@
       z-index: 10;
       text-decoration: none;
       @include flex(center, center);
+      @include mq(tablet-wide, max) {
+        gap: 0;
+      }
       
       &:hover {
         span {
@@ -79,6 +91,9 @@
       z-index: 10;
       @include mq(desktop, max) {
         font-size: 12px;
+      }
+      @include mq(tablet-wide, max) {
+        @include textBlind;
       }
     }
 
