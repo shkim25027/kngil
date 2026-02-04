@@ -21,9 +21,9 @@
     url('../img/buy/bg_buy_content.png') center / cover no-repeat;
     overflow: hidden;
     .inner {
-      max-width: 1520px;
+      max-width: 1568px;
       margin: 0 auto;
-      padding: 194px 0 150px 0;
+      padding: 194px 24px 150px 24px;
     }
 
     .cont-wrapper {
@@ -31,7 +31,10 @@
       gap: 24px;
       align-items: flex-start;
       position: relative;
-
+      margin-top: 20px;
+      @include mq(desktop, max) {
+          margin-top: 20px;
+      }
       @include mq(tablet-small, max) {
         flex-direction: column;
         gap: 30px;
@@ -114,7 +117,8 @@
     }
 
     .feature-list {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
       list-style: none;
       padding: 0;
       gap: 0;
@@ -124,6 +128,10 @@
       background-blend-mode: color-burn, normal;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
       min-height: 300px;
+      @include mq(desktop, max) {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+      }
       @include mq(tablet-small, max) {
         flex-direction: column;
         border-radius: 20px;
@@ -136,6 +144,14 @@
         flex-direction: column;
         transition: background 0.3s ease;
         @include flex(center, center);
+        @include mq(desktop, max) {
+          padding: 20px 0px;
+          flex-direction: row;
+          gap: 20px;
+          .pc-only{
+            display: none;
+          }
+        }
         @include mq(tablet-small, max) {
           padding: 30px 20px;
         }
