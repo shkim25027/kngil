@@ -82,12 +82,25 @@
     setupScrollTriggers() {
       this.sections.forEach((section, index) => {
         if (!section) return;
-
+    
         ScrollTrigger.create({
           trigger: section,
           start: 'top center',
+          end: 'bottom center',
           onEnter: () => this.updateElements(index),
-          onLeaveBack: () => this.updateElements(index)
+          onEnterBack: () => this.updateElements(index),
+          onLeave: () => {
+            // 다음 섹션으로 넘어갈 때
+            if (index < this.sections.length - 1) {
+              this.updateElements(index + 1);
+            }
+          },
+          onLeaveBack: () => {
+            // 이전 섹션으로 돌아갈 때
+            if (index > 0) {
+              this.updateElements(index - 1);
+            }
+          }
         });
       });
     },
