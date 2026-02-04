@@ -10,6 +10,7 @@
   width: 100%;
   height: 100%;
   position: relative;
+  min-height: var(--window-inner-height);
 }
 .results-wrap {
   position: sticky;
@@ -18,7 +19,7 @@
   display: flex;
   flex-direction: column;
   padding-top: $results-padding-y;
-  min-height: var(--window-inner-height);
+  min-height: var(--window-inner-height) !important;
 
   @include mq(tablet-wide, max) {
     padding-top: 60px;
@@ -44,6 +45,9 @@
     flex-direction: column;
     min-height: 0;
     width: 100%;
+    @include mq(tablet-small, max) {
+      min-height: calc(var(--window-inner-height) - 92px);
+    }
   }
 
   // ---------------------------------------
@@ -256,7 +260,6 @@
     position: relative;
     min-height: 330px;
     @include mq(tablet-wide, max) {
-      padding-left: 38px;
       min-height: auto;
     }
 
@@ -265,13 +268,25 @@
       position: relative;
       width: 100%;
       display: flex;
+
+      @include mq(tablet-wide, max) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 1.6rem;
+        translate: 50px 0;
+      }
+      @include mq(tablet-small, max) {
+        translate: 0px 0;
+        width: calc(100% + 100px);
+        margin-left: 10px;
+      }
     }
 
     .report-page {
       position: relative;
       flex-shrink: 0;
       width: $results-report-page-width;
-      height: $results-report-page-height;
+      aspect-ratio: 41/55;
       overflow: hidden;
       z-index: var(--index);
       opacity: 0;
@@ -279,17 +294,11 @@
 
       @include mq(tablet-wide, max) {
         width:226px;
-        height: 310px;
       }
-      @include mq(tablet, max) {
-        width:195px;
-        height: 260px;
+      @include mq(tablet-small, max) {
+        width:100%;
       }
 
-      @include mq(phone-wide, max) {
-        width:175px;
-        height: 234px;
-      }
 
       // 첫 번째 카드 배경 효과
       &:first-child {
@@ -300,24 +309,11 @@
           z-index: -1;
           left: -12px;
           top: -10px;
-          width: 270px;
-          height: 350px;
+          width: calc(100% + 24px);
+          height: calc(100% + 20px);
           border-radius: 6px;
           background: linear-gradient(170deg, rgba(227, 227, 227, 0.24) 4.48%, rgba(0, 0, 0, 0.40) 92.19%), #242D2B;
           
-          @include mq(tablet-wide, max) {
-            width:250px;
-            height: 334px;
-          }
-          @include mq(tablet, max) {
-            width:219px;
-            height: 284px;
-          }
-    
-          @include mq(phone-wide, max) {
-            width:199px;
-            height: 258px;
-          }
         }
       }
 
@@ -326,13 +322,17 @@
         margin-left: $results-report-page-shadow;
         box-shadow: -5px 0 4px 0 rgba(0, 0, 0, 0.20);
         @include mq(desktop, max) {
-          margin-left:-120px;
+          margin-left:-104px;
         }
         @include mq(tablet-wide, max) {
-          margin-left:-140px;
+          margin-left:-50px; 
+          &:nth-child(4n) {
+            margin-left: 0;
+          }
+          &:nth-child(3n) {
+            margin-left: -100px;
+          }
         }
-
-
       }
 
       // 보고서 상단 핸들

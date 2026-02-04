@@ -17,7 +17,7 @@
     padding: map-get($value-sizes, padding-md);
     position: relative;
     margin-top: 30px;
-    margin-bottom: 60px;
+
     z-index: 1;
 
     @include mq(desktop, max) {
@@ -28,7 +28,6 @@
       gap: map-get($value-sizes, gap-lg);
       padding: map-get($value-sizes, padding-md) 24px;
       margin-top: 20px;
-      margin-bottom: 40px;
     }
 
     @include mq(tablet-small, max) {
@@ -39,7 +38,6 @@
       gap: map-get($value-sizes, gap-md);
       padding: map-get($value-sizes, padding-md) 16px;
       margin-top: 20px;
-      margin-bottom: 30px;
     }
 
     // 기능 카드

@@ -22,7 +22,7 @@
       }
       
       @include mq(tablet-small, max) {
-        padding-top: 40px;
+        padding-top: 80px;
         gap: map-get($value-sizes, gap-xxl);
       }
 
@@ -34,36 +34,6 @@
           width: 2px;
           height: 619px;
           background: url(../img/value/bg_line.svg) no-repeat center center;
-          
-          &::before {
-            content: " ";
-            position: absolute;
-            top: 113px;
-            left: -8px;
-            width: 16px;
-            height: 66px;
-            background: #4A5022;
-            pointer-events: none; 
-            z-index: 1;
-            @include mq(desktop, max) {
-              display: none;
-            }
-          }
-
-          &::after {
-            content: " ";
-            position: absolute;
-            top: 360px;
-            left: -8px;
-            width: 16px;
-            height: 66px;
-            background: #52461D;
-            pointer-events: none; 
-            z-index: 1;
-            @include mq(desktop, max) {
-              display: none;
-            }
-          }
 
         // 이동 화살표 아이콘
         .ico-arrow {
@@ -78,9 +48,6 @@
           translate: -50% 0;
           animation: icoArrowMove 4s ease-in-out infinite;
           
-          @include mq(tablet-small, max) {
-            display: none;
-          }
         }
       }
       
@@ -91,6 +58,25 @@
         grid-template-columns: 360px 520px 520px;
         align-items: center;
         z-index: 1;
+
+        &:last-of-type {
+          .comparison-label {
+            &::before {
+              left: 45%;
+              height: 65%;
+              background: #534A1F;
+              @include mq(desktop, max) {
+                background: #4E5021;
+              }
+              @include mq(tablet-wide, max) {
+                background: #485424;
+              }
+              @include mq(tablet-small, max) {
+                background: #425E24;
+              }
+            }
+          }
+        }
         
         @include mq(desktop, max) {
           grid-template-columns: 1fr 1fr;
@@ -126,6 +112,7 @@
           margin-bottom: 0;
           color: map-get($value-colors, white);
           text-align: left;
+          max-width: max-content;
           @include value-text-shadow;
           
           @include mq(desktop, max) {
@@ -133,24 +120,31 @@
             grid-column: span 2;
             line-height: 1.4;
           }
-          
-          @include mq(tablet-small, max) {
-            font-size: 2rem;
-            line-height: 1.5; 
-            padding: 0 16px;
-            &::before {
-              content: " ";
-              position: absolute;
-              top: 50%;
-              left: 0;
-              width: 60%;
-              height: 120%;
-              background: linear-gradient(to right, #425E24 0%, #3D5625 100%);
-              filter: blur(10px);
-              translate: 0 -50%;
-              z-index: -1;
+
+          &::before {
+            content: " ";
+            position: absolute;
+            bottom: 0%;
+            left: 49%;
+            width: 16px;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 100%);
+            mix-blend-mode: multiply;
+            translate: -50% 0%;
+            background: #4A5022;
+            z-index: -1;
+            @include mq(desktop, max) {
+              background: #445A29;
+            }
+            @include mq(tablet-wide, max) {
+              background: #386230;
+            }
+            @include mq(tablet-small, max) {
+              background: #376A35;
             }
           }
+
+        
         }
 
         // 데이터 타입 박스 (아날로그/전산화)

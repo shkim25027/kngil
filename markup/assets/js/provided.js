@@ -54,119 +54,155 @@
     titElements: null,
     bgElements: null,
     sections: null,
-
+    observer: null,
+    currentActiveIndex: 0,
+    isAnimating: false,
+  
     init() {
       const titRoot = Utils.$(CONFIG.SELECTORS.fixLeftTit);
       if (!titRoot) {
         RouteController.init();
         return;
       }
-
-      // GSAP 및 ScrollTrigger 확인
-      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') {
-        console.warn('[FixLeftController] GSAP or ScrollTrigger not loaded');
-        RouteController.init();
-        return;
-      }
-
-      gsap.registerPlugin(ScrollTrigger);
-
+  
       this.titElements = Utils.$$(CONFIG.SELECTORS.fixLeftTitItems);
       this.bgElements = Utils.$$(CONFIG.SELECTORS.fixLeftBg);
       this.sections = Utils.$$(`${CONFIG.SELECTORS.fixLeftSecs} > div, ${CONFIG.SELECTORS.fixLeftSecs} > section`);
-
-      this.setupScrollTriggers();
+  
+      if (!this.sections.length || !this.titElements.length) {
+        console.warn('[FixLeftController] Required elements not found');
+        return;
+      }
+  
+      this.setupIntersectionObserver();
       this.setupClickHandlers();
     },
-
-    setupScrollTriggers() {
-      this.sections.forEach((section, index) => {
-        if (!section) return;
-    
-        ScrollTrigger.create({
-          trigger: section,
-          start: 'top center',
-          end: 'bottom center',
-          onEnter: () => this.updateElements(index),
-          onEnterBack: () => this.updateElements(index),
-          onLeave: () => {
-            // 다음 섹션으로 넘어갈 때
-            if (index < this.sections.length - 1) {
-              this.updateElements(index + 1);
-            }
-          },
-          onLeaveBack: () => {
-            // 이전 섹션으로 돌아갈 때
-            if (index > 0) {
-              this.updateElements(index - 1);
-            }
+  
+    setupIntersectionObserver() {
+      // 기존 observer 정리
+      if (this.observer) {
+        this.observer.disconnect();
+      }
+  
+      // Intersection Observer 옵션
+      const options = {
+        root: null, // viewport
+        rootMargin: '-50% 0px -50% 0px', // 뷰포트 중앙에서 감지
+        threshold: 0 // 조금이라도 보이면 감지
+      };
+  
+      // Observer 콜백
+      this.observer = new IntersectionObserver((entries) => {
+        // 현재 교차 중인 섹션들
+        const intersectingEntries = entries.filter(entry => entry.isIntersecting);
+        
+        if (intersectingEntries.length === 0) return;
+  
+        // 가장 많이 보이는 섹션 찾기
+        let mostVisibleEntry = intersectingEntries[0];
+        let maxRatio = intersectingEntries[0].intersectionRatio;
+  
+        intersectingEntries.forEach(entry => {
+          if (entry.intersectionRatio > maxRatio) {
+            maxRatio = entry.intersectionRatio;
+            mostVisibleEntry = entry;
           }
         });
+  
+        // 해당 섹션의 인덱스 찾기
+        const activeIndex = Array.from(this.sections).indexOf(mostVisibleEntry.target);
+        
+        if (activeIndex !== -1 && activeIndex !== this.currentActiveIndex) {
+          console.log(`[FixLeftController] Section changed to: ${activeIndex}`);
+          this.currentActiveIndex = activeIndex;
+          this.updateElements(activeIndex);
+        }
+      }, options);
+  
+      // 모든 섹션 관찰 시작
+      this.sections.forEach(section => {
+        this.observer.observe(section);
       });
+  
+      console.log('[FixLeftController] Intersection Observer initialized');
     },
-
+  
     updateElements(activeIndex) {
-      // 배경 애니메이션
+      if (activeIndex < 0 || activeIndex >= this.sections.length) {
+        console.warn(`[FixLeftController] Invalid activeIndex: ${activeIndex}`);
+        return;
+      }
+  
+      console.log(`[FixLeftController] Updating to index: ${activeIndex}`);
+  
+      // 배경 업데이트
       this.bgElements.forEach((bg, index) => {
         const isActive = index === activeIndex;
         bg.classList.toggle('on', isActive);
-        this.setBgActive(bg, isActive);
+        
+        if (typeof gsap !== 'undefined') {
+          gsap.to(bg, {
+            transform: isActive ? `scale(${CONFIG.ANIMATION.bgScale})` : 'scale(1)',
+            duration: CONFIG.ANIMATION.duration,
+            ease: 'power2.out'
+          });
+        }
       });
-
-      // 타이틀 애니메이션 및 접근성
+  
+      // 타이틀 업데이트
       this.titElements.forEach((tit, index) => {
         const isActive = index === activeIndex;
         tit.classList.toggle('on', isActive);
         tit.setAttribute('aria-selected', isActive ? 'true' : 'false');
         tit.setAttribute('tabindex', isActive ? '0' : '-1');
-        this.setTitActive(tit, isActive);
+        
+        if (typeof gsap !== 'undefined') {
+          gsap.to(tit, {
+            opacity: isActive ? 1 : 0.5,
+            transform: isActive 
+              ? 'scale(1) translate(0%, 0%)' 
+              : `scale(${CONFIG.ANIMATION.titScale}) translate(${CONFIG.ANIMATION.titTranslate}, 0%)`,
+            duration: CONFIG.ANIMATION.duration,
+            ease: 'power2.out'
+          });
+        }
       });
     },
-
+  
     setupClickHandlers() {
       if (!this.titElements.length || !this.sections.length) return;
-
+  
       this.titElements.forEach((title, index) => {
-        title.addEventListener('click', () => {
+        const handleClick = (e) => {
+          e.preventDefault();
           this.scrollToSection(index);
-        });
+        };
+  
+        title.addEventListener('click', handleClick);
         title.addEventListener('keydown', (e) => {
           if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            this.scrollToSection(index);
+            handleClick(e);
           }
         });
       });
     },
-
+  
     scrollToSection(index) {
       const section = this.sections[index];
       if (!section) return;
+  
+      console.log(`[FixLeftController] Scrolling to section: ${index}`);
+  
       section.scrollIntoView({
         behavior: 'smooth',
-        block: 'start'
+        block: 'center' // 중앙에 맞춤
       });
+  
+      // 즉시 업데이트 (smooth scroll이 완료되기 전에)
+      this.currentActiveIndex = index;
       this.updateElements(index);
-    },
-
-    setBgActive(element, active) {
-      gsap.to(element, {
-        transform: active ? `scale(${CONFIG.ANIMATION.bgScale})` : 'scale(1)',
-        duration: CONFIG.ANIMATION.duration
-      });
-    },
-
-    setTitActive(element, active) {
-      gsap.to(element, {
-        opacity: active ? 1 : 0.5,
-        transform: active 
-          ? 'scale(1) translate(0%, 0%)' 
-          : `scale(${CONFIG.ANIMATION.titScale}) translate(${CONFIG.ANIMATION.titTranslate}, 0%)`,
-        duration: CONFIG.ANIMATION.duration
-      });
     }
   };
-
   // ============================================
   // Route Controller (Intersection Observer)
   // ============================================
@@ -258,26 +294,55 @@
     
     if (!container || bullets.length === 0) return;
 
-    // 컨테이너의 실제 너비와 높이 가져오기
-    const containerWidth = container.offsetWidth;
-    const containerHeight = container.offsetHeight;
+    // 컨테이너의 실제 크기와 스타일 가져오기
+    const rect = container.getBoundingClientRect();
+    const computedStyle = window.getComputedStyle(container);
     
-    // 원본 비율 (720 x 270)
-    const originalWidth = 720;
-    const originalHeight = 270;
-    const originalRadius = 135;
+    // padding 값 추출
+    const paddingLeft = parseFloat(computedStyle.paddingLeft);
+    const paddingRight = parseFloat(computedStyle.paddingRight);
+    const paddingTop = parseFloat(computedStyle.paddingTop);
+    const paddingBottom = parseFloat(computedStyle.paddingBottom);
     
-    // 실제 크기에 맞춰 계산
-    const radius = (containerWidth / originalWidth) * originalRadius;
-    const width = containerWidth;
-    const height = containerHeight;
+    // border 값 추출
+    const borderLeft = parseFloat(computedStyle.borderLeftWidth);
+    const borderRight = parseFloat(computedStyle.borderRightWidth);
+    const borderTop = parseFloat(computedStyle.borderTopWidth);
+    const borderBottom = parseFloat(computedStyle.borderBottomWidth);
+    
+    // 실제 border-radius 값 가져오기 (브라우저가 조정한 값)
+    let borderRadius = parseFloat(computedStyle.borderTopLeftRadius);
+    
+    // border-radius가 컨테이너 크기를 초과하면 브라우저가 자동 조정
+    // 최대값은 컨테이너 높이의 절반
+    const maxRadius = rect.height / 2;
+    if (borderRadius > maxRadius) {
+      borderRadius = maxRadius;
+    }
+    
+    // 실제 내부 콘텐츠 영역 크기 (border-box 기준)
+    // border를 포함한 전체 크기
+    const outerWidth = rect.width;
+    const outerHeight = rect.height;
+    
+    // path는 border의 중앙선을 따라가야 함
+    const pathWidth = outerWidth - borderLeft/2 - borderRight/2;
+    const pathHeight = outerHeight - borderTop/2 - borderBottom/2;
+    const pathRadius = borderRadius - borderLeft/2; // border 중앙선 기준
     
     // SVG path 생성 (둥근 사각형 형태)
-    const pathData = `M ${radius},0 L ${width - radius},0 A ${radius} ${radius} 0 0 1 ${width} ${radius} A ${radius} ${radius} 0 0 1 ${width - radius} ${height} L ${radius},${height} A ${radius} ${radius} 0 0 1 0 ${radius} A ${radius} ${radius} 0 0 1 ${radius} 0 Z`;
+    const pathData = `M ${pathRadius},0 L ${pathWidth - pathRadius},0 A ${pathRadius} ${pathRadius} 0 0 1 ${pathWidth} ${pathRadius} A ${pathRadius} ${pathRadius} 0 0 1 ${pathWidth - pathRadius} ${pathHeight} L ${pathRadius},${pathHeight} A ${pathRadius} ${pathRadius} 0 0 1 0 ${pathRadius} A ${pathRadius} ${pathRadius} 0 0 1 ${pathRadius} 0 Z`;
     
     // 모든 bullet 요소에 적용
     bullets.forEach(bullet => {
       bullet.style.offsetPath = `path("${pathData}")`;
+    });
+    
+    console.log('[Data Provision] Offset path updated:', {
+      containerSize: `${outerWidth.toFixed(1)}x${outerHeight.toFixed(1)}`,
+      pathSize: `${pathWidth.toFixed(1)}x${pathHeight.toFixed(1)}`,
+      borderRadius: borderRadius.toFixed(1),
+      pathRadius: pathRadius.toFixed(1)
     });
   }
 

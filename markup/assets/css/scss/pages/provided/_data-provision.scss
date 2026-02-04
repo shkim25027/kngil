@@ -100,7 +100,7 @@
           opacity: 0.5;
           
           // 모바일에서 크기 조정
-          @include mq(tablet-wide, max) {
+          @include mq(tablet-small, max) {
             width: 8px;
             height: 8px;
           }
@@ -277,15 +277,12 @@
                     height: 100%;
                   }
                   @include mq(tablet, max) {
-                    height: 100%;
+                    height: calc(50% + 134px);
                   }
                   @include mq(tablet-small, max) {
                     left: -8px;
                     width: 48%;
-                    height: 93.5%;
-                  }
-                  @include mq(phone-wide, max) {
-                    height: 18rem;
+                    height: calc(50% + 2.4rem +  (1.6rem * 2.5) + 32px);
                   }
                 }
                 &:after {

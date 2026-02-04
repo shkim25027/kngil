@@ -88,6 +88,21 @@
     }
   }
 
+  
+  .bg-features {
+    padding-bottom: 60px;
+    @include mq(desktop, max) {
+      padding-bottom: 40px;
+    }
+    @include mq(tablet-small, max) {
+     background-image: url(../img/value/bg_value_feature_m.jpg);
+     background-repeat: no-repeat;
+     background-position: center center;
+     background-size: cover;
+     width: 100%;
+     padding-bottom: 30px;
+    }
+  }
   // Summary Section - 요약 섹션
   .summary {
     width: 100%;
@@ -99,10 +114,11 @@
     gap: map-get($value-sizes, gap-xl);
     text-align: center;
     position: relative;
-    @include value-bg-cover("../img/value/bg_value_feature.jpg");
     scroll-snap-align: center;
     scroll-snap-stop: always;
-    
+    @include mq(tablet-small, min) {
+      @include value-bg-cover("../img/value/bg_value_feature.jpg");
+    }
     @include mq(desktop, max) {
       height: auto;
       min-height: 60vh;
@@ -110,7 +126,6 @@
     }
     
     @include mq(tablet-small, max) {
-      min-height: 50vh;
       padding: 40px 16px;
       gap: map-get($value-sizes, gap-lg);
     }

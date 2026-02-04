@@ -19,11 +19,7 @@
     }
 
     // 단계별 프로세스 리스트
-    .step-list {
-      @include mq(tablet-small, max) {
-        margin-bottom: 40px;
-      }
-      
+    .step-list {      
       .step-desc {
         font-size: map-get($value-font-sizes, xl);
         color: map-get($value-colors, white);
@@ -260,7 +256,7 @@
             height: 176px;
           }
           @include mq(desktop-small, max) {
-            width: calc(100% - 63px);
+            width: calc(100% - 87px);
             height: 198px;
           }
         }
