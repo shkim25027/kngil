@@ -147,7 +147,7 @@
         margin-top: 40px;
         min-height: auto;
         gap: 8px;
-        @include flex(center, center);
+        @include flex(stretch, center);
 
       }
 
@@ -285,7 +285,7 @@
 
         @include mq(tablet, max) {
           font-size: 1.4rem;
-          margin-bottom: 0px;
+          margin: 0px;
         }
         
       }
