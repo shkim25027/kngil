@@ -201,6 +201,10 @@ $process-left-breakpoint: 999px; // max-width: 998px
         gap: 80px;
       }
 
+      section {
+        width: 100%;
+      }
+
       .sub-tit {
        /* font-size: 28px; */
         font-weight: 500;
@@ -449,6 +453,7 @@ $process-left-breakpoint: 999px; // max-width: 998px
                 }
               }
               @include mq(1860px, max) {
+                width:100%;
                 &::before { 
                   background: linear-gradient(90deg, #DADADA 0%, #DADADA 40%, rgba(218, 218, 218, 0.00) 100%);
                 }
