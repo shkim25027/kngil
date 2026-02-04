@@ -944,14 +944,17 @@
 // =======================================
 // FAQ > Q&A 게시판 리스트 (faq 내 공용)
 // =======================================
-.board-list {
+.board-wrap {
   width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
   display: flex;
   flex-direction: column;
   gap: 30px;
-
+  .board-list{
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch; 
+  }
   table {
     table-layout: fixed;
     min-width: 1024px;
