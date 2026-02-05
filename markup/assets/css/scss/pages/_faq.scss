@@ -16,15 +16,20 @@
     position: absolute;
     bottom: 0;
     background-color: #00000077;
-
+    @include mq(tablet-small, max) {
+      height: 42px;
+    }
     li {
       width: 100%;
       height: 100%;
       color: #fff;
-
-      &:not(:first-child, :last-child) {
-        width: max-content;
+      @include mq(tablet-small, min) {
+        &:not(:first-child, :last-child) {
+          width: max-content;
+        }
       }
+
+
 
       a {
         width: 25vw;
@@ -33,6 +38,11 @@
         justify-content: center;
         align-items: center;
         font-size: 18px;
+        @include mq(tablet-small, max) {
+          width: 100%;
+          font-size: 14px;
+          text-align: center;
+        }
 
         &:hover {
           color: var(--color-yellow);

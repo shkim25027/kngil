@@ -30,7 +30,8 @@
 
     @include mq(tablet-wide, max) {
       height: 22rem;
-      padding-bottom: 5rem;
+      padding-bottom: 0rem;
+      justify-content: center;
     }
 
     h2 {

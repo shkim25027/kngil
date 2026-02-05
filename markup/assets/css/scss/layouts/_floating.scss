@@ -15,8 +15,11 @@
   overflow: hidden;
 
   @include mq(desktop, max) {
-    top: 86px;
+    top: 76px;
     width: max-content;
+  }
+  @include mq(tablet-wide, max) {
+    top: 46px;
   }
 
   .floating-kngil {
