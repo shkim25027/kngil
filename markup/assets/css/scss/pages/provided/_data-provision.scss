@@ -263,6 +263,7 @@
               z-index: -1;
 
               @include mq(desktop-small, max) {
+                max-height: 128%;
                 &::before {
                   content: " ";
                   position: absolute;
