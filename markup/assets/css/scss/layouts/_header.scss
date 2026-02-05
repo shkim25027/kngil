@@ -46,6 +46,7 @@ html {
   &-right {
     gap: 20px;
     @include flex();
+
   }
   h1 {
     z-index: 1;
@@ -56,6 +57,11 @@ html {
       background: url(../img/logo_kngil.svg) center no-repeat;
       background-size: contain;
       @include textBlind();
+
+      @include mq(tablet-small, max) {
+        width: 72px;
+        height: 18px;
+      }
     }
   }
 

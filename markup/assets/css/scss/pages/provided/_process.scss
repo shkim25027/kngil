@@ -39,7 +39,7 @@ $process-left-breakpoint: 999px; // max-width: 998px
       
       @include mq($process-left-breakpoint, max) {
         min-width: 100%;
-        padding: 20px 16px;
+        padding: 40px 16px 20px 16px;
         min-height: auto;
         gap: 16px;
         background: #fff;
@@ -136,7 +136,7 @@ $process-left-breakpoint: 999px; // max-width: 998px
           position: absolute;
           content: "";
           top: 30px;
-          left: -123%;
+          left: calc(-100% - 86px);
           width: 100%;
           height: 1px;
           background: linear-gradient(90deg, transparent 50%, #fff 100%);
