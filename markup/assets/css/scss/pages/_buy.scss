@@ -63,7 +63,7 @@
         background-position: center;
         translate: -50% 0;
       }
-      @include mq(tablet, min){
+      @include mq(tablet-small, min){
         &::after{
           content: "";
           position: absolute;
@@ -368,7 +368,7 @@
       }
 
       @include mq(tablet-small, max) {
-        padding: 30px 20px;
+        padding: 1.8rem 0px 2.4rem 0px;
       }
 
       .tit-box {
@@ -376,6 +376,12 @@
         z-index: 1;
         gap: 8px;
         @include flex(center, flex-start);
+        @include mq(desktop-small, max) {
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          gap: 0;
+        }
         .tit {
           font-size: 28px;
           font-weight: 600;
@@ -389,7 +395,9 @@
           font-size: 18px;
           color: #fff;
           opacity: 0.8;
-          align-self: flex-end;
+          @include mq(desktop-small, min) {
+            align-self: flex-end;
+          }
           @include mq(tablet-small, max) {
             font-size: 1.4rem;
           }
