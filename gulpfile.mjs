@@ -225,7 +225,13 @@ function serve() {
     ghostMode: false // 동기화 끄기
   });
   
-  watch(paths.scss.src, scss);
+  watch(paths.scss.src, { 
+    ignoreInitial: false,
+    awaitWriteFinish: {
+      stabilityThreshold: 300,
+      pollInterval: 100
+    }
+  }, scss);
   watch(paths.csscopy.src, csscopy);
   watch(paths.js.src, scripts);
   watch(scriptsBundleSrc, scriptsBundle);
