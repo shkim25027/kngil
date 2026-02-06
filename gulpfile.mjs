@@ -49,6 +49,7 @@ const paths = {
     dest: "./dist/js",
   },
   jscopy: { src: "./markup/assets/js/lib/**/*", dest: "./dist/js/lib" },
+  
   img: {
     src: "./markup/assets/images/**/*.{png,jpg,jpeg,svg}",
     dest: "./dist/img",
@@ -152,24 +153,34 @@ function csscopy() {
   return src(paths.csscopy.src).pipe(dest(paths.csscopy.dest));
 }
 
-// JS (조건부 압축 적용)
+// 개별 파일 빌드 (증분 빌드, 프로덕션에서만 terser)
 function scripts() {
-  let stream = src([paths.js.src, paths.js.ignore], { 
-    since: gulp.lastRun(scripts) // 증분 빌드
+  let stream = src([paths.js.src, paths.js.ignore], {
+    base: "./markup/assets/js",
+    since: gulp.lastRun(scripts),
   })
-    .pipe(concat("common.js"))
     .pipe(babel({ presets: ["@babel/preset-env"] }));
-  
-  // 프로덕션 모드에서만 압축
+
   if (isProd) {
     stream = stream.pipe(terser());
   }
-  
-  return stream
-    .pipe(dest(paths.js.dest))
-    .pipe(browserSync.stream());
+
+  return stream.pipe(dest(paths.js.dest)).pipe(browserSync.stream());
 }
 
+// 특정 파일들만 합치기 (main.js + util.js → bundle.js)
+const scriptsBundleSrc = ["./markup/assets/js/faq.js", "./markup/assets/js/popup.js"];
+function scriptsBundle() {
+  let stream = src(scriptsBundleSrc)
+    .pipe(concat("common.js"))
+    .pipe(babel({ presets: ["@babel/preset-env"] }));
+
+  if (isProd) {
+    stream = stream.pipe(terser());
+  }
+
+  return stream.pipe(dest(paths.js.dest)).pipe(browserSync.stream());
+}
 // JS Library copy
 function jscopy() {
   return src(paths.jscopy.src).pipe(dest(paths.jscopy.dest));
@@ -214,6 +225,7 @@ function serve() {
   watch(paths.scss.src, scss);
   watch(paths.csscopy.src, csscopy);
   watch(paths.js.src, scripts);
+  watch(scriptsBundleSrc, scriptsBundle);
   watch(paths.jscopy.src, jscopy);
   watch(paths.img.src, { delay: 1000 }, imagesDev); // 지연 추가
   watch(paths.video.src, video);
@@ -229,14 +241,14 @@ function serve() {
 // 프로덕션 빌드 - 완전한 최적화
 const build = series(
   clean,
-  parallel(fonts, imagesProd, video, scss, csscopy, scripts, jscopy, html, codinglistcopy),
+  parallel(fonts, imagesProd, video, scss, csscopy, scripts, scriptsBundle, jscopy, html, codinglistcopy),
   cache
 );
 
 // 개발 빌드 - 빠른 빌드
 const dev = series(
   clean,
-  parallel(fonts, imagesDev, video, scss, csscopy, scripts, jscopy, html, codinglistcopy),
+  parallel(fonts, imagesDev, video, scss, csscopy, scripts, scriptsBundle, jscopy, html, codinglistcopy),
   parallel(serve)
 );
 

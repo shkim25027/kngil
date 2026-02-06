@@ -151,54 +151,7 @@
       @@include("_include/_footer.html")
     </div>
     <!-- FAQ 아코디언 기능 -->
-     <!--
     <script src="./js/faq.js"></script>
-    -->
 
-    <script>
-      (function() {
-  var list = document.getElementById('faqList');
-  if (!list) return;
-
-  var activeItem = null;
-
-  function toggle(item) {
-    var isActive = item.classList.contains('active');
-    
-    // 다른 열린 항목 닫기
-    if (activeItem && activeItem !== item) {
-      activeItem.classList.remove('active');
-      activeItem.querySelector('.faq-answer').style.maxHeight = '0';
-    }
-    
-    // 현재 항목 토글
-    item.classList.toggle('active');
-    var answer = item.querySelector('.faq-answer');
-    answer.style.maxHeight = isActive ? '0' : answer.scrollHeight + 'px';
-    
-    activeItem = isActive ? null : item;
-  }
-
-  // 클릭 이벤트
-  list.addEventListener('click', function(e) {
-    var item = e.target.closest('.faq-item');
-    if (!item) return;
-    
-    // 닫기 버튼 클릭시
-    if (e.target.closest('.btn-closer')) {
-      e.stopPropagation();
-      item.classList.remove('active');
-      item.querySelector('.faq-answer').style.maxHeight = '0';
-      if (activeItem === item) activeItem = null;
-      return;
-    }
-    
-    // 질문 영역 클릭시
-    if (item.querySelector('.faq-question').contains(e.target)) {
-      toggle(item);
-    }
-  });
-})();
-    </script>
   </body>
 </html>
