@@ -461,8 +461,8 @@
         const savedScrollY = document.body.getAttribute('data-scroll-y');
         if (savedScrollY) {
           const currentScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
-          if (Math.abs(currentScrollY - parseInt(savedScrollY)) > 1) {
-            window.scrollTo(0, parseInt(savedScrollY));
+          if (Math.abs(currentScrollY - parseInt(savedScrollY, 10)) > 1) {
+            window.scrollTo(0, parseInt(savedScrollY, 10));
           }
         }
       }, 16);
@@ -551,12 +551,9 @@
       document.body.style.overflow = '';
       document.documentElement.style.overflow = '';
       
-      // 스크롤 위치 복원
+      // 복원할 스크롤 위치 (Lenis 초기화 후 사용)
       const scrollY = document.body.getAttribute('data-scroll-y');
-      if (scrollY) {
-        window.scrollTo(0, parseInt(scrollY));
-      }
-      
+      const scrollYNum = scrollY ? parseInt(scrollY, 10) : 0;
       document.body.removeAttribute('data-scroll-y');
 
       // 헤더 스크롤 애니메이션 다시 활성화
@@ -566,6 +563,17 @@
 
       // Lenis 재생성
       lenisManager.init();
+      
+      // reflow 후 + Lenis 적용 후 스크롤 위치 복원 (스크롤 점프 방지)
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          if (window.lenis && typeof window.lenis.scrollTo === 'function') {
+            window.lenis.scrollTo(scrollYNum, { immediate: true });
+          } else {
+            window.scrollTo(0, scrollYNum);
+          }
+        });
+      });
     }
 
     /**

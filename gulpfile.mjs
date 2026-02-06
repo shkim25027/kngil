@@ -6,6 +6,7 @@ import postcss from "gulp-postcss"; //CSS 후처리, 플러그인 적용
 import autoprefixer from "autoprefixer"; //브라우저 벤더 프리픽스 자동 추가
 import cssnano from "cssnano"; //CSS 최소화 (minify) SCSS → CSS 후 종합 최적화(PostCSS 필요)
 import browserSyncLib from "browser-sync"; // 개발 서버를 띄우고 파일 변경 시 브라우저 자동 새로고침
+import concat from "gulp-concat"; //여러 파일을 하나로 합침
 import rename from "gulp-rename"; //파일 이름 변경 (예: style.css → style.min.css)
 import terser from "gulp-terser"; //JS 압축/최적화
 import imagemin from "gulp-imagemin"; //PNG, JPEG, GIF, SVG 이미지 용량 최적화
@@ -24,6 +25,9 @@ const cachebust = new CacheBuster();
 
 const browserSync = browserSyncLib.create();
 const sassCompiler = gulpSass(sass);
+
+// 환경 변수 체크
+const isProd = process.env.NODE_ENV === 'production';
 
 // ------------------------------------
 // Paths
@@ -53,12 +57,17 @@ const paths = {
   video: { src: "./markup/assets/video/**/*", dest: "./dist/video" },
   html: {
     src: "./markup/html/**/*.html",
-    // ignore: "!./markup/html/_include",
+    // markup 루트의 HTML도 빌드 (예: coding_list.html)
+    extra: "./markup/coding_list.html",
     ignore: [
       "!./markup/html/_include/", // include 폴더 제외
       "!./markup/html/_sub/", // sub 폴더 제외
     ],
     dest: "./dist",
+  },
+  codinglist: {
+    src: "./markup/_coding_list/**/*",
+    dest: "./dist/_coding_list",
   },
 };
 
@@ -84,8 +93,18 @@ function video() {
   }).pipe(dest(paths.video.dest));
 }
 
-// Images
-function images() {
+// Images - 개발용 (최적화 스킵)
+function imagesDev() {
+  return src(paths.img.src, {
+    encoding: false,
+    buffer: true,
+  })
+    .pipe(newer(paths.img.dest))
+    .pipe(dest(paths.img.dest));
+}
+
+// Images - 프로덕션용 (최적화 적용)
+function imagesProd() {
   return src(paths.img.src, {
     encoding: false,
     buffer: true,
@@ -103,23 +122,27 @@ function images() {
             plugins: [{ name: "removeViewBox", active: false }],
           }),
         ],
-
         {
           verbose: true, // 로그 출력
         }
       )
     )
     .pipe(dest(paths.img.dest));
-  //return src(paths.img.src).pipe(imagemin()).pipe(dest(paths.img.dest));
-  // return src(paths.img.src).pipe(dest(paths.img.dest));
 }
 
-// SCSS → CSS
+// SCSS → CSS (조건부 PostCSS 적용)
 function scss() {
-  return src([paths.scss.src, paths.scss.ignore])
-    .pipe(sassCompiler({ quietDeps: true }).on("error", sassCompiler.logError))
-    //.pipe(postcss([autoprefixer(), cssnano()]))
-    //.pipe(rename({ suffix: ".min" }))
+  let stream = src([paths.scss.src, paths.scss.ignore], { 
+    since: gulp.lastRun(scss) // 증분 빌드
+  })
+    .pipe(sassCompiler({ quietDeps: true }).on("error", sassCompiler.logError));
+  
+  // 프로덕션 모드에서만 PostCSS 적용
+  if (isProd) {
+    stream = stream.pipe(postcss([autoprefixer(), cssnano()]));
+  }
+  
+  return stream
     .pipe(dest(paths.scss.dest))
     .pipe(browserSync.stream());
 }
@@ -129,11 +152,20 @@ function csscopy() {
   return src(paths.csscopy.src).pipe(dest(paths.csscopy.dest));
 }
 
-// JS (각 파일을 개별로 빌드하여 출력)
+// JS (조건부 압축 적용)
 function scripts() {
-  return src([paths.js.src, paths.js.ignore], { base: "./markup/assets/js" })
-    .pipe(babel({ presets: ["@babel/preset-env"] }))
-    .pipe(terser())
+  let stream = src([paths.js.src, paths.js.ignore], { 
+    since: gulp.lastRun(scripts) // 증분 빌드
+  })
+    .pipe(concat("common.js"))
+    .pipe(babel({ presets: ["@babel/preset-env"] }));
+  
+  // 프로덕션 모드에서만 압축
+  if (isProd) {
+    stream = stream.pipe(terser());
+  }
+  
+  return stream
     .pipe(dest(paths.js.dest))
     .pipe(browserSync.stream());
 }
@@ -143,18 +175,23 @@ function jscopy() {
   return src(paths.jscopy.src).pipe(dest(paths.jscopy.dest));
 }
 
-// HTML SSI
+// HTML SSI (markup/html/** + markup/coding_list.html)
 function html() {
-  return src([paths.html.src, ...paths.html.ignore]) // 배열로 합침
+  return src([paths.html.src, paths.html.extra, ...paths.html.ignore])
     .pipe(
       includer({
-        prefix: "@@", // include 구문: @@include("header.html")
-        basepath: "./markup/html", // ✅ 기준 경로를 html 폴더 전체로 설정
+        prefix: "@@",
+        basepath: "./markup/html",
       })
     )
     .pipe(prettier())
     .pipe(dest(paths.html.dest))
     .pipe(browserSync.stream());
+}
+
+// coding_list 전용 리소스 복사 (_coding_list 폴더)
+function codinglistcopy() {
+  return src(paths.codinglist.src).pipe(dest(paths.codinglist.dest));
 }
 
 // Cache bust
@@ -164,31 +201,42 @@ function cache() {
     .pipe(dest(paths.html.dest));
 }
 
-// BrowserSync
+// BrowserSync (최적화)
 function serve() {
-  browserSync.init({ server: { baseDir: paths.build }, port: 3000 });
+  browserSync.init({ 
+    server: { baseDir: paths.build }, 
+    port: 3000,
+    notify: false, // 알림 끄기
+    ui: false, // UI 끄기
+    ghostMode: false // 동기화 끄기
+  });
+  
   watch(paths.scss.src, scss);
   watch(paths.csscopy.src, csscopy);
   watch(paths.js.src, scripts);
   watch(paths.jscopy.src, jscopy);
-  watch(paths.img.src, images);
+  watch(paths.img.src, { delay: 1000 }, imagesDev); // 지연 추가
   watch(paths.video.src, video);
   watch(paths.fonts.src, fonts);
-  watch(paths.html.src, html);
+  watch([paths.html.src, paths.html.extra], html);
+  watch(paths.codinglist.src, codinglistcopy);
 }
 
 // ------------------------------------
 // Series / Parallel Tasks
 // ------------------------------------
+
+// 프로덕션 빌드 - 완전한 최적화
 const build = series(
   clean,
-  parallel(fonts, images,video, scss, csscopy, scripts, jscopy, html),
+  parallel(fonts, imagesProd, video, scss, csscopy, scripts, jscopy, html, codinglistcopy),
   cache
 );
 
+// 개발 빌드 - 빠른 빌드
 const dev = series(
   clean,
-  parallel(fonts, images,video, scss, csscopy, scripts, jscopy, html),
+  parallel(fonts, imagesDev, video, scss, csscopy, scripts, jscopy, html, codinglistcopy),
   parallel(serve)
 );
 
