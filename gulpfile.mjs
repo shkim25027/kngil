@@ -6,7 +6,6 @@ import postcss from "gulp-postcss"; //CSS 후처리, 플러그인 적용
 import autoprefixer from "autoprefixer"; //브라우저 벤더 프리픽스 자동 추가
 import cssnano from "cssnano"; //CSS 최소화 (minify) SCSS → CSS 후 종합 최적화(PostCSS 필요)
 import browserSyncLib from "browser-sync"; // 개발 서버를 띄우고 파일 변경 시 브라우저 자동 새로고침
-import concat from "gulp-concat"; //여러 파일을 하나로 합침
 import rename from "gulp-rename"; //파일 이름 변경 (예: style.css → style.min.css)
 import terser from "gulp-terser"; //JS 압축/최적화
 import imagemin from "gulp-imagemin"; //PNG, JPEG, GIF, SVG 이미지 용량 최적화
@@ -130,13 +129,11 @@ function csscopy() {
   return src(paths.csscopy.src).pipe(dest(paths.csscopy.dest));
 }
 
-// JS
+// JS (각 파일을 개별로 빌드하여 출력)
 function scripts() {
-  return src([paths.js.src, paths.js.ignore])
-    .pipe(concat("common.js"))
+  return src([paths.js.src, paths.js.ignore], { base: "./markup/assets/js" })
     .pipe(babel({ presets: ["@babel/preset-env"] }))
     .pipe(terser())
-    //.pipe(rename({ suffix: ".min" }))
     .pipe(dest(paths.js.dest))
     .pipe(browserSync.stream());
 }
