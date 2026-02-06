@@ -398,9 +398,6 @@
   class SitemapManager {
     constructor() {
       this.isOpen = false;
-      this.preventScrollHandler = null;
-      this.scrollLockInterval = null;
-      this.savedScrollY = 0;
     }
 
     /**
@@ -418,56 +415,21 @@
     }
 
     /**
-     * 스크롤 잠금
+     * 스크롤 잠금 (열릴 때)
      */
     lockScroll() {
       // 현재 스크롤 위치 저장
-      this.savedScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
-      document.body.setAttribute('data-scroll-y', this.savedScrollY);
+      const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+      document.body.setAttribute('data-scroll-lock', String(scrollY));
+
+      // body 고정
       document.body.style.position = 'fixed';
-      document.body.style.top = `-${this.savedScrollY}px`;
-      document.body.style.width = '100%';
-      document.body.style.overflow = 'hidden';
-      document.documentElement.style.overflow = 'hidden';
-      
-      // Lenis 제거
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+
+      // Lenis 완전 중지
       lenisManager.destroy();
-      
-      // Lenis.prototype.raf 오버라이드
-      this.overrideLenisRaf();
-      
-      // Lenis 클래스 제거
-      document.documentElement.classList.remove('lenis-scrolling', 'lenis', 'lenis-smooth');
-      document.body.classList.remove('lenis-scrolling', 'lenis', 'lenis-smooth');
-      document.documentElement.classList.add('lenis-stopped');
-      document.body.classList.add('lenis-stopped');
-      
-      // 스크롤 이벤트 차단
-      this.preventScrollHandler = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        e.stopImmediatePropagation();
-        return false;
-      };
-      
-      const events = ['wheel', 'touchmove', 'scroll'];
-      events.forEach(eventType => {
-        document.addEventListener(eventType, this.preventScrollHandler, { passive: false, capture: true });
-        window.addEventListener(eventType, this.preventScrollHandler, { passive: false, capture: true });
-      });
-      
-      // 스크롤 위치 강제 고정
-      this.scrollLockInterval = setInterval(() => {
-        const savedScrollY = document.body.getAttribute('data-scroll-y');
-        if (savedScrollY) {
-          const currentScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
-          if (Math.abs(currentScrollY - parseInt(savedScrollY, 10)) > 1) {
-            window.scrollTo(0, parseInt(savedScrollY, 10));
-          }
-        }
-      }, 16);
-      
-      document.body.setAttribute('data-scroll-lock-interval', this.scrollLockInterval);
 
       // 사이트맵 열림 시 헤더 위로 올라가는 동작 비활성화
       if (window.topButtonController && typeof window.topButtonController.setHeaderAnimationEnabled === 'function') {
@@ -476,126 +438,37 @@
     }
 
     /**
-     * Lenis raf 오버라이드
-     */
-    overrideLenisRaf() {
-      if (typeof Lenis !== 'undefined' && Lenis.prototype) {
-        if (!Lenis.prototype._originalRaf) {
-          Lenis.prototype._originalRaf = Lenis.prototype.raf;
-        }
-        Lenis.prototype.raf = (time) => {
-          if (this.isOpen) {
-            return false;
-          }
-          if (Lenis.prototype._originalRaf) {
-            return Lenis.prototype._originalRaf.call(this, time);
-          }
-          return false;
-        };
-      }
-      
-      // 기존 lenis 인스턴스의 raf 메서드도 오버라이드
-      const lenisInstances = [];
-      if (window.lenis) lenisInstances.push(window.lenis);
-      if (typeof lenis !== 'undefined' && lenis) lenisInstances.push(lenis);
-      
-      lenisInstances.forEach(instance => {
-        if (instance && !instance._rafOverridden) {
-          instance._originalRaf = instance.raf;
-          instance.raf = (time) => {
-            if (this.isOpen) {
-              return false;
-            }
-            if (instance._originalRaf) {
-              return instance._originalRaf.call(instance, time);
-            }
-            return false;
-          };
-          instance._rafOverridden = true;
-        }
-      });
-    }
-
-    /**
-     * 스크롤 잠금 해제
+     * 스크롤 잠금 해제 (닫힐 때)
      */
     unlockScroll() {
-      // 스크롤 위치 고정 인터벌 제거
-      if (this.scrollLockInterval) {
-        clearInterval(this.scrollLockInterval);
-        this.scrollLockInterval = null;
-        document.body.removeAttribute('data-scroll-lock-interval');
-      }
-      
-      // 이벤트 리스너 제거
-      if (this.preventScrollHandler) {
-        const events = ['wheel', 'touchmove', 'scroll'];
-        events.forEach(eventType => {
-          document.removeEventListener(eventType, this.preventScrollHandler, { capture: true });
-          window.removeEventListener(eventType, this.preventScrollHandler, { capture: true });
-        });
-        this.preventScrollHandler = null;
-      }
-      
-      // Lenis raf 오버라이드 복원
-      this.restoreLenisRaf();
-      
-      // Lenis 클래스 제거
-      document.documentElement.classList.remove('lenis-stopped');
-      document.body.classList.remove('lenis-stopped');
-      
-      // 스타일 제거
+      // body 스크롤 위치 복원 (style.top에서 복원 값 추출, 예: "-500px" -> 500)
+      const topValue = document.body.style.top;
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.width = '';
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
-      
-      // 복원할 스크롤 위치 (Lenis 초기화 후 사용)
-      const scrollY = document.body.getAttribute('data-scroll-y');
-      const scrollYNum = scrollY ? parseInt(scrollY, 10) : 0;
-      document.body.removeAttribute('data-scroll-y');
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.removeAttribute('data-scroll-lock');
+
+      // 'instant' 미지원 브라우저는 'auto'로 즉시 이동
+      const scrollTop = Math.abs(parseInt(topValue || '0', 10));
+      try {
+        window.scrollTo({ top: scrollTop, left: 0, behavior: 'instant' });
+      } catch (_) {
+        window.scrollTo(0, scrollTop);
+      }
+
+      // Lenis 재시작
+      if (typeof window.handleStartLenis === 'function') {
+        window.handleStartLenis();
+      } else {
+        lenisManager.init();
+      }
 
       // 헤더 스크롤 애니메이션 다시 활성화
       if (window.topButtonController && typeof window.topButtonController.setHeaderAnimationEnabled === 'function') {
         window.topButtonController.setHeaderAnimationEnabled(true);
       }
-
-      // Lenis 재생성
-      lenisManager.init();
-      
-      // reflow 후 + Lenis 적용 후 스크롤 위치 복원 (스크롤 점프 방지)
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          if (window.lenis && typeof window.lenis.scrollTo === 'function') {
-            window.lenis.scrollTo(scrollYNum, { immediate: true });
-          } else {
-            window.scrollTo(0, scrollYNum);
-          }
-        });
-      });
-    }
-
-    /**
-     * Lenis raf 복원
-     */
-    restoreLenisRaf() {
-      if (typeof Lenis !== 'undefined' && Lenis.prototype && Lenis.prototype._originalRaf) {
-        Lenis.prototype.raf = Lenis.prototype._originalRaf;
-        delete Lenis.prototype._originalRaf;
-      }
-      
-      const lenisInstances = [];
-      if (window.lenis) lenisInstances.push(window.lenis);
-      if (typeof lenis !== 'undefined' && lenis) lenisInstances.push(lenis);
-      
-      lenisInstances.forEach(instance => {
-        if (instance && instance._rafOverridden && instance._originalRaf) {
-          instance.raf = instance._originalRaf;
-          delete instance._originalRaf;
-          delete instance._rafOverridden;
-        }
-      });
     }
 
     /**
