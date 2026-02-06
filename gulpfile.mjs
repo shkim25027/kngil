@@ -45,7 +45,10 @@ const paths = {
   },
   js: {
     src: "./markup/assets/js/**/*.js",
-    ignore: "!./markup/assets/js/lib",
+    ignore: ["!./markup/assets/js/lib", 
+      "!./markup/assets/js/common.js", 
+      "!./markup/assets/js/faq.js", 
+      "!./markup/assets/js/popup.js"],
     dest: "./dist/js",
   },
   jscopy: { src: "./markup/assets/js/lib/**/*", dest: "./dist/js/lib" },
@@ -138,14 +141,14 @@ function scss() {
   })
     .pipe(sassCompiler({ quietDeps: true }).on("error", sassCompiler.logError));
   
-  // 프로덕션 모드에서만 PostCSS 적용
+  // 개발 모드에서는 PostCSS 생략 (속도 향상)
   if (isProd) {
     stream = stream.pipe(postcss([autoprefixer(), cssnano()]));
   }
   
   return stream
     .pipe(dest(paths.scss.dest))
-    .pipe(browserSync.stream());
+    .pipe(browserSync.stream({ match: '**/*.css' })); // CSS만 주입
 }
 
 // CSS Library copy
@@ -155,7 +158,7 @@ function csscopy() {
 
 // 개별 파일 빌드 (증분 빌드, 프로덕션에서만 terser)
 function scripts() {
-  let stream = src([paths.js.src, paths.js.ignore], {
+  let stream = src([paths.js.src, ...paths.js.ignore], {
     base: "./markup/assets/js",
     since: gulp.lastRun(scripts),
   })
@@ -169,7 +172,7 @@ function scripts() {
 }
 
 // 특정 파일들만 합치기 (main.js + util.js → bundle.js)
-const scriptsBundleSrc = ["./markup/assets/js/faq.js", "./markup/assets/js/popup.js"];
+const scriptsBundleSrc = ["./markup/assets/js/common.js", "./markup/assets/js/faq.js", "./markup/assets/js/popup.js"];
 function scriptsBundle() {
   let stream = src(scriptsBundleSrc)
     .pipe(concat("common.js"))

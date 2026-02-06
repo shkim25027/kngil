@@ -36,6 +36,9 @@
         "데이터분석": ["../analysis.html", "mainframe", "컨펌대기", ""],
         "성과품": ["../results.html", "mainframe", "컨펌대기", ""],
         "FAQ": ["../faq.html", "mainframe", "컨펌대기", ""],
+        "문의하기_리스트": ["../Q&A_list.html", "mainframe", "컨펌대기", ""],
+        "문의하기_상세": ["../Q&A_detail.html", "mainframe", "컨펌대기", ""],
+        "문의하기_작성": ["../Q&A_write.html", "mainframe", "컨펌대기", ""],
         "구매": ["../buy.html", "mainframe", "컨펌대기", ""]
       }
     }

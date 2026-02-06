@@ -1,4 +1,4 @@
-@use "../base" as *;
+@use "import/_mixin" as *;
 
 // =======================================
 // FAQ Page
@@ -515,6 +515,10 @@
         min-width: 120px;
         font-weight: 500;
 
+        @include mq(phone-wide, max) {
+          min-width: 80px;
+        }
+
         .require {
           color: #fb3c00;
         }
@@ -530,9 +534,12 @@
       .select-sm {
         width: 100%;
         max-width: 160px;
+        min-width: 140px;
+        
       }
       .input-text {
         height: 40px;
+        width: 100%;
       }
       .text-area {
         width: 100%;
@@ -598,6 +605,10 @@
     text-align: center;
     color: #999;
     cursor: pointer;
+    max-width: 100%;
+    p {
+      text-wrap: balance;
+    }
   }
   .drop-zone.dragover {
     border-color: #333;
