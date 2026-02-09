@@ -1017,6 +1017,9 @@ $popup-answer-bg: #ffdd0022;
 
     .tab-menu {
       background-color: #eee7dd;
+      @include mq(tablet-small, max) {
+         min-height: 56px;
+      }
     }
 
     .tab-content {
@@ -1025,6 +1028,11 @@ $popup-answer-bg: #ffdd0022;
 
       @include mq(tablet-small, max) {
         font-size: 16px;
+        padding: 0;
+      }
+      @include mq(phone-wide, max) {
+        font-size: 14px;
+        padding: 0;
       }
     }
   }
