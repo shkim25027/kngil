@@ -1,50 +1,80 @@
-// =======================================
-// Results Page - Header & Content Section
-// 헤더, 다이어그램, 콘텐츠 영역 및 유틸리티
-// =======================================
+// ============================================================
+// results — 상단 헤더·다이어그램·콘텐츠 영역
+// ============================================================
+// 담당: .sub-header, .sub-content, .condition, .dia-circles-wrap
+// 다이어그램 6개 항목: 토지(1), 인구(2), 기반시설(3), 도시&주거(4), 생태&자연(5), 기상(6)
+// ============================================================
 
 @use "../../import/_mixin" as *;
 @use "variables" as *;
 
+// ---------------------------------------
+// 다이어그램용 데이터 (한곳에서 수정)
+// ---------------------------------------
+$dia-dot-positions: (
+  1: (top: 0%, left: calc(50% - 4px), transform: translateY(-50%)),
+  2: (top: 75%, left: 5.5%, transform: translateY(-50%) rotate(120deg)),
+  3: (top: 75%, right: 5.5%, transform: translateY(-50%) rotate(240deg)),
+  4: (bottom: -8px, left: calc(50% - 4px), transform: translateY(-50%)),
+  5: (top: 25%, left: 5.5%, transform: translateY(-50%) rotate(120deg)),
+  6: (top: 25%, right: 5.5%, transform: translateY(-50%) rotate(240deg)),
+);
+
+$dia-icon-config: (
+  1: (size: 26px, img: url(../img/results/ico_map.svg)),      // 토지
+  2: (size: 30px, img: url(../img/results/ico_people.svg)),   // 인구
+  3: (size: 32px, img: url(../img/results/ico_facility.svg)), // 기반시설
+  4: (size: 25px, img: url(../img/results/ico_city.svg)),     // 도시&주거
+  5: (size: 36px, img: url(../img/results/ico_eco.svg)),       // 생태&자연
+  6: (size: 33px, img: url(../img/results/ico_weather.svg)),   // 기상
+);
+
+// ============================================================
+// .results 컨테이너 (성과품 페이지 루트)
+// ============================================================
+
 .results {
+
   // ---------------------------------------
-  // Sub Header Section
+  // 상단 헤더 (.sub-header) — 배경 이미지
   // ---------------------------------------
   .sub-header {
     background-image: $results-bg-title;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    
+
     @include mq(tablet-small, max) {
       background-position: center top;
     }
   }
 
   // ---------------------------------------
-  // Sub Content Section
-  // (z-index, margin-bottom는 _pin-overlap.scss에서 겹침 방지용으로 설정)
+  // 서브 콘텐츠 (.sub-content)
+  // z-index, margin-bottom는 _pin-overlap.scss에서 설정
   // ---------------------------------------
   .sub-content {
-    // 워터마크 텍스트
     &::before {
       content: "Exploration\A Results";
     }
 
     // ---------------------------------------
-    // Diagram Circles (원형 다이어그램)
+    // 원형 다이어그램 (.dia-circles-wrap)
     // ---------------------------------------
     .dia-circles-wrap {
+
+      // 벨트(채워진 원)
       .circle-belt {
         background: $results-belt;
         border: 1px solid $results-dash;
       }
 
+      // 점선 원
       .circle-dash {
         border: 1px dashed $results-dash;
       }
 
-      // 점선 애니메이션
+      // 점선 위의 점들 (위치 + 애니메이션)
       .circle-dots {
         &.move {
           .dot {
@@ -56,18 +86,10 @@
             }
           }
         }
-        
+
         .dot {
           background: $results-dot;
-          $dot-positions: (
-            1: (top: 0%, left: calc(50% - 4px), transform: translateY(-50%)),
-            2: (top: 75%, left: 5.5%, transform: translateY(-50%) rotate(120deg)),
-            3: (top: 75%, right: 5.5%, transform: translateY(-50%) rotate(240deg)),
-            4: (bottom: -8px, left: calc(50% - 4px), transform: translateY(-50%)),
-            5: (top: 25%, left: 5.5%, transform: translateY(-50%) rotate(120deg)),
-            6: (top: 25%, right: 5.5%, transform: translateY(-50%) rotate(240deg)),
-          );
-          @each $n, $props in $dot-positions {
+          @each $n, $props in $dia-dot-positions {
             &:nth-child(#{$n}) {
               @each $k, $v in $props {
                 #{$k}: $v;
@@ -81,7 +103,7 @@
         }
       }
 
-      // 중앙 원형 코어
+      // 중앙 코어 ("고품질의 성과품" 텍스트)
       .circle-core {
         &::before {
           content: "";
@@ -95,12 +117,14 @@
           @include maskContents();
           padding: 4px;
         }
-        span{
+        span {
           line-height: 1.2;
         }
       }
 
-      // 원형 배치 요소 링 (6개 항목)
+      // ---------------------------------------
+      // 6개 항목 링 (.dia-element-ring, .dia-element)
+      // ---------------------------------------
       .dia-element-ring {
         position: absolute;
         top: 50%;
@@ -131,7 +155,6 @@
 
           .dia-tit {
             font-size: 16px;
-
           }
 
           i {
@@ -141,7 +164,7 @@
             background-repeat: no-repeat;
           }
 
-          // 점선 연결선
+          // 점선 연결선 (중앙 → 라벨)
           .dot {
             width: 0;
             height: 32px;
@@ -151,92 +174,67 @@
             transform: rotate(var(--angle, 0deg));
             transform-origin: center top;
           }
+
           @include mq(phone-wide, max) {
             &.dia-pos-1 {
               gap: 4px;
             }
           }
-          // 위치별 스타일 조정
-          &.dia-pos-2 {
+
+          // --- 위치별 레이아웃·연결선 조정 (pos 1~6) ---
+          &.dia-pos-2 {  // 인구
             margin-left: 24px;
             flex-direction: row-reverse;
-            @include mq(phone-wide, max) {
-              margin-left: 6px;
-            }
-            .dia-tit {
-              flex-direction: row;
-            }
+            @include mq(phone-wide, max) { margin-left: 6px; }
+            .dia-tit { flex-direction: row; }
             .dot {
               top: 24px;
-              @include mq(phone-wide, max) {
-                top: 20px;
-              }
+              @include mq(phone-wide, max) { top: 20px; }
             }
           }
-          
-          &.dia-pos-3 {
+
+          &.dia-pos-3 {  // 기반시설
             margin-left: 44px;
             flex-direction: row-reverse;
-            @include mq(phone-wide, max) {
-              margin-left: 20px;
-            }
-            .dia-tit {
-              flex-direction: row;
-            }
+            @include mq(phone-wide, max) { margin-left: 20px; }
+            .dia-tit { flex-direction: row; }
             .dot {
               top: 10px;
-              @include mq(phone-wide, max) {
-                top: 12px;
-              }
+              @include mq(phone-wide, max) { top: 12px; }
             }
           }
-          
-          &.dia-pos-4 {
+
+          &.dia-pos-4 {  // 도시&주거
             flex-direction: column-reverse;
-            @include mq(phone-wide, max) {
-              gap: 4px;
-            }
-            .dot {
-              transform: rotate(0);
-            }
+            @include mq(phone-wide, max) { gap: 4px; }
+            .dot { transform: rotate(0); }
           }
-          
-          &.dia-pos-5 {
+
+          &.dia-pos-5 {  // 생태&자연
             margin-left: -50px;
             flex-direction: row;
-            @include mq(phone-wide, max) {
-              margin-left: -24px;
-            }
-            .dia-tit {
-              flex-direction: row-reverse;
-            }
+            @include mq(phone-wide, max) { margin-left: -24px; }
+            .dia-tit { flex-direction: row-reverse; }
             .dot {
               top: 10px;
-              @include mq(phone-wide, max) {
-                top: 12px;
-              }
+              @include mq(phone-wide, max) { top: 12px; }
             }
           }
-          
-          &.dia-pos-6 {
+
+          &.dia-pos-6 {  // 기상
             margin-left: -30px;
             flex-direction: row;
-            @include mq(phone-wide, max) {
-              margin-left: -8px;
-            }
-            .dia-tit {
-              flex-direction: row-reverse;
-            }
+            @include mq(phone-wide, max) { margin-left: -8px; }
+            .dia-tit { flex-direction: row-reverse; }
             .dot {
               top: 22px;
-              @include mq(phone-wide, max) {
-                top: 20px;
-              }
+              @include mq(phone-wide, max) { top: 20px; }
             }
-
           }
+
+          // 모바일에서 2,3,5,6 타이틀 세로 배치
           &.dia-pos-2,
-          &.dia-pos-3 ,
+          &.dia-pos-3,
           &.dia-pos-5,
           &.dia-pos-6 {
             .dia-tit {
@@ -246,31 +244,13 @@
               }
             }
           }
-          
-          // 아이콘 스타일 (토지, 인구, 기반시설, 도시&주거, 생태&자연, 기상)
-          &.dia-pos-1 i { 
-            width: 26px; 
-            background-image: url(../img/results/ico_map.svg); 
-          }
-          &.dia-pos-2 i { 
-            width: 30px; 
-            background-image: url(../img/results/ico_people.svg); 
-          }
-          &.dia-pos-3 i { 
-            width: 32px; 
-            background-image: url(../img/results/ico_facility.svg); 
-          }
-          &.dia-pos-4 i { 
-            width: 25px; 
-            background-image: url(../img/results/ico_city.svg); 
-          }
-          &.dia-pos-5 i { 
-            width: 36px; 
-            background-image: url(../img/results/ico_eco.svg); 
-          }
-          &.dia-pos-6 i { 
-            width: 33px; 
-            background-image: url(../img/results/ico_weather.svg); 
+
+          // 아이콘 크기·이미지 (맵 기반으로 자동 적용)
+          @each $pos, $conf in $dia-icon-config {
+            &.dia-pos-#{$pos} i {
+              width: map-get($conf, size);
+              background-image: map-get($conf, img);
+            }
           }
         }
       }
@@ -278,14 +258,14 @@
   }
 }
 
-// =======================================
-// Utility Classes
-// =======================================
+// ============================================================
+// 유틸리티 (페이지 공통)
+// ============================================================
 
-// 반응형 텍스트 줄바꿈 처리
+// 반응형에서 블록 → 인라인 줄바꿈
 .txt-line {
   display: block;
-  
+
   @include mq(tablet-small, max) {
     display: inline;
     & + .txt-line::before {
@@ -294,6 +274,7 @@
   }
 }
 
+// results 페이지 내 .txt-line 은 모바일에서도 블록 유지
 .results {
   .sub-header .sub-txt .txt-line,
   .sub-content .sub-tit-box .sub-tit .txt-line {

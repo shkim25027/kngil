@@ -1,26 +1,28 @@
-// =======================================
-// results/_index.scss — For BIM(결과) 페이지 통합
-// =======================================
-// 수정 시: 변수→_variables, 섹션→_sections, 반응형→_responsive
+// ============================================================
+// results — 성과품 페이지 스타일 (통합 진입점)
+// ============================================================
 //
-// 파일 구조:
-// - _variables.scss  : 색상, 크기, 간격, 폰트 등 변수 정의
-// - _keyframes.scss  : 애니메이션 키프레임 정의
-// - _sections.scss   : 섹션별 스타일 (content, tabs, pin-overlap)
-// - _responsive.scss : 반응형 미디어 쿼리 스타일
+// [수정할 때]
+//   • 색상/크기/간격 변경 → _variables.scss
+//   • 애니메이션 추가     → _keyframes.scss
+//   • 상단·다이어그램     → _content.scss
+//   • 탭·보고서 스택      → _tabs.scss
+//   • 스크롤 pin/겹침     → _pin-overlap.scss
+//   • 브레이크포인트별    → 각 파일 내 @include mq(...) 블록
 //
-// 로드 순서:
-// 1. Variables → 2. Keyframes → 3. Sections → 4. Responsive
+// [HTML ↔ SCSS 맵핑] (results.html 기준)
+//   .sub-header          → _content.scss (상단 배경)
+//   .sub-content         → _content.scss (다이어그램 + .condition)
+//   .dia-circles-wrap    → _content.scss (원형 다이어그램)
+//   .sub-category        → _tabs.scss (탭 전체 영역)
+//   .tab-list / .tab-content → _tabs.scss (탭 버튼·패널)
+//   .section-hero, .report-stack → _tabs.scss (타이틀·보고서 카드)
+//   .results-wrap pin    → _pin-overlap.scss
+//
+// [로드 순서] 변수 → 키프레임 → 섹션스타일 → 반응형
+// ============================================================
 
-// 1. Variables (먼저 로드 - 다른 파일에서 사용)
 @forward "variables";
-
-// 2. Keyframes (애니메이션)
 @forward "keyframes";
-
-// 3. Sections (섹션별 스타일)
 @forward "sections";
-
-// 4. Responsive (반응형)
 @forward "responsive";
-

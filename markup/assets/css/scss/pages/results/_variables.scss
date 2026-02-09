@@ -1,64 +1,66 @@
-// =======================================
-// Results Page - Variables
-// =======================================
-// results 페이지에서 사용하는 모든 변수 정의
+// ============================================================
+// results — 변수 모음 (색상, 크기, 간격, 배경 등)
+// ============================================================
+// 이 파일만 수정하면 페이지 전반의 톤을 바꿀 수 있습니다.
+// 변수 이름 앞의 results- 는 이 페이지 전용임을 나타냅니다.
+// ============================================================
 
 // ---------------------------------------
-// Colors
+// 색상 (Colors)
 // ---------------------------------------
-$results-dot: #046A50;
-$results-belt: #F0F7F5;
-$results-dash: #B6D0C9;
-$results-tab-inactive: #E5E5E5;
-$results-tab-active: #BCA17B;
-$results-tab-border: rgba(114, 80, 31, 0.50);
-$results-text-primary: #1a1a1a;
-$results-text-secondary: rgba(0, 0, 0, 0.8);
-$results-text-muted: rgba(0, 0, 0, 0.5);
-$results-watermark: #666;
-$results-gradient-start: rgba(247, 247, 246, 0.00);
-$results-gradient-end: #F7F7F6;
+$results-dot: #046A50;                    // 다이어그램 점·연결선
+$results-belt: #F0F7F5;                   // 원형 벨트 배경
+$results-dash: #B6D0C9;                   // 점선 원·테두리
+$results-tab-inactive: #E5E5E5;           // 탭 비활성 배경/테두리
+$results-tab-active: #BCA17B;             // 탭 활성 배경
+$results-tab-border: rgba(114, 80, 31, 0.50); // 탭 활성 테두리
+$results-text-primary: #1a1a1a;           // 제목 등 주요 텍스트
+$results-text-secondary: rgba(0, 0, 0, 0.8);  // 본문
+$results-text-muted: rgba(0, 0, 0, 0.5);  // 비활성 텍스트(탭 등)
+$results-watermark: #666;                  // "Excel" 워터마크
+$results-gradient-start: rgba(247, 247, 246, 0.00); // 상단 그라데이션 시작
+$results-gradient-end: #F7F7F6;           // 상단 그라데이션 끝
 
 // ---------------------------------------
-// Sizes
+// 크기 (Sizes) — 다이어그램·보고서
 // ---------------------------------------
-$results-diagram-base-radius: 210px;
-$results-diagram-base-size: 500px;
-$results-watermark-base-size: 120px;
-$results-report-page-width: 246px;
-$results-report-page-height: 330px;
-$results-report-page-shadow: -84px;
-$results-report-pick-width: 80px;
-$results-report-pick-height: 16px;
+$results-diagram-base-radius: 210px;     // 다이어그램 원 반지름 (데스크톱)
+$results-diagram-base-size: 500px;        // 다이어그램 컨테이너 기준
+$results-watermark-base-size: 120px;      // 워터마크 폰트 크기
+$results-report-page-width: 246px;        // 보고서 카드 가로
+$results-report-page-height: 330px;       // 보고서 카드 세로(참고)
+$results-report-page-shadow: -84px;       // 카드 겹침 시 왼쪽 마진
+$results-report-pick-width: 80px;        // 보고서 상단 핸들 가로
+$results-report-pick-height: 16px;       // 보고서 상단 핸들 세로
 
 // ---------------------------------------
-// Spacing
+// 간격 (Spacing)
 // ---------------------------------------
-$results-section-gap: 100px;
-$results-padding-y: 120px;
-$results-tab-gap: 12px;
-$results-tab-padding: 14px 28px;
-$results-section-hero-gap: 60px;
+$results-section-gap: 100px;             // 섹션 사이 간격
+$results-padding-y: 120px;                // 탭 영역 상단 패딩
+$results-tab-gap: 12px;                   // 탭 버튼 사이 간격
+$results-tab-padding: 14px 28px;          // 탭 버튼 내부 패딩
+$results-section-hero-gap: 60px;          // 타이틀↔보고서 스택 사이
 
 // ---------------------------------------
-// Typography
+// 타이포그래피 (Typography)
 // ---------------------------------------
-$results-title-large: 52px;
-$results-title-watermark: 120px;
-$results-desc: 20px;
-$results-tab-font: 18px;
+$results-title-large: 52px;              // 섹션 큰 제목
+$results-title-watermark: 120px;         // 워터마크 "Excel" 크기
+$results-desc: 20px;                      // 섹션 설명문
+$results-tab-font: 18px;                  // 탭 버튼 폰트 크기
 
 // ---------------------------------------
-// Background Images
+// 배경 이미지 (Background Images)
 // ---------------------------------------
-$results-bg-title: url(../img/results/bg_results_title.jpg);
-$results-bg-natural: url(../img/results/bg_natural_left.png);
-$results-bg-social: url(../img/results/bg_social_left.png);
-$results-bg-cost: url(../img/results/bg_cost_left.png);
-$results-bg-grid: url(../img/results/bg_grid.png);
+$results-bg-title: url(../img/results/bg_results_title.jpg);   // 상단 .sub-header
+$results-bg-natural: url(../img/results/bg_natural_left.png);  // 자연조건 탭
+$results-bg-social: url(../img/results/bg_social_left.png);   // 사회특성 탭
+$results-bg-cost: url(../img/results/bg_cost_left.png);       // 추정사업비 탭
+$results-bg-grid: url(../img/results/bg_grid.png);             // 그리드 패턴(공통)
 
 // ---------------------------------------
-// Reference (참고용)
+// 참고 (Reference) — 아이콘 크기
 // ---------------------------------------
-// 다이어그램 아이콘 크기: pos-1: 26px, pos-2: 30px, pos-3: 32px, pos-4: 25px, pos-5: 36px, pos-6: 33px
-// 탭 아이콘 크기: nature: 18x18px, social: 16x16px, cost: 16x10px
+// 다이어그램 6개 항목 아이콘: pos-1(26px), pos-2(30), pos-3(32), pos-4(25), pos-5(36), pos-6(33)
+// 탭 아이콘: nature 18×18, social 16×16, cost 16×10

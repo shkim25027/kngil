@@ -1,32 +1,36 @@
-// ============================================
-// Results Page - Pin 겹침 방지 스타일
-// ============================================
+// ============================================================
+// results — Pin·겹침 방지 (ScrollTrigger 등 연동)
+// ============================================================
+// • results-wrap이 스크롤 시 상단에 고정(pin)될 때 레이어 정리
+// • sub-content와 탭 영역이 겹치지 않도록 z-index·margin 조정
+// • 로딩/새로고침 시 깜빡임 방지 (html.loading, body.loaded)
+// ============================================================
 
 /* 페이지 로드 중 스크롤 복원으로 인한 깜빡임 방지 */
 html.loading {
   overflow: hidden;
 }
 
-/* results-wrap pin 영역 정규화 */
+/* 탭 영역 pin 시 레이어 순서 */
 .results-wrap {
   position: relative;
   z-index: 1;
 }
 
-/* sub-content와의 간격 확보 */
+/* 다이어그램(sub-content)과 탭 영역 사이 간격·z-index */
 .results .sub-content {
   position: relative;
   z-index: 0;
-  margin-bottom: 60px; /* results-wrap과의 간격 확보 */
+  margin-bottom: 60px;
 }
 
-/* ScrollTrigger pin 시 발생하는 spacer 요소 정리 */
+/* ScrollTrigger가 만드는 spacer 요소 */
 .pin-spacer {
   position: relative;
   z-index: 1;
 }
 
-/* 새로고침 시 일시적으로 보이지 않게 처리 */
+/* 새로고침 시 탭 영역 잠시 숨김 → JS에서 body.loaded 시 표시 */
 body:not(.loaded) .results-wrap {
   visibility: hidden;
 }
