@@ -279,6 +279,9 @@ html:has(.wrap.main) {
     img {
       width: 298px;
       height: auto;
+      @include mq(tablet, max) {
+        width: 200px;
+      }
     }
   }
 
@@ -301,6 +304,12 @@ html:has(.wrap.main) {
       position: relative;
       top: 80px;
       opacity: 0; /* 애니메이션 시작 전 숨김, keyframes 0%와 동일 */
+
+      @include mq(tablet, max) {
+          font-size: 34px;
+          text-wrap: balance;
+          word-break: keep-all;
+      }
     }
   }
 }
