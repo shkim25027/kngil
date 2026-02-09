@@ -144,7 +144,7 @@
                 }
                 @include mq(desktop-small, max) {
                   &::before {
-                    left: -8px;
+                    left: -0px;
                     border-top:none;
                     border-right: none;
                   }
