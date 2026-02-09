@@ -108,6 +108,10 @@
   border-radius: 50%;
   opacity: 0;
   @include textBlind();
+
+  @include mq(tablet, max) {
+    display: none;
+  }
   &::before {
     content: "";
     background: #fff;

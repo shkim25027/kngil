@@ -22,17 +22,16 @@
 
     z-index: 1;
 
-    @include mq(desktop, max) {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      height: auto;
-      min-height: auto;
-      gap: map-get($value-sizes, gap-lg);
-      padding: map-get($value-sizes, padding-md) 24px;
-      margin-top: 20px;
+    @include mq(1536px, min) {
+      @include mq(desktop-small, max) {
+        .pc-only {
+          display: none;
+        }
+      }
     }
 
-    @include mq(tablet-small, max) {
+
+    @include mq(desktop-small, max) {
       display: flex;
       flex-direction: column;
       height: auto;
@@ -68,6 +67,7 @@
         padding: 94px 16px 2rem 16px;
         min-height: auto;
         height: auto;
+        max-width: 640px;
       }
 
       // 배경 이미지

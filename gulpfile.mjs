@@ -136,9 +136,12 @@ function imagesProd() {
 
 // SCSS → CSS (조건부 PostCSS 적용)
 function scss() {
-  let stream = src([paths.scss.src, paths.scss.ignore], { 
-    since: gulp.lastRun(scss) // 증분 빌드
-  })
+  const srcOpts = { };
+  // 프로덕션에서만 증분 빌드 (개발 시 파셜 수정 시에도 엔트리 전체 재컴파일로 실시간 반영)
+  if (isProd) {
+    srcOpts.since = gulp.lastRun(scss);
+  }
+  let stream = src([paths.scss.src, paths.scss.ignore], srcOpts)
     .pipe(sassCompiler({ quietDeps: true }).on("error", sassCompiler.logError));
   
   // 개발 모드에서는 PostCSS 생략 (속도 향상)

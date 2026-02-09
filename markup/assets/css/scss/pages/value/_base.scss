@@ -112,7 +112,7 @@
     @include mq(desktop, max) {
       padding-bottom: 40px;
     }
-    @include mq(tablet-small, max) {
+    @include mq(desktop-small, max) {
      background-image: url(../img/value/bg_value_feature_m.jpg);
      background-repeat: no-repeat;
      background-position: center center;
@@ -139,7 +139,7 @@
     position: relative;
     scroll-snap-align: center;
     scroll-snap-stop: always;
-    @include mq(tablet-small, min) {
+    @include mq(desktop-small, min) {
       @include value-bg-cover("../img/value/bg_value_feature.jpg");
     }
     @include mq(desktop, max) {

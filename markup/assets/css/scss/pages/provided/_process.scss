@@ -227,6 +227,7 @@ $process-left-breakpoint: 999px; // max-width: 998px
           height: 64px;
           margin-bottom: 32px;
           background: url(../img/ico/ico_natural.svg) no-repeat center center;
+          background-size: contain;
           
           @include mq(tablet-small, max) {
             width: 48px;
@@ -239,6 +240,7 @@ $process-left-breakpoint: 999px; // max-width: 998px
           height: 64px;
           margin-bottom: 32px;
           background: url(../img/ico/ico_social.svg) no-repeat center center;
+          background-size: contain;
           
           @include mq(tablet-small, max) {
             width: 48px;
@@ -271,7 +273,7 @@ $process-left-breakpoint: 999px; // max-width: 998px
           }  
           @include mq(desktop-small, max) {
             grid-template-columns: 1fr;
-            gap: 20px;
+            gap: 0px;
           }
           .cont-item {
             gap: 28px;

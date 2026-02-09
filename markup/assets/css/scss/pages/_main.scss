@@ -1,3 +1,5 @@
+@use "import/_mixin" as *;
+
 // =======================================
 // Main Page Styles
 // =======================================
@@ -84,6 +86,14 @@ html:has(.wrap.main) {
     display: block !important; // 강제로 표시
     visibility: visible !important;
     opacity: 1 !important;
+    @include mq(desktop-small, max) {
+      right: 24px;
+      gap: 16px;
+      font-size: 16px;
+    }
+    @include mq(tablet-small, max) {
+      bottom: calc((60 / 1080) * 100%);
+    }
 
     ul {
       list-style: none;
@@ -149,6 +159,9 @@ html:has(.wrap.main) {
       color: rgba(255, 255, 255, 0.6);
       font-weight: 300;
       margin-left: 8px;
+      @include mq(1600px, max) {
+         display: none;
+      }
     }
 
     // Active State
