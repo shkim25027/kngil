@@ -165,14 +165,14 @@
                 @include mq(desktop-small, max) {
                   &::before {
                     left: auto;
-                    right: -8px;
+                    right: -6px;
                     border-top:none;
                     border-left: none;
                     border-color: #8D6318;
                   }
                   &:after {
                     left: auto;
-                    right: -8px;
+                    right: -6px;
                     width: 8px;
                     height: 1px;
                     border-top: 1.5px dashed #8D6318;

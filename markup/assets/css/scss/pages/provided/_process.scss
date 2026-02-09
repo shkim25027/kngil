@@ -361,8 +361,8 @@ $process-left-breakpoint: 999px; // max-width: 998px
           
           @include mq(tablet-small, max) {
             grid-template-rows: 40px auto;
-            padding: 20px 12px;
-            row-gap: 16px;
+            padding: 12px 12px;
+            row-gap: 10px;
             column-gap: 0;
           }
           
