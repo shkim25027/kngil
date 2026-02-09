@@ -211,7 +211,7 @@
     @include mq(tablet-wide, max) {
       padding:40px 2.4rem;
       max-width: 100%;
-      gap: 8rem;
+      gap: 6rem;
       overflow: hidden;
     }
     @include mq(phone-wide, max) {
