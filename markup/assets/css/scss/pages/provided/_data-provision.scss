@@ -140,7 +140,7 @@
               .category-images {
                 left: -60%;
                 @include mq(tablet-wide, max) {
-                  left: -42%;
+                  left: -38%;
                 }
                 @include mq(desktop-small, max) {
                   &::before {
@@ -160,7 +160,7 @@
               .category-images {
                 right: -56%;
                 @include mq(tablet-wide, max) {
-                  right: -42%;
+                  right: -38%;
                 }
                 @include mq(desktop-small, max) {
                   &::before {
@@ -282,7 +282,7 @@
                   }
                   @include mq(tablet-small, max) {
                     left: -8px;
-                    width: 48%;
+                    width: 38%;
                     height: calc(50% + 2.4rem +  (1.6rem * 2.5) + 32px);
                   }
                 }

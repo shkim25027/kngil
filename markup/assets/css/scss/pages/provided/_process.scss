@@ -358,9 +358,10 @@ $process-left-breakpoint: 999px; // max-width: 998px
             column-gap: 0;
             padding: 24px 8px;
           }
-          
-          @include mq(tablet-small, max) {
+          @include mq(desktop, max) {
             grid-template-rows: 40px auto;
+          }
+          @include mq(tablet-small, max) {
             padding: 12px 12px;
             row-gap: 10px;
             column-gap: 0;
