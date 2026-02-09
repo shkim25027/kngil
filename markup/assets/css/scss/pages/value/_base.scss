@@ -39,7 +39,7 @@
   // -----------------------------------------
   .sub-content {
     padding: 190px 24px 150px 24px;
-    
+
     @include mq(desktop, max) {
       padding: 120px 24px 100px 24px;
     }

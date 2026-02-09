@@ -22,6 +22,7 @@
   }
 
   .sub-content {
+    overflow: hidden;
     &::before {
       content: "Provided Data";
       bottom: 6px;
