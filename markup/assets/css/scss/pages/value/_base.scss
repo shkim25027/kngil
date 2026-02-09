@@ -113,13 +113,16 @@
       padding-bottom: 40px;
     }
     @include mq(desktop-small, max) {
-     background-image: url(../img/value/bg_value_feature_m.jpg);
+     background-image: url(../img/value/bg_value_feature.jpg);
      background-repeat: no-repeat;
      background-position: center center;
      background-size: cover;
      background-attachment: fixed;
      width: 100%;
      padding-bottom: 30px;
+    }
+    @include mq(tablet-small, max) {
+      background-image: url(../img/value/bg_value_feature_m.jpg);
     }
   }
 
