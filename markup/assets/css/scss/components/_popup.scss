@@ -882,6 +882,9 @@ $popup-answer-bg: #ffdd0022;
         font-weight: 700;
         gap: 8px;
         @include flex(center, center);
+        @include mq(tablet-small, max) {
+          font-size: 16px;
+        }
 
       .arrow-r {
         width: 16px;
@@ -1489,6 +1492,9 @@ $popup-answer-bg: #ffdd0022;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.50) 0%, rgba(255, 255, 255, 0.25) 100%);
     display: flex;
     gap: 4px;
+    @include mq(tablet-small, max) {
+      min-height: 56px;
+    }
     &.round {
       padding: 0;
       border-radius: 50px;
