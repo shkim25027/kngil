@@ -1,8 +1,14 @@
 // =======================================
-// Value Page Variables
+// value/_variables.scss — value 페이지 전용 변수
 // =======================================
+// value.html 전반에서 쓰는 색·간격·폰트 크기를 한곳에서 관리합니다.
+// 사용: @use "variables" as *;  후  map-get($value-colors, white) 등
+//
+// 수정 시: 색만 바꾸려면 $value-colors, 간격/모서리는 $value-sizes, 글자 크기는 $value-font-sizes
 
-// 색상 변수
+// -----------------------------------------
+// 색상 (배경·글자·강조색)
+// -----------------------------------------
 $value-colors: (
   white: #fff,
   black: #000,
@@ -17,7 +23,9 @@ $value-colors: (
   gray-dot: #555
 );
 
-// 간격 및 크기 변수
+// -----------------------------------------
+// 간격·모서리 (padding, gap, border-radius)
+// -----------------------------------------
 $value-sizes: (
   border-radius-sm: 4px,
   border-radius-md: 10px,
@@ -35,7 +43,9 @@ $value-sizes: (
   padding-xl: 50px
 );
 
-// 폰트 크기 변수
+// -----------------------------------------
+// 폰트 크기 (xs ~ xxxl)
+// -----------------------------------------
 $value-font-sizes: (
   xs: 16px,
   sm: 18px,

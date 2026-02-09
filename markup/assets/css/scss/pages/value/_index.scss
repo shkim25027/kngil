@@ -1,7 +1,10 @@
 // =======================================
-// Value Page - Main Entry Point
+// value/_index.scss — 소개(value) 페이지 통합
 // =======================================
-// value 페이지의 모든 스타일을 통합 관리하는 메인 파일
+// value.html 에 적용되는 스타일 진입점.
+// "어디를 고치면 되지?" → 이 폴더의 VALUE-PAGE.md 를 먼저 보세요.
+//
+// 수정 시: 변수→_variables, mixin→_mixins, 기본→_base, 섹션→_sections, 반응형→_responsive
 //
 // 파일 구조:
 // - _variables.scss  : 변수 정의 (색상, 크기, 폰트)

@@ -1,41 +1,23 @@
 // =======================================
-// Common Styles - Main Entry Point
+// common/_index.scss — 공통 스타일 통합
 // =======================================
-// 공통 스타일 통합 관리
+// 리셋·타이포·아이콘·유틸·모달·애니메이션·반응형. 수정 시 아래 해당 파일을 열어서 수정하세요.
 //
-// 파일 구조:
-// - _reset.scss        : 기본 리셋 및 전역 설정
-// - _typography.scss   : 타이포그래피 스타일
-// - _page-styles.scss  : 페이지별 공통 스타일
-// - _icons.scss        : 공통 아이콘 스타일
-// - _utilities.scss    : 유틸리티 클래스
-// - _modal.scss        : 모달 관련 스타일
-// - _animations.scss   : 공통 애니메이션 키프레임
-// - _responsive.scss   : 반응형 타이포그래피
-//
-// 로드 순서:
-// 1. Reset → 2. Typography → 3. Page Styles → 4. Icons → 5. Utilities → 6. Modal → 7. Animations → 8. Responsive
+// 로드 순서 (아래 순서대로 적용됨):
+//   1. reset        → 기본 리셋·전역 설정
+//   2. typography   → 글자 스타일
+//   3. page-styles  → 페이지 공통 스타일
+//   4. icons        → 아이콘
+//   5. utilities    → 유틸리티 클래스
+//   6. modal        → 모달
+//   7. animations   → 공통 애니메이션
+//   8. responsive   → 반응형
 
-// 1. Reset (기본 리셋)
-@forward "reset";
-
-// 2. Typography (타이포그래피)
-@forward "typography";
-
-// 3. Page Styles (페이지 공통 스타일)
-@forward "page-styles";
-
-// 4. Icons (아이콘)
-@forward "icons";
-
-// 5. Utilities (유틸리티)
-@forward "utilities";
-
-// 6. Modal (모달)
-@forward "modal";
-
-// 7. Animations (공통 애니메이션)
-@forward "animations";
-
-// 8. Responsive (반응형)
-@forward "responsive";
+@forward "reset";        // 1. 기본 리셋 — common/_reset.scss
+@forward "typography";   // 2. 타이포그래피 — common/_typography.scss
+@forward "page-styles";  // 3. 페이지 공통 — common/_page-styles.scss
+@forward "icons";        // 4. 아이콘 — common/_icons.scss
+@forward "utilities";    // 5. 유틸리티 — common/_utilities.scss
+@forward "modal";        // 6. 모달 — common/_modal.scss
+@forward "animations";  // 7. 공통 애니메이션 — common/_animations.scss
+@forward "responsive";   // 8. 반응형 — common/_responsive.scss

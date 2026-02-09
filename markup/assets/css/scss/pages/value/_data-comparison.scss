@@ -3,9 +3,12 @@
 @use "variables" as *;
 
 // =======================================
-// Data Comparison Section
+// value/_data-comparison.scss — 데이터 비교 섹션
 // =======================================
-// 데이터 비교 섹션: 아날로그/전산화, 수동화/자동화 비교
+// value.html: <div class="data-comparison"> 안의 스타일.
+// - 첫 번째 블록: "데이터 수집·보관" (아날로그/전산화) — .data-type-box.analog, .digital
+// - 두 번째 블록: "데이터 정리·보고서" (수동화/자동화) — .work-method-box.manual, .automated
+// 수정 시: 색·그라디언트는 위 두 블록 또는 _variables.scss 참고.
 
 .value {
   .service {
@@ -26,7 +29,9 @@
         gap: map-get($value-sizes, gap-xxl);
       }
 
-      // 배경 라인 (데스크톱만 표시)
+      // -----------------------------------------
+      // 세로 배경 라인 + 이동 화살표 애니메이션
+      // -----------------------------------------
       .bg-line {
         position: absolute;
         top: 0;
@@ -51,7 +56,9 @@
         }
       }
       
-      // 비교 아이템 컨테이너
+      // -----------------------------------------
+      // 비교 한 줄 (라벨 + 왼쪽 박스 2개)
+      // -----------------------------------------
       .comparison-item {
         display: grid;
         width: 100%;
@@ -147,7 +154,7 @@
         
         }
 
-        // 데이터 타입 박스 (아날로그/전산화)
+        // 아날로그(문서) / 전산화(파일) 박스
         .data-type-box {
           position: relative;
           border-radius: map-get($value-sizes, border-radius-lg);
@@ -244,7 +251,7 @@
           }
         }
 
-        // 업무 방식 박스 (수동화/자동화)
+        // 기존 업무(수동) / 큰길서비스(자동) 박스
         .work-method-box {
           position: relative;
           border-radius: map-get($value-sizes, border-radius-lg);

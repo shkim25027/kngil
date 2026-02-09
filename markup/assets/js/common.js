@@ -131,18 +131,21 @@
     }
 
     /**
-     * 팝업 스크롤 처리 (Lenis 중지)
+     * 팝업 스크롤 처리 (사이트맵과 동일한 스크롤 잠금 적용)
      */
     handlePopupScroll() {
-      $('body').css('overflow', 'hidden');
-      $('body').on('wheel', function(e) {
-        e.stopPropagation();
-      });
-      
-      if (typeof window.lenis !== 'undefined' && window.lenis) {
-        window.lenis.stop();
-      } else if (typeof lenis !== 'undefined' && lenis) {
-        lenis.stop();
+      if (window.sitemapManager && typeof window.sitemapManager.lockScroll === 'function') {
+        window.sitemapManager.lockScroll();
+      } else {
+        $('body').css('overflow', 'hidden');
+        $('body').on('wheel', function(e) {
+          e.stopPropagation();
+        });
+        if (typeof window.lenis !== 'undefined' && window.lenis) {
+          window.lenis.stop();
+        } else if (typeof lenis !== 'undefined' && lenis) {
+          lenis.stop();
+        }
       }
     }
 

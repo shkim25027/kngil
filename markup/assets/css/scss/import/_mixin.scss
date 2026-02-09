@@ -1,4 +1,11 @@
-// @mixin
+// =======================================
+// import/_mixin.scss — 자주 쓰는 스타일 묶음 (Mixin)
+// =======================================
+// 사용: @use "../import/_mixin" as *;  후  @include mixin이름;
+//
+// 자주 쓰는 mixin 예시:
+//   clearfix, blind, textBlind, flex(정렬, 정렬), ellipsis(줄수),
+//   mq(브레이크포인트, min/max) — 반응형, box-shadow, text-shadow
 
 // @include clearfix;
 @mixin clearfix {

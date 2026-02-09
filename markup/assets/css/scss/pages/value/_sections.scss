@@ -3,9 +3,10 @@
 @use "variables" as *;
 
 // =======================================
-// Value Page - Sections Styles
+// value/_sections.scss — value 페이지 섹션 통합
 // =======================================
-// 섹션별 스타일: service, data-comparison, value-features
+// service(서비스 소개), data-comparison(데이터 비교), value-features 스타일을 불러옵니다.
+// 각 섹션 수정 시 → _service.scss, _data-comparison.scss, _value-features.scss 를 열어서 수정하세요.
 
 @forward "service";
 @forward "data-comparison";

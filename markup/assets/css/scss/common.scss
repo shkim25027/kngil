@@ -1,20 +1,27 @@
 @charset "UTF-8";
 
 // =======================================
-// Common Styles - Main Entry Point
+// common.scss — 공통 스타일 진입점
 // =======================================
-// 공통 스타일 통합 관리
+// 이 파일이 컴파일되면 → common.css 가 됩니다.
+// HTML에서는 common.css 를 먼저 로드한 뒤 style.css 를 로드합니다.
+//
+// 로드 순서 (아래 순서대로 적용됩니다):
+//   1. import   : 폰트·리셋 등 기본 설정
+//   2. layouts  : 헤더, 푸터, 본문, 플로팅
+//   3. components : 버튼, 팝업, 다이어그램 등
+//   4. common   : 리셋, 타이포, 아이콘, 유틸, 모달, 애니메이션, 반응형
 
-// Import (기본 설정)
+// 1. 기본 설정 (폰트, 리셋)
 @forward "import/typography";
 @forward "import/lib-fonts";
 @forward "import/reset-css";
 
-// Layouts
+// 2. 레이아웃 (헤더·푸터·플로팅 등)
 @forward "layouts";
 
-// Components
+// 3. 컴포넌트 (버튼·팝업 등)
 @forward "components";
 
-// Common Styles
+// 4. 공통 스타일 (리셋·타이포·아이콘·유틸·모달·애니메이션·반응형)
 @forward "common/index";

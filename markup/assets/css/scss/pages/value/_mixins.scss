@@ -2,10 +2,14 @@
 @use "variables" as *;
 
 // =======================================
-// Value Page Mixins
+// value/_mixins.scss — value 페이지 전용 Mixin
 // =======================================
+// value 페이지에서만 쓰는 스타일 묶음. 다른 파일에서 @use "mixins" as *; 후 @include 사용.
+//
+// 목록: value-text-shadow | value-bg-cover | value-box-gradient | value-box-shadow
+//       value-arrow-after | value-box-overlay | value-box-mask-gradient | value-list-bullet
 
-// 텍스트 그림자 효과
+// 글자에 살짝 그림자 (가독용)
 @mixin value-text-shadow {
   text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.10), 
                1px -1px 0 rgba(0, 0, 0, 0.10), 
@@ -13,7 +17,7 @@
                1px 1px 0 rgba(0, 0, 0, 0.10);
 }
 
-// 배경 이미지 커버
+// 배경 이미지 전체 덮기 (비주얼·summary 등)
 @mixin value-bg-cover($url) {
   background-image: url($url);
   background-repeat: no-repeat;
@@ -21,17 +25,17 @@
   background-size: cover;
 }
 
-// 그라디언트 박스
+// 박스 그라디언트 (단계 카드·데이터 비교 박스 등)
 @mixin value-box-gradient($direction: 90deg, $color1, $color2) {
   background: linear-gradient($direction, $color1 0%, $color2 100%);
 }
 
-// 박스 그림자
+// 박스 그림자 (단계 카드 등)
 @mixin value-box-shadow($x: 18.559px, $y: 0, $blur: 9.368px, $spread: 0, $color: rgba(0, 0, 0, 0.25)) {
   box-shadow: $x $y $blur $spread $color;
 }
 
-// 화살표 after 요소
+// 단계 사이 화살표 (::after로 아이콘 표시)
 @mixin value-arrow-after($url, $right: -38px, $width: 38px, $height: 64px) {
   &::after {
     content: " ";
@@ -45,7 +49,7 @@
   }
 }
 
-// 박스 오버레이 효과
+// 박스 한쪽 오버레이 (데이터 비교 박스 옆 음영)
 @mixin value-box-overlay($side: right, $opacity: 0.2) {
   &::after {
     position: absolute;
@@ -62,7 +66,7 @@
   }
 }
 
-// 마스크 그라디언트
+// 박스 상단 마스크 그라디언트 (전산화·자동화 박스 빛 효과)
 @mixin value-box-mask-gradient($color1, $color2, $color3) {
   &::before {
     content: "";
@@ -79,7 +83,7 @@
   }
 }
 
-// 리스트 불릿 스타일
+// 리스트 앞에 불릿(•) (데이터 타입·업무 방식 리스트)
 @mixin value-list-bullet($padding-left: 20px, $opacity: 0.6) {
   position: relative;
   padding-left: $padding-left;

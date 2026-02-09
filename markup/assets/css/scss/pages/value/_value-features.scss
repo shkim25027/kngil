@@ -3,9 +3,11 @@
 @use "variables" as *;
 
 // =======================================
-// Value Features Section
+// value/_value-features.scss — KNGIL 주요 기능 카드
 // =======================================
-// 주요 기능 소개 섹션: GIS, 데이터, 지도, 커스터마이징
+// value.html: <section class="value-features"> 안의 4개 기능 카드 + 장식 라인.
+// 카드: .feature-gis | .feature-data | .feature-map | .feature-custom
+// 배경 이미지·아이콘 경로는 아래 각 .feature-xxx 블록에서 수정하세요.
 
 .value {
   .value-features {
@@ -40,7 +42,9 @@
       margin-top: 20px;
     }
 
-    // 기능 카드
+    // -----------------------------------------
+    // 기능 카드 공통 (제목 dt, 설명 dd, 호버, 배경 ::before)
+    // -----------------------------------------
     .feature-card {
       width: 100%;
       height: 100%;
@@ -155,7 +159,9 @@
       }
     }
 
-    // 각 기능별 배경 이미지 및 아이콘
+    // -----------------------------------------
+    // 기능별 배경 이미지 + dt 안 아이콘 (이미지 바꿀 때 여기 수정)
+    // -----------------------------------------
     .feature-gis {
       &::before {
         background-image: url(../img/value/bg_value_gis.jpg);
@@ -200,7 +206,9 @@
       }
     }
 
-    // 장식용 라인 애니메이션
+    // -----------------------------------------
+    // 장식용 세로/가로 라인 애니메이션 (.lines > v1, v2, v3, h, d1, d2, d3)
+    // -----------------------------------------
     .lines {
       position: absolute;
       top: 0;

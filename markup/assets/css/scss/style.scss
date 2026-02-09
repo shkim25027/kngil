@@ -1,14 +1,19 @@
 @charset "UTF-8";
 
 // =======================================
-// Main Style Entry Point
+// style.scss — 페이지 전용 스타일 진입점
 // =======================================
+// 이 파일이 컴파일되면 → style.css 가 됩니다.
+// 공통 스타일(헤더, 푸터, 버튼 등)은 common.scss → common.css 에서 로드됩니다.
+//
+// 로드 순서:
+//   1. _root  : 전역 CSS 변수 (색상, 그림자, 그라데이션 등)
+//   2. pages  : 페이지별 스타일 (메인, value, provided, primary, analysis, results, faq, buy)
 
-// 1. Core (CSS 변수)
+// 1. 전역 CSS 변수 (색·그림자·그라데이션 — 수정 시 _root.scss 열기)
 @forward "_root";
 
-
-// 3. Pages (페이지별 스타일)
+// 2. 페이지별 스타일 (수정 시 pages/ 해당 폴더 열기)
 @forward "pages";
 
 

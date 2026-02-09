@@ -3,9 +3,13 @@
 @use "variables" as *;
 
 // =======================================
-// Service Section
+// value/_service.scss — 5단계 프로세스 섹션
 // =======================================
-// 서비스 소개 영역: 단계별 프로세스 및 데이터 비교
+// value.html: <div class="service"> 안의 "5단계 프로세스" 블록만 담당합니다.
+// - .step-list (설명 문구 + step-flow-box)
+// - .step-flow-item.active (큰길서비스 카드)
+// - ol.step-flow / .step-item (2~5단계 카드)
+// 데이터 비교(.data-comparison) 스타일은 _data-comparison.scss 에 있습니다.
 
 .value {
   .service {
@@ -18,7 +22,10 @@
       transform: none;
     }
 
-    // 단계별 프로세스 리스트
+    // -----------------------------------------
+    // 5단계 프로세스 전체 (.step-desc + .step-flow-box)
+    // HTML: .step-list > .step-desc, .step-flow-box > .step-flow-item + ol.step-flow
+    // -----------------------------------------
     .step-list {      
       .step-desc {
         font-size: map-get($value-font-sizes, xl);
@@ -256,7 +263,7 @@
             height: 176px;
           }
           @include mq(desktop-small, max) {
-            width: calc(100% - 87px);
+            width: calc(100% - 63px);
             height: 198px;
           }
         }

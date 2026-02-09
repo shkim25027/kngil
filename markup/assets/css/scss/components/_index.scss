@@ -1,13 +1,13 @@
 @use "../import/_mixin" as *;
 
 // =======================================
-// Components Index
+// components/_index.scss — 컴포넌트 통합
 // =======================================
-// 재사용 가능한 UI 컴포넌트들을 통합 관리
+// 버튼·팝업·다이어그램 등 재사용 UI. 수정 시 해당 파일을 열어서 수정하세요.
 
-@forward "buttons";      // 버튼 컴포넌트
-@forward "popup";        // 팝업 컴포넌트
-@forward "diagram";      // 다이어그램
-@forward "layout-fix";    // 레이아웃 수정
-@forward "mouse-mark";    // 마우스 마크
+@forward "buttons";     // 버튼 — components/_buttons.scss
+@forward "popup";       // 팝업 — components/_popup.scss
+@forward "diagram";     // 다이어그램 — components/_diagram.scss
+@forward "layout-fix";  // 레이아웃 보정 — components/_layout-fix.scss
+@forward "mouse-mark";  // 마우스 마크 — components/_mouse-mark.scss
  

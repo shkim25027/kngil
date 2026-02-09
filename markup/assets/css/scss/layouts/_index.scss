@@ -1,9 +1,9 @@
 // =======================================
-// Layouts Index
+// layouts/_index.scss — 레이아웃 통합
 // =======================================
-// 전역 레이아웃 컴포넌트들을 통합 관리
+// 헤더·푸터·본문·플로팅 메뉴. 수정 시 각 파일을 직접 열어서 수정하세요.
 
-@forward "header";  // 헤더 레이아웃
-@forward "body";    // 바디 레이아웃
-@forward "footer";  // 푸터 레이아웃
-@forward "floating"; // 플로팅 메뉴 레이아웃
+@forward "header";   // 상단 헤더 (로고, 메뉴) — layouts/_header.scss
+@forward "body";     // 본문 레이아웃 — layouts/_body.scss
+@forward "footer";   // 하단 푸터 — layouts/_footer.scss
+@forward "floating"; // 플로팅 버튼/메뉴 — layouts/_floating.scss

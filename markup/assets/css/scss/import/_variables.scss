@@ -1,27 +1,23 @@
 @charset "UTF-8";
 
 // =======================================
-// Font Settings
+// import/_variables.scss — SCSS 변수 (폰트·기본 색 등)
 // =======================================
+// 이 파일은 SCSS 전용 변수입니다. (CSS 변수는 _root.scss 참고)
+// 사용: @use "../import/_variables" as *;  후  $body-fz, $font-family-ko 등 사용
 
-// rem 단위 계산을 위한 html 사이즈 리셋
+// rem 기준 (html font-size)
 $html-fz: 10px;
 
-// 본문(paragraph) 사이즈
+// 본문 글자 크기·색·행간
 $body-fz: 20px;
-
-// 본문(paragraph) 기본 컬러
 $base-color: #000;
-
-// 기본 행간 비율
 $line-height: 1.4;
-
-// 본문 행간 비율
 $base-line: $body-fz * 1.4;
 
-// 적용 웹 폰트
+// 폰트 패밀리
 $font-family-ko: 'Noto Sans KR', sans-serif;
 $font-family-en: 'Noto Sans KR', Arial, sans-serif, serif;
 
-// vw 계산용 기준 viewport 사이즈
+// 반응형 vw 계산용 기준 너비
 $vw-viewport: 720px !default;

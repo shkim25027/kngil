@@ -68,11 +68,15 @@
     },
 
     /**
-     * 스크롤 복원
+     * 스크롤 복원 (사이트맵과 동일한 스크롤 잠금 해제 적용)
      */
     restoreScroll() {
-      $('body').css('overflow', '');
-      this.startLenis();
+      if (window.sitemapManager && typeof window.sitemapManager.unlockScroll === 'function') {
+        window.sitemapManager.unlockScroll();
+      } else {
+        $('body').css('overflow', '');
+        this.startLenis();
+      }
     }
   };
 

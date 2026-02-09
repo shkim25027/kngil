@@ -1,14 +1,14 @@
 // =======================================
-// Pages Index
+// pages/_index.scss — 페이지별 스타일 통합
 // =======================================
-// 페이지별 고유 스타일들을 통합 관리
+// 수정 시: 해당 페이지 폴더(예: value, provided) 또는 _main, _faq, _buy 파일을 열어서 수정하세요.
 
-@forward "main";           // 메인 페이지
-@forward "value/index";    // 소개 페이지
-@forward "provided/index"; // 제동데이터 페이지
-@forward "primary/index";  // 주요 기능 페이지
-@forward "analysis/index"; // 데이터분석 페이지
-@forward "results/index";  // For BIM 페이지
-@forward "faq";            // FAQ 페이지
-@forward "buy";            // 구매 페이지
+@forward "main";           // 메인 페이지 (pages/_main.scss)
+@forward "value/index";    // 소개(value) 페이지 (pages/value/)
+@forward "provided/index"; // 제동데이터 페이지 (pages/provided/)
+@forward "primary/index";  // 주요 기능 페이지 (pages/primary/)
+@forward "analysis/index"; // 데이터분석 페이지 (pages/analysis/)
+@forward "results/index";  // For BIM(결과) 페이지 (pages/results/)
+@forward "faq";            // FAQ 페이지 (pages/_faq.scss)
+@forward "buy";            // 구매 페이지 (pages/_buy.scss)
 
