@@ -699,6 +699,7 @@ $popup-answer-bg: #ffdd0022;
       height: 48px;
       font-size: 18px;
       border-bottom: 1px solid #000;
+
     }
     .select-box {
       width: 100%;
@@ -1062,14 +1063,24 @@ $popup-answer-bg: #ffdd0022;
           font-size: 24px;
           margin-right: 24px;
         }
+        @include mq(tablet-small, max) {
+          height: 60px;
+          .timer {
+            font-size: 20px;
+            margin-right: 24px;
+          }
+        }
       }
 
       input[type="text"],
       input[type="tel"],
       input[type="password"] {
-        padding: 0 16px;
+        padding: 0 8px;
         font-size: 24px;
         border-bottom: none;
+        @include mq(tablet-small, max) {
+          font-size: 20px;
+        }
       }
     }
     .tab-content {
@@ -1197,6 +1208,9 @@ $popup-answer-bg: #ffdd0022;
     max-width: 480px;
     margin-top: 92px;   
     flex-grow: 1;
+    @include mq(tablet-small, max) {
+      margin-top: 0;
+    }
   }
   // Center Wrap
   .center-wrap {
@@ -1225,6 +1239,9 @@ $popup-answer-bg: #ffdd0022;
         th,
         td {
           padding-bottom: 20px;
+          @include mq(tablet-small, max) {
+            padding-bottom: 12px;
+          }
         }
       }
       th {
@@ -1234,6 +1251,9 @@ $popup-answer-bg: #ffdd0022;
         font-weight: 500;
         vertical-align: top;
         padding-top: 12px;
+        @include mq(tablet-small, max) {
+          width: 120px;
+        }
       }
 
       // 비활성화된 행 스타일
@@ -1351,7 +1371,10 @@ $popup-answer-bg: #ffdd0022;
     height: 80px;
     background: linear-gradient(92deg, rgba(255, 234, 198, 0.40) 0%, rgba(255, 255, 255, 0.00) 100%), #856120;
     backdrop-filter: blur(5px);
-
+    @include mq(tablet-small, max) {
+      font-size: 20px;
+      height: 60px;
+    }
     &:hover {
       background: linear-gradient(92deg, rgba(0, 144, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), #1A543D;
     }
