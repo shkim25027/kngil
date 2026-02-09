@@ -233,6 +233,8 @@
           @include mq(desktop-small, max) {
             top: 0px;
             left: -56px;
+            width: 106px;
+            height: 100%;
             mask-image: url("../img/value/bg_step_flow_m.svg");          mask-size: 143px 242px;
             mask-position: 0 0;
             mask-repeat: no-repeat;
@@ -263,7 +265,7 @@
             height: 176px;
           }
           @include mq(desktop-small, max) {
-            width: calc(100% - 87px);
+            width: calc(100% - 50px);
             height: 198px;
           }
         }

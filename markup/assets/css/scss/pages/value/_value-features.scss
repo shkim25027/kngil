@@ -31,9 +31,11 @@
     }
 
 
-    @include mq(desktop-small, max) {
+    @include mq(desktop, max) {
       display: flex;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
       height: auto;
       min-height: auto;
       gap: map-get($value-sizes, gap-md);
@@ -61,13 +63,14 @@
       
       @include mq(desktop, max) {
         border-radius: map-get($value-sizes, border-radius-lg);
+        max-width: 640px;
       }
 
       @include mq(tablet-small, max) {
         padding: 94px 16px 2rem 16px;
         min-height: auto;
         height: auto;
-        max-width: 640px;
+       
       }
 
       // 배경 이미지
