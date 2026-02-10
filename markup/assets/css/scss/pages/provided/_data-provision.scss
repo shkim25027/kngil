@@ -131,7 +131,7 @@
             align-items: center;
             gap: 40px;
             position: relative;
-
+            isolation: isolate; 
             &.spatial {
               .category-circle {
                 background: linear-gradient(90deg, rgba(0, 0, 0, 0.00) 13.19%, rgba(0, 0, 0, 0.30) 87.92%), linear-gradient(0deg, rgba(26, 84, 61, 0.00) 15%, #1A543D 100%), linear-gradient(0deg, #1A543D 0%, #1A543D 100%);
@@ -252,6 +252,14 @@
             .category-images {
               position: absolute;
               top: 50%;
+              transform: translateY(-50%); // translate → transform으로 변경
+              // translate: 0 -50%; // 이 라인 제거
+              
+              // Safari용 렌더링 최적화
+              -webkit-transform: translateY(-50%);
+              will-change: transform; // 추가
+              
+              // 나머지 스타일은 동일
               height: 270px;
               max-height: 122%;
               display: flex;
@@ -259,7 +267,6 @@
               gap: 15px;
               width: 100%;
               max-width: 300px;
-              translate: 0 -50%;
               z-index: -1;
 
               @include mq(desktop-small, max) {
