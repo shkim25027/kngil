@@ -43,6 +43,11 @@
   // ============================================
   // Utility Functions
   // ============================================
+  /** 뷰포트 비율: 가로 > 세로면 true(기본 영상), 세로 >= 가로면 false(_m 영상) */
+  function isHorizontalViewport() {
+    return window.innerWidth / window.innerHeight > 1;
+  }
+
   const Utils = {
     $(selector) {
       return document.querySelector(selector);
@@ -51,6 +56,8 @@
     $$(selector) {
       return document.querySelectorAll(selector);
     },
+
+    isHorizontalViewport,
 
     isValidPageNum(pageNum) {
       return Number.isInteger(pageNum) && 
@@ -105,20 +112,34 @@
     loadVideo(pageNum) {
       if (!Utils.isValidPageNum(pageNum)) return false;
 
-      const videoSource = `${CONFIG.VIDEO_BASE_PATH}/main_${pageNum}.mp4`;
-      
+      const useVertical = !Utils.isHorizontalViewport();
+      const suffix = useVertical ? '_m' : '';
+      const videoSource = `${CONFIG.VIDEO_BASE_PATH}/main_${pageNum}${suffix}.mp4`;
+
       // 현재 소스와 동일하면 다시 로드하지 않음
-      if (this.sourceElement.src && this.sourceElement.src.includes(`main_${pageNum}.mp4`)) {
+      if (this.sourceElement.src && this.sourceElement.src.includes(`main_${pageNum}${suffix}.mp4`)) {
         return true;
       }
 
       try {
         this.sourceElement.src = videoSource;
         this.videoElement.load();
+        this.updatePaginationMode(useVertical);
         return true;
       } catch (error) {
         console.error('[VideoPlayer] Failed to load video:', error);
         return false;
+      }
+    },
+
+    /** 비율에 따라 네비게이션에 .m 클래스 토글 (세로일 때 .m) */
+    updatePaginationMode(useVertical) {
+      const el = Utils.$(CONFIG.SELECTORS.pagination);
+      if (!el) return;
+      if (useVertical) {
+        el.classList.add('m');
+      } else {
+        el.classList.remove('m');
       }
     },
 
@@ -439,14 +460,33 @@
 
       // 모듈 초기화
       Pagination.init();
+      // 비율에 따라 초기 영상(main_1.mp4 vs main_1_m.mp4) 및 네비 .m 클래스 설정
+      VideoPlayer.loadVideo(VideoPlayer.currentPage);
       Pagination.updateLink(VideoPlayer.currentPage);
       Pagination.updateState(VideoPlayer.currentPage);
       IntroController.init();
       FooterController.init();
       CursorTextController.init();
+      this.setupResizeHandler();
 
       // 비디오 재생 시작
       this.startVideoPlayback();
+    },
+
+    setupResizeHandler() {
+      let lastHorizontal = Utils.isHorizontalViewport();
+      let resizeTimer = 0;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(() => {
+          const nowHorizontal = Utils.isHorizontalViewport();
+          if (nowHorizontal !== lastHorizontal) {
+            lastHorizontal = nowHorizontal;
+            VideoPlayer.loadVideo(VideoPlayer.currentPage);
+            VideoPlayer.play().catch(() => {});
+          }
+        }, 150);
+      });
     },
 
     startVideoPlayback() {
