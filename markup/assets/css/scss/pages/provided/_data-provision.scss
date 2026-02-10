@@ -375,14 +375,14 @@
             border: 1.5px dashed #268C64;
             z-index: 1;
             @include mq(tablet-wide, max) {
-              width: 60%;
-              left: -60%;
+              //width: 60%;
+             // left: -60%;
               top:-82% ;
               height: 132%;
             }
             @include mq(tablet-wide, max) {
-              width: 60%;
-              left: -60%;
+              //width: 60%;
+             // left: -60%;
               top:-82% ;
               height: 132%;
             }
