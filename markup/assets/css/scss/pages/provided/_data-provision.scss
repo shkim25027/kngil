@@ -137,16 +137,21 @@
 
             .category-line {
               position: absolute;
-              
+              // Safari: 빈 요소 보더 렌더링 안정화 (레이어 분리)
+              transform: translateZ(0);
               @include mq(desktop-small, max) {
                 top: 50%;
                 left: -16px;
                 width: 100%;
                 height: 97%;
-                border: 1.5px dashed #268C64;
                 z-index: 1;
-                  left: 20px;
-                }
+                left: 20px;
+                // Safari: shorthand + border-*-:none 시 나머지 변이 안 그려지는 버그 회피 → 보여줄 변만 명시
+                border: 0 dashed #268C64;
+                border-left-width: 1.5px;
+                border-top-width: 1.5px;
+                border-bottom-width: 1.5px;
+              }
             }
 
             &.spatial {
@@ -163,8 +168,12 @@
                     border-right: none;
                   }
                 }
+                @include mq(tablet-small, max) {
+                  left: -40.8163%;
+                }
                 .category-line {
-                  border-right: none;
+                  // Safari: border-right: none 대신 오른쪽만 0으로 명시 (왼쪽/위/아래만 표시)
+                  border-right-width: 0;
                 }
               }
             }
@@ -175,16 +184,26 @@
                 box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
               }
               .category-images {
+                left: auto;
                 right: -41.176%;
                 align-items: flex-end;
+                @include mq(tablet-small, max) {
+                  right: -40.8163%;
+                }
 
                 .category-line {
                   @include mq(desktop-small, max) {
                     right: -16px;
                     left: auto;
+                    // Safari: 왼쪽 제거 시 오른쪽/위/아래만 명시적으로 지정
                     border-color: #8D6318;
-                    border-left: none;
-                    right: -0px;
+                    border-left-width: 0;
+                    border-right-width: 1.5px;
+                    border-top-width: 1.5px;
+                    border-bottom-width: 1.5px;
+                  }
+                  @include mq(tablet-small, max) {
+                    right: -4px;
                   }
                 }
               }
@@ -271,6 +290,7 @@
               z-index: -1;
               @include mq(tablet-small, max) {
                 max-height: calc(100% + 20px);
+                width: max-content;
               }
               .image-item {
                 width: auto;
