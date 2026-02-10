@@ -258,17 +258,27 @@
           }
         }
         .category-images-wrap {
-                      // ----- .category-images: 이미지 영역 ( .image-item > img ) -----
-                      .category-images {
-                        position: absolute;
-                        top: 50%;
-                        height: 270px;
-                        max-height: 122%;
-                        display: flex;
-                        flex-direction: column;
-                        gap: 15px;
-                        width: auto;
-                        translate: 0 -50%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          z-index: 0;
+
+          // ----- .category-images: 이미지 영역 ( .image-item > img ) -----
+          .category-images {
+            pointer-events: auto;
+            position: absolute;
+            top: 50%;
+            height: 270px;
+            max-height: 122%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: auto;
+            transform: translateY(-50%);
+            -webkit-transform: translateY(-50%);
           
                         @include mq(desktop-small, max) {
                           max-height: 100%;
@@ -311,6 +321,7 @@
           
                         .image-item {
                           width: auto;
+                          min-height: 0;
                           overflow: hidden;
                           position: relative;
                           z-index: 0;
@@ -318,27 +329,34 @@
                           display: flex;
                           align-items: center;
                           gap: 15px;
-          
+                          -webkit-backface-visibility: hidden;
+                          backface-visibility: hidden;
+
                           &::before {
                             content: "";
                             position: absolute;
                             top: 50%;
                             left: -20px;
                             transform: translateY(-50%);
+                            -webkit-transform: translateY(-50%);
                             width: 20px;
                             height: 2px;
                             background: rgba(0, 0, 0, 0.3);
                             z-index: 1;
                           }
-          
+
                           &:hover {
                             transform: scale(1.05);
+                            -webkit-transform: scale(1.05);
                           }
-          
+
                           img {
                             width: auto;
                             height: 100%;
+                            max-height: 270px;
                             flex-shrink: 0;
+                            object-fit: contain;
+                            display: block;
                           }
                         }
                       }
