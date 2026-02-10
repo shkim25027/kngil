@@ -68,6 +68,9 @@
         box-shadow: 0 0 14.1px 0 rgba(0, 0, 0, 0.25);
         @include flex(center, space-between);
         overflow: visible;
+        @include mq(tablet-small, max) {
+          padding: 10px;
+        }
 
         &::before {
           content: " ";
@@ -264,7 +267,9 @@
               width: 204px;
               translate: 0 -50%;
               z-index: -1;
-
+              @include mq(tablet-small, max) {
+                max-height: calc(100% + 20px);
+              }
               .image-item {
                 width: auto;
                 overflow: hidden;
