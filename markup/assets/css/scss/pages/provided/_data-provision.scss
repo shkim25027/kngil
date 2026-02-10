@@ -63,25 +63,31 @@
         max-width: 720px;
         max-height: 270px;
         margin: 0 auto;
-        border: 1px solid #B9A279;
-        background: linear-gradient(270deg, #FAF5EF 0%, #FFFDF9 25%, rgba(244, 246, 242, 1) 50%, #E9EFEB 75%, #E9EFEB 100%);
-        box-shadow: 0 0 14.1px 0 rgba(0, 0, 0, 0.25);
         @include flex(center, space-between);
         overflow: visible;
-
-        &::before {
-          content: " ";
+        // ----- .data-bullet: SVG path 기반 블렛 애니메이션 (반응형 개선) -----
+        .data-bullet-wrap {
           position: absolute;
           top: 0;
           left: 0;
           width: 100%;
           height: 100%;
-          background: linear-gradient(90deg, #178C5E 0%, #B9A279 100%);
-          box-sizing: border-box;
-          @include maskContents();
+          border-radius: 150px;
+          border: 1px solid #B9A279;
+          background: linear-gradient(270deg, #FAF5EF 0%, #FFFDF9 25%, rgba(244, 246, 242, 1) 50%, #E9EFEB 75%, #E9EFEB 100%);
+          box-shadow: 0 0 14.1px 0 rgba(0, 0, 0, 0.25);
+          &::before {
+            content: " ";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #178C5E 0%, #B9A279 100%);
+            box-sizing: border-box;
+            @include maskContents();
+          }
         }
-
-        // ----- .data-bullet: SVG path 기반 블렛 애니메이션 (반응형 개선) -----
         .data-bullet {
           position: absolute;
           top: 0;
@@ -262,7 +268,6 @@
                         flex-direction: column;
                         gap: 15px;
                         width: auto;
-                        max-width: 300px;
                         translate: 0 -50%;
                         z-index: -1;
           
@@ -273,12 +278,12 @@
                             position: absolute;
                             top: 50%;
                             left: -16px;
-                            width: 52%;
+                            width: 56%;
                             height: 96%;
                             border: 1.5px dashed #268C64;
                             z-index: 1;
                             @include mq(tablet-wide, max) {
-                              width: 54%;
+                              width: 52%;
                               height: 100%;
                             }
                             @include mq(tablet, max) {
@@ -286,8 +291,11 @@
                             }
                             @include mq(tablet-small, max) {
                               left: -8px;
-                              width: 52%;
-                              height: calc(50% + 2.4rem +  (1.6rem * 2.5) + 2rem);
+                              width: 44%;
+                              height: calc(50% + 2.4rem +  (1.6rem * 2.5) + 30px);
+                            }
+                            @include mq(phone-wide, max) {
+                              width: 32%;
                             }
                           }
                           &:after {
@@ -378,7 +386,9 @@
           }
 
         }
+ 
       }
+      
     }
 
     // ----- article.data-categories-list: ul.fix.spatial | ul.fix.statistical ( .data-inner과 형제 ) -----
