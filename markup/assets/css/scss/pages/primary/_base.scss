@@ -113,14 +113,14 @@
           &:nth-child(3) {
             color: #f1d1c1;
             top: 67.70833%;
-            left: 16px;
+            left: 3.3333%;
             transform: translateY(-50%) rotate(120deg);
           }
           
           &:nth-child(4) {
             color: var(--color-han-br);
             top: 62.5%;
-            right: 24px;
+            right: 5%;
             transform: translateY(-50%) rotate(240deg);
           }
           
@@ -178,6 +178,10 @@
               text-align: left;
             }
           }
+          @include mq(phone-wide, max) {
+            top: -24%;
+            left: 18%;
+          }
 
         }
 
@@ -197,6 +201,10 @@
             .dia-tit {
               text-align: left;
             }
+          }
+          @include mq(phone-wide, max) {
+            bottom: 0%;
+            left: -14%;
           }
         }
 
@@ -219,6 +227,11 @@
               text-align: right;
             }
           }
+          @include mq(phone-wide, max) {
+            bottom: 4%;
+            right: -14%;
+          }
+
         }
 
         &.e01 i {
