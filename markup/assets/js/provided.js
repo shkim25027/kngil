@@ -289,7 +289,7 @@
 
   // 반응형 offset-path 업데이트 함수
   function updateOffsetPath() {
-    const container = document.querySelector('.provided .data-provision');
+    const container = document.querySelector('.provided .data-bullet-wrap');
     const bullets = document.querySelectorAll('.data-bullet');
     
     if (!container || bullets.length === 0) return;
