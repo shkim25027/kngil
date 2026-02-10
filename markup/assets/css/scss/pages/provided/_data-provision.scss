@@ -257,7 +257,7 @@
               position: absolute;
               top: 50%;
               height: 270px;
-              max-height: 122%;
+              max-height: calc(100% + 40px);
               display: flex;
               flex-direction: column;
               gap: 15px;
