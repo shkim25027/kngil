@@ -451,7 +451,7 @@
           padding: 0;
           margin: 0;
           top: 50%;
-          left: -232px;
+          left: -194px;
           display: flex;
           flex-direction: column;
           gap: 15px;
@@ -488,7 +488,7 @@
           }
           &:nth-child(2) {
             align-self: flex-start;
-            margin-left: -38px;
+            margin-left: -34px;
             animation-delay: 0.2s;
             @include mq(tablet-small, max) {
               align-self: center;
@@ -497,7 +497,7 @@
           }
           &:nth-child(3) {
             align-self: flex-start;
-            margin-left: -12px;
+            margin-left: -10px;
             animation-delay: 0.3s;
             @include mq(tablet-small, max) {
               align-self: center;
@@ -589,7 +589,7 @@
         flex-direction: column;
         gap: 15px;
         position: absolute;
-        right: -110px;
+        right: -82px;
         left: auto;
         top: 50%;
         width: 0;
@@ -624,7 +624,7 @@
           }
           &:nth-child(2) {
             align-self: flex-start;
-            margin-left: -2px;
+            margin-left: -6px;
             animation-delay: 0.2s;
             @include mq(tablet-small, max) {
               align-self: center;
@@ -633,6 +633,7 @@
           }
           &:nth-child(3) {
             align-self: flex-start;
+            margin-left: -4px;
             animation-delay: 0.3s;
             @include mq(tablet-small, max) {
               align-self: center;
