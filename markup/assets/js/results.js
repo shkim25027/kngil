@@ -32,7 +32,7 @@
     // 스크롤 탭 전환
     scrollTab: {
       enabled: true,
-      distance: '150%'   // 핀 유지 거리
+      distance: '300%'   // 핀 유지 거리
     }
   };
 
