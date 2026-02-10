@@ -48,6 +48,9 @@ html {
   &-right {
     gap: 20px;
     @include flex();
+    a {
+      display: none;
+    }
   }
   h1 {
     z-index: 1;
