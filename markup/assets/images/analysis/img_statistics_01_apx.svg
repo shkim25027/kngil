@@ -1,155 +1,59 @@
 <svg width="1030" height="357" viewBox="0 0 1030 357" fill="none" xmlns="http://www.w3.org/2000/svg">
 <style>
+  /* 차트 막대: scaleY(0)→(1), origin = rect 하단 중앙(50% 100%). transform-box로 스케일 무관 동작 */
   .chart-box rect {
-    transform-origin: bottom;
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    -webkit-transform-origin: 50% 100%;
+    transform: scaleY(0);
+    -webkit-transform: scaleY(0);
+    animation: chartScaleUp 1s ease-out forwards;
+    -webkit-animation: chartScaleUp 1s ease-out forwards;
   }
-  .chart-box.chart-01 rect {
-    animation: growUp1 1s ease-out 0.1s forwards;
+  .chart-box.chart-01 rect { animation-delay: 0.1s; -webkit-animation-delay: 0.1s; }
+  .chart-box.chart-02 rect { animation-delay: 0.2s; -webkit-animation-delay: 0.2s; }
+  .chart-box.chart-03 rect { animation-delay: 0.3s; -webkit-animation-delay: 0.3s; }
+  .chart-box.chart-04 rect { animation-delay: 0.4s; -webkit-animation-delay: 0.4s; }
+  .chart-box.chart-05 rect { animation-delay: 0.5s; -webkit-animation-delay: 0.5s; }
+  .chart-box.chart-06 rect { animation-delay: 0.6s; -webkit-animation-delay: 0.6s; }
+  .chart-box.chart-07 rect { animation-delay: 0.7s; -webkit-animation-delay: 0.7s; }
+  .chart-box.chart-08 rect { animation-delay: 0.8s; -webkit-animation-delay: 0.8s; }
+  @keyframes chartScaleUp {
+    from { transform: scaleY(0); }
+    to   { transform: scaleY(1); }
   }
-  .chart-box.chart-02 rect {
-    animation: growUp2 1s ease-out 0.2s forwards;
+  @-webkit-keyframes chartScaleUp {
+    from { -webkit-transform: scaleY(0); transform: scaleY(0); }
+    to   { -webkit-transform: scaleY(1); transform: scaleY(1); }
   }
-  .chart-box.chart-03 rect {
-    animation: growUp3 1s ease-out 0.3s forwards;
-  }
-  .chart-box.chart-04 rect {
-    animation: growUp4 1s ease-out 0.4s forwards;
-  }
-  .chart-box.chart-05 rect {
-    animation: growUp5 1s ease-out 0.5s forwards;
-  }
-  .chart-box.chart-06 rect {
-    animation: growUp6 1s ease-out 0.6s forwards;
-  }
-  .chart-box.chart-07 rect {
-    animation: growUp7 1s ease-out 0.7s forwards;
-  }
-  @keyframes growUp1 {
-    from {
-      height: 0;
-      y: 328.012;
-    }
-    to {
-      height: 141;
-      y: 187.012;
-    }
-  }
-  @keyframes growUp2 {
-    from {
-      height: 0;
-      y: 328.227;
-    }
-    to {
-      height: 160;
-      y: 168.227;
-    }
-  }
-  @keyframes growUp3 {
-    from {
-      height: 0;
-      y: 328;
-    }
-    to {
-      height: 42;
-      y: 286;
-    }
-  }
-  @keyframes growUp4 {
-    from {
-      height: 0;
-      y: 328;
-    }
-    to {
-      height: 127;
-      y: 201;
-    }
-  }
-  @keyframes growUp5 {
-    from {
-      height: 0;
-      y: 328;
-    }
-    to {
-      height: 72;
-      y: 256;
-    }
-  }
-  @keyframes growUp6 {
-    from {
-      height: 0;
-      y: 328;
-    }
-    to {
-      height: 14;
-      y: 314;
-    }
-  }
-  @keyframes growUp7 {
-    from {
-      height: 0;
-      y: 328;
-    }
-    to {
-      height: 24;
-      y: 304;
-    }
-  }
-  .chart-box.chart-08 rect {
-    animation: growUp8 1s ease-out 0.8s forwards;
-  }
-  @keyframes growUp8 {
-    from {
-      height: 0;
-      y: 328;
-    }
-    to {
-      height: 204;
-      y: 124;
-    }
-  }
+  /* 텍스트 박스: Safari용 -webkit- 접두사 */
   .text-box {
     opacity: 0;
     transform: translateY(-10px);
+    -webkit-transform: translateY(-10px);
     animation: fadeInDown 0.8s ease-out forwards;
+    -webkit-animation: fadeInDown 0.8s ease-out forwards;
   }
-  .chart-box.chart-01 .text-box {
-    animation-delay: 0.3s;
-  }
-  .chart-box.chart-02 .text-box {
-    animation-delay: 0.4s;
-  }
-  .chart-box.chart-03 .text-box {
-    animation-delay: 0.5s;
-  }
-  .chart-box.chart-04 .text-box {
-    animation-delay: 0.6s;
-  }
-  .chart-box.chart-05 .text-box {
-    animation-delay: 0.7s;
-  }
-  .chart-box.chart-06 .text-box {
-    animation-delay: 0.8s;
-  }
-  .chart-box.chart-07 .text-box {
-    animation-delay: 0.9s;
-  }
-  .chart-box.chart-08 .text-box {
-    animation-delay: 1s;
-  }
+  .chart-box.chart-01 .text-box { animation-delay: 0.3s; -webkit-animation-delay: 0.3s; }
+  .chart-box.chart-02 .text-box { animation-delay: 0.4s; -webkit-animation-delay: 0.4s; }
+  .chart-box.chart-03 .text-box { animation-delay: 0.5s; -webkit-animation-delay: 0.5s; }
+  .chart-box.chart-04 .text-box { animation-delay: 0.6s; -webkit-animation-delay: 0.6s; }
+  .chart-box.chart-05 .text-box { animation-delay: 0.7s; -webkit-animation-delay: 0.7s; }
+  .chart-box.chart-06 .text-box { animation-delay: 0.8s; -webkit-animation-delay: 0.8s; }
+  .chart-box.chart-07 .text-box { animation-delay: 0.9s; -webkit-animation-delay: 0.9s; }
+  .chart-box.chart-08 .text-box { animation-delay: 1s; -webkit-animation-delay: 1s; }
   @keyframes fadeInDown {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(-10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @-webkit-keyframes fadeInDown {
+    from { opacity: 0; -webkit-transform: translateY(-10px); transform: translateY(-10px); }
+    to   { opacity: 1; -webkit-transform: translateY(0); transform: translateY(0); }
   }
 </style>
 <g clip-path="url(#clipChart)">
 <g class="chart-box chart-01">
-    <rect x="33.4854" y="328.012" width="46.8791" height="141" fill="#E60013"/>
+    <rect x="33.4854" y="187.012" width="46.8791" height="141" fill="#E60013"/>
     <g class="text-box">
     <g filter="url(#filter0_d_1333_2764)">
 <path d="M100.041 129H14.1169C12.978 129 12.0547 129.689 12.0547 130.54V175.686C12.0547 176.537 12.978 177.226 14.1169 177.226H100.041C101.179 177.226 102.103 176.537 102.103 175.686V130.54C102.103 129.689 101.179 129 100.041 129Z" fill="#DC4A2C"/>
@@ -163,7 +67,7 @@
     </g>
 </g>
 <g class="chart-box chart-03">
-    <rect x="262.522" y="328" width="46.8791" height="42" fill="#CCB991"/>
+    <rect x="262.522" y="286" width="46.8791" height="42" fill="#CCB991"/>
     <g class="text-box">
     <g filter="url(#filter1_d_1333_2764)">
 <path d="M329.079 228H243.155C242.016 228 241.093 228.689 241.093 229.54V274.686C241.093 275.537 242.016 276.226 243.155 276.226H329.079C330.217 276.226 331.141 275.537 331.141 274.686V229.54C331.141 228.689 330.217 228 329.079 228Z" fill="#E4CEA1"/>
@@ -177,7 +81,7 @@
     </g>
 </g>
 <g class="chart-box chart-04">
-    <rect x="376.372" y="328" width="46.8791" height="127" fill="#B6D785"/>
+    <rect x="376.372" y="201" width="46.8791" height="127" fill="#B6D785"/>
     <g class="text-box">
     <g filter="url(#filter2_d_1333_2764)">
 <path d="M442.927 143H357.004C355.865 143 354.941 143.689 354.941 144.54V189.686C354.941 190.537 355.865 191.226 357.004 191.226H442.927C444.066 191.226 444.989 190.537 444.989 189.686V144.54C444.989 143.689 444.066 143 442.927 143Z" fill="#B6D785"/>
@@ -191,7 +95,7 @@
     </g>
 </g>
 <g class="chart-box chart-05">
-    <rect x="605.409" y="328" width="46.8791" height="72" fill="#B5B6B6"/>
+    <rect x="605.409" y="256" width="46.8791" height="72" fill="#B5B6B6"/>
     <g class="text-box">
     <g filter="url(#filter3_d_1333_2764)">
 <path d="M671.965 200H586.042C584.903 200 583.979 200.689 583.979 201.54V246.686C583.979 247.537 584.903 248.226 586.042 248.226H671.965C673.104 248.226 674.027 247.537 674.027 246.686V201.54C674.027 200.689 673.104 200 671.965 200Z" fill="#B5B5B6"/>
@@ -205,7 +109,7 @@
     </g>
 </g>
 <g class="chart-box chart-06">
-    <rect x="720.599" y="328" width="46.8791" height="14" fill="#B49D6E"/>
+    <rect x="720.599" y="314" width="46.8791" height="14" fill="#B49D6E"/>
     <g class="text-box">
     <g filter="url(#filter4_d_1333_2764)">
 <path d="M787.154 256H701.23C700.091 256 699.168 256.689 699.168 257.54V302.686C699.168 303.537 700.091 304.226 701.23 304.226H787.154C788.293 304.226 789.216 303.537 789.216 302.686V257.54C789.216 256.689 788.293 256 787.154 256Z" fill="#C4AC78"/>
@@ -219,7 +123,7 @@
     </g>
 </g>
 <g class="chart-box chart-07">
-    <rect x="948.297" y="328" width="46.8791" height="24" fill="#F6D17F"/>
+    <rect x="948.297" y="304" width="46.8791" height="24" fill="#F6D17F"/>
     <g class="text-box">
     <g filter="url(#filter5_d_1333_2764)">
 <path d="M1014.85 246H928.928C927.79 246 926.866 246.689 926.866 247.54V292.686C926.866 293.537 927.79 294.226 928.928 294.226H1014.85C1015.99 294.226 1016.91 293.537 1016.91 292.686V247.54C1016.91 246.689 1015.99 246 1014.85 246Z" fill="#F7D17F"/>
@@ -233,7 +137,7 @@
     </g>
 </g>
 <g class="chart-box chart-08">
-    <rect x="491.561" y="328" width="46.8791" height="204" fill="#8ED2EE"/>
+    <rect x="491.561" y="124" width="46.8791" height="204" fill="#8ED2EE"/>
     <g class="text-box">
     <g filter="url(#filter6_d_1333_2764)">
 <path d="M558.116 66H472.192C471.053 66 470.13 66.6893 470.13 67.5396V112.686C470.13 113.537 471.053 114.226 472.192 114.226H558.116C559.255 114.226 560.178 113.537 560.178 112.686V67.5396C560.178 66.6893 559.255 66 558.116 66Z" fill="#8ED2EF"/>
@@ -247,7 +151,7 @@
     </g>
 </g>
 <g class="chart-box chart-02">
-    <rect x="148.674" y="328.227" width="46.8791" height="160" fill="#90B3C3"/>
+    <rect x="148.674" y="168.227" width="46.8791" height="160" fill="#90B3C3"/>
     <g class="text-box">
     <g filter="url(#filter7_d_1333_2764)">
 <path d="M215.229 110H129.305C128.166 110 127.243 110.689 127.243 111.54V156.686C127.243 157.537 128.166 158.226 129.305 158.226H215.229C216.368 158.226 217.291 157.537 217.291 156.686V111.54C217.291 110.689 216.368 110 215.229 110Z" fill="#90B3C3"/>
@@ -335,7 +239,27 @@
 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1333_2764" result="shape"/>
 </filter>
 <clipPath id="clipChart">
-  <rect x="0" y="0" width="1030" height="328"/>
+  <rect x="0" y="0" width="1030" height="357"/>
 </clipPath>
 </defs>
+<script><![CDATA[
+(function(){
+  function runChartAnimation() {
+    var rects = document.querySelectorAll('.chart-box rect');
+    for (var i = 0; i < rects.length; i++) {
+      var r = rects[i];
+      r.style.animation = 'none';
+      r.style.webkitAnimation = 'none';
+      r.offsetHeight;
+      r.style.animation = '';
+      r.style.webkitAnimation = '';
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function(){ setTimeout(runChartAnimation, 50); });
+  } else {
+    setTimeout(runChartAnimation, 50);
+  }
+})();
+]]></script>
 </svg>
