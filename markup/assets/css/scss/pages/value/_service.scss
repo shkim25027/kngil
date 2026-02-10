@@ -88,6 +88,7 @@
 
         @include mq(tablet-small, max) {
           min-width: clamp(174px, 48.3333%, 260px);
+          height: max-content;
         }
 
         &.active {
@@ -111,6 +112,7 @@
             @include mq(tablet-small, max) {
               width: 100%;
               min-height: 180px;
+              height: 202px;
             }
 
             .step-title {
@@ -206,6 +208,9 @@
           padding: 2rem 0;
           gap: 0;
         }
+        @include mq(tablet-small, max) {
+          height: 100%;
+        }
 
         // 배경 그라디언트 효과 - 왼쪽 곡선 영역 (bg_step_flow.svg 마스크)
         &::before {
@@ -244,6 +249,12 @@
             -webkit-mask-repeat: no-repeat;
             mix-blend-mode: multiply;
           }
+          @include mq(tablet-small, max) {
+            height: 100%;
+            left: -36px;
+            -webkit-mask-size: auto 100%;
+          }
+
         }
         // 배경 그라디언트 효과 - 전체 형태 (_bg_step_flow.svg 마스크)
         
@@ -267,6 +278,10 @@
           @include mq(desktop-small, max) {
             width: calc(100% - 50px);
             height: 198px;
+          }
+          @include mq(tablet-small, max) {
+            width: calc(100% - 48px);
+            height: 82%;
           }
         }
         // 2~5단계 각 아이템 (li.step-item)
