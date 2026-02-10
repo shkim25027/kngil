@@ -574,17 +574,25 @@ $process-left-breakpoint: 999px; // max-width: 998px
       .sub-figs {
         background: var(--color-han-bgbr);
         width: 100%;
+        height: 100%;
         border-radius: 4px;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
+
         @include mq(1860px, max) {
           position: relative;
-          height: 100%;
-          img {
-            position: absolute;
-            height: auto;
-            top: 50%;
-            left: 50%;
-            translate: -50% -50%;
+          .imgs {
+            position: relative;
+            flex: 1;
+            min-height: 0;
+            img {
+              position: absolute;
+              inset: 0;
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
           }
           .fig-caption {
             position: absolute;
@@ -593,14 +601,18 @@ $process-left-breakpoint: 999px; // max-width: 998px
             bottom: 0;
           }
         }
-          
-        
+
         .imgs {
           width: 100%;
+          flex: 1;
+          min-height: 0;
+          position: relative;
           img {
             width: 100%;
-            max-width: auto;
             height: 100%;
+            max-width: none;
+            object-fit: cover;
+            display: block;
           }
         }
 

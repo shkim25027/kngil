@@ -131,7 +131,7 @@
             align-items: center;
             gap: 40px;
             position: relative;
-            isolation: isolate; 
+
             &.spatial {
               .category-circle {
                 background: linear-gradient(90deg, rgba(0, 0, 0, 0.00) 13.19%, rgba(0, 0, 0, 0.30) 87.92%), linear-gradient(0deg, rgba(26, 84, 61, 0.00) 15%, #1A543D 100%), linear-gradient(0deg, #1A543D 0%, #1A543D 100%);
@@ -144,7 +144,7 @@
                 }
                 @include mq(desktop-small, max) {
                   &::before {
-                    left: -0px;
+                    left: -8px;
                     border-top:none;
                     border-right: none;
                   }
@@ -248,97 +248,134 @@
               }
             }
 
-            // ----- .category-images: 이미지 영역 ( .image-item > img ) -----
-            .category-images {
-              position: absolute;
-              top: 50%;
-              transform: translateY(-50%); // translate → transform으로 변경
-              // translate: 0 -50%; // 이 라인 제거
-              
-              // Safari용 렌더링 최적화
-              -webkit-transform: translateY(-50%);
-              will-change: transform; // 추가
-              
-              // 나머지 스타일은 동일
-              height: 270px;
-              max-height: 122%;
-              display: flex;
-              flex-direction: column;
-              gap: 15px;
-              width: 100%;
-              max-width: 300px;
-              z-index: -1;
 
-              @include mq(desktop-small, max) {
-                max-height: 128%;
-                &::before {
-                  content: " ";
-                  position: absolute;
-                  top: 50%;
-                  left: -16px;
-                  width: 65%;
-                  height: 96%;
-                  border: 1.5px dashed #268C64;
-                  z-index: 1;
-                  @include mq(tablet-wide, max) {
-                    width: 50%;
-                    height: 100%;
-                  }
-                  @include mq(tablet, max) {
-                    height: calc(50% + 134px);
-                  }
-                  @include mq(tablet-small, max) {
-                    left: -8px;
-                    width: 38%;
-                    height: calc(50% + 2.4rem +  (1.6rem * 2.5) + 32px);
-                  }
-                }
-                &:after {
-                  content: " ";
-                  position: absolute;
-                  top: 50%;
-                  left: -8px;
-                  width: 8px;
-                  height: 1px;
-                  border-top: 1.5px dashed #268C64;
-                  z-index: 1;
-                }
+          }
+        }
+        .category-images-wrap {
+                      // ----- .category-images: 이미지 영역 ( .image-item > img ) -----
+                      .category-images {
+                        position: absolute;
+                        top: 50%;
+                        height: 270px;
+                        max-height: 122%;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 15px;
+                        width: auto;
+                        max-width: 300px;
+                        translate: 0 -50%;
+                        z-index: -1;
+          
+                        @include mq(desktop-small, max) {
+                          max-height: 100%;
+                          &::before {
+                            content: " ";
+                            position: absolute;
+                            top: 50%;
+                            left: -16px;
+                            width: 52%;
+                            height: 96%;
+                            border: 1.5px dashed #268C64;
+                            z-index: 1;
+                            @include mq(tablet-wide, max) {
+                              width: 54%;
+                              height: 100%;
+                            }
+                            @include mq(tablet, max) {
+                              height: calc(50% + 134px);
+                            }
+                            @include mq(tablet-small, max) {
+                              left: -8px;
+                              width: 52%;
+                              height: calc(50% + 2.4rem +  (1.6rem * 2.5) + 2rem);
+                            }
+                          }
+                          &:after {
+                            content: " ";
+                            position: absolute;
+                            top: 50%;
+                            left: -8px;
+                            width: 8px;
+                            height: 1px;
+                            border-top: 1.5px dashed #268C64;
+                            z-index: 1;
+                          }
+                        }
+          
+                        .image-item {
+                          width: auto;
+                          overflow: hidden;
+                          position: relative;
+                          z-index: 0;
+                          transition: transform 0.3s ease;
+                          display: flex;
+                          align-items: center;
+                          gap: 15px;
+          
+                          &::before {
+                            content: "";
+                            position: absolute;
+                            top: 50%;
+                            left: -20px;
+                            transform: translateY(-50%);
+                            width: 20px;
+                            height: 2px;
+                            background: rgba(0, 0, 0, 0.3);
+                            z-index: 1;
+                          }
+          
+                          &:hover {
+                            transform: scale(1.05);
+                          }
+          
+                          img {
+                            width: 100%;
+                            height: 100%;
+                            flex-shrink: 0;
+                          }
+                        }
+                      }
+          .spatial {
+            &.category-images {
+              left: -12%;
+              @include mq(tablet-wide, max) {
+                left: -16%;
               }
-
-              .image-item {
-                width: auto;
-                overflow: hidden;
-                position: relative;
-                z-index: 0;
-                transition: transform 0.3s ease;
-                display: flex;
-                align-items: center;
-                gap: 15px;
-
+              @include mq(desktop-small, max) {
                 &::before {
-                  content: "";
-                  position: absolute;
-                  top: 50%;
-                  left: -20px;
-                  transform: translateY(-50%);
-                  width: 20px;
-                  height: 2px;
-                  background: rgba(0, 0, 0, 0.3);
-                  z-index: 1;
-                }
-
-                &:hover {
-                  transform: scale(1.05);
-                }
-
-                img {
-                  width: 100%;
-                  height: 100%;
-                  flex-shrink: 0;
+                  left: -8px;
+                  border-top:none;
+                  border-right: none;
                 }
               }
             }
           }
+
+          .statistical {
+            &.category-images {
+              right: -12%;
+              @include mq(tablet-wide, max) {
+                right: -16%;
+              }
+              @include mq(desktop-small, max) {
+                &::before {
+                  left: auto;
+                  right: -6px;
+                  border-top:none;
+                  border-left: none;
+                  border-color: #8D6318;
+                }
+                &:after {
+                  left: auto;
+                  right: -6px;
+                  width: 8px;
+                  height: 1px;
+                  border-top: 1.5px dashed #8D6318;
+                }
+              }
+            }
+          }
+
         }
       }
     }
@@ -424,7 +461,7 @@
           padding: 0;
           margin: 0;
           top: 50%;
-          left: -232px;
+          left: -202px;
           display: flex;
           flex-direction: column;
           gap: 15px;
@@ -461,7 +498,7 @@
           }
           &:nth-child(2) {
             align-self: flex-start;
-            margin-left: -38px;
+            margin-left: -36px;
             animation-delay: 0.2s;
             @include mq(tablet-small, max) {
               align-self: center;
@@ -470,7 +507,7 @@
           }
           &:nth-child(3) {
             align-self: flex-start;
-            margin-left: -12px;
+            margin-left: -10px;
             animation-delay: 0.3s;
             @include mq(tablet-small, max) {
               align-self: center;
@@ -562,7 +599,7 @@
         flex-direction: column;
         gap: 15px;
         position: absolute;
-        right: -110px;
+        right: -84px;
         left: auto;
         top: 50%;
         width: 0;
@@ -597,7 +634,7 @@
           }
           &:nth-child(2) {
             align-self: flex-start;
-            margin-left: -2px;
+            margin-left: -8px;
             animation-delay: 0.2s;
             @include mq(tablet-small, max) {
               align-self: center;
@@ -606,6 +643,7 @@
           }
           &:nth-child(3) {
             align-self: flex-start;
+            margin-left: -4px;
             animation-delay: 0.3s;
             @include mq(tablet-small, max) {
               align-self: center;
