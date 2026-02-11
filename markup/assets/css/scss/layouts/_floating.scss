@@ -68,14 +68,22 @@
           color:#FFD700;  
         }
         .ico-logo {
-          background-color: #FFD700;
+          //background-color: #FFD700;
+          filter: brightness(0) saturate(100%)
+          invert(76.3%) sepia(65%)
+          saturate(590%) hue-rotate(358deg)
+          brightness(102%);
         }
       }
     }
     .ico-logo{
-      width: 48px;
-      aspect-ratio: 48/11;
-      @include svgIconMask("../img/logo_kngil.svg",#fff);
+      @include flex(center, center);
+      img {
+        width: 48px;
+        aspect-ratio: 48/11;
+      }
+     
+      //@include svgIconMask("../img/logo_kngil.svg",#fff);
     }
     span {
       display: block;
