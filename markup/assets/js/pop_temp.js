@@ -14,6 +14,7 @@
     join: '#pop_join',
     join2: '#pop_join2',
     join3: '#pop_join3',
+    join4: '#pop_join4',
     agreement: '#pop_agreement',
     mypage01: '#pop_mypage01',
     mypage02: '#pop_mypage02',

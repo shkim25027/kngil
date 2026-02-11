@@ -1,5 +1,5 @@
 <!-- popup_wrap -->
-<div class="popup-wrap" id="pop_join3" role="dialog" aria-labelledby="join_title" aria-modal="true">
+<div class="popup-wrap" id="pop_join4" role="dialog" aria-labelledby="join_title" aria-modal="true">
     <!-- popup_in -->
     <div class="popup-in member">
         <button class="btn-close" type="button" aria-label="팝업 닫기">
@@ -14,8 +14,8 @@
             <!-- //pop_header -->
             <!-- pop_body -->
             <div class="pop-body">
-                <form action="" method="post" name="joinForm" novalidate>
-                    <div class="tbl-wrap">
+                <form action="" method="post" name="joinForm" novalidate style="display: none;">
+                    <div class="tbl-wrap" >
                         <span class="info-msg txt-right">*항목은 필수 항목 입니다.</span>
                         <table>
                             <tbody>
@@ -244,12 +244,20 @@
                 </form>
                 
                 <!-- 가입완료 메시지 -->
-                <div class="messages" style="display: none;" role="alert" aria-live="polite">
-                    <i class="complete" aria-hidden="true"></i>
-                    <span>
-                        <em>큰길님 환영합니다!</em><br>
-                        회원가입이 완료 되었습니다.
-                    </span>
+                <div class="messages" role="alert" aria-live="polite">
+                    <div class="msg-box">
+                        <p>
+                            <i class="complete" aria-hidden="true"></i>
+                            <span>
+                                <em>큰길님 환영합니다!</em><br>
+                                회원가입이 완료 되었습니다.
+                            </span>
+                        </p>
+                    </div>
+                    <div class="btn-wrap">
+                        <button class="btn-cancel" type="button">회원탈퇴</button>
+                        <button class="btn-full" type="button">취소</button>
+                    </div>
                 </div>
             </div>
             <!-- //pop_body -->

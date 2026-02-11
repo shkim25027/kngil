@@ -20,6 +20,7 @@
         "회원가입": ["../pop_temp.html?pop=join", "mainframe", "컨펌대기", ""],
         "회원가입 휴대폰인증": ["../pop_temp.html?pop=join2", "mainframe", "컨펌대기", ""],
         "회원가입 휴대폰인증 완료": ["../pop_temp.html?pop=join3", "mainframe", "컨펌대기", ""], 
+        "회원가입 완료": ["../pop_temp.html?pop=join4", "mainframe", "컨펌대기", ""], 
         "마이페이지": ["../pop_temp.html?pop=mypage02", "mainframe", "컨펌대기", ""],
         "마이페이지 인증": ["../pop_temp.html?pop=mypage01", "mainframe", "컨펌대기", ""],
         "마이페이지 정보수정": ["../pop_temp.html?pop=mypage03", "mainframe", "컨펌대기", ""],
