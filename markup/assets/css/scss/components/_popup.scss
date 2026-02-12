@@ -206,6 +206,16 @@ $popup-answer-bg: #ffdd0022;
   &.member {
     width: $popup-member-width;
 
+    &:has(.join) {
+      .pop-body {
+        padding: 52px 24px;
+        .form-wrap,
+        form{
+          justify-content: space-between;
+        }
+      }
+      
+    }
     .pop-body {
       @include popup-body-base(flex-start);
 
@@ -1247,7 +1257,7 @@ $popup-answer-bg: #ffdd0022;
       tr:not(:last-child) {
         th,
         td {
-          padding-bottom: 20px;
+          padding-bottom: 16px;
           @include mq(tablet-small, max) {
             padding-bottom: 12px;
           }
@@ -1487,6 +1497,7 @@ $popup-answer-bg: #ffdd0022;
 
   .tbl-wrap > .info-msg {
     text-align: right;
+    margin-bottom: 0;
   }
 
   // =======================================

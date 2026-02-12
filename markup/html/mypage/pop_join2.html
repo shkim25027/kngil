@@ -180,33 +180,31 @@
                                                 required
                                                 pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
                                             >
-                                            <span class="timer">03:00</span>
-                                            <button type="button" class="btn-sm btn-code light" aria-label="인증번호 발송">
+                                            
+                                            <button type="button" class="btn-sm btn-code light" aria-label="인증번호 발송" >
                                                 인증번호
                                             </button>
                                         </div>
                                     </td>
                                 </tr>
-                                <!-- 휴대전화번호 인증완료 -->
-                                <tr class="d-none">
+                                <!-- 휴대전화번호 인증 -->
+                                <tr class="verification-row">
                                     <th>
-                                        <label for="user_phone">휴대전화번호</label>
+                                        <label for="verification_code">인증번호</label>
                                         <span class="point" aria-label="필수">*</span>
                                     </th>
                                     <td>
                                         <div class="input-box group">
-                                            <input 
-                                                type="tel" 
-                                                id="user_phone"
-                                                name="userPhone"
-                                                placeholder="휴대폰 번호" 
-                                                required
-                                                pattern="[0-9]{3}-[0-9]{4}-[0-9]{4}"
-                                            >
-                                            <span class="complete-msg"><i class="ico-check" aria-hidden="true"></i>인증완료</span>
+                                            <input type="text" id="verification_code" placeholder="인증번호 6자리" maxlength="6" pattern="[0-9]{6}">
+                                            <span class="timer">03:00</span>
+                                            <button type="button" class="btn-sm btn-verify" aria-label="인증번호 확인">
+                                                확인
+                                            </button>
                                         </div>
+                                        <span class="info-msg" id="verify_help"></span>
                                     </td>
                                 </tr>
+  
 
                                 
                                 <!-- 회사정보 -->

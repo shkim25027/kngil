@@ -44,6 +44,14 @@
     @include mq(tablet-wide, max) {
       display: none;
     }
+    + ul{
+      @include mq(tablet-wide, min) {
+        margin-top: -56px;
+      }
+      @include mq(desktop, min) {
+        margin-top: -72px;
+      }
+    }
     svg.floating-shape {
       width: 100%;
       height: 100%;
@@ -114,12 +122,6 @@
     position: relative;
     z-index: 1;
     @include flex(center, center);
-    @include mq(tablet-wide, min) {
-      margin-top: -56px;
-    }
-    @include mq(desktop, min) {
-      margin-top: -72px;
-    }
 
     @include mq(desktop, max) {
       width: 64px;
