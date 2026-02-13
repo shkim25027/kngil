@@ -1125,6 +1125,17 @@ $popup-answer-bg: #ffdd0022;
     gap: 60px;
     @include flex(center, center);
 
+    .ico-complete {
+      display: block;
+      width: 64px;
+      height: 64px;
+      margin:  0 auto 30px auto;
+      background-image: url(../img/ico/ico_certified.svg);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
     .ico-pw {
       margin-bottom: 16px;
     }
